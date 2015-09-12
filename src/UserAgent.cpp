@@ -11,7 +11,7 @@
 
 void UserAgent::init(){
     registertime = ofGetSystemTime();
-    get_info_from_twitter();
+    get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
 }
 
 void UserAgent::get_info_from_twitter(){
@@ -33,6 +33,7 @@ void UserAgent::set_color(ofColor _color){
 }
 
 void UserAgent::update(){
+    multiple_of_size = ofRandom(1.5,2.5);
     
 }
 void UserAgent::draw(){
@@ -46,7 +47,7 @@ void UserAgent::draw(){
     for(int i=0;i<240;i++){
         int angle = i + ofGetElapsedTimef()*50;
         ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = position+ basis_vec*1.5*size;
+        ofVec2f vec = position+ basis_vec*multiple_of_size*(3/4.0f)*size;
         ofVertex(vec.x, vec.y);
     }
     ofEndShape();
@@ -55,7 +56,7 @@ void UserAgent::draw(){
     for(int i=0;i<240;i++){
         int angle = 100 + i + ofGetElapsedTimef()*50;
         ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
-        ofVec2f vec = position+ basis_vec*2*size;
+        ofVec2f vec = position+ basis_vec*multiple_of_size*size;
         ofVertex(vec.x, vec.y);
     }
     ofEndShape();

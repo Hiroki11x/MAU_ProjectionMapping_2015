@@ -14,6 +14,7 @@ class UserAgent{
 public:
     ofVec2f position;
     float size;
+    float multiple_of_size;
     
     ofImage icon;
     string id;
