@@ -25,6 +25,10 @@ void UserAgentManager::addConnection(int startIndex,int endIndex,float duration)
                                          ));
 }
 
+void UserAgentManager::update(){
+    for(int i = 0; i < userAgents.size(); i++){ userAgents.at(i)->update();}
+}
+
 void UserAgentManager::draw(){
     for(int i = 0; i < connections.size(); i++){ connections.at(i)->drawConnection();}
     for(int i = 0; i < userAgents.size(); i++){ userAgents.at(i)->draw();}
