@@ -11,10 +11,11 @@
 
 #include "ofMain.h"
 class UserAgent{
-public:
+private:
     ofVec2f position;
     float size;
     float multiple_of_size;
+    float line_length;
     
     ofImage icon;
     string id;
@@ -23,11 +24,13 @@ public:
     
     ofColor color;
     
+public:
     UserAgent(){};
     
     void set_position(ofVec2f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
+    void calc_line_length();
     
     void update();
     void draw();

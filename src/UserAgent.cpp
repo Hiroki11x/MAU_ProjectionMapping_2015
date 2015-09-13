@@ -10,8 +10,10 @@
 
 
 void UserAgent::init(){
+    ofSetCircleResolution(60);
     registertime = ofGetSystemTime();
     get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
+    calc_line_length();
 }
 
 void UserAgent::get_info_from_twitter(){
@@ -19,6 +21,10 @@ void UserAgent::get_info_from_twitter(){
     icon;
     id = "ID:hoge";
     username = "hoge hoge";
+}
+
+void UserAgent::calc_line_length(){
+    line_length = size * 8;
 }
 
 void UserAgent::set_position(ofVec2f _pos){
@@ -37,15 +43,18 @@ void UserAgent::update(){
     
 }
 void UserAgent::draw(){
+    int angle;
+    
     ofFill();
     ofSetColor(color);
-    ofCircle(position, size);
+    ofCircle(position, size*multiple_of_size/2);
     
     ofNoFill();
     
     ofBeginShape();
+    
     for(int i=0;i<240;i++){
-        int angle = i + ofGetElapsedTimef()*50;
+        angle = i + ofGetElapsedTimef()*50;
         ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
         ofVec2f vec = position+ basis_vec*multiple_of_size*(3/4.0f)*size;
         ofVertex(vec.x, vec.y);
@@ -54,19 +63,20 @@ void UserAgent::draw(){
     
     ofBeginShape();
     for(int i=0;i<240;i++){
-        int angle = 100 + i + ofGetElapsedTimef()*50;
+        angle = 100 + i + ofGetElapsedTimef()*50;
         ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
-        ofVec2f vec = position+ basis_vec*multiple_of_size*size;
+        ofVec2f vec = position + basis_vec*multiple_of_size*size;
         ofVertex(vec.x, vec.y);
     }
     ofEndShape();
     
-    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(300,size*2));
-    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(300,-size*2));
+    ofSetLineWidth(0.1);
+    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
+    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));
     
-    ofDrawBitmapString(username, position+ofVec2f(size*2.5,10));
-    ofDrawBitmapString(id, position+ofVec2f(size*2.5,30));
-    ofDrawBitmapString(ofToString(registertime), position+ofVec2f(size*2.5,50));
+    ofDrawBitmapString(username, position+ofVec2f(size*2.5,-size));
+    ofDrawBitmapString(id, position+ofVec2f(size*2.5,0));
+    ofDrawBitmapString(ofToString(registertime), position+ofVec2f(size*2.5,size));
 }
 
 
