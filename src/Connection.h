@@ -24,10 +24,7 @@ public:
         this->startPoint = startPoint;
         this->connectionVector = endPoint - startPoint;
         //this->color = c;
-        this->color = ofColor(255, 255, 255);
-        if(ofRandom(10) > 6){
-            this->color = ofColor(0, 255, 0, 100);
-        }
+        this->color = ofColor(255, 255, 0);
         this->position = 0.0;
         if(duration >= 5.0)
         {

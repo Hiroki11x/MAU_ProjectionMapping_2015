@@ -8,7 +8,6 @@ void ofApp::setup(){
     
     ofSetFrameRate(60);
     ofBackground(0);
-
     //SyphonServer使う上でのセットアップ
     mainOutputSyphonServer.setName("Screen Outputh");
     mClient.setup();
