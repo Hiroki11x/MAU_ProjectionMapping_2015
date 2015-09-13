@@ -107,3 +107,6 @@ Desktop.ini
 #########################
 
 .mailmap
+*.make
+ofxPostGlitch
+addon.make
