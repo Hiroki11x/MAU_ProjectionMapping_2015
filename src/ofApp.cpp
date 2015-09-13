@@ -1,15 +1,7 @@
 #include "ofApp.h"
 
 
-void ofApp::setup_user_agent(){
-    for(int j=0;j<3;j++){
-        user_agent.push_back(new UserAgent());//動的配列生成
-        user_agent.back()->set_position(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())));
-        user_agent.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX), COLOR_MAX, COLOR_MAX));
-        user_agent.back()->set_size(40);
-        user_agent.back()->init();
-    }
-}
+
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -23,7 +15,7 @@ void ofApp::setup(){
     mClient.setApplicationName("Simple Serverh");
     mClient.setServerName("");
     
-    setup_user_agent();
+    manager = new UserAgentManager();
 }
 
 //--------------------------------------------------------------
@@ -33,10 +25,9 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    manager->draw();
     
-    for(int i=0;i<user_agent.size();i++){
-        user_agent.at(i)->draw();
-    }
+    
     
     //Drawを最後に書くとそれまでに書いたものをSyphonで送信する
     mClient.draw(50, 50);
@@ -49,7 +40,9 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    if(key == ' '){
+        manager->addConnection(ofRandom(manager->getUserAgentSize()), ofRandom(manager->getUserAgentSize()), ofRandom(200));
+    }
 }
 
 //--------------------------------------------------------------
@@ -64,12 +57,13 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    
+    if(button == 0){
+        manager->addAgent(ofVec2f(x, y));
+    }
 }
 
 //--------------------------------------------------------------
