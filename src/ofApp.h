@@ -4,7 +4,14 @@
 #include "ofxCv.h"
 #include "ofxPostGlitch.h"
 #include "ofxSyphon.h"
+
+#include "UserAgent.h"
+#include "MatrixGenerator.h"
+
+#define COLOR_MAX 255
+
 #include "UserAgentManager.h"
+
 
 class ofApp : public ofBaseApp{
     
@@ -23,7 +30,16 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+
+    void setup_user_agent();
+    void draw_grid();
+    void draw_time_line();
+    
+    vector<UserAgent *> user_agent;
+    MatrixGenerator matrix_generator;
+
     UserAgentManager * manager;
+
 
     //Syphonで飛ばすため
     ofxSyphonServer mainOutputSyphonServer;
