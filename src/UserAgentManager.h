@@ -25,6 +25,7 @@ private:
 public:
     void addAgent(ofVec2f position);
     void addConnection(int startIndex,int endIndex,float duration);
+    void update();
     void draw();
     int  getUserAgentSize();
     int  getConnectionSize();

@@ -64,6 +64,7 @@ void ofApp::update(){
     for(int i=0;i<user_agent.size();i++){
         user_agent.at(i)->update();
     }
+    manager->update();
 }
 
 //--------------------------------------------------------------
