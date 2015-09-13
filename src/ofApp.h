@@ -4,10 +4,7 @@
 #include "ofxCv.h"
 #include "ofxPostGlitch.h"
 #include "ofxSyphon.h"
-
-#include "UserAgent.h"
-
-#define COLOR_MAX 255
+#include "UserAgentManager.h"
 
 class ofApp : public ofBaseApp{
     
@@ -26,13 +23,10 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    void setup_user_agent();
-    
-    vector<UserAgent *> user_agent;
+    UserAgentManager * manager;
 
     //Syphonで飛ばすため
     ofxSyphonServer mainOutputSyphonServer;
     ofxSyphonServer individualTextureSyphonServer;
     ofxSyphonClient mClient;
-
 };
