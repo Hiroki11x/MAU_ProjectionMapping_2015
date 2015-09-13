@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+
 void ofApp::setup_user_agent(){
     for(int j=0;j<30;j++){
         user_agent.push_back(new UserAgent());
@@ -21,6 +22,7 @@ void ofApp::setup_user_agent(){
         user_agent.back()->init();
     }
 }
+
 
 void ofApp::draw_grid(){
     ofSetColor(100);
@@ -48,14 +50,13 @@ void ofApp::setup(){
     matrix_generator.generate_position(8*2-4, 12);
     ofSetFrameRate(60);
     ofBackground(0);
-
     //SyphonServer使う上でのセットアップ
     mainOutputSyphonServer.setName("Screen Outputh");
     mClient.setup();
     mClient.setApplicationName("Simple Serverh");
     mClient.setServerName("");
-    
     setup_user_agent();
+    manager = new UserAgentManager();
 }
 
 //--------------------------------------------------------------
@@ -67,10 +68,16 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+
     draw_grid();
     for(int i=0;i<user_agent.size();i++){
         user_agent.at(i)->draw();
     }
+
+    manager->draw();
+    
+    
+
     
     draw_time_line();
     
@@ -88,7 +95,9 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    if(key == ' '){
+        manager->addConnection(ofRandom(manager->getUserAgentSize()), ofRandom(manager->getUserAgentSize()), ofRandom(200));
+    }
 }
 
 //--------------------------------------------------------------
@@ -103,12 +112,13 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    
+    if(button == 0){
+        manager->addAgent(ofVec2f(x, y));
+    }
 }
 
 //--------------------------------------------------------------

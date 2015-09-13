@@ -12,7 +12,7 @@
 #include "ofMain.h"
 class UserAgent{
 private:
-    ofVec2f position;
+    
     float size;
     float multiple_of_size;
     float line_length;
@@ -25,6 +25,7 @@ private:
     ofColor color;
     
 public:
+    ofVec2f position;
     UserAgent(){};
     
     void set_position(ofVec2f _pos);
