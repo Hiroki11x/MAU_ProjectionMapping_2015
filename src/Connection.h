@@ -18,13 +18,15 @@ private:
     ofColor color;
     float drawSpeed;
     float position;
+    bool connected;
     
 public:
-    Connection(ofVec2f startPoint, ofVec2f endPoint, ofColor c, float duration = 5.0){
+    Connection(ofVec2f startPoint, ofVec2f endPoint,ofColor c, float duration = 5.0){
         this->startPoint = startPoint;
         this->connectionVector = endPoint - startPoint;
         //this->color = c;
         this->color = ofColor(0, 255, 0,100);
+        this->connected = false;
         this->position = 0.0;
         if(duration >= 5.0)
         {
