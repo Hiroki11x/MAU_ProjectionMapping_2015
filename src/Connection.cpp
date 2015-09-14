@@ -16,4 +16,5 @@ void Connection::drawConnection(){
     }
     ofSetColor(color);
     ofLine( startPoint, startPoint + position * (connectionVector));
+    //positionは係数
 }

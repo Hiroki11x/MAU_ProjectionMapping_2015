@@ -14,6 +14,10 @@
 		<string>github.com:maxillacult/ofxPostGlitch.git</string>
 		<key>336AB842A4FC904F830E411F00CCF46BB1483F3F</key>
 		<string>https://github.com/Hiroki11x/mauAgentB3.git</string>
+		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
+		<string>https://github.com/kylemcdonald/ofxCv.git</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>https://github.com/astellato/ofxSyphon.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MauInteractive.xcodeproj</string>
@@ -23,6 +27,10 @@
 		<string>../..ofxPostGlitch</string>
 		<key>336AB842A4FC904F830E411F00CCF46BB1483F3F</key>
 		<string>../..</string>
+		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
+		<string>../../../../../addons/ofxCv</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>../../../../../addons/ofxSyphon</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Hiroki11x/mauAgentB3.git</string>
@@ -47,6 +55,22 @@
 			<string>210A84CB64DBE001319448A793DFC671846EB46E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>mauAgentB3ofxPostGlitch</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>37526DA425E5430474A14FBFA1BC4525160B5FC1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxCv</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4CCB893AFADB97238A965FD2F28717F1CAAE613</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSyphon</string>
 		</dict>
 	</array>
 </dict>

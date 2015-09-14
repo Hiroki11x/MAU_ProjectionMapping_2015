@@ -34,6 +34,7 @@ public:
     void setup_user_agent();
     void draw_grid();
     void draw_time_line();
+    ofVec2f allocate_matrix();
     
     vector<UserAgent *> user_agent;
     MatrixGenerator matrix_generator;

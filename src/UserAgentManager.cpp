@@ -7,10 +7,11 @@
 //
 #include "UserAgentManager.h"
 
+
 void UserAgentManager::addAgent(ofVec2f position){
     userAgents.push_back(new UserAgent());
     userAgents.back()->set_position(position);
-    userAgents.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX), COLOR_MAX, COLOR_MAX));
+    userAgents.back()->set_color(ofColor::fromHsb(100, COLOR_MAX, ofRandom(150,COLOR_MAX)));
     userAgents.back()->set_size(10);
     userAgents.back()->init();
     userAgentsSize += 1;
@@ -20,7 +21,7 @@ void UserAgentManager::addConnection(int startIndex,int endIndex,float duration)
     if(startIndex >= userAgentsSize || endIndex >= userAgentsSize || startIndex == endIndex){return;}
     connections.push_back(new Connection(userAgents.at(startIndex)->position,
                                          userAgents.at(endIndex)->position,
-                                         ofColor::fromHsb(ofRandom(COLOR_MAX),255,255),
+                                         ofColor::fromHsb(100, COLOR_MAX, ofRandom(150,COLOR_MAX)),
                                          duration
                                          ));
 }

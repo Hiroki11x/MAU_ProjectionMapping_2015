@@ -14,7 +14,7 @@
 class Connection {
 private:
     ofVec2f startPoint;
-    ofVec2f connectionVector;
+    ofVec2f connectionVector;//方向ベクトル
     ofColor color;
     float drawSpeed;
     float position;
@@ -24,7 +24,7 @@ public:
         this->startPoint = startPoint;
         this->connectionVector = endPoint - startPoint;
         //this->color = c;
-        this->color = ofColor(255, 255, 0);
+        this->color = ofColor(0, 255, 0,100);
         this->position = 0.0;
         if(duration >= 5.0)
         {
