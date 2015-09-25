@@ -7,7 +7,6 @@
 //
 #include "UserAgentManager.h"
 
-
 void UserAgentManager::addAgent(ofVec2f position){
     userAgents.push_back(new UserAgent());
     userAgents.back()->set_position(position);

@@ -2,20 +2,20 @@
 
 
 ofVec2f ofApp::allocate_matrix(){
-    int size = matrix_generator.get_position_num();
+    /*int size = matrix_generator.get_position_num();
     int index = ofRandom(size);;
     while(matrix_generator.get_is_used().at(index)){
         index = ofRandom(size);
     }
     matrix_generator.set_is_used_true(index);
     ofVec2f position = *matrix_generator.get_position().at(index);
-    return position;
+    return position;*/
 }
 
 void ofApp::setup_user_agent(){
-    for(int j=0;j<30;j++){
+    /*for(int j=0;j<30;j++){
         manager->addAgent(allocate_matrix());
-    }
+    }*/
 }
 
 
@@ -33,17 +33,30 @@ void ofApp::setup(){
     
     manager = new UserAgentManager();
     setup_user_agent();
+    
+    mode = Load;
+    
+    ofSetLoggerChannel(ofxSuperLog::getLogger(false, true, ""));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     manager->update();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-    manager->draw();
+    
+    switch(mode){
+        case Load:
+            load.draw();
+            
+            break;
+        case Main:
+            manager->draw();
+            break;
+    }
 
     //Drawを最後に書くとそれまでに書いたものをSyphonで送信する
     mClient.draw(50, 50);
@@ -61,13 +74,17 @@ void ofApp::keyPressed(int key){
 void ofApp::keyReleased(int key){
     if(key == ' '){
         manager->addConnection(ofRandom(manager->getUserAgentSize()),
-                               ofRandom(manager->getUserAgentSize()), ofRandom(400));
+                               ofRandom(manager->getUserAgentSize()), ofRandom(50));
+    }else if(key == 'n'){
+        mode = Main;
+        ofxSuperLog::getLogger()->setScreenLoggingEnabled(false);
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    
+    //ofLog((ofLogLevel)400, "mousedragged:" + (string)x + "," + (string)y);
+    ofLogNotice() << "mouseDragged:" << x << "," << y << endl;
 }
 
 //--------------------------------------------------------------
@@ -81,7 +98,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    if(button == 0){
+    if(button == 0 && mode == Main){
         manager->addAgent(ofVec2f(x, y));
     }
 }

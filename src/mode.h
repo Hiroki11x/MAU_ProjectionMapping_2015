@@ -1,0 +1,15 @@
+//
+//  mode.h
+//  MauInteractive
+//
+//  Created by SakuragiYoshimasa on 2015/09/25.
+//
+//
+#ifndef MauInteractive_mode_h
+#define MauInteractive_mode_h
+enum Mode{
+    Load,
+    Main
+};
+
+#endif

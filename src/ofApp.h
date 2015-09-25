@@ -12,6 +12,9 @@
 
 #include "UserAgentManager.h"
 
+#include "Loading.h"
+#include "mode.h"
+#include "ofxSuperLog.h"
 
 class ofApp : public ofBaseApp{
     
@@ -46,4 +49,7 @@ public:
     ofxSyphonServer mainOutputSyphonServer;
     ofxSyphonServer individualTextureSyphonServer;
     ofxSyphonClient mClient;
+    
+    Loading load = *new Loading(2.0,"Loading Tweets...");
+    Mode mode;
 };

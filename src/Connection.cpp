@@ -15,9 +15,8 @@ void Connection::drawConnection(){
         {
             position = 1.0;
             connected = true;
-        }else if (position <= 0.2){
+        }else{
             ofCircle(startPoint, 40 * (1 - position));
-        }else if (position >= 0.8){
             ofCircle(startPoint + connectionVector, 40 * position);
         }
     }
