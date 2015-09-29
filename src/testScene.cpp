@@ -11,9 +11,14 @@
 void testScene::setup(){
     ofBackground(0);
     ofSetFrameRate(60);
-    manager = new IntroductionManager();
+    ofEnableSmoothing();
+    
+    ofDisableArbTex();
+    
+    manager = new SpyMeshSceneManager();
     manager->setup();
     mode = SceneMode::Introduction;
+    
 }
 
 //--------------------------------------------------------------

@@ -9,133 +9,105 @@
 #include "SpyMesh.h"
 
 void SpyMesh::update(){
-
-    /*if(index < 9000){
-        
-        //generate(meshdata[index][0],meshdata[index][1]);
-        index++;
-    }*/
+    model.update();
+    
+    if(bAnimateMouse) {
+        model.setPositionForAllAnimations(animationPosition);
+    }
+    
+    mesh = model.getCurrentAnimatedMesh(0);
+   
 }
 
 void SpyMesh::draw(){
     
-    /*
-     if(DetDelaunay(triangle1,triangle2,triangle3,triangle4)){
-     ofSetColor(150,100,150);
-     }else{
-     ofSetColor(100,200,50);
-     }
-     */
-    ofNoFill();
-    ofSetColor(250,0,0);
-    for(int i =0 ; i < ts.size() ; i++){
-        cout << ps[ts[i].tri1].x << endl;
-        if(int(ps[ts[i].tri1].x  + ps[ts[i].tri1].y * ofGetWidth()) < spyColors.size()){
-            //ofSetColor(*spyColors.at(int(ps[ts[i].tri1].x  + ps[ts[i].tri1].y * ofGetWidth())));
-        }
-        
-        ofTriangle(ps[ts[i].tri1].x,ps[ts[i].tri1].y,
-                   ps[ts[i].tri2].x,ps[ts[i].tri2].y,
-                   ps[ts[i].tri3].x,ps[ts[i].tri3].y);
+    
+    
+    ofSetColor(255);
+    
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
+    ofEnableDepthTest();
+    
+    glShadeModel(GL_SMOOTH); //some model / light stuff
+    light.enable();
+    ofEnableSeparateSpecularLight();
+    
+    ofPushMatrix();
+    ofTranslate(model.getPosition().x+100, model.getPosition().y, 0);
+    ofRotate(-mouseX, 0, 1, 0);
+    ofTranslate(-model.getPosition().x, -model.getPosition().y, 0);
+    model.drawFaces();
+    ofPopMatrix();
+    
+    if(ofGetGLProgrammableRenderer()){
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
+    }
+    glEnable(GL_NORMALIZE);
+    
+    ofPushMatrix();
+    ofTranslate(model.getPosition().x-300, model.getPosition().y, 0);
+    ofRotate(-mouseX, 0, 1, 0);
+    ofTranslate(-model.getPosition().x, -model.getPosition().y, 0);
+    
+    ofxAssimpMeshHelper & meshHelper = model.getMeshHelper(0);
+    
+    ofMultMatrix(model.getModelMatrix());
+    ofMultMatrix(meshHelper.matrix);
+    
+    ofMaterial & material = meshHelper.material;
+    if(meshHelper.hasTexture()){
+        meshHelper.getTextureRef().bind();
+    }
+    material.begin();
+    mesh.drawWireframe();
+    material.end();
+    if(meshHelper.hasTexture()){
+        meshHelper.getTextureRef().unbind();
+    }
+    ofPopMatrix();
+    
+    if(ofGetGLProgrammableRenderer()){
+        glPopAttrib();
     }
     
-    //ofCircle(100,100,100);
+    ofDisableDepthTest();
+    light.disable();
+    ofDisableLighting();
+    ofDisableSeparateSpecularLight();
+    
+    //ofSetColor(255, 255, 255 );
+  /*  ofDrawBitmapString("fps: "+ofToString(ofGetFrameRate(), 2), 10, 15);
+    ofDrawBitmapString("keys 1-5 load models, spacebar to trigger animation", 10, 30);
+    ofDrawBitmapString("drag to control animation with mouseY", 10, 45);
+    ofDrawBitmapString("num animations for this model: " + ofToString(model.getAnimationCount()), 10, 60);*/
+
+ 
 }
 
 void SpyMesh::end(){}
 
 void SpyMesh::init(){
     ofBackground(0);
-    ps.push_back(ofPoint(0,0));
-    ps.push_back(ofPoint(0,ofGetHeight()));
-    ps.push_back(ofPoint(ofGetWidth(),0));
-    ps.push_back(ofPoint(ofGetWidth(),ofGetHeight()));
+    model.loadModel("s.3ds");
+    model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.75 , 0);
+    ofDisableArbTex(); // we need GL_TEXTURE_2D for our models coords.
     
-    TrianglePoints tp1(0,1,2);
-    TrianglePoints tp2(2,1,3);
+    bAnimate = false;
+    bAnimateMouse = false;
+    animationPosition = 0;
     
-    
-    ts.push_back(tp1);
-    ts.push_back(tp2);
-    
-    index = 0;
-    
-    /*spyImage.loadImage("spyimage.jpg");
-    spyImage.resize(ofGetWidth(), ofGetHeight());
-    spyData = spyImage.getPixels();
-    
-    for(int x = 0; x < ofGetWidth() * ofGetHeight() * 3; x+=3){
-        spyColors.push_back(new ofColor(spyData[x],spyData[x + 1],spyData[x + 2]));
+    //model.loadModel("astroBoy_walk.dae", true);
+    //model.setPosition(ofGetWidth() * 0.5, (float)ofGetHeight() * 0.75 , 0);
+    model.setLoopStateForAllAnimations(OF_LOOP_NORMAL);
+    model.playAllAnimations();
+    if(!bAnimate) {
+        model.setPausedForAllAnimations(true);
     }
-    
-    for(float x = 0; x < ofGetWidth(); x+=40){
-        for(float y = 0; y < ofGetHeight(); y +=40){
-            generate(x, y);
-        }
-    }*/
 }
 
 void SpyMesh::onMouseDown(int x, int y){
-    generate((float)x, (float)y);
+    mouseX = x;
+    mouseY = y;
 }
-
-
-void SpyMesh::generate(float x, float y){
-    ps.push_back(ofPoint(x,y));
-    vector<TrianglePoints> ts_new;
-    vector<LinePoints> ls_new_push;
-    vector<LinePoints> ls_new;
-    for(int j = ps.size()-1 ; j < ps.size();j++){
-        ls_new.clear();
-        ls_new_push.clear();
-        ts_new.clear();
-        for(int i =0 ; i < ts.size() ; i++){
-            if(DetDelaunay(
-                           ps[ts[i].tri1],
-                           ps[ts[i].tri2],
-                           ps[ts[i].tri3],
-                           ps[j]
-                           )
-               ){
-                ls_new.push_back(LinePoints(ts[i].tri1,ts[i].tri2));
-                ls_new.push_back(LinePoints(ts[i].tri1,ts[i].tri3));
-                ls_new.push_back(LinePoints(ts[i].tri2,ts[i].tri3));
-            }else{
-                ts_new.push_back(ts[i]);
-            }
-        }
-        //cout << ls_new.size() << endl;
-        for(int k =0 ; k < ls_new.size() ; k++){
-            Boolean boolflag = true;
-            
-            for(int l = 0 ; l < ls_new.size() ; l++){
-                if(l != k && ls_new[k].li1 == ls_new[l].li1 && ls_new[k].li2 == ls_new[l].li2){
-                    boolflag = false;
-                }
-            }
-            
-            if(boolflag){
-                ls_new_push.push_back(ls_new[k]);
-            }
-        }
-        for(int m =0 ; m < ls_new_push.size() ; m++){
-            ts_new.push_back(TrianglePoints(ls_new_push[m].li1,ls_new_push[m].li2,j));
-        }
-        ts.clear();
-        ts = ts_new;
-    }
-}
-
-Boolean SpyMesh::DetDelaunay(
-                             const ofPoint& p0,
-                             const ofPoint& p1,
-                             const ofPoint& p2,
-                             const ofPoint& p3){
-    float x = p3.x;
-    float y = p3.y;
-    float d = (p0.x*p0.x + p0.y*p0.y - x*x - y*y)*((p1.x-x)*(p2.y-y)-(p2.x-x)*(p1.y-y)) +
-    (p1.x*p1.x + p1.y*p1.y - x*x - y*y)*((p2.x-x)*(p0.y-y)-(p2.y-y)*(p0.x-x)) +
-    (p2.x*p2.x + p2.y*p2.y - x*x - y*y)*((p0.x-x)*(p1.y-y)-(p0.y-y)*(p1.x-x));
-    return ( (p1.x-p0.x)*(p2.y-p0.y)-(p1.y-p0.y)*(p2.x-p0.x)>0 ) ? d >= 0 : d<=0;
-}
-
