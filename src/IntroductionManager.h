@@ -13,7 +13,10 @@
 #include "SceneElement.h"
 #include "SceneManager.h"
 #include "BuildPC.h"
+#include "textExplosion.h"
+#include "Fadeout.h"
 #include "Loading.h"
+
 
 class IntroductionManager : public SceneManager {
 

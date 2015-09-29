@@ -55,7 +55,6 @@ public:
         this->buildTexts.push_back((buildText){"0",10});
         this->buildTexts.push_back((buildText){"2",10});
         this->buildTexts.push_back((buildText){"4\n",60});
-       // this->buildTexts.push_back((buildText){" 20151024\n",60});
         this->buildTexts.push_back((buildText){"$ success!\n",30});
         this->buildTexts.push_back((buildText){"$ Application Building...\n",1000});
         this->waitFrame = 0;

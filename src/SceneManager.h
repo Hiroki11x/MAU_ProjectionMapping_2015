@@ -23,10 +23,12 @@ public:
     virtual void draw(){};
     
     bool nextElement(){
+        elements[elementIndex]->end();
         elementIndex++;
         if(elementIndex >= elements.size()){
             return false;
         }else{
+            elements[elementIndex]->init();
             return true;
         }
     };
