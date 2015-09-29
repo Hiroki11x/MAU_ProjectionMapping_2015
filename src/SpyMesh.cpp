@@ -8,16 +8,13 @@
 
 #include "SpyMesh.h"
 
-vector<ofPoint> ps;
-vector<TrianglePoints> ts;
-
 void SpyMesh::update(){
 
-    if(index < 9000){
+    /*if(index < 9000){
         
         //generate(meshdata[index][0],meshdata[index][1]);
         index++;
-    }
+    }*/
 }
 
 void SpyMesh::draw(){
@@ -30,9 +27,13 @@ void SpyMesh::draw(){
      }
      */
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(250,0,0);
     for(int i =0 ; i < ts.size() ; i++){
-        //cout << ps[ts[i].tri1].x << endl;
+        cout << ps[ts[i].tri1].x << endl;
+        if(int(ps[ts[i].tri1].x  + ps[ts[i].tri1].y * ofGetWidth()) < spyColors.size()){
+            //ofSetColor(*spyColors.at(int(ps[ts[i].tri1].x  + ps[ts[i].tri1].y * ofGetWidth())));
+        }
+        
         ofTriangle(ps[ts[i].tri1].x,ps[ts[i].tri1].y,
                    ps[ts[i].tri2].x,ps[ts[i].tri2].y,
                    ps[ts[i].tri3].x,ps[ts[i].tri3].y);
@@ -44,6 +45,7 @@ void SpyMesh::draw(){
 void SpyMesh::end(){}
 
 void SpyMesh::init(){
+    ofBackground(0);
     ps.push_back(ofPoint(0,0));
     ps.push_back(ofPoint(0,ofGetHeight()));
     ps.push_back(ofPoint(ofGetWidth(),0));
@@ -57,6 +59,20 @@ void SpyMesh::init(){
     ts.push_back(tp2);
     
     index = 0;
+    
+    /*spyImage.loadImage("spyimage.jpg");
+    spyImage.resize(ofGetWidth(), ofGetHeight());
+    spyData = spyImage.getPixels();
+    
+    for(int x = 0; x < ofGetWidth() * ofGetHeight() * 3; x+=3){
+        spyColors.push_back(new ofColor(spyData[x],spyData[x + 1],spyData[x + 2]));
+    }
+    
+    for(float x = 0; x < ofGetWidth(); x+=40){
+        for(float y = 0; y < ofGetHeight(); y +=40){
+            generate(x, y);
+        }
+    }*/
 }
 
 void SpyMesh::onMouseDown(int x, int y){

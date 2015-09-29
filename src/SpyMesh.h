@@ -19,6 +19,13 @@
 class SpyMesh : public SceneElement {
 public:
     
+    vector<ofPoint> ps;
+    vector<TrianglePoints> ts;
+    ofImage spyImage;
+    unsigned char * spyData;
+    //int imgW,imgH;
+    vector<ofColor *> spyColors;
+    
     Boolean DetDelaunay(const ofPoint& p0,const ofPoint& p1,const ofPoint& p2,const ofPoint& p3);
     int index;
     void generate(float x, float y);
