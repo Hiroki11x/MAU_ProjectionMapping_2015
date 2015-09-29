@@ -25,7 +25,7 @@ public:
     ofTrueTypeFont drawer;
     
     BuildPC(){
-        drawer.loadFont("Arial.ttf",30);
+        drawer.loadFont("Arial.ttf",30,false);
         this->displayText = "";
         this->buildTexts.push_back((buildText){"$ Hello,MAU!\n",10});
         this->buildTexts.push_back((buildText){"$ \n",30});

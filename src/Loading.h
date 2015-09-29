@@ -25,7 +25,7 @@ public:
     
     Loading(){
         
-        drawer.loadFont("Arial.ttf",30);
+        drawer.loadFont("Arial.ttf",30,false);
         this->interval = 2.0;
         this->text = "Loading Tweets...";
         this->barLength = 0;

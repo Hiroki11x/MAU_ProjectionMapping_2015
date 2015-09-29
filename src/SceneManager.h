@@ -21,6 +21,7 @@ public:
     };
     virtual void update(){};
     virtual void draw(){};
+    virtual void onMouseDown(int x,int y){};
     
     bool nextElement(){
         elements[elementIndex]->end();

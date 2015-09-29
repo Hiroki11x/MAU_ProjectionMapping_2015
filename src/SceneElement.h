@@ -17,6 +17,7 @@ public:
     virtual void draw();
     virtual void init(){};
     virtual void end(){};
+    virtual void onMouseDown(int x,int y){};
 };
 
 
