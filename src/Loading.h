@@ -7,10 +7,10 @@
 //
 #ifndef MauInteractive_Loading_h
 #define MauInteractive_Loading_h
-
 #include "ofMain.h"
+#include "SceneElement.h"
 
-class Loading {
+class Loading : public SceneElement {
     
 public:
     float interval;
@@ -19,7 +19,8 @@ public:
     float wait;
     bool writeText;
 
-    void draw();
+    virtual void draw() override;
+    virtual void update() override;
     
     Loading(float interval,string text){
         this->interval = interval;
@@ -27,6 +28,7 @@ public:
         this->barLength = 0;
         this->wait = 0;
         this->writeText = true;
+        cout << "load init" << endl;
     };
     //~Loading(){};
     

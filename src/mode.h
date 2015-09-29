@@ -7,9 +7,11 @@
 //
 #ifndef MauInteractive_mode_h
 #define MauInteractive_mode_h
-enum Mode{
-    Load,
-    Main
-};
+
+namespace SceneMode{
+    enum Mode{
+        Introduction
+    };
+}
 
 #endif

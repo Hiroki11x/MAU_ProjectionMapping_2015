@@ -31,3 +31,5 @@ void Loading::draw(){
     
     ofPopStyle();
 }
+
+void Loading::update(){}

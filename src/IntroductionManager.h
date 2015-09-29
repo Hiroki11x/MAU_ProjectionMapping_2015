@@ -1,0 +1,30 @@
+//
+//  IntroductionManager.hpp
+//  MauInteractiv*e
+//
+//  Created by 櫻木善将 on 2015/09/29.
+//
+//
+
+#ifndef IntroductionManager_h
+#define IntroductionManager_h
+
+#include "ofMain.h"
+#include "SceneElement.h"
+#include "SceneManager.h"
+#include "Loading.h"
+
+class IntroductionManager : public SceneManager {
+
+public:
+    
+    IntroductionManager(){};
+    ~IntroductionManager(){};
+    
+    virtual void setup() override;
+    virtual void update() override;
+    virtual void draw() override;
+   // virtual bool nextElement() override;
+    
+};
+#endif /* IntroductionManager_h */
