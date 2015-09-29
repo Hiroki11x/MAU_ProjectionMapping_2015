@@ -93,7 +93,7 @@ class ofxAssimpModelLoader{
     	void disableColors();
     	void disableMaterials();
 
-        void draw(ofPolyRenderMode renderType);
+        virtual void draw(ofPolyRenderMode renderType);
 		
 		ofPoint getPosition();
 		ofPoint getSceneCenter();

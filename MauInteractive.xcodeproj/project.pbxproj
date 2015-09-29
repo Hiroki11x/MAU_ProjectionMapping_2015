@@ -70,6 +70,7 @@
 		FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDB1BBAD6620085652C /* ofxAssimpMeshHelper.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDD1BBAD6620085652C /* ofxAssimpModelLoader.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC051BBA11F900A0D408 /* IntroductionManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC0E1BBA184600A0D408 /* SceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC111BBA185B00A0D408 /* SceneElement.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -408,6 +409,8 @@
 		FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpTexture.cpp; sourceTree = "<group>"; };
 		FA5BFDE01BBAD6620085652C /* ofxAssimpTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpTexture.h; sourceTree = "<group>"; };
 		FA5BFDE11BBAD6620085652C /* ofxAssimpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpUtils.h; sourceTree = "<group>"; };
+		FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpModelLoaderExtend.cpp; sourceTree = "<group>"; };
+		FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpModelLoaderExtend.h; sourceTree = "<group>"; };
 		FAA0CC051BBA11F900A0D408 /* IntroductionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntroductionManager.cpp; sourceTree = "<group>"; };
 		FAA0CC061BBA11F900A0D408 /* IntroductionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionManager.h; sourceTree = "<group>"; };
 		FAA0CC0E1BBA184600A0D408 /* SceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneManager.cpp; sourceTree = "<group>"; };
@@ -1312,6 +1315,7 @@
 		FA5BFD201BBA69290085652C /* Element */ = {
 			isa = PBXGroup;
 			children = (
+				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
 				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
 			);
@@ -1470,6 +1474,15 @@
 				FA5BFDE11BBAD6620085652C /* ofxAssimpUtils.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */ = {
+			isa = PBXGroup;
+			children = (
+				FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */,
+				FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */,
+			);
+			name = ofxAssimpModelLoaderExtend;
 			sourceTree = "<group>";
 		};
 		FAA0CC0C1BBA13CA00A0D408 /* Introduction */ = {
@@ -1821,6 +1834,7 @@
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
 				FA5BFDE31BBAD6620085652C /* ofxAssimpAnimation.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
+				FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FA5BFD341BBA7A4E0085652C /* LinePoints.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,

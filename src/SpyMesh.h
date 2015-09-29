@@ -13,7 +13,7 @@
 #include "SceneElement.h"
 #include "TrianglePoints.h"
 #include "LinePoints.h"
-#include "ofxAssimpModelLoader.h"
+#include "ofxAssimpModelLoaderExtend.h"
 #include "ofVboMesh.h"
 
 #define NUM_BALL 80
@@ -27,7 +27,7 @@ public:
     virtual void end() override;
     virtual void onMouseDown(int x,int y) override;
     
-    ofxAssimpModelLoader model;
+    ofxAssimpModelLoaderExtend model;
     ofMesh mesh;
     ofLight	light;
     int mouseX,mouseY;
