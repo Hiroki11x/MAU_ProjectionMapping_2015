@@ -21,10 +21,13 @@ public:
 
     virtual void draw() override;
     virtual void update() override;
+    ofTrueTypeFont drawer;
     
-    Loading(float interval,string text){
-        this->interval = interval;
-        this->text = text;
+    Loading(){
+        
+        drawer.loadFont("Arial.ttf",30);
+        this->interval = 2.0;
+        this->text = "Loading Tweets...";
         this->barLength = 0;
         this->wait = 0;
         this->writeText = true;

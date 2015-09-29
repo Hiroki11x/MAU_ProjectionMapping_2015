@@ -13,7 +13,7 @@
 
 class SceneManager{
 public:
-    int elementIndex;
+    int elementIndex = 0;
     vector<SceneElement *> elements;
         
     virtual void setup(){
@@ -21,9 +21,9 @@ public:
     };
     virtual void update(){};
     virtual void draw(){};
+    
     bool nextElement(){
         elementIndex++;
-        cout << "nextIndex" << endl;
         if(elementIndex >= elements.size()){
             return false;
         }else{

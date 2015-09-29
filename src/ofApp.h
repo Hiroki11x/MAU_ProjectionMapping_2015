@@ -50,6 +50,6 @@ public:
     ofxSyphonServer individualTextureSyphonServer;
     ofxSyphonClient mClient;
     
-    Loading load = *new Loading(2.0,"Loading Tweets...");
+    //Loading load = *new Loading(2.0,"Loading Tweets...");
     //Mode mode;
 };

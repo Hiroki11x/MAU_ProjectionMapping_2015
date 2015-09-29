@@ -9,6 +9,8 @@
 #include "testScene.h"
 
 void testScene::setup(){
+    ofBackground(0);
+    ofSetFrameRate(60);
     manager = new IntroductionManager();
     manager->setup();
     mode = SceneMode::Introduction;
@@ -46,7 +48,8 @@ void testScene::keyReleased(int key){
 //--------------------------------------------------------------
 void testScene::mouseMoved(int x, int y ){
   
-  //  ofLogNotice() << "mouseDragged:" << x << "," << y << endl;
+    //ofLogNotice() << "mouseDragged:" << x << "," << y << endl;
+    
 }
 
 //--------------------------------------------------------------

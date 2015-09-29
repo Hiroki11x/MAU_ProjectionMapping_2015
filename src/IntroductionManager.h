@@ -12,6 +12,7 @@
 #include "ofMain.h"
 #include "SceneElement.h"
 #include "SceneManager.h"
+#include "BuildPC.h"
 #include "Loading.h"
 
 class IntroductionManager : public SceneManager {
@@ -24,7 +25,5 @@ public:
     virtual void setup() override;
     virtual void update() override;
     virtual void draw() override;
-   // virtual bool nextElement() override;
-    
 };
-#endif /* IntroductionManager_h */
+#endif 
