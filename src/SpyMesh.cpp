@@ -15,7 +15,7 @@ void SpyMesh::update(){
 
     if(index < 9000){
         
-        generate(meshdata[index][0],meshdata[index][1]);
+        //generate(meshdata[index][0],meshdata[index][1]);
         index++;
     }
 }
