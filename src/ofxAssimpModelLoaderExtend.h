@@ -14,10 +14,15 @@
 class ofxAssimpModelLoaderExtend : public ofxAssimpModelLoader{
 public:
     
-    int meshNum = 0;
+    int meshNum[4] = {0,0,0,0};
+    int showMeshIndex[4] = {0,0,0,0};
+    int modelMeshNum[4] = {2970,72,8247,3354};
+    int spentFrame = 0;
+    
     virtual void draw(ofPolyRenderMode renderType) override;
     
     void addMesh();
+    void changeRange();
 
 };
 #endif /* ofxAssimpModelLoaderextend_hpp */

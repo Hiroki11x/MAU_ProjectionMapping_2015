@@ -16,14 +16,29 @@ void SpyMesh::update(){
     }
     
     mesh = model.getCurrentAnimatedMesh(0);
+    spentFrames++;
    
 }
 
 void SpyMesh::draw(){
     
+    ofPushStyle();
+    
+    //mode 1 : Lazer
+    /*ofSetColor(0, 255, 0,50);
+    ofSetLineWidth(10);
+    for(int i= 0; i< 10; i++){
+        
+        ofLine(0,0,0,
+               1000*sin(ofGetElapsedTimeMillis()/240.0 + i * 60),400*cos(ofGetElapsedTimeMillis()/240.0 + i * PI/6),1000*cos(ofGetElapsedTimeMillis()/240.0));
+        ofLine(0,0,0,
+               1000*sin(ofGetElapsedTimeMillis()/240.0 + i * 60),-400*cos(ofGetElapsedTimeMillis()/240.0 + i * PI/6),1000*cos(ofGetElapsedTimeMillis()/240.0));
+    }*/
+
     
     
     ofSetColor(255);
+    ofSetLineWidth(2);
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
@@ -35,8 +50,10 @@ void SpyMesh::draw(){
     
     ofPushMatrix();
     ofTranslate(model.getPosition().x+100, model.getPosition().y, 0);
-    ofRotate(-mouseX, 0, 1, 0);
-    ofTranslate(-model.getPosition().x, -model.getPosition().y, 0);
+    //ofRotate(-mouseX, 0, 1, 0);
+    ofRotate(-spentFrames, 0, 1, 0);
+    //ofTranslate(-model.getPosition().x, -model.getPosition().y, 0);
+    ofTranslate(-model.getPosition().x, -model.getPosition().y, 50 * sin(ofGetElapsedTimeMillis()/240.0));
     model.drawWireframe();
     ofPopMatrix();
     
@@ -83,6 +100,11 @@ void SpyMesh::draw(){
     ofDrawBitmapString("drag to control animation with mouseY", 10, 45);
     ofDrawBitmapString("num animations for this model: " + ofToString(model.getAnimationCount()), 10, 60);*/
 
+    ofSetColor(50, 255, 50);
+    //ofDrawBitmapString(text, 100,100 - spentFrames);
+    //ofDrawBitmapString(text, 100,100);
+    
+    ofPopStyle();
  
 }
 
@@ -105,10 +127,14 @@ void SpyMesh::init(){
     if(!bAnimate) {
         model.setPausedForAllAnimations(true);
     }
+    text = loadText("code.txt");
+    spentFrames = 0;
 }
 
 void SpyMesh::onMouseDown(int x, int y){
     mouseX = x;
     mouseY = y;
     model.addMesh();
+    
 }
+

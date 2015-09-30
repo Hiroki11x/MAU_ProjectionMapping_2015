@@ -36,6 +36,15 @@ public:
     bool bAnimateMouse;
     float animationPosition;
     
+    int spentFrames;
+    
+    string text;
+    string loadText(string filename){
+        cout << filename;
+        return string( ofBufferFromFile( filename ) );
+    }
+
+    
 };
 
 #endif

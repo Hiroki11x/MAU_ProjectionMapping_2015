@@ -10,13 +10,23 @@
 
 void ofxAssimpModelLoaderExtend::addMesh(){
     
-    //if(meshNum < mesh.indices.size()){
-        meshNum+=70;
-    //}
+    int i  = ofRandom(3.9);
+    meshNum[i]+=70;
+}
 
+void ofxAssimpModelLoaderExtend::changeRange(){
+    for(int i = 0; i < 4; i++){
+        
+        showMeshIndex[i] = ofRandom(modelMeshNum[i]/3.0 - meshNum[i]);
+    }
 }
 
 void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
+    
+    spentFrame++;
+    if(spentFrame % 15 == 0){
+        changeRange();
+    }
     
     if(scene == NULL) {
         return;
@@ -63,8 +73,11 @@ void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
         ofEnableBlendMode(mesh.blendMode);
 #ifndef TARGET_OPENGLES
         //mesh.vbo.drawElements(GL_TRIANGLES,mesh.indices.size());
-        mesh.vbo.drawElements(GL_LINES,meshNum);
-        //cout << mesh.indices.size() << endl;
+        //mesh.vbo.drawElements(GL_LINES,meshNum);
+        //mesh.vbo.drawElementsInstanced(GL_LINES, meshNum, ofRandom(2000));
+        mesh.vbo.draw(GL_LINES, showMeshIndex[i], meshNum[i]);
+        //mesh.vbo.draw(GL_LINES, 2000, 20000);
+        cout << "i:" << i << " size:" << mesh.indices.size() << endl;
 #else
         switch(renderType){
             case OF_MESH_FILL:
@@ -102,8 +115,4 @@ void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
         glPopAttrib();
 #endif
     }
-    ofPopStyle();
-
-
-
 }

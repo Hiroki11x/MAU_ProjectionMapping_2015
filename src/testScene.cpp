@@ -15,7 +15,7 @@ void testScene::setup(){
     
     ofDisableArbTex();
     
-    manager = new IntroductionManager();
+    manager = new SpyMeshSceneManager();
     manager->setup();
     mode = SceneMode::Introduction;
     
