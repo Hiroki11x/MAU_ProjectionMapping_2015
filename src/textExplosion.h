@@ -5,20 +5,23 @@
 //  Created by 櫻木善将 on 2015/09/29.
 //
 //
-
 #ifndef textExplosion_h
 #define textExplosion_h
-
 #include "ofMain.h"
 #include "SceneElement.h"
 
 class textExplosion : public SceneElement {
 public:
-    
-    string text;
-    ofTrueTypeFont drawer;
+
     int drawFrame;
     int waitFrame;
+    string text;
+    ofTrueTypeFont drawer;
+    
+    virtual void update() override;
+    virtual void draw() override;
+    virtual void init() override;
+    virtual void end() override;
     
     textExplosion(){
         this->text = "";
@@ -26,10 +29,5 @@ public:
         this->drawFrame = 600;
         this->waitFrame = 0;
     };
-    virtual void update() override;
-    virtual void draw() override;
-    virtual void init() override;
-    virtual void end() override;
-    
 };
-#endif /* textExplosion_hpp */
+#endif

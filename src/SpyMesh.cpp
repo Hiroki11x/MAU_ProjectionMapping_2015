@@ -5,65 +5,46 @@
 //  Created by 櫻木善将 on 2015/09/29.
 //
 //
-
 #include "SpyMesh.h"
 
 void SpyMesh::update(){
     model.update();
-    
     if(bAnimateMouse) {
         model.setPositionForAllAnimations(animationPosition);
     }
-    
     mesh = model.getCurrentAnimatedMesh(0);
     spentFrames++;
-   
 }
 
 void SpyMesh::draw(){
     
     ofPushStyle();
-    
-    //mode 1 : Lazer
-    /*ofSetColor(0, 255, 0,50);
-    ofSetLineWidth(10);
-    for(int i= 0; i< 10; i++){
-        
-        ofLine(0,0,0,
-               1000*sin(ofGetElapsedTimeMillis()/240.0 + i * 60),400*cos(ofGetElapsedTimeMillis()/240.0 + i * PI/6),1000*cos(ofGetElapsedTimeMillis()/240.0));
-        ofLine(0,0,0,
-               1000*sin(ofGetElapsedTimeMillis()/240.0 + i * 60),-400*cos(ofGetElapsedTimeMillis()/240.0 + i * PI/6),1000*cos(ofGetElapsedTimeMillis()/240.0));
-    }*/
 
-    
-    
     ofSetColor(255);
     ofSetLineWidth(2);
-    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     ofEnableDepthTest();
-    
     glShadeModel(GL_SMOOTH); //some model / light stuff
     light.enable();
     ofEnableSeparateSpecularLight();
     
     ofPushMatrix();
+    
     ofTranslate(model.getPosition().x+100, model.getPosition().y, 0);
-    //ofRotate(-mouseX, 0, 1, 0);
     ofRotate(-spentFrames, 0, 1, 0);
-    //ofTranslate(-model.getPosition().x, -model.getPosition().y, 0);
     ofTranslate(-model.getPosition().x, -model.getPosition().y, 50 * sin(ofGetElapsedTimeMillis()/240.0));
     model.drawWireframe();
+    
     ofPopMatrix();
     
-   /* if(ofGetGLProgrammableRenderer()){
+    if(ofGetGLProgrammableRenderer()){
         glPushAttrib(GL_ALL_ATTRIB_BITS);
         glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
     }
     glEnable(GL_NORMALIZE);
     
     ofPushMatrix();
+    
     ofTranslate(model.getPosition().x-300, model.getPosition().y, 0);
     ofRotate(-mouseX, 0, 1, 0);
     ofTranslate(-model.getPosition().x, -model.getPosition().y, 0);
@@ -83,6 +64,7 @@ void SpyMesh::draw(){
     if(meshHelper.hasTexture()){
         meshHelper.getTextureRef().unbind();
     }
+    
     ofPopMatrix();
     
     if(ofGetGLProgrammableRenderer()){
@@ -93,19 +75,12 @@ void SpyMesh::draw(){
     light.disable();
     ofDisableLighting();
     ofDisableSeparateSpecularLight();
-    */
-    //ofSetColor(255, 255, 255 );
-  /*  ofDrawBitmapString("fps: "+ofToString(ofGetFrameRate(), 2), 10, 15);
-    ofDrawBitmapString("keys 1-5 load models, spacebar to trigger animation", 10, 30);
-    ofDrawBitmapString("drag to control animation with mouseY", 10, 45);
-    ofDrawBitmapString("num animations for this model: " + ofToString(model.getAnimationCount()), 10, 60);*/
-
+    
+    ofSetColor(255, 255, 255 );
+    ofDrawBitmapString("fps: "+ofToString(ofGetFrameRate(), 2), 10, 15);
     ofSetColor(50, 255, 50);
-    //ofDrawBitmapString(text, 100,100 - spentFrames);
-    //ofDrawBitmapString(text, 100,100);
     
     ofPopStyle();
- 
 }
 
 void SpyMesh::end(){}
@@ -119,9 +94,6 @@ void SpyMesh::init(){
     bAnimate = false;
     bAnimateMouse = false;
     animationPosition = 0;
-    
-    //model.loadModel("astroBoy_walk.dae", true);
-    //model.setPosition(ofGetWidth() * 0.5, (float)ofGetHeight() * 0.75 , 0);
     model.setLoopStateForAllAnimations(OF_LOOP_NORMAL);
     model.playAllAnimations();
     if(!bAnimate) {
@@ -135,6 +107,4 @@ void SpyMesh::onMouseDown(int x, int y){
     mouseX = x;
     mouseY = y;
     model.addMesh();
-    
 }
-

@@ -5,18 +5,15 @@
 //  Created by 櫻木善将 on 2015/09/30.
 //
 //
-
 #include "ofxAssimpModelLoaderExtend.h"
 
 void ofxAssimpModelLoaderExtend::addMesh(){
-    
     int i  = ofRandom(3.9);
     meshNum[i]+=70;
 }
 
 void ofxAssimpModelLoaderExtend::changeRange(){
     for(int i = 0; i < 4; i++){
-        
         showMeshIndex[i] = ofRandom(modelMeshNum[i]/3.0 - meshNum[i]);
     }
 }
@@ -24,13 +21,8 @@ void ofxAssimpModelLoaderExtend::changeRange(){
 void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
     
     spentFrame++;
-    if(spentFrame % 15 == 0){
-        changeRange();
-    }
-    
-    if(scene == NULL) {
-        return;
-    }
+    if(spentFrame % 15 == 0){changeRange();}
+    if(scene == NULL) {return;}
     
     ofPushStyle();
     

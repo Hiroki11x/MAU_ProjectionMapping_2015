@@ -11,17 +11,16 @@
 #include "SceneElement.h"
 
 class Loading : public SceneElement {
-    
 public:
     float interval;
-    string text;
     float barLength;
     float wait;
     bool writeText;
-
+    string text;
+    ofTrueTypeFont drawer;
+    
     virtual void draw() override;
     virtual void update() override;
-    ofTrueTypeFont drawer;
     
     Loading(){
         
@@ -33,7 +32,5 @@ public:
         this->writeText = true;
         cout << "load init" << endl;
     };
-    //~Loading(){};
-    
 };
 #endif
