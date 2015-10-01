@@ -15,6 +15,7 @@
 #include "LinePoints.h"
 #include "ofxAssimpModelLoaderExtend.h"
 #include "ofVboMesh.h"
+#include "UserAgentManager.h"
 
 class SpyMesh : public SceneElement {
 public:
@@ -27,6 +28,7 @@ public:
     ofxAssimpModelLoaderExtend model;
     ofMesh mesh;
     ofLight	light;
+    UserAgentManager agents;
     
     int mouseX,mouseY;
     int spentFrames;
@@ -38,5 +40,8 @@ public:
         cout << filename;
         return string( ofBufferFromFile( filename ) );
     }
+    vector<ofVec3f> vertx[7];
+    vector<int> vertexAmount[7];
+    vector< vector<int> > connection[7];
 };
 #endif

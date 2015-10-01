@@ -9,12 +9,12 @@
 
 void ofxAssimpModelLoaderExtend::addMesh(){
     int i  = ofRandom(3.9);
-    meshNum[i]+=70;
+    meshNum[i]+=100;
 }
 
 void ofxAssimpModelLoaderExtend::changeRange(){
     for(int i = 0; i < 4; i++){
-        showMeshIndex[i] = ofRandom(modelMeshNum[i]/3.0 - meshNum[i]);
+       // showMeshIndex[i] = ofRandom(modelMeshNum[i]/3.0 - meshNum[i]);
     }
 }
 
