@@ -5,7 +5,6 @@
 //  Created by 櫻木善将 on 2015/10/01.
 //
 //
-
 #ifndef _ModelDrawer_h
 #define _ModelDrawer_h
 
@@ -13,27 +12,16 @@
 
 class ModelDrawer {
 public:
-    ofVec3f vertices[10000];
     int verticesSize;
     bool drawEdge[10000][10000];
     ofVboMesh mesh;
+    ofVec3f vertices[10000];
     
     inline void drawModel(float scale){
         ofEnableDepthTest();
         ofSetColor(50,255,50);
-        //ofNoFill();
-        /*for(int i = 0; i < verticesSize; i++){
-            for(int j = i + 1; j < verticesSize; j++){
-                if(drawEdge[i][j]){
-                    ofLine(vertices[i], vertices[j]);
-                }
-            }
-        }*/
-//        mesh.draw();
         mesh.drawWireframe();
     };
-    
-    
     
     inline void setVerices(vector<ofVec3f> newVec){
         int preSize = verticesSize;
@@ -59,7 +47,6 @@ public:
     ModelDrawer(){
         verticesSize = 0;
         mesh.clear();
-        //mesh.setMode(OF_PRIMITIVE_POINTS);
     };
 };
-#endif /* _DModelDrawer_hpp */
+#endif

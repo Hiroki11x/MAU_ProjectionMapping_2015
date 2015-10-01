@@ -1324,11 +1324,10 @@
 		FA5BFD201BBA69290085652C /* Element */ = {
 			isa = PBXGroup;
 			children = (
+				FA967A361BBD6FDD0075D3AF /* Class */,
 				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
 				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
-				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
-				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1494,6 +1493,15 @@
 				FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */,
 			);
 			name = ofxAssimpModelLoaderExtend;
+			sourceTree = "<group>";
+		};
+		FA967A361BBD6FDD0075D3AF /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
+				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 		FAA0CC0C1BBA13CA00A0D408 /* Introduction */ = {
