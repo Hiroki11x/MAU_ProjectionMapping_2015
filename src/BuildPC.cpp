@@ -5,12 +5,10 @@
 //  Created by 櫻木善将 on 2015/09/29.
 //
 //
-
 #include "BuildPC.h"
 
 void BuildPC::update(){
     waitFrame++;
-    
     if(waitFrame > intervalFrame){
         displayText += buildTexts.at(textIndex).text;
         intervalFrame = buildTexts.at(textIndex).interval;

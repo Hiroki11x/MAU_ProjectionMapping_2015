@@ -11,9 +11,14 @@
 void testScene::setup(){
     ofBackground(0);
     ofSetFrameRate(60);
-    manager = new IntroductionManager();
+    ofEnableSmoothing();
+    
+    ofDisableArbTex();
+    
+    manager = new SpyMeshSceneManager();
     manager->setup();
     mode = SceneMode::Introduction;
+    
 }
 
 //--------------------------------------------------------------
@@ -34,7 +39,19 @@ void testScene::keyPressed(int key){
         if(!manager->nextElement()){
             delete manager;
             //switchで次のmanagerのインスタンス作成
-            manager = new IntroductionManager();
+            switch (mode) {
+                case SceneMode::Introduction:
+                    manager = new SpyMeshSceneManager();
+                    mode = SceneMode::SpyMesh;
+                    break;
+                case SceneMode::SpyMesh:
+                    manager = new IntroductionManager();
+                    mode = SceneMode::Introduction;
+                    break;
+                default:
+                    break;
+            }
+            
             manager->setup();
         }
     }
@@ -59,6 +76,7 @@ void testScene::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testScene::mousePressed(int x, int y, int button){
+    manager->onMouseDown(x, y);
 }
 
 //--------------------------------------------------------------

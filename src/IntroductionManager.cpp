@@ -13,11 +13,3 @@ void IntroductionManager::setup(){
     elements.push_back(new Loading());
     elements.at(0)->init();
 }
-
-void IntroductionManager::update(){
-    elements.at(elementIndex)->update();
-}
-
-void IntroductionManager::draw(){
-    elements.at(elementIndex)->draw();
-}

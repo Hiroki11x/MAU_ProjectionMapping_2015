@@ -17,15 +17,18 @@ public:
         int interval;
     };
     
-    vector<buildText> buildTexts;
     int intervalFrame;
     int waitFrame;
     int textIndex;
     string displayText;
+    vector<buildText> buildTexts;
     ofTrueTypeFont drawer;
     
+    virtual void draw() override;
+    virtual void update() override;
+    
     BuildPC(){
-        drawer.loadFont("Arial.ttf",30);
+        drawer.loadFont("Arial.ttf",30,false);
         this->displayText = "";
         this->buildTexts.push_back((buildText){"$ Hello,MAU!\n",10});
         this->buildTexts.push_back((buildText){"$ \n",30});
@@ -61,10 +64,5 @@ public:
         this->intervalFrame = 100;
         this->textIndex = 0;
     }
-    
-    virtual void draw() override;
-    virtual void update() override;
-
 };
-
-#endif /* BuildPC_h */
+#endif
