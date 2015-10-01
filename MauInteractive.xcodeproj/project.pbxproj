@@ -71,6 +71,7 @@
 		FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDD1BBAD6620085652C /* ofxAssimpModelLoader.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA967A341BBD405D0075D3AF /* ModelDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC051BBA11F900A0D408 /* IntroductionManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC0E1BBA184600A0D408 /* SceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC111BBA185B00A0D408 /* SceneElement.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -413,6 +414,8 @@
 		FA5BFDE11BBAD6620085652C /* ofxAssimpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpUtils.h; sourceTree = "<group>"; };
 		FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpModelLoaderExtend.cpp; sourceTree = "<group>"; };
 		FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpModelLoaderExtend.h; sourceTree = "<group>"; };
+		FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelDrawer.cpp; sourceTree = "<group>"; };
+		FA967A331BBD405D0075D3AF /* ModelDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelDrawer.h; sourceTree = "<group>"; };
 		FAA0CC051BBA11F900A0D408 /* IntroductionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntroductionManager.cpp; sourceTree = "<group>"; };
 		FAA0CC061BBA11F900A0D408 /* IntroductionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionManager.h; sourceTree = "<group>"; };
 		FAA0CC0E1BBA184600A0D408 /* SceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneManager.cpp; sourceTree = "<group>"; };
@@ -1324,6 +1327,8 @@
 				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
 				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
+				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
+				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1856,6 +1861,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */,
+				FA967A341BBD405D0075D3AF /* ModelDrawer.cpp in Sources */,
 				4E1FD97F1AE8F2D800E72B7B /* SyphonNameboundClient.m in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
 				FA5BFDE31BBAD6620085652C /* ofxAssimpAnimation.cpp in Sources */,

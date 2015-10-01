@@ -16,6 +16,7 @@
 #include "ofxAssimpModelLoaderExtend.h"
 #include "ofVboMesh.h"
 #include "UserAgentManager.h"
+#include "ModelDrawer.h"
 
 class SpyMesh : public SceneElement {
 public:
@@ -28,20 +29,34 @@ public:
     ofxAssimpModelLoaderExtend model;
     ofMesh mesh;
     ofLight	light;
-    UserAgentManager agents;
+    ofSoundPlayer soundPlayer;
+    ofEasyCam camera;
+    //UserAgentManager agents;
     
     int mouseX,mouseY;
     int spentFrames;
     bool bAnimate;
     bool bAnimateMouse;
+    float modelSize;
     float animationPosition;
     string text;
     string loadText(string filename){
         cout << filename;
         return string( ofBufferFromFile( filename ) );
     }
-    vector<ofVec3f> vertx[7];
+   /* vector<ofVec3f> vertx[7];
     vector<int> vertexAmount[7];
-    vector< vector<int> > connection[7];
+    vector< vector<int> > connection[7];*/
+    
+    ModelDrawer modelDrawer;
+    
+    float dis = 200;
+    ofVec3f rightTop = ofVec3f(dis,dis,0);
+    ofVec3f leftTop = ofVec3f(- dis,dis,0);
+    ofVec3f rightBottom = ofVec3f(dis,- dis,0);
+    ofVec3f leftBottom = ofVec3f(-dis,- dis,0);
+    ofVec3f fromVec[4] = {rightTop,leftTop,rightBottom,leftBottom};
+    
+    
 };
 #endif
