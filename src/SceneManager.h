@@ -19,8 +19,13 @@ public:
     virtual void setup(){
         //InitElements
     };
-    virtual void update(){};
-    virtual void draw(){};
+    virtual void update(){
+        elements.at(elementIndex)->update();
+    };
+    virtual void draw(){
+         elements.at(elementIndex)->draw();
+    };
+    virtual void onMouseDown(int x,int y){};
     
     bool nextElement(){
         elements[elementIndex]->end();

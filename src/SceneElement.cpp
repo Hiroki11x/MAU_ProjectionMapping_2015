@@ -7,6 +7,3 @@
 //
 
 #include "SceneElement.h"
-
-void SceneElement::update(){}
-void SceneElement::draw(){}

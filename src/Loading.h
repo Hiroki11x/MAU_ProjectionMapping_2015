@@ -11,21 +11,20 @@
 #include "SceneElement.h"
 
 class Loading : public SceneElement {
-    
 public:
     float interval;
-    string text;
     float barLength;
     float wait;
     bool writeText;
-
+    string text;
+    ofTrueTypeFont drawer;
+    
     virtual void draw() override;
     virtual void update() override;
-    ofTrueTypeFont drawer;
     
     Loading(){
         
-        drawer.loadFont("Arial.ttf",30);
+        drawer.loadFont("Arial.ttf",30,false);
         this->interval = 2.0;
         this->text = "Loading Tweets...";
         this->barLength = 0;
@@ -33,7 +32,5 @@ public:
         this->writeText = true;
         cout << "load init" << endl;
     };
-    //~Loading(){};
-    
 };
 #endif

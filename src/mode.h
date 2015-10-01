@@ -10,7 +10,8 @@
 
 namespace SceneMode{
     enum Mode{
-        Introduction
+        Introduction,
+        SpyMesh
     };
 }
 
