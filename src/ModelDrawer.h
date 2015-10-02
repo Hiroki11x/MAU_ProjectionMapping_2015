@@ -23,13 +23,14 @@ public:
         mesh.drawWireframe();
     };
     
-    inline void setVerices(vector<ofVec3f> newVec){
+    inline void setVerices(vector<ofVec3f> newVec,float size){
         int preSize = verticesSize;
         verticesSize += newVec.size();
         cout << verticesSize << endl;
         for(int i = 0; i < newVec.size(); i++){
-            vertices[i + preSize] = newVec.at(i);
-            //mesh.addVertex(newVec.at(i));
+            if(i + preSize > 9999){return;}
+            //vertices[i + preSize] = newVec.at(i);
+            vertices[i + preSize] = newVec.at(i) * size; //garally用
             if(i < newVec.size() - 10){
                 //mesh.addTriangle(i,i+5,i+10);
             }

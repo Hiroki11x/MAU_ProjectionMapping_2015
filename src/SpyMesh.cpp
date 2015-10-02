@@ -12,7 +12,11 @@ void SpyMesh::update(){
     if(button){
         spentFrames+=1;
         if(spentFrames % 1 == 0){
-            targetVec = modelDrawer.addVertices(spentFrames);
+            /* Garally
+            targetVec = garallyModelDrawer.addVertices(spentFrames * 2 );
+            targetVec = garallyModelDrawer.addVertices(spentFrames * 2 + 1);*/
+            targetVec = modelDrawer.addVertices(spentFrames * 2);
+            targetVec = modelDrawer.addVertices(spentFrames * 2 + 1);
             if(spentFrames % 60 == 0){
                 fireVec = fromVec[int(ofRandom(0,4))];
             }
@@ -46,6 +50,7 @@ void SpyMesh::draw(){
         ofRotateY(ofGetElapsedTimef() * 10);
         ofRotateZ(ofGetElapsedTimef() * 10);
         modelDrawer.drawModel(modelSize);
+        //garallyModelDrawer.drawModel(modelSize); //Garally
         ofLine(fireVec, targetVec );
         ofDrawSphere(fireVec, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
         ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,fireVec);
@@ -84,9 +89,30 @@ void SpyMesh::init(){
     spentFrames = 0;
 
     for(int i = 0; i < model.getMeshCount(); i++){
-        modelDrawer.setVerices(model.getMesh(i).vertices);
+       modelDrawer.setVerices(model.getMesh(i).vertices,1.0);
     }
     button = false;
+    
+    
+    //Garally
+    /*model.loadModel("garally.stl");
+    model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5 , 0);
+    ofDisableArbTex(); // we need GL_TEXTURE_2D for our models coords.
+    bAnimate = false;
+    bAnimateMouse = false;
+    animationPosition = 0;
+    model.setLoopStateForAllAnimations(OF_LOOP_NORMAL);
+    model.playAllAnimations();
+    if(!bAnimate) {
+        model.setPausedForAllAnimations(true);
+    }
+    text = loadText("code.txt");
+    spentFrames = 0;
+    
+    for(int i = 0; i < model.getMeshCount(); i++){
+        garallyModelDrawer.setVerices(model.getMesh(i).vertices,100.0);
+    }
+    */
 }
 
 void SpyMesh::onMouseDown(int x, int y){
