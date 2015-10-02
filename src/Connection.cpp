@@ -21,5 +21,7 @@ void Connection::drawConnection(){
         }
     }
     ofSetColor(color);
+    ofSetLineWidth(LINE_WIDTH);
     ofLine( startPoint, startPoint + position * (connectionVector));
+    cout<<"listener started"<<endl;
 }

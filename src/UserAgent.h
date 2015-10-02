@@ -9,6 +9,12 @@
 #ifndef MauInteractive_UserAgent_h
 #define MauInteractive_UserAgent_h
 
+#define DEFAULT_USER_CIRCLE_SIZE 3
+#define INNER_CIRCLE_MAGNIFICATION 0.75
+
+#define MIN_CIRCLE_MAGNIFICATION 1.2
+#define MAX_CIRCLE_MAGNIFICATION 1.7
+
 #include "ofMain.h"
 class UserAgent{
 private:

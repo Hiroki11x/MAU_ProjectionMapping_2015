@@ -9,6 +9,10 @@
 #define UserAgents_h
 
 #define COLOR_MAX 255
+#define GENE_X_NUM 8
+#define GENE_Y_NUM 12
+
+#define USER_CIRCLE_SIZE 10
 
 #include "SceneElement.h"
 #include "ofMain.h"
