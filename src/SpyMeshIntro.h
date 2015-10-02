@@ -12,6 +12,7 @@
 #include "ModelDrawer.h"
 #include "ofxAssimpModelLoaderExtend.h"
 #include "SceneManager.h"
+#include "TrailRenderer.h"
 
 class SpyMeshIntro : public SceneElement {
 public:
@@ -20,16 +21,12 @@ public:
     virtual void update() override;
     virtual void init() override;
     virtual void onMouseDown(int x,int y) override;
-    
-    SpyMeshIntro(SceneManager Manager){
-        this->manager = Manager;
-    };
 
     int spentFrames;
     float lineEmitPointDistance;
     bool isStarted;
     
-    SceneManager manager;
+    TrailRenderer trails;
     ModelDrawer garallyModelDrawer;
     ofxAssimpModelLoaderExtend model;
     ofVec3f targetPoint;

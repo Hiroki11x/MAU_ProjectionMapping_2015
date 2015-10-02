@@ -19,6 +19,7 @@ void SpyMeshIntro::update(){
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
+        trails.update();
     }
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
@@ -31,32 +32,37 @@ void SpyMeshIntro::draw(){
     
     if(spentFrames > 500){
         ofSetColor(255 * -  (spentFrames - 500), 255, 255 * -  (spentFrames - 500));
-        ofDrawBox(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70),50 * (spentFrames - 500));
+        ofDrawSphere(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70),50 * (spentFrames - 500));
     }
-    if(spentFrames > 550){return;}
+    if(spentFrames > 550 || spentFrames == 0){return;}
+    if(spentFrames > 400){
+        trails.convergenceMode = true;
+    }
     
     ofPushMatrix();
     ofPushStyle();
+    trails.drawTrailer();
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     
-    if(isStarted){
-        ofSetLineWidth(0.3);
-        ofSetColor(255, 255, 255 , 150);
-        ofRotateX(90);
-        garallyModelDrawer.drawModel(0);
-        ofLine(emitPoint, targetPoint );
-        ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
-        ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,emitPoint);
-    }
+    ofSetLineWidth(0.3);
+    ofSetColor(255, 255, 255 , 150);
+    ofRotateX(90);
+    garallyModelDrawer.drawModel(0);
+    ofLine(emitPoint, targetPoint );
+    ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
+    
     ofPopMatrix();
     ofPopStyle();
-    
+    ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,camera.getPosition() + ofPoint(200,0,0));
     camera.end();
+
 }
 
 void SpyMeshIntro::init(){
     
+    trails = *new TrailRenderer(ofVec3f(ofGetWidth()/2 -ofGetWidth() * 5 ,ofGetHeight() * 1, 70),
+                                ofVec3f(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     model.loadModel("garally.stl");
     model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5 , 0);
     ofDisableArbTex(); // we need GL_TEXTURE_2D for our models coords.
