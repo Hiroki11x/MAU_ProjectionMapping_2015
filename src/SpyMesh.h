@@ -34,10 +34,10 @@ public:
     ofVec3f fireVec;
     UserAgent agents[4];
     ModelDrawer modelDrawer;
-    ModelDrawer garallyModelDrawer;
     
     int mouseX,mouseY;
     int spentFrames;
+    int introFrame;
     float modelSize;
     float animationPosition;
     bool bAnimate;

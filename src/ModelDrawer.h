@@ -19,7 +19,7 @@ public:
     
     inline void drawModel(float scale){
         ofEnableDepthTest();
-        ofSetColor(50,255,50);
+        //ofSetColor(50,255,50);
         mesh.drawWireframe();
     };
     

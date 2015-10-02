@@ -8,6 +8,8 @@
 #include "SpyMeshSceneManager.h"
 
 void SpyMeshSceneManager::setup(){
+    elements.push_back(new SpyMeshIntro(*this));
+    elements.push_back(new Fadeout());
     elements.push_back(new SpyMesh());
     elements.at(0)->init();
 }

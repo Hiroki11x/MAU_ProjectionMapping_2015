@@ -12,6 +12,8 @@
 #include "SceneManager.h"
 #include "SceneElement.h"
 #include "SpyMesh.h"
+#include "SpyMeshIntro.h"
+#include "Fadeout.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:

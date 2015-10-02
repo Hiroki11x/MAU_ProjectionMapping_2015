@@ -83,6 +83,7 @@
 		FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95061BA58E9200C71B41 /* Connection.cpp */; };
 		FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */; };
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF2FB451BBBE332007F19B0 /* UserAgentsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF2FB431BBBE332007F19B0 /* UserAgentsSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF2FB471BBBE423007F19B0 /* UserAgents.cpp */; settings = {ASSET_TAGS = (); }; };
 		FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */; };
@@ -515,6 +516,8 @@
 		FAC1B0C71BA51BB50057ED25 /* twist.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = twist.vert; sourceTree = "<group>"; };
 		FAC1B0C91BA51BB50057ED25 /* ofxPostGlitch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPostGlitch.cpp; sourceTree = "<group>"; };
 		FAC1B0CA1BA51BB50057ED25 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
+		FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshIntro.cpp; sourceTree = "<group>"; };
+		FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshIntro.h; sourceTree = "<group>"; };
 		FAF2FB431BBBE332007F19B0 /* UserAgentsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentsSceneManager.cpp; sourceTree = "<group>"; };
 		FAF2FB441BBBE332007F19B0 /* UserAgentsSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgentsSceneManager.h; sourceTree = "<group>"; };
 		FAF2FB471BBBE423007F19B0 /* UserAgents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgents.cpp; sourceTree = "<group>"; };
@@ -1328,6 +1331,8 @@
 				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
 				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
+				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
+				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1888,6 +1893,7 @@
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */,
+				FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */,
 				FA5BFD351BBA7A4E0085652C /* TrianglePoints.cpp in Sources */,
 				45CC483A999BF1065A6B926C /* Distance.cpp in Sources */,
 				FAA0CC181BBA191100A0D408 /* mode.cpp in Sources */,
