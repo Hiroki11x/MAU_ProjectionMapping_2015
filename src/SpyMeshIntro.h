@@ -16,17 +16,6 @@
 class SpyMeshIntro : public SceneElement {
 public:
     
-    int spentFrames;
-    bool start;
-    
-    SceneManager manager;
-    ModelDrawer garallyModelDrawer;
-    ofxAssimpModelLoaderExtend model;
-    ofVec3f targetVec;
-    ofVec3f fireVec;
-    //ofEasyCam camera;
-    ofCamera camera;
-    
     virtual void draw() override;
     virtual void update() override;
     virtual void init() override;
@@ -35,14 +24,17 @@ public:
     SpyMeshIntro(SceneManager Manager){
         this->manager = Manager;
     };
+
+    int spentFrames;
+    float lineEmitPointDistance;
+    bool isStarted;
     
-    float dis = 100000;
-    ofVec3f rightTop = ofVec3f(dis,dis,0);
-    ofVec3f leftTop = ofVec3f(- dis,dis,0);
-    ofVec3f rightBottom = ofVec3f(dis,- dis,0);
-    ofVec3f leftBottom = ofVec3f(-dis,- dis,0);
-    ofVec3f fromVec[4] = {rightTop,leftTop,rightBottom,leftBottom};
-
+    SceneManager manager;
+    ModelDrawer garallyModelDrawer;
+    ofxAssimpModelLoaderExtend model;
+    ofVec3f targetPoint;
+    ofVec3f emitPoint;
+    ofVec3f lineEmitPoints[4];
+    ofCamera camera;
 };
-
-#endif /* SpyMeshIntro_hpp */
+#endif
