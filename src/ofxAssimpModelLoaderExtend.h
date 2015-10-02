@@ -1,10 +1,12 @@
-//
-//  ofxAssimpModelLoaderextend.hpp
-//  MauInteractive
-//
-//  Created by 櫻木善将 on 2015/09/30.
-//
-//
+/*
+ * ofxAssimpModelLoaderextend.hpp
+ * MauInteractive
+ * Created by 櫻木善将 on 2015/09/30.
+ *
+ *
+ * ofxAssimpModelLoader#draw　自体も virtualにしてる
+ *
+ */
 
 #ifndef ofxAssimpModelLoaderextend_h
 #define ofxAssimpModelLoaderextend_h
@@ -18,7 +20,7 @@ public:
     int modelMeshNum[4] = {2970,72,8247,3354};
     int spentFrame = 0;
     
-    void draw(ofPolyRenderMode renderType);
+    virtual void draw(ofPolyRenderMode renderType) override;
     void addMesh();
     void changeRange();
 };

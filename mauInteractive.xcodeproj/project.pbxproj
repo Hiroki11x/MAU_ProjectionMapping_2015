@@ -658,6 +658,19 @@
 			name = include;
 			sourceTree = "<group>";
 		};
+		4E12E4661BBE79E7001D9BA2 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				4E88A21C1BBE11AF001E8306 /* MatrixGenerator.cpp */,
+				4E88A21D1BBE11AF001E8306 /* MatrixGenerator.h */,
+				4E88A20F1BBE11AF001E8306 /* Connection.cpp */,
+				4E88A2101BBE11AF001E8306 /* Connection.h */,
+				4E88A2341BBE11AF001E8306 /* UserAgent.cpp */,
+				4E88A2351BBE11AF001E8306 /* UserAgent.h */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
 		4E88A20C1BBE11AF001E8306 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -751,14 +764,8 @@
 		4E88A25B1BBE128A001E8306 /* AgentLegacy */ = {
 			isa = PBXGroup;
 			children = (
-				4E88A2341BBE11AF001E8306 /* UserAgent.cpp */,
-				4E88A2351BBE11AF001E8306 /* UserAgent.h */,
 				4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */,
 				4E88A2371BBE11AF001E8306 /* UserAgentManager.h */,
-				4E88A20F1BBE11AF001E8306 /* Connection.cpp */,
-				4E88A2101BBE11AF001E8306 /* Connection.h */,
-				4E88A21C1BBE11AF001E8306 /* MatrixGenerator.cpp */,
-				4E88A21D1BBE11AF001E8306 /* MatrixGenerator.h */,
 			);
 			name = AgentLegacy;
 			sourceTree = "<group>";
@@ -768,6 +775,7 @@
 			children = (
 				4E88A2381BBE11AF001E8306 /* UserAgents.cpp */,
 				4E88A2391BBE11AF001E8306 /* UserAgents.h */,
+				4E12E4661BBE79E7001D9BA2 /* Class */,
 			);
 			name = Element;
 			sourceTree = "<group>";

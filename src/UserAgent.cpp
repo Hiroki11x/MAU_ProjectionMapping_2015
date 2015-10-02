@@ -12,8 +12,11 @@
 void UserAgent::init(){
     ofSetCircleResolution(60);
     registertime = ofGetSystemTime();
+//    set_color(ofColor::set(0, 100, 0));
+    set_size(5);
     get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
     calc_line_length();
+    
 }
 
 void UserAgent::get_info_from_twitter(){

@@ -8,9 +8,9 @@
 
 #include "UserAgentsSceneManager.h"
 
-void UsersAgentsSceneManager::setup(){
+void UserAgentsSceneManager::setup(){
     elements.push_back(new UserAgents());
     elements.at(0)->init();
 }
 
-void UsersAgentsSceneManager::onMouseDown(int x, int y){}
+void UserAgentsSceneManager::onMouseDown(int x, int y){}

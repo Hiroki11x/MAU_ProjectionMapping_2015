@@ -15,9 +15,13 @@ void testScene::setup(){
     
     ofDisableArbTex();
     
-    manager = new SpyMeshSceneManager();
+//    manager = new SpyMeshSceneManager();
+//    manager->setup();
+//    mode = SceneMode::Introduction;
+    
+    manager = new UserAgentsSceneManager();
     manager->setup();
-    mode = SceneMode::Introduction;
+    mode=SceneMode::UserAgent;
     
 }
 
@@ -40,6 +44,10 @@ void testScene::keyPressed(int key){
             delete manager;
             //switchで次のmanagerのインスタンス作成
             switch (mode) {
+                case SceneMode::UserAgent:
+                    manager = new UserAgentsSceneManager();
+                    mode = SceneMode::UserAgent;
+                    break;
                 case SceneMode::Introduction:
                     manager = new SpyMeshSceneManager();
                     mode = SceneMode::SpyMesh;
