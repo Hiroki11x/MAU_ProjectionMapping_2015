@@ -13,6 +13,7 @@
 
 void UserAgents::init(){
     setup_user_agent();
+    back_animation.set_fade_duration(2000);
 }
 
 void UserAgents::update(){
@@ -22,6 +23,8 @@ void UserAgents::update(){
 }
 
 void UserAgents::draw(){
+    back_animation.fade_cross_background(0, 0, 100);
+    
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
     }

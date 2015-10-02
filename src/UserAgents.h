@@ -20,6 +20,8 @@
 #include "Connection.h"
 #include "MatrixGenerator.h"
 
+#include "FadeBackgroundUtil.h"
+
 class UserAgents : public SceneElement {
 public:
     virtual void update() override;
@@ -31,6 +33,8 @@ public:
     UserAgents(){};
     
 private:
+    FadeBackgroundUtil back_animation;
+    
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;
