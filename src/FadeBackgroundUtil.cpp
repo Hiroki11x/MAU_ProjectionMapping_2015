@@ -13,7 +13,6 @@ void FadeBackgroundUtil::fade_cross_background(float x, float y, float interval)
     max_closs_length = interval/8;
     float margin = 30;
     ofTranslate(x, y);
-    ofBackground(0);
     update_alpha();
     float closs_length = update_closs_size();
     ofSetColor(255,alpha);

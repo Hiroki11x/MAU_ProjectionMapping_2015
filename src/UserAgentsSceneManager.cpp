@@ -18,3 +18,7 @@ void UserAgentsSceneManager::setup(){
 void UserAgentsSceneManager::onMouseDown(int x, int y){
     elements.at(0)->onMouseDown(x, y);
 }
+
+void UserAgentsSceneManager::keyPressed(int key){
+    elements.at(0)->keyPressed(key);
+}

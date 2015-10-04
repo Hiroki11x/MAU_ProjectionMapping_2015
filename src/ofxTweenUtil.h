@@ -6,6 +6,8 @@
 //
 //
 
+#ifndef __ofxAnimationUtility__ofxTweenUtil__
+#define __ofxAnimationUtility__ofxTweenUtil__
 
 #include "ofMain.h"
 #include "ofxTween.h"
@@ -14,6 +16,7 @@ class ofxTweenUtil{
 private:
     unsigned delay = 0;
     unsigned duration = 1000;
+    float easing_max;
     
     void draw();
 public:
@@ -24,6 +27,7 @@ public:
     
     float get_update_value();
     
+    void set_max(float max);
     void set_delay(unsigned int delay);
     void set_duration(unsigned int duration);
     
@@ -34,4 +38,6 @@ public:
     ofxEasingLinear elasticlinnear;
     
 };
+
+#endif /* defined(__ofxAnimationUtility__ofxTweenUtil__) */
 

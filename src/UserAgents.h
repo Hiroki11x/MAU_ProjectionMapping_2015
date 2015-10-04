@@ -21,6 +21,7 @@
 #include "MatrixGenerator.h"
 #include "FadeBackgroundUtil.h"
 #include "StrechyRectSwiper.h"
+#include "AlphaSwiper.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -29,12 +30,14 @@ public:
     virtual void init() override;
     virtual void end() override;
     virtual void onMouseDown(int x,int y) override;
+    virtual void keyPressed(int key) override;
     
     UserAgents(){};
     
 private:
     FadeBackgroundUtil back_animation;
     StrechyRectSwiper strechyRectSwiper;
+    AlphaSwiper alphaSwiper;
     
     MatrixGenerator matrix_generator;
     
