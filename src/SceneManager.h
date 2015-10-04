@@ -27,6 +27,7 @@ public:
          elements.at(elementIndex)->draw();
     };
     virtual void onMouseDown(int x,int y){};
+    virtual void keyPressed(int key){};
     
     bool nextElement(){
         elements[elementIndex]->end();

@@ -12,6 +12,8 @@ namespace SwipeMode {
         Down,
         Up,
         SemiCircle,
+        Right,
+        Left,
     };
 }
 

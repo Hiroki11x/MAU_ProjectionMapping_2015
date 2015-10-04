@@ -37,6 +37,7 @@ void testScene::draw(){
 
 //--------------------------------------------------------------
 void testScene::keyPressed(int key){
+    manager->keyPressed(key);
     if(key == 'f'){
         ofToggleFullscreen();
     }else if (key == ' '){

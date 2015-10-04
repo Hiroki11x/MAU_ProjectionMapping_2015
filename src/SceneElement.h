@@ -19,6 +19,7 @@ public:
     virtual void init(){};
     virtual void end(){};
     virtual void onMouseDown(int x,int y){};
+    virtual void keyPressed(int key){};
 };
 
 #endif

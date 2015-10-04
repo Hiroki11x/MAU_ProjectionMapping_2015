@@ -29,6 +29,7 @@ public:
     virtual void init() override;
     virtual void end() override;
     virtual void onMouseDown(int x,int y) override;
+    virtual void keyPressed(int key) override;
     
     UserAgents(){};
     

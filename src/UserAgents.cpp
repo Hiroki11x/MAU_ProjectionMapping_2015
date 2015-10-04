@@ -28,8 +28,8 @@ void UserAgents::update(){
 }
 
 void UserAgents::draw(){
-    back_animation.fade_cross_background(0, 0, 100);
-    strechyRectSwiper.draw();
+    strechyRectSwiper.draw();//swiperを描画
+    back_animation.fade_cross_background(0, 0, 100);//十字の背景
     
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
@@ -42,6 +42,24 @@ void UserAgents::draw(){
 void UserAgents::onMouseDown(int x, int y){
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+    strechyRectSwiper.init();
+}
+
+void UserAgents::keyPressed(int key){
+    userAgentsSize = userAgentArray.size();
+    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+    
+    if(key==OF_KEY_UP){
+        strechyRectSwiper.set_mode(SwipeMode::Up);
+    }else if(key==OF_KEY_DOWN){
+        strechyRectSwiper.set_mode(SwipeMode::Down);
+    }else if(key==OF_KEY_RETURN){
+        strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
+    }else if(key==OF_KEY_RIGHT){
+        strechyRectSwiper.set_mode(SwipeMode::Right);
+    }else if(key==OF_KEY_LEFT){
+        strechyRectSwiper.set_mode(SwipeMode::Left);
+    }
     strechyRectSwiper.init();
 }
 
@@ -80,8 +98,7 @@ void UserAgents::setup_user_agent(){//座標をセット
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
     int size = matrix_generator.get_position_num();//生成した座標の数
     
-    for(int j=0;j<ofRandom(size/2);j++){//GENE_Y_NUM*GENE_X_NUM;
-
+    for(int j=0;j<size/3;j++){//GENE_Y_NUM*GENE_X_NUM;
         int index = ofRandom(size);//その座標でどこを使うか選ぶ
         while(matrix_generator.get_is_used().at(index)){//使われていたら選び直し
             index = ofRandom(size);

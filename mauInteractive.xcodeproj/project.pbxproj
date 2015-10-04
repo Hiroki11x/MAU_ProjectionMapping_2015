@@ -765,7 +765,6 @@
 		4E5ED6771BC1291C004F1AF6 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				4E5ED6781BC1292C004F1AF6 /* SwiperMode */,
 				4E5ED6791BC12938004F1AF6 /* ofxTweenUtil */,
 			);
 			name = Base;
@@ -850,6 +849,7 @@
 			children = (
 				4E5ED6DD1BC12A76004F1AF6 /* StrechyRectSwiper.cpp */,
 				4E5ED6DE1BC12A76004F1AF6 /* StrechyRectSwiper.h */,
+				4E5ED6781BC1292C004F1AF6 /* SwiperMode */,
 				4E5ED6E01BC12AB5004F1AF6 /* SemiCirclePath */,
 			);
 			name = StrechyRectSwiper;
