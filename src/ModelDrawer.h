@@ -56,11 +56,8 @@ public:
     };
     
     inline ofVec3f addVertices(int i){
-        /*if(i < verticesSize){
-            mesh.addVertex(vertices[i]);
-            return vertices[i];
-        }*/
-        if(i < indicesSize/3 - 1){
+        
+        if(i < MAX_INDICES/3 - 1 && i < indicesSize/3 - 1){
             //add 1triangle
             mesh.addVertex(vertices[int(indices[i * 3])]);
             mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
@@ -71,8 +68,10 @@ public:
             mesh.addIndex(i * 3);
             mesh.addIndex(i * 3 + 1);
             mesh.addIndex(i * 3 + 2);
+            
+            return vertices[int(indices[i * 3])];
         }
-        return vertices[int(indices[i * 3])];
+        
     };
     
     ModelDrawer(){
