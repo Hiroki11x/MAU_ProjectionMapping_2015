@@ -8,6 +8,7 @@
 
 #ifndef SceneManager_h
 #define SceneManager_h
+
 #include "ofMain.h"
 #include "SceneElement.h"
 

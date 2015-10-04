@@ -19,6 +19,8 @@
 #include "UserAgent.h"
 #include "Connection.h"
 #include "MatrixGenerator.h"
+#include "FadeBackgroundUtil.h"
+#include "StrechyRectSwiper.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -31,6 +33,9 @@ public:
     UserAgents(){};
     
 private:
+    FadeBackgroundUtil back_animation;
+    StrechyRectSwiper strechyRectSwiper;
+    
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;

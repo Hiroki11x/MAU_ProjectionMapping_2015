@@ -6,8 +6,6 @@
 //
 //
 
-#ifndef UsersManager_h
-#define UsersManager_h
 
 #include "SceneManager.h"
 #include "UserAgents.h"
@@ -17,4 +15,3 @@ public:
     virtual void setup() override;
     virtual void onMouseDown(int x,int y) override;
 };
-#endif /* UsersManager_hpp */

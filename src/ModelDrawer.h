@@ -18,9 +18,15 @@ public:
     ofVec3f vertices[10000];
     
     inline void drawModel(float scale){
+//        mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+//        mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+//        mesh.setMode(OF_PRIMITIVE_POINTS);
+        mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+        
         ofEnableDepthTest();
-        ofSetColor(50,255,50);
-        mesh.drawWireframe();
+        ofSetColor(50,255,50,70);
+//        mesh.drawWireframe();
+        mesh.draw();
     };
     
     inline void setVerices(vector<ofVec3f> newVec,float size){
@@ -32,7 +38,7 @@ public:
             //vertices[i + preSize] = newVec.at(i);
             vertices[i + preSize] = newVec.at(i) * size; //garally用
             if(i < newVec.size() - 10){
-                //mesh.addTriangle(i,i+5,i+10);
+                mesh.addTriangle(i,i+5,i+10);
             }
         }
     };
@@ -42,7 +48,7 @@ public:
             mesh.addVertex(vertices[i]);
             return vertices[i];
         }
-        //mesh.indices.clear();
+        mesh.indices.clear();
     };
     
     ModelDrawer(){
