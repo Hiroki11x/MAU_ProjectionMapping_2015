@@ -1,19 +1,24 @@
-//
-//  UserAgents.cpp
-//  MauInteractive
-//
-//  Created by 櫻木善将 on 2015/09/30.
-//
-//  UserAgentの集合を
-//  UserAgent Model UserAgentのモデル
-//  MatrixGenerator 座標生成
-//  Connection UserAgent同士のつながりを描画する
-//
+/*
+ //  UserAgents.cpp
+ //  MauInteractive
+ //
+ //  Created by 櫻木善将 on 2015/09/30.
+ //
+ //  UserAgentの集合を
+ //  UserAgent Model UserAgentのモデル
+ //MatrixGenerator 座標生成
+ //  Connection UserAgent同士のつながりを描画する
+ */
+
 #include "UserAgents.h"
 
 void UserAgents::init(){
     setup_user_agent();
     back_animation.set_fade_duration(2000);
+    
+    strechyRectSwiper.init();
+    strechyRectSwiper.set_color(ofColor::fromHsb(100, 200, 200));
+    strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
 }
 
 void UserAgents::update(){
@@ -24,6 +29,7 @@ void UserAgents::update(){
 
 void UserAgents::draw(){
     back_animation.fade_cross_background(0, 0, 100);
+    strechyRectSwiper.draw();
     
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
@@ -34,8 +40,9 @@ void UserAgents::draw(){
 }
 
 void UserAgents::onMouseDown(int x, int y){
-    cout<<"onMouseDown"<<endl;
+    userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+    strechyRectSwiper.init();
 }
 
 void UserAgents::end(){}
