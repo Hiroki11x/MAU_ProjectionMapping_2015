@@ -11,6 +11,10 @@ void ofxTweenUtil::setup(){
     init();
 }
 
+void ofxTweenUtil::set_max(float max){
+    easing_max = max;
+}
+
 void ofxTweenUtil::set_duration(unsigned int duration){
     this->duration = duration;
 }
@@ -39,5 +43,5 @@ void ofxTweenUtil::init(){
     //    tweencubic.setParameters(id_1,easingcubic,ofxTween::easeOut,0,ofGetWidth(),duration,delay);
     
     int id_2 =2;
-    tweenlinear.setParameters(id_2,elasticlinnear,ofxTween::easeInOut,0 , ofGetWidth(), duration, delay);
+    tweenlinear.setParameters(id_2,elasticlinnear,ofxTween::easeInOut,0 , easing_max, duration, delay);
 }

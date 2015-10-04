@@ -18,15 +18,16 @@ void StrechyRectSwiper::set_mode(SwipeMode::Mode mode){
 
 void StrechyRectSwiper::init(){
     init_path();
-    TweenUtil.init();
-    TweenUtil.set_delay(200);
+    TweenUtil.set_max(ofGetWidth());
+    TweenUtil.set_delay(0);
     TweenUtil.set_duration(ofRandom(200,800));
+    TweenUtil.init();
 }
 
 //-------------------------------------------------------------------------------
 
 void StrechyRectSwiper::update(){
-    if(TweenUtil.get_update_value()> ofGetHeight()){
+    if(TweenUtil.get_update_value()>= ofGetWidth()){
         init();
     }
 }
