@@ -12,7 +12,7 @@
 
 void SpyMeshIntro::update(){
     if(isStarted){
-        spentFrames+=1;
+        
         for(int i = 0; i < 10; i++){
             targetPoint = garallyModelDrawer.addVertices(spentFrames * 10 + i );
         }
@@ -20,7 +20,9 @@ void SpyMeshIntro::update(){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
         trails.update();
+        spentFrames+=1;
     }
+    
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
@@ -28,6 +30,7 @@ void SpyMeshIntro::update(){
 }
 
 void SpyMeshIntro::draw(){
+    
     camera.begin();
     
     if(spentFrames > 500){
@@ -55,6 +58,7 @@ void SpyMeshIntro::draw(){
     ofPopMatrix();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,camera.getPosition() + ofPoint(200,0,0));
+    
     camera.end();
 
 }
@@ -72,13 +76,14 @@ void SpyMeshIntro::init(){
     isStarted = false;
     
     for(int i = 0; i < model.getMeshCount(); i++){
-        garallyModelDrawer.setVerices(model.getMesh(i).vertices,200.0);
+        garallyModelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
     }
     lineEmitPointDistance = 100000;
     lineEmitPoints[0] = ofVec3f(lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[2] = ofVec3f(lineEmitPointDistance,- lineEmitPointDistance,0);
     lineEmitPoints[3] = ofVec3f(-lineEmitPointDistance,- lineEmitPointDistance,0);
+
 }
 void SpyMeshIntro::onMouseDown(int x, int y){
     isStarted = true;

@@ -10,14 +10,16 @@
 void SpyMesh::update(){
     
     if(isStarted){
-        spentFrames+=1;
-        if(spentFrames % 1 == 0){
-            targetPoint = modelDrawer.addVertices(spentFrames * 2);
-            targetPoint = modelDrawer.addVertices(spentFrames * 2 + 1);
-            if(spentFrames % 60 == 0){
-                emitPoint = lineEmitPoints[int(ofRandom(0,4))];
-            }
+        
+        
+        for(int i = 0; i < 10; i++){
+            targetPoint = modelDrawer.addVertices(spentFrames * 10 + i );
         }
+        if(spentFrames % 60 == 0){
+            emitPoint = lineEmitPoints[int(ofRandom(0,4))];
+        }
+        
+        spentFrames+=1;
     }else{
         wainingFrames++;
     }
@@ -77,10 +79,11 @@ void SpyMesh::init(){
     isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
-    model.loadModel("head/TheRock2.obj");
-    model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5 , 0);
+    //model.loadModel("head/TheRock2.obj");
+    model.loadModel("head2/h.stl");
+    model.setPosition(ofGetWidth()/2 * 2, (float)ofGetHeight() * 0.75 , 0);
     for(int i = 0; i < model.getMeshCount(); i++){
-       modelDrawer.setVerices(model.getMesh(i).vertices,1.0);
+        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 100.0);
     }
     lineEmitPointDistance = 200;
     lineEmitPoints[0] = ofVec3f(lineEmitPointDistance,lineEmitPointDistance,0);

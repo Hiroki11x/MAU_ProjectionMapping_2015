@@ -85,6 +85,7 @@
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF11CBE1BBEBEF2008B96E0 /* TrailRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF2FB451BBBE332007F19B0 /* UserAgentsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF2FB431BBBE332007F19B0 /* UserAgentsSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF2FB471BBBE423007F19B0 /* UserAgents.cpp */; settings = {ASSET_TAGS = (); }; };
 		FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */; };
@@ -521,6 +522,8 @@
 		FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshIntro.h; sourceTree = "<group>"; };
 		FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrailRenderer.cpp; sourceTree = "<group>"; };
 		FAF11CBD1BBEBEF2008B96E0 /* TrailRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailRenderer.h; sourceTree = "<group>"; };
+		FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FindTarget.cpp; sourceTree = "<group>"; };
+		FAF11CC01BBEECDC008B96E0 /* FindTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTarget.h; sourceTree = "<group>"; };
 		FAF2FB431BBBE332007F19B0 /* UserAgentsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentsSceneManager.cpp; sourceTree = "<group>"; };
 		FAF2FB441BBBE332007F19B0 /* UserAgentsSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgentsSceneManager.h; sourceTree = "<group>"; };
 		FAF2FB471BBBE423007F19B0 /* UserAgents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgents.cpp; sourceTree = "<group>"; };
@@ -1535,6 +1538,8 @@
 				FAA0CC2A1BBA4ADE00A0D408 /* textExplosion.h */,
 				FAA0CC2C1BBA4FFF00A0D408 /* Fadeout.cpp */,
 				FAA0CC2D1BBA4FFF00A0D408 /* Fadeout.h */,
+				FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */,
+				FAF11CC01BBEECDC008B96E0 /* FindTarget.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1916,6 +1921,7 @@
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,
 				FAA0CC201BBA1FF900A0D408 /* testScene.cpp in Sources */,
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
+				FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */,
 				FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */,
