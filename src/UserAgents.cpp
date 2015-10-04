@@ -19,6 +19,8 @@ void UserAgents::init(){
     strechyRectSwiper.init();
     strechyRectSwiper.set_color(ofColor::fromHsb(100, 200, 200));
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
+    
+    alphaSwiper.init();
 }
 
 void UserAgents::update(){
@@ -28,6 +30,7 @@ void UserAgents::update(){
 }
 
 void UserAgents::draw(){
+    alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
     back_animation.fade_cross_background(0, 0, 100);//十字の背景
     

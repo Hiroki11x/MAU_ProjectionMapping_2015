@@ -40,6 +40,7 @@
 		4E5ED6DB1BC12A19004F1AF6 /* SwipeMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6D91BC12A19004F1AF6 /* SwipeMode.cpp */; };
 		4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6DD1BC12A76004F1AF6 /* StrechyRectSwiper.cpp */; };
 		4E5ED6E31BC12AD0004F1AF6 /* SemiCirclePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6E11BC12AD0004F1AF6 /* SemiCirclePath.cpp */; };
+		4E76325F1BC1758E002F2530 /* AlphaSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E76325D1BC1758E002F2530 /* AlphaSwiper.cpp */; };
 		4E88A23C1BBE11AF001E8306 /* BuildPC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A20D1BBE11AF001E8306 /* BuildPC.cpp */; };
 		4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A20F1BBE11AF001E8306 /* Connection.cpp */; };
 		4E88A23E1BBE11AF001E8306 /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2111BBE11AF001E8306 /* DelaunayUtil.cpp */; };
@@ -248,6 +249,8 @@
 		4E5ED6DE1BC12A76004F1AF6 /* StrechyRectSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrechyRectSwiper.h; sourceTree = "<group>"; };
 		4E5ED6E11BC12AD0004F1AF6 /* SemiCirclePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SemiCirclePath.cpp; sourceTree = "<group>"; };
 		4E5ED6E21BC12AD0004F1AF6 /* SemiCirclePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemiCirclePath.h; sourceTree = "<group>"; };
+		4E76325D1BC1758E002F2530 /* AlphaSwiper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlphaSwiper.cpp; sourceTree = "<group>"; };
+		4E76325E1BC1758E002F2530 /* AlphaSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSwiper.h; sourceTree = "<group>"; };
 		4E88A20D1BBE11AF001E8306 /* BuildPC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuildPC.cpp; sourceTree = "<group>"; };
 		4E88A20E1BBE11AF001E8306 /* BuildPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildPC.h; sourceTree = "<group>"; };
 		4E88A20F1BBE11AF001E8306 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connection.cpp; sourceTree = "<group>"; };
@@ -864,6 +867,15 @@
 			name = SemiCirclePath;
 			sourceTree = "<group>";
 		};
+		4E76325C1BC17572002F2530 /* AlphaSwiper */ = {
+			isa = PBXGroup;
+			children = (
+				4E76325D1BC1758E002F2530 /* AlphaSwiper.cpp */,
+				4E76325E1BC1758E002F2530 /* AlphaSwiper.h */,
+			);
+			name = AlphaSwiper;
+			sourceTree = "<group>";
+		};
 		4E88A20C1BBE11AF001E8306 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,6 +913,7 @@
 		4E88A2561BBE1223001E8306 /* AnimationUtils */ = {
 			isa = PBXGroup;
 			children = (
+				4E76325C1BC17572002F2530 /* AlphaSwiper */,
 				4E5ED6761BC122AD004F1AF6 /* ScreenSwiper */,
 				4E12E4811BBEF419001D9BA2 /* CrossBack */,
 				4E12E4801BBEF40A001D9BA2 /* Delaunay */,
@@ -1814,6 +1827,7 @@
 				4E5ED6CC1BC12958004F1AF6 /* ofxEasingQuart.cpp in Sources */,
 				4E88A2461BBE11AF001E8306 /* ModelDrawer.cpp in Sources */,
 				4E88A24B1BBE11AF001E8306 /* SpyMesh.cpp in Sources */,
+				4E76325F1BC1758E002F2530 /* AlphaSwiper.cpp in Sources */,
 				4E5ED6CD1BC12958004F1AF6 /* ofxEasingQuint.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				4E94F13A1BBE102200E0343E /* SyphonNameboundClient.m in Sources */,

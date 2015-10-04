@@ -6,6 +6,8 @@
 //
 //
 
+#ifndef __ofxAnimationUtility__ofxTweenUtil__
+#define __ofxAnimationUtility__ofxTweenUtil__
 
 #include "ofMain.h"
 #include "ofxTween.h"
@@ -36,4 +38,6 @@ public:
     ofxEasingLinear elasticlinnear;
     
 };
+
+#endif /* defined(__ofxAnimationUtility__ofxTweenUtil__) */
 
