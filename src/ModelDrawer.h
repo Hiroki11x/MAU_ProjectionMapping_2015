@@ -14,7 +14,6 @@
 #define MAX_INDICES 150000
 #define COLORED_MESH_PER_HANDRED_TRIANGLE 15
 
-
 class ModelDrawer {
 public:
     int verticesSize;
@@ -23,6 +22,7 @@ public:
     int coloredIndices[MAX_INDICES / 3 / COLORED_MESH_PER_HANDRED_TRIANGLE];
     int coloredMeshSize;
     bool isExpandingColoredMesh;
+    
     ofVboMesh mesh;
     ofVboMesh coloredPartMesh;
     ofVec3f vertices[MAX_VERTICES];
@@ -50,19 +50,21 @@ public:
     };
     
     inline void setVerices(vector<ofVec3f> newVec, vector<ofIndexType> newIndices,float size){
+        
         int preSize = verticesSize;
         verticesSize += newVec.size();
         for(int i = 0; i < newVec.size(); i++){
             if(i + preSize > MAX_VERTICES - 1){break;}
             vertices[i + preSize] = newVec.at(i) * size;
         }
+        
         int preIndiceSize = indicesSize;
         indicesSize += newIndices.size();
-        cout << "indiceZize" << indicesSize << endl;
         for(int i = 0; i < newIndices.size(); i++){
             if(i + preIndiceSize > MAX_INDICES - 1){break;}
             indices[i + preIndiceSize] = newIndices.at(i) + preSize;
         }
+        
     };
     
     inline ofVec3f addVertices(int i){

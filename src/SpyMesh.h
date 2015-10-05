@@ -17,6 +17,8 @@
 #include "ModelDrawer.h"
 #include "UserAgent.h"
 
+#define ADD_TRIANGLE_PER_UPDATE 1
+
 class SpyMesh : public SceneElement {
 public:
     virtual void update() override;
@@ -40,5 +42,9 @@ public:
     float modelSize;
     float lineEmitPointDistance;
     bool isStarted = false;
+    
+    void initLineEmitPoints();
+    void initModelDrawer();
+    void drawEmitter();
 };
 #endif

@@ -18,7 +18,6 @@ TrailRenderer::TrailRenderer(ofVec3f sPoint, ofVec3f tPoint ,TrailShape shape, i
     this->endPosition = 300;
     this->size = 100;
     this->rotateMode = true;
-    //this->convergenceMode = true;
     this->trailShape = MultiSphere;
 }
 
@@ -87,13 +86,9 @@ void TrailRenderer::drawTrailer(){
             default:
                 break;
         }
-        
         ofPopMatrix();
     }
     
-    
-    
     ofPopMatrix();
     ofPopStyle();
-
 }

@@ -10,9 +10,8 @@
 void SpyMesh::update(){
     
     if(isStarted){
-        
-        for(int i = 0; i < 1; i++){
-            targetPoint = modelDrawer.addVertices(spentFrames * 1 + i );
+        for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
+            targetPoint = modelDrawer.addVertices(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
         }
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
@@ -20,7 +19,6 @@ void SpyMesh::update(){
         if(spentFrames % 40 == 0){
             modelDrawer.changeColoredPartMesh();
         }
-        //modelDrawer.updateColoredMesh(modelSize);
         spentFrames+=1;
     }else{
         wainingFrames++;
@@ -54,6 +52,22 @@ void SpyMesh::draw(){
         ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
         ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,emitPoint);
     }
+    
+    drawEmitter();
+    
+    ofPopMatrix();
+    ofPopStyle();
+    
+    camera.end();
+    
+    ofPushStyle();
+    ofSetColor(50, 255, 100);
+    modelDrawer.drawPercentage();
+    ofPopStyle();
+}
+
+void SpyMesh::drawEmitter(){
+
     for(int i = 0; i < 8; i++){
         ofPushMatrix();
         ofRotateX(ofGetElapsedTimef() * (i + 1) * 20);
@@ -66,15 +80,6 @@ void SpyMesh::draw(){
         }
         ofPopMatrix();
     }
-    
-    ofPopMatrix();
-    ofPopStyle();
-    
-    camera.end();
-    ofPushStyle();
-    ofSetColor(50, 255, 100);
-    modelDrawer.drawPercentage();
-    ofPopStyle();
 }
 
 void SpyMesh::init(){
@@ -86,18 +91,28 @@ void SpyMesh::init(){
     isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
-    model.clear();
-    //model.loadModel("head/TheRock2.obj");
-    model.loadModel("MrT3ds/mrt.3ds");
-    for(int i = model.getMeshCount() - 1; i >= 5; i--){
-        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.5);
-    }
-    modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
+    
+    initModelDrawer();
+    initLineEmitPoints();
+}
+
+void SpyMesh::initLineEmitPoints(){
+    
     lineEmitPointDistance = 200;
     lineEmitPoints[0] = ofVec3f(lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[2] = ofVec3f(lineEmitPointDistance,- lineEmitPointDistance,0);
     lineEmitPoints[3] = ofVec3f(-lineEmitPointDistance,- lineEmitPointDistance,0);
+}
+
+void SpyMesh::initModelDrawer(){
+    
+    model.clear();
+    modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
+    model.loadModel("MrT3ds/mrt.3ds");
+    for(int i = model.getMeshCount(); i > 4; i--){
+        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.5);
+    }
 }
 
 void SpyMesh::onMouseDown(int x, int y){

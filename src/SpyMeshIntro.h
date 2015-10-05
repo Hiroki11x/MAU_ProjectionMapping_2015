@@ -14,6 +14,8 @@
 #include "SceneManager.h"
 #include "TrailRenderer.h"
 
+#define ADD_TRIANGLE_PER_UPDATE 7
+
 class SpyMeshIntro : public SceneElement {
 public:
     
@@ -33,5 +35,8 @@ public:
     ofVec3f emitPoint;
     ofVec3f lineEmitPoints[4];
     ofCamera camera;
+    
+    void initLineEmitPoints();
+    void initModelDrawer();
 };
 #endif
