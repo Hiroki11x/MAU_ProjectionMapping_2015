@@ -7,6 +7,7 @@
 //
 #include "SpyMeshIntro.h"
 
+
 void SpyMeshIntro::update(){
     if(isStarted){
         for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
@@ -22,9 +23,14 @@ void SpyMeshIntro::update(){
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        70);
+    JsonReceiver::recieve();
 }
 
 void SpyMeshIntro::draw(){
+
+    for(int i = 0; i < JsonReceiver::usersInfo.size(); i++){
+        JsonReceiver::usersInfo.at(i).icon.draw( 100 * i, 0, 100, 100);
+    }
     
     camera.begin();
     

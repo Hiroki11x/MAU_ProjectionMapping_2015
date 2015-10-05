@@ -13,6 +13,7 @@
 #include "ofxAssimpModelLoaderExtend.h"
 #include "SceneManager.h"
 #include "TrailRenderer.h"
+#include "JsonReceiver.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 7
 
