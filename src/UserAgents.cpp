@@ -21,7 +21,7 @@ void UserAgents::init(){
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
-    superLogUtil.init();
+    superLogUtil.init();//Logのセットアップ
 }
 
 void UserAgents::update(){
@@ -71,7 +71,7 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Left";
     }
     strechyRectSwiper.init();
-    superLogUtil.set_log(tag, ofGetElapsedTimef());
+    superLogUtil.set_log(tag, ofGetElapsedTimef());//Log出し
 }
 
 void UserAgents::end(){}
