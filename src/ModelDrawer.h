@@ -17,21 +17,27 @@ class ModelDrawer {
 public:
     int verticesSize;
     int indicesSize;
+    int addedIndicesSize;
     ofVboMesh mesh;
     ofVec3f vertices[MAX_VERTICES];
+    ofPrimitiveMode primitiveMode;
     vector<ofIndexType> indices;
     
-    inline void drawModel(float scale, bool fill = true){
+    void drawPercentage();
+    void setPrimitiveMode(ofPrimitiveMode primitiveMode);
+    
+    inline void drawModel(float scale, bool fill = false){
         
         ofEnableDepthTest();
         ofPushStyle();
         ofSetLineWidth(1.0);
-        mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+        mesh.setMode(primitiveMode);
         if(fill){
             mesh.draw(ofPolyRenderMode::OF_MESH_FILL);
         }else{
             mesh.drawWireframe();
         }
+        
         ofPopStyle();
     };
     
@@ -59,26 +65,44 @@ public:
         
         if(i < MAX_INDICES/3 - 1 && i < indicesSize/3 - 1){
             //add 1triangle
-            mesh.addVertex(vertices[int(indices[i * 3])]);
-            mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
-            mesh.addVertex(vertices[int(indices[i * 3 + 2])]);
-            
-            /*mesh.addVertex(vertices[int(indices[i * 2])]);
-            mesh.addVertex(vertices[int(indices[i * 2 + 1])]);*/
-            mesh.addIndex(i * 3);
-            mesh.addIndex(i * 3 + 1);
-            mesh.addIndex(i * 3 + 2);
-            
-            return vertices[int(indices[i * 3])];
+            switch(primitiveMode){
+                case OF_PRIMITIVE_TRIANGLES:
+                    mesh.addVertex(vertices[int(indices[i * 3])]);
+                    mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
+                    mesh.addVertex(vertices[int(indices[i * 3 + 2])]);
+                    
+                    mesh.addIndex(i * 3);
+                    mesh.addIndex(i * 3 + 1);
+                    mesh.addIndex(i * 3 + 2);
+                    
+                    addedIndicesSize+=3;
+                    
+                    return vertices[int(indices[i * 3])];
+                    break;
+                    
+                case OF_PRIMITIVE_LINE_LOOP:
+                    mesh.addVertex(vertices[i]);
+                    mesh.addVertex(vertices[i + 1]);
+                    mesh.addVertex(vertices[i + 2]);
+                    
+                    addedIndicesSize+=3;
+                    
+                    return vertices[i * 3];
+                    break;
+                default:
+                    return vertices[0];
+                    break;
+            }
         }
-        
     };
-    
+
     ModelDrawer(){
         verticesSize = 0;
         indicesSize = 0;
+        addedIndicesSize = 0;
         mesh.clear();
         mesh.enableIndices();
+        primitiveMode = OF_PRIMITIVE_TRIANGLES;
         indices = *new vector<ofIndexType>(MAX_INDICES);
     };
 };
