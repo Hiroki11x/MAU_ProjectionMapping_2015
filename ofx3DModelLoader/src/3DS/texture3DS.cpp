@@ -1,10 +1,4 @@
-/*
-    BMP texture loader
-    � Keith O'Conor 2005
-    keith.oconor @ {cs.tcd.ie, gmail.com}
 
-    adapted for openFrameworks by Theodore Watson - theo@openframeworks.cc
-*/
 
 #include "texture3DS.h"
 

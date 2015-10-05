@@ -13,6 +13,7 @@
 #include "mode.h"
 #include "IntroductionManager.h"
 #include "SpyMeshSceneManager.h"
+#include "UserAgentsSceneManager.h"
 
 class testScene : public ofBaseApp{
     

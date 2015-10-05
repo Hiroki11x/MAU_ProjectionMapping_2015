@@ -9,6 +9,9 @@
 #ifndef MauInteractive_Connection_h
 #define MauInteractive_Connection_h
 
+#define DURATION_MAX 5.0
+#define LINE_WIDTH 0.5
+
 #include "ofMain.h"
 
 class Connection {
@@ -28,11 +31,9 @@ public:
         this->color = ofColor(0, 255, 0,100);
         this->connected = false;
         this->position = 0.0;
-        if(duration >= 5.0)
-        {
+        if(duration >= DURATION_MAX){
             this->drawSpeed = 1.0 / duration;
-        }else
-        {
+        }else{
             this->drawSpeed = 0.2;
         }
     };
