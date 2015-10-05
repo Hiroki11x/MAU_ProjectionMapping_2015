@@ -24,11 +24,7 @@ void UserAgents::init(){
     superLogUtil.init();//Logのセットアップ
     
     graphLog.setup();
-    graphLog.set_height_limit(ofGetWidth()/2);
-    
-    mFbo.allocate(ofGetWidth(), ofGetHeight());
-    postglitch.init(&mFbo);
-    
+    graphLog.set_height_limit(ofGetWidth()/4);
 }
 
 void UserAgents::update(){
@@ -39,12 +35,9 @@ void UserAgents::update(){
 //    superLogUtil.set_log("graphLog",ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
     //GraphLogの更新(この引数がgraphの値となる)
     graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
-    
-    mFbo.begin();
-    ofClear(0, 0, 0,255);
-    ofBackground(0);
-    ofSetColor(100);
-    
+}
+
+void UserAgents::draw(){
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
     back_animation.fade_cross_background(0, 0, 100);//十字の背景
@@ -56,14 +49,6 @@ void UserAgents::update(){
         userAgentArray.at(i)->draw();
     }
     graphLog.draw();
-    
-    graphLog.draw();
-    mFbo.end();
-    postglitch.adapt_glitch_end();
-}
-
-void UserAgents::draw(){
-    postglitch.draw_glitch();
 }
 
 void UserAgents::onMouseDown(int x, int y){
@@ -74,7 +59,6 @@ void UserAgents::onMouseDown(int x, int y){
 
 void UserAgents::keyPressed(int key){
     graphLog.keyPressed(key);
-    postglitch.keyPressed(key);
     
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));

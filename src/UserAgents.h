@@ -24,7 +24,6 @@
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
 #include "GraphLog.h"
-#include "PostGlitch.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -36,9 +35,6 @@ public:
     virtual void keyPressed(int key) override;
     
     UserAgents(){};
-    
-    PostGlitch postglitch;
-    ofFbo mFbo;
     
 private:
     FadeBackgroundUtil back_animation;
