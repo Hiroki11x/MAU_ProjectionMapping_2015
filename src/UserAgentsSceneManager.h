@@ -6,15 +6,13 @@
 //
 //
 
-#ifndef UsersManager_h
-#define UsersManager_h
 
 #include "SceneManager.h"
 #include "UserAgents.h"
 
-class UsersAgentsSceneManager : public SceneManager {
+class UserAgentsSceneManager : public SceneManager {
 public:
     virtual void setup() override;
     virtual void onMouseDown(int x,int y) override;
+    virtual void keyPressed(int key) override;
 };
-#endif /* UsersManager_hpp */

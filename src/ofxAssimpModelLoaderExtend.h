@@ -1,10 +1,12 @@
-//
-//  ofxAssimpModelLoaderextend.hpp
-//  MauInteractive
-//
-//  Created by 櫻木善将 on 2015/09/30.
-//
-//
+/*
+ * ofxAssimpModelLoaderextend.hpp
+ * MauInteractive
+ * Created by 櫻木善将 on 2015/09/30.
+ *
+ *
+ * ofxAssimpModelLoader#draw　自体も virtualにしてる
+ *
+ */
 
 #ifndef ofxAssimpModelLoaderextend_h
 #define ofxAssimpModelLoaderextend_h

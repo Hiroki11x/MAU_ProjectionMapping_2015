@@ -5,6 +5,7 @@
 //  Created by 櫻木善将 on 2015/09/29.
 //
 //
+
 #ifndef IntroductionManager_h
 #define IntroductionManager_h
 
@@ -20,4 +21,5 @@ class IntroductionManager : public SceneManager {
 public:
     virtual void setup() override;
 };
+
 #endif

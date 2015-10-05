@@ -15,6 +15,9 @@
 #define GRID_WIDTH 128
 #define GRID_HEIGHT 64
 
+#define POSITION_OFFSET 20
+#define POS_DANDAM_OFFSET 15
+
 class MatrixGenerator{
 private:
     vector<ofVec2f *>position;
