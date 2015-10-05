@@ -57,6 +57,9 @@
 		FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9521BB53C3000DF0A41 /* Loading.cpp */; };
 		FA0BA97C1BB54C1700DF0A41 /* ofxSuperLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9741BB54B0B00DF0A41 /* ofxSuperLog.cpp */; };
 		FA0BA97D1BB54C1D00DF0A41 /* ofxSuperLogDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9761BB54B0B00DF0A41 /* ofxSuperLogDisplay.cpp */; };
+		FA26BD531BC294C8007C3B47 /* JsonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4B49AA1BB5111D00537247 /* ofxJSONElement.cpp */; };
+		FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4B49A61BB5111D00537247 /* jsoncpp.cpp */; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -83,6 +86,10 @@
 		FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95061BA58E9200C71B41 /* Connection.cpp */; };
 		FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */; };
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FACD666E1BC23B8500756856 /* DrawerSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACD666C1BC23B8500756856 /* DrawerSphere.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAF11CBE1BBEBEF2008B96E0 /* TrailRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF2FB451BBBE332007F19B0 /* UserAgentsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF2FB431BBBE332007F19B0 /* UserAgentsSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF2FB471BBBE423007F19B0 /* UserAgents.cpp */; settings = {ASSET_TAGS = (); }; };
 		FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */; };
@@ -312,6 +319,8 @@
 		FA0BA9751BB54B0B00DF0A41 /* ofxSuperLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSuperLog.h; sourceTree = "<group>"; };
 		FA0BA9761BB54B0B00DF0A41 /* ofxSuperLogDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSuperLogDisplay.cpp; sourceTree = "<group>"; };
 		FA0BA9771BB54B0B00DF0A41 /* ofxSuperLogDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSuperLogDisplay.h; sourceTree = "<group>"; };
+		FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonReceiver.cpp; sourceTree = "<group>"; };
+		FA26BD521BC294C8007C3B47 /* JsonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonReceiver.h; sourceTree = "<group>"; };
 		FA4B49791BB5111D00537247 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		FA4B497A1BB5111D00537247 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA4B497B1BB5111D00537247 /* addon_config.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
@@ -515,6 +524,14 @@
 		FAC1B0C71BA51BB50057ED25 /* twist.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = twist.vert; sourceTree = "<group>"; };
 		FAC1B0C91BA51BB50057ED25 /* ofxPostGlitch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPostGlitch.cpp; sourceTree = "<group>"; };
 		FAC1B0CA1BA51BB50057ED25 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
+		FACD666C1BC23B8500756856 /* DrawerSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawerSphere.cpp; sourceTree = "<group>"; };
+		FACD666D1BC23B8500756856 /* DrawerSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerSphere.h; sourceTree = "<group>"; };
+		FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshIntro.cpp; sourceTree = "<group>"; };
+		FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshIntro.h; sourceTree = "<group>"; };
+		FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrailRenderer.cpp; sourceTree = "<group>"; };
+		FAF11CBD1BBEBEF2008B96E0 /* TrailRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailRenderer.h; sourceTree = "<group>"; };
+		FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FindTarget.cpp; sourceTree = "<group>"; };
+		FAF11CC01BBEECDC008B96E0 /* FindTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTarget.h; sourceTree = "<group>"; };
 		FAF2FB431BBBE332007F19B0 /* UserAgentsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentsSceneManager.cpp; sourceTree = "<group>"; };
 		FAF2FB441BBBE332007F19B0 /* UserAgentsSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgentsSceneManager.h; sourceTree = "<group>"; };
 		FAF2FB471BBBE423007F19B0 /* UserAgents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgents.cpp; sourceTree = "<group>"; };
@@ -1287,8 +1304,8 @@
 		FA4B49A21BB5111D00537247 /* json */ = {
 			isa = PBXGroup;
 			children = (
-				FA4B49A31BB5111D00537247 /* json-forwards.h */,
 				FA4B49A41BB5111D00537247 /* json.h */,
+				FA4B49A31BB5111D00537247 /* json-forwards.h */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -1328,6 +1345,8 @@
 				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
 				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
+				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
+				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1500,6 +1519,12 @@
 			children = (
 				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
 				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
+				FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */,
+				FAF11CBD1BBEBEF2008B96E0 /* TrailRenderer.h */,
+				FACD666C1BC23B8500756856 /* DrawerSphere.cpp */,
+				FACD666D1BC23B8500756856 /* DrawerSphere.h */,
+				FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */,
+				FA26BD521BC294C8007C3B47 /* JsonReceiver.h */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -1525,6 +1550,8 @@
 				FAA0CC2A1BBA4ADE00A0D408 /* textExplosion.h */,
 				FAA0CC2C1BBA4FFF00A0D408 /* Fadeout.cpp */,
 				FAA0CC2D1BBA4FFF00A0D408 /* Fadeout.h */,
+				FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */,
+				FAF11CC01BBEECDC008B96E0 /* FindTarget.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1858,6 +1885,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */,
+				FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */,
 				FA5BFD481BBACFF90085652C /* texture3DS.cpp in Sources */,
 				FA5BFD471BBACFE70085652C /* model3DS.cpp in Sources */,
 				FA5BFD461BBACFD00085652C /* ofx3dModelLoader.cpp in Sources */,
@@ -1875,6 +1904,7 @@
 				FA5BFDE31BBAD6620085652C /* ofxAssimpAnimation.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */,
+				FACD666E1BC23B8500756856 /* DrawerSphere.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FA5BFD341BBA7A4E0085652C /* LinePoints.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,
@@ -1888,6 +1918,7 @@
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */,
+				FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */,
 				FA5BFD351BBA7A4E0085652C /* TrianglePoints.cpp in Sources */,
 				45CC483A999BF1065A6B926C /* Distance.cpp in Sources */,
 				FAA0CC181BBA191100A0D408 /* mode.cpp in Sources */,
@@ -1905,6 +1936,7 @@
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,
 				FAA0CC201BBA1FF900A0D408 /* testScene.cpp in Sources */,
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
+				FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */,
 				FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */,
@@ -1914,6 +1946,8 @@
 				8D60C222CBD3F869382832E9 /* ofxSyphonServer.mm in Sources */,
 				11DF9AB1B4EAA63E3B190CA0 /* ofxSyphonServerDirectory.mm in Sources */,
 				FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */,
+				FAF11CBE1BBEBEF2008B96E0 /* TrailRenderer.cpp in Sources */,
+				FA26BD531BC294C8007C3B47 /* JsonReceiver.cpp in Sources */,
 				FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */,
 				FAA0CC251BBA304700A0D408 /* BuildPC.cpp in Sources */,
 			);

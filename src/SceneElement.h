@@ -9,7 +9,6 @@
 #define SceneElement_h
 
 class SceneElement {
-    
 public:
     virtual void update(){};
     virtual void draw(){};
