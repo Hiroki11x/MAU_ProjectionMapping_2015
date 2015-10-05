@@ -56,8 +56,8 @@ public:
         cout << "indiceZize" << indicesSize << endl;
         for(int i = 0; i < newIndices.size(); i++){
             if(i + preIndiceSize > MAX_INDICES - 1){break;}
-            indices[i + preIndiceSize] = newIndices.at(i);
-        //    cout << "indice" << indices[i + preIndiceSize] << endl;
+            indices[i + preIndiceSize] = newIndices.at(i) + preSize;
+            cout << "indice" << indices[i + preIndiceSize] << endl;
         }
     };
     
@@ -81,13 +81,31 @@ public:
                     break;
                     
                 case OF_PRIMITIVE_LINE_LOOP:
-                    mesh.addVertex(vertices[i]);
-                    mesh.addVertex(vertices[i + 1]);
-                    mesh.addVertex(vertices[i + 2]);
+                    mesh.addVertex(vertices[i * 3]);
+                    mesh.addVertex(vertices[i * 3 + 1]);
+                    mesh.addVertex(vertices[i + 3 + 2]);
+                    
+                    mesh.addIndex(i * 3);
+                    mesh.addIndex(i * 3 + 1);
+                    mesh.addIndex(i * 3 + 2);
                     
                     addedIndicesSize+=3;
-                    
                     return vertices[i * 3];
+                    break;
+                    
+                case OF_PRIMITIVE_POINTS:
+                    mesh.addVertex(vertices[indices[i * 3]]);
+                    mesh.addVertex(vertices[indices[i * 3 + 1]]);
+                    mesh.addVertex(vertices[indices[i * 3 + 2]]);
+                    
+                    mesh.addIndex(i * 3);
+                    mesh.addIndex(i * 3 + 1);
+                    mesh.addIndex(i * 3 + 2);
+                    
+                    addedIndicesSize += 3;
+                    return vertices[i*3];
+                    break;
+                    
                     break;
                 default:
                     return vertices[0];

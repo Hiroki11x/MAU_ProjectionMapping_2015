@@ -45,7 +45,7 @@ void SpyMesh::draw(){
         ofRotateX(ofGetElapsedTimef() * 10);
         ofRotateY(ofGetElapsedTimef() * 10);
         ofRotateZ(ofGetElapsedTimef() * 10);
-        modelDrawer.drawModel(modelSize, OF_PRIMITIVE_LINE_LOOP);
+        modelDrawer.drawModel(modelSize);
         ofLine(emitPoint, targetPoint);
         ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
         ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,emitPoint);
@@ -67,8 +67,10 @@ void SpyMesh::draw(){
     ofPopStyle();
     
     camera.end();
+    ofPushStyle();
     ofSetColor(50, 255, 100);
     modelDrawer.drawPercentage();
+    ofPopStyle();
 }
 
 void SpyMesh::init(){
@@ -80,13 +82,15 @@ void SpyMesh::init(){
     isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
+    model.clear();
     model.loadModel("head/TheRock2.obj");
     //model.loadModel("head2/h.stl");
+    //model.loadModel("MrT3ds/mrt.3ds");
     //model.setPosition(ofGetWidth()/2 * 2, (float)ofGetHeight() * 0.75 , 0);
     for(int i = 0; i < model.getMeshCount(); i++){
-        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.0);
+        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1);
     }
-    modelDrawer.setPrimitiveMode(OF_PRIMITIVE_LINE_LOOP);
+    modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
     lineEmitPointDistance = 200;
     lineEmitPoints[0] = ofVec3f(lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
