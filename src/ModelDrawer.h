@@ -12,22 +12,31 @@
 
 #define MAX_VERTICES 150000
 #define MAX_INDICES 150000
+#define COLORED_MESH_PER_HANDRED_TRIANGLE 15
+
 
 class ModelDrawer {
 public:
     int verticesSize;
     int indicesSize;
     int addedIndicesSize;
+    int coloredIndices[MAX_INDICES / 3 / COLORED_MESH_PER_HANDRED_TRIANGLE];
+    int coloredMeshSize;
+    bool isExpandingColoredMesh;
     ofVboMesh mesh;
+    ofVboMesh coloredPartMesh;
     ofVec3f vertices[MAX_VERTICES];
+    ofVec3f coloredMeshesVec[MAX_INDICES / COLORED_MESH_PER_HANDRED_TRIANGLE];
     ofPrimitiveMode primitiveMode;
     vector<ofIndexType> indices;
     
     void drawPercentage();
     void setPrimitiveMode(ofPrimitiveMode primitiveMode);
+    void changeColoredPartMesh();
+    void drawColoredMesh();
+    void updateColoredMesh(float size);
     
     inline void drawModel(float scale, bool fill = false){
-        
         ofEnableDepthTest();
         ofPushStyle();
         ofSetLineWidth(1.0);
@@ -37,7 +46,6 @@ public:
         }else{
             mesh.drawWireframe();
         }
-        
         ofPopStyle();
     };
     
@@ -48,21 +56,16 @@ public:
             if(i + preSize > MAX_VERTICES - 1){break;}
             vertices[i + preSize] = newVec.at(i) * size;
         }
-        //cout << "indiceZize" << verticesSize << endl;
-
-        
         int preIndiceSize = indicesSize;
         indicesSize += newIndices.size();
         cout << "indiceZize" << indicesSize << endl;
         for(int i = 0; i < newIndices.size(); i++){
             if(i + preIndiceSize > MAX_INDICES - 1){break;}
             indices[i + preIndiceSize] = newIndices.at(i) + preSize;
-            cout << "indice" << indices[i + preIndiceSize] << endl;
         }
     };
     
     inline ofVec3f addVertices(int i){
-        
         if(i < MAX_INDICES/3 - 1 && i < indicesSize/3 - 1){
             //add 1triangle
             switch(primitiveMode){
@@ -113,7 +116,7 @@ public:
             }
         }
     };
-
+    
     ModelDrawer(){
         verticesSize = 0;
         indicesSize = 0;

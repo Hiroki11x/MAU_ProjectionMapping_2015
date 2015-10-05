@@ -11,20 +11,23 @@ void SpyMesh::update(){
     
     if(isStarted){
         
-        for(int i = 0; i < 20; i++){
-            targetPoint = modelDrawer.addVertices(spentFrames * 20 + i );
+        for(int i = 0; i < 1; i++){
+            targetPoint = modelDrawer.addVertices(spentFrames * 1 + i );
         }
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
-        
+        if(spentFrames % 40 == 0){
+            modelDrawer.changeColoredPartMesh();
+        }
+        //modelDrawer.updateColoredMesh(modelSize);
         spentFrames+=1;
     }else{
         wainingFrames++;
     }
     
     float * val = ofSoundGetSpectrum(1);
-    modelSize = val[0] * 10;
+    modelSize = val[0] * 5;
 
     camera.setPosition(329 , 131 , 132);
     camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
@@ -46,6 +49,7 @@ void SpyMesh::draw(){
         ofRotateY(ofGetElapsedTimef() * 10);
         ofRotateZ(ofGetElapsedTimef() * 10);
         modelDrawer.drawModel(modelSize);
+        modelDrawer.drawColoredMesh();
         ofLine(emitPoint, targetPoint);
         ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
         ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,emitPoint);
@@ -76,19 +80,17 @@ void SpyMesh::draw(){
 void SpyMesh::init(){
     
     ofBackground(0);
-    //soundPlayer.loadSound("star.mp3");
-    //soundPlayer.play();
+    soundPlayer.loadSound("star.mp3");
+    soundPlayer.play();
     ofDisableArbTex();
     isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
     model.clear();
-    model.loadModel("head/TheRock2.obj");
-    //model.loadModel("head2/h.stl");
-    //model.loadModel("MrT3ds/mrt.3ds");
-    //model.setPosition(ofGetWidth()/2 * 2, (float)ofGetHeight() * 0.75 , 0);
-    for(int i = 0; i < model.getMeshCount(); i++){
-        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1);
+    //model.loadModel("head/TheRock2.obj");
+    model.loadModel("MrT3ds/mrt.3ds");
+    for(int i = model.getMeshCount() - 1; i >= 5; i--){
+        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.5);
     }
     modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
     lineEmitPointDistance = 200;

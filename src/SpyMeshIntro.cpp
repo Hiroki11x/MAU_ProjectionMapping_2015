@@ -12,7 +12,6 @@
 
 void SpyMeshIntro::update(){
     if(isStarted){
-        
         for(int i = 0; i < 7; i++){
             targetPoint = garallyModelDrawer.addVertices(spentFrames * 7 + i );
         }
@@ -22,7 +21,6 @@ void SpyMeshIntro::update(){
         trails.update();
         spentFrames+=1;
     }
-    
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
