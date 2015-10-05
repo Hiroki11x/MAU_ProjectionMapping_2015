@@ -22,6 +22,7 @@
 #include "FadeBackgroundUtil.h"
 #include "StrechyRectSwiper.h"
 #include "AlphaSwiper.h"
+#include "ofxSuperLogUtil.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -38,6 +39,7 @@ private:
     FadeBackgroundUtil back_animation;
     StrechyRectSwiper strechyRectSwiper;
     AlphaSwiper alphaSwiper;
+    ofxSuperLogUtil superLogUtil;
     
     MatrixGenerator matrix_generator;
     

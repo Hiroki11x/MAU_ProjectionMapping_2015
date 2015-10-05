@@ -21,6 +21,7 @@ void UserAgents::init(){
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
+    superLogUtil.init();
 }
 
 void UserAgents::update(){
@@ -51,19 +52,26 @@ void UserAgents::onMouseDown(int x, int y){
 void UserAgents::keyPressed(int key){
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+    string tag = "Default";
     
     if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
+        tag = "SwipeMode::Up";
     }else if(key==OF_KEY_DOWN){
         strechyRectSwiper.set_mode(SwipeMode::Down);
+        tag = "SwipeMode::Down";
     }else if(key==OF_KEY_RETURN){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
+        tag = "SwipeMode::SemiCircle";
     }else if(key==OF_KEY_RIGHT){
         strechyRectSwiper.set_mode(SwipeMode::Right);
+        tag = "SwipeMode::Right";
     }else if(key==OF_KEY_LEFT){
         strechyRectSwiper.set_mode(SwipeMode::Left);
+        tag = "SwipeMode::Left";
     }
     strechyRectSwiper.init();
+    superLogUtil.set_log(tag, ofGetElapsedTimef());
 }
 
 void UserAgents::end(){}
