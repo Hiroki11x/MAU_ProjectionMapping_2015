@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 
-
 class texture3DS{
 private:
     int m_width;

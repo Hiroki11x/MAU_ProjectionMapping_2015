@@ -10,43 +10,123 @@
 
 #include "ofMain.h"
 
+#define MAX_VERTICES 150000
+#define MAX_INDICES 150000
+#define COLORED_MESH_PER_HANDRED_TRIANGLE 15
+
 class ModelDrawer {
 public:
     int verticesSize;
-    bool drawEdge[10000][10000];
-    ofVboMesh mesh;
-    ofVec3f vertices[10000];
+    int indicesSize;
+    int addedIndicesSize;
+    int coloredIndices[MAX_INDICES / 3 / COLORED_MESH_PER_HANDRED_TRIANGLE];
+    int coloredMeshSize;
+    bool isExpandingColoredMesh;
     
-    inline void drawModel(float scale){
+    ofVboMesh mesh;
+    ofVboMesh coloredPartMesh;
+    ofVec3f vertices[MAX_VERTICES];
+    ofVec3f coloredMeshesVec[MAX_INDICES / COLORED_MESH_PER_HANDRED_TRIANGLE];
+    ofPrimitiveMode primitiveMode;
+    vector<ofIndexType> indices;
+    
+    void drawPercentage();
+    void setPrimitiveMode(ofPrimitiveMode primitiveMode);
+    void changeColoredPartMesh();
+    void drawColoredMesh();
+    void updateColoredMesh(float size);
+    
+    inline void drawModel(float scale, bool fill = false){
         ofEnableDepthTest();
-        ofSetColor(50,255,50);
-        mesh.drawWireframe();
+        ofPushStyle();
+        ofSetLineWidth(1.0);
+        mesh.setMode(primitiveMode);
+        if(fill){
+            mesh.draw(ofPolyRenderMode::OF_MESH_FILL);
+        }else{
+            mesh.drawWireframe();
+        }
+        ofPopStyle();
     };
     
-    inline void setVerices(vector<ofVec3f> newVec){
+    inline void setVerices(vector<ofVec3f> newVec, vector<ofIndexType> newIndices,float size){
+        
         int preSize = verticesSize;
         verticesSize += newVec.size();
-        cout << verticesSize << endl;
         for(int i = 0; i < newVec.size(); i++){
-            vertices[i + preSize] = newVec.at(i);
-            //mesh.addVertex(newVec.at(i));
-            if(i < newVec.size() - 10){
-                //mesh.addTriangle(i,i+5,i+10);
+            if(i + preSize > MAX_VERTICES - 1){break;}
+            vertices[i + preSize] = newVec.at(i) * size;
+        }
+        
+        int preIndiceSize = indicesSize;
+        indicesSize += newIndices.size();
+        for(int i = 0; i < newIndices.size(); i++){
+            if(i + preIndiceSize > MAX_INDICES - 1){break;}
+            indices[i + preIndiceSize] = newIndices.at(i) + preSize;
+        }
+        
+    };
+    
+    inline ofVec3f addVertices(int i){
+        if(i < MAX_INDICES/3 - 1 && i < indicesSize/3 - 1){
+            //add 1triangle
+            switch(primitiveMode){
+                case OF_PRIMITIVE_TRIANGLES:
+                    mesh.addVertex(vertices[int(indices[i * 3])]);
+                    mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
+                    mesh.addVertex(vertices[int(indices[i * 3 + 2])]);
+                    
+                    mesh.addIndex(i * 3);
+                    mesh.addIndex(i * 3 + 1);
+                    mesh.addIndex(i * 3 + 2);
+                    
+                    addedIndicesSize+=3;
+                    
+                    return vertices[int(indices[i * 3])];
+                    break;
+                    
+                case OF_PRIMITIVE_LINE_LOOP:
+                    mesh.addVertex(vertices[i * 3]);
+                    mesh.addVertex(vertices[i * 3 + 1]);
+                    mesh.addVertex(vertices[i + 3 + 2]);
+                    
+                    mesh.addIndex(i * 3);
+                    mesh.addIndex(i * 3 + 1);
+                    mesh.addIndex(i * 3 + 2);
+                    
+                    addedIndicesSize+=3;
+                    return vertices[i * 3];
+                    break;
+                    
+                case OF_PRIMITIVE_POINTS:
+                    mesh.addVertex(vertices[indices[i * 3]]);
+                    mesh.addVertex(vertices[indices[i * 3 + 1]]);
+                    mesh.addVertex(vertices[indices[i * 3 + 2]]);
+                    
+                    mesh.addIndex(i * 3);
+                    mesh.addIndex(i * 3 + 1);
+                    mesh.addIndex(i * 3 + 2);
+                    
+                    addedIndicesSize += 3;
+                    return vertices[i*3];
+                    break;
+                    
+                    break;
+                default:
+                    return vertices[0];
+                    break;
             }
         }
     };
     
-    inline ofVec3f addVertices(int i){
-        if(i < verticesSize){
-            mesh.addVertex(vertices[i]);
-            return vertices[i];
-        }
-        //mesh.indices.clear();
-    };
-    
     ModelDrawer(){
         verticesSize = 0;
+        indicesSize = 0;
+        addedIndicesSize = 0;
         mesh.clear();
+        mesh.enableIndices();
+        primitiveMode = OF_PRIMITIVE_TRIANGLES;
+        indices = *new vector<ofIndexType>(MAX_INDICES);
     };
 };
 #endif

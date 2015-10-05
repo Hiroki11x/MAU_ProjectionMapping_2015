@@ -8,8 +8,8 @@
 
 void IntroductionManager::setup(){
     elements.push_back(new BuildPC());
-    elements.push_back(new textExplosion());
-    elements.push_back(new Fadeout());
+    //elements.push_back(new textExplosion());
+    //elements.push_back(new Fadeout());
     elements.push_back(new Loading());
     elements.at(0)->init();
 }

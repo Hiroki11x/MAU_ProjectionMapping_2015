@@ -9,22 +9,23 @@
 
 void SpyMesh::update(){
     
-    if(button){
-        spentFrames+=1;
-        if(spentFrames % 1 == 0){
-            targetVec = modelDrawer.addVertices(spentFrames);
-            if(spentFrames % 60 == 0){
-                fireVec = fromVec[int(ofRandom(0,4))];
-            }
+    if(isStarted){
+        for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
+            targetPoint = modelDrawer.addVertices(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
         }
+        if(spentFrames % 60 == 0){
+            emitPoint = lineEmitPoints[int(ofRandom(0,4))];
+        }
+        if(spentFrames % 40 == 0){
+            modelDrawer.changeColoredPartMesh();
+        }
+        spentFrames+=1;
+    }else{
+        wainingFrames++;
     }
     
     float * val = ofSoundGetSpectrum(1);
-    modelSize = val[0] * 10;
-    
-    for(int i = 0; i < 4; i++){
-        agents[i].update();
-    }
+    modelSize = val[0] * 5;
 
     camera.setPosition(329 , 131 , 132);
     camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
@@ -38,59 +39,84 @@ void SpyMesh::draw(){
     ofPushStyle();
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-
-    if(button){
+    ofSetColor(50, 255, 50 , 150);
+    
+    if(isStarted){
         ofSetLineWidth(0.3);
-        ofSetColor(50, 255, 50 , 150);
         ofRotateX(ofGetElapsedTimef() * 10);
         ofRotateY(ofGetElapsedTimef() * 10);
         ofRotateZ(ofGetElapsedTimef() * 10);
         modelDrawer.drawModel(modelSize);
-        ofLine(fireVec, targetVec );
-        ofDrawSphere(fireVec, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
-        ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,fireVec);
-        for(int i = 0; i < 8; i++){
-            ofPushMatrix();
-            ofRotateX(ofGetElapsedTimef() * i * 20);
-            ofRotateY(ofGetElapsedTimef() * i * 20);
-            ofRotateZ(ofGetElapsedTimef() * i * 20);
-            ofDrawSphere(fromVec[i % 4], (60.0 - float(spentFrames % 60)) * 0.5);
-            ofPopMatrix();
-        }
+        modelDrawer.drawColoredMesh();
+        ofLine(emitPoint, targetPoint);
+        ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
+        ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,emitPoint);
     }
+    
+    drawEmitter();
+    
     ofPopMatrix();
     ofPopStyle();
     
     camera.end();
+    
+    ofPushStyle();
+    ofSetColor(50, 255, 100);
+    modelDrawer.drawPercentage();
+    ofPopStyle();
+}
+
+void SpyMesh::drawEmitter(){
+
+    for(int i = 0; i < 8; i++){
+        ofPushMatrix();
+        ofRotateX(ofGetElapsedTimef() * (i + 1) * 20);
+        ofRotateY(ofGetElapsedTimef() * (i + 1) * 20);
+        ofRotateZ(ofGetElapsedTimef() * (i + 1) * 20);
+        if(wainingFrames < 120){
+            ofDrawSphere(lineEmitPoints[i % 4] * float(100 - wainingFrames), (60.0 - float(wainingFrames % 60)) * 0.5);
+        }else{
+            ofDrawSphere(lineEmitPoints[i % 4], (60.0 - float(spentFrames % 60)) * 0.5);
+        }
+        ofPopMatrix();
+    }
 }
 
 void SpyMesh::init(){
+    
     ofBackground(0);
     soundPlayer.loadSound("star.mp3");
     soundPlayer.play();
-    model.loadModel("head/TheRock2.obj");
-    model.setPosition(ofGetWidth()/2, (float)ofGetHeight() * 0.5 , 0);
-    ofDisableArbTex(); // we need GL_TEXTURE_2D for our models coords.
-    
-    bAnimate = false;
-    bAnimateMouse = false;
-    animationPosition = 0;
-    model.setLoopStateForAllAnimations(OF_LOOP_NORMAL);
-    model.playAllAnimations();
-    if(!bAnimate) {
-        model.setPausedForAllAnimations(true);
-    }
-    text = loadText("code.txt");
+    ofDisableArbTex();
+    isStarted = false;
     spentFrames = 0;
+    wainingFrames = 0;
+    
+    initModelDrawer();
+    initLineEmitPoints();
+}
 
-    for(int i = 0; i < model.getMeshCount(); i++){
-        modelDrawer.setVerices(model.getMesh(i).vertices);
+void SpyMesh::initLineEmitPoints(){
+    
+    lineEmitPointDistance = 200;
+    lineEmitPoints[0] = ofVec3f(lineEmitPointDistance,lineEmitPointDistance,0);
+    lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
+    lineEmitPoints[2] = ofVec3f(lineEmitPointDistance,- lineEmitPointDistance,0);
+    lineEmitPoints[3] = ofVec3f(-lineEmitPointDistance,- lineEmitPointDistance,0);
+}
+
+void SpyMesh::initModelDrawer(){
+    
+    model.clear();
+    modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
+    model.loadModel("MrT3ds/mrt.3ds");
+    for(int i = model.getMeshCount(); i > 4; i--){
+        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.5);
     }
-    button = false;
 }
 
 void SpyMesh::onMouseDown(int x, int y){
     mouseX = x;
     mouseY = y;
-    button = true;
+    isStarted = true;
 }

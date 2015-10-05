@@ -8,6 +8,7 @@
 
 #ifndef SceneManager_h
 #define SceneManager_h
+
 #include "ofMain.h"
 #include "SceneElement.h"
 
@@ -26,6 +27,7 @@ public:
          elements.at(elementIndex)->draw();
     };
     virtual void onMouseDown(int x,int y){};
+    virtual void keyPressed(int key){};
     
     bool nextElement(){
         elements[elementIndex]->end();

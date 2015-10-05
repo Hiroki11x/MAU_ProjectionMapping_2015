@@ -7,7 +7,6 @@
 //
 #ifndef SpyMesh_h
 #define SpyMesh_h
-#define NUM_BALL 80
 
 #include "ofMain.h"
 #include "SceneElement.h"
@@ -17,6 +16,8 @@
 #include "ofVboMesh.h"
 #include "ModelDrawer.h"
 #include "UserAgent.h"
+
+#define ADD_TRIANGLE_PER_UPDATE 1
 
 class SpyMesh : public SceneElement {
 public:
@@ -30,30 +31,20 @@ public:
     ofLight	light;
     ofSoundPlayer soundPlayer;
     ofEasyCam camera;
-    ofVec3f targetVec;
-    ofVec3f fireVec;
-    UserAgent agents[4];
+    ofVec3f targetPoint;
+    ofVec3f emitPoint;
+    ofVec3f lineEmitPoints[4];
     ModelDrawer modelDrawer;
     
     int mouseX,mouseY;
     int spentFrames;
+    int wainingFrames;
     float modelSize;
-    float animationPosition;
-    bool bAnimate;
-    bool bAnimateMouse;
-    bool button = false;
-
-    string text;
-    string loadText(string filename){
-        cout << filename;
-        return string( ofBufferFromFile( filename ) );
-    }
+    float lineEmitPointDistance;
+    bool isStarted = false;
     
-    float dis = 200;
-    ofVec3f rightTop = ofVec3f(dis,dis,0);
-    ofVec3f leftTop = ofVec3f(- dis,dis,0);
-    ofVec3f rightBottom = ofVec3f(dis,- dis,0);
-    ofVec3f leftBottom = ofVec3f(-dis,- dis,0);
-    ofVec3f fromVec[4] = {rightTop,leftTop,rightBottom,leftBottom};
+    void initLineEmitPoints();
+    void initModelDrawer();
+    void drawEmitter();
 };
 #endif
