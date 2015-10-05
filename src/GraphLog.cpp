@@ -9,7 +9,7 @@
 #include "GraphLog.h"
 
 void GraphLog::setup(){
-    valHistory.assign(400, 0.0);
+    valHistory.assign(MAX_ASSIGN, 0.0);
     max_value = 0.0f;
     isGetValue= false;
 }
@@ -25,7 +25,7 @@ void GraphLog::update(float arg){
     valHistory.push_back(arg);
     
     //valHistoryの登録数に制限を設けてそれ以上になるとレコードを削除
-    if( valHistory.size() >= 400 ){
+    if( valHistory.size() >= MAX_ASSIGN ){
         valHistory.erase(valHistory.begin(), valHistory.begin()+1);
     }
 }
@@ -46,12 +46,12 @@ void GraphLog::draw(){
             if( i == 0 ){//左端の点
                 ofVertex(i*extend, ofGetHeight());
             }else if( i == valHistory.size()-1 ) {//右端の点
-                ofVertex(i*extend, ofGetHeight());
+                ofVertex(2*i*extend, ofGetHeight());
             }else{
                 if((i%300 && valHistory[i]>valHistory[i-1] && valHistory[i]>valHistory[i+1])|| (i%300 &&valHistory[i]==1 && valHistory[i+1]==1)){//valueが最大もしくは極大値である時数値をだす
-                    ofDrawBitmapString(ofToString(valHistory[i] * height_limit), i*extend,  ofGetHeight()- valHistory[i] * height_limit);
+                    ofDrawBitmapString(ofToString(valHistory[i] * height_limit), 2*i*extend,  ofGetHeight()- valHistory[i] * height_limit);
                 }
-                ofVertex(i*extend,  ofGetHeight()- valHistory[i] * height_limit);
+                ofVertex(2*i*extend,  ofGetHeight()- valHistory[i] * height_limit);
             }
             
             if(max_value <valHistory[i]*height_limit && isGetValue){//volの最大値が更新されたら、かつ、入力状態にある時

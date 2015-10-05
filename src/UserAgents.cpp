@@ -94,7 +94,7 @@ void UserAgents::addAgent(ofVec2f position){
     userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
 }
 
-void UserAgents::addConnection(int startIndex,int endIndex,float duration){
+void UserAgents::addConnection(int startIndex,int endIndex,float duration){//Connection追加の際はここを呼ぶ
     userAgentsSize = userAgentArray.size();
     if(startIndex >= userAgentsSize || endIndex >= userAgentsSize || startIndex == endIndex){
         return;
