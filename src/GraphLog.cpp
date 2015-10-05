@@ -10,7 +10,7 @@
 
 void GraphLog::setup(){
     valHistory.assign(400, 0.0);
-    max_value=0.0f;
+    max_value = 0.0f;
     isGetValue= false;
 }
 
@@ -37,8 +37,9 @@ void GraphLog::draw(){
     if(isGetValue){
         ofPushStyle();
         ofNoFill();
-        float extend = (float)ofGetWidth()/(valHistory.size()-1);//ここを大きくすればするほど間隔が大きくなる
+        float extend = (float)ofGetWidth()/(valHistory.size()-1);//ここを大きくすればするほど間隔が大きくなって早くなる
         
+        ofSetLineWidth(0.001);
         ofSetColor(0,200,0,100);//ログの線の色
         ofBeginShape();
         for (unsigned int i = 0; i < valHistory.size(); i++){
@@ -47,7 +48,7 @@ void GraphLog::draw(){
             }else if( i == valHistory.size()-1 ) {//右端の点
                 ofVertex(i*extend, ofGetHeight());
             }else{
-                if((i%120 && valHistory[i]>valHistory[i-1] && valHistory[i]>valHistory[i+1])|| (i%120 &&valHistory[i]==1 && valHistory[i+1]==1)){//valueが最大もしくは極大値である時数値をだす
+                if((i%300 && valHistory[i]>valHistory[i-1] && valHistory[i]>valHistory[i+1])|| (i%300 &&valHistory[i]==1 && valHistory[i+1]==1)){//valueが最大もしくは極大値である時数値をだす
                     ofDrawBitmapString(ofToString(valHistory[i] * height_limit), i*extend,  ofGetHeight()- valHistory[i] * height_limit);
                 }
                 ofVertex(i*extend,  ofGetHeight()- valHistory[i] * height_limit);

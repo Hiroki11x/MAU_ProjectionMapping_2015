@@ -6,7 +6,7 @@
  //
  //  UserAgentの集合を
  //  UserAgent Model UserAgentのモデル
- //MatrixGenerator 座標生成
+ //  MatrixGenerator 座標生成
  //  Connection UserAgent同士のつながりを描画する
  */
 
@@ -25,17 +25,26 @@ void UserAgents::init(){
     
     graphLog.setup();
     graphLog.set_height_limit(ofGetWidth()/2);
+    
+    mFbo.allocate(ofGetWidth(), ofGetHeight());
+    postglitch.init(&mFbo);
+    
 }
 
 void UserAgents::update(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->update();//回転アニメーションとか
     }
+
+//    superLogUtil.set_log("graphLog",ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
     //GraphLogの更新(この引数がgraphの値となる)
     graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
-}
-
-void UserAgents::draw(){
+    
+    mFbo.begin();
+    ofClear(0, 0, 0,255);
+    ofBackground(0);
+    ofSetColor(100);
+    
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
     back_animation.fade_cross_background(0, 0, 100);//十字の背景
@@ -47,6 +56,14 @@ void UserAgents::draw(){
         userAgentArray.at(i)->draw();
     }
     graphLog.draw();
+    
+    graphLog.draw();
+    mFbo.end();
+    postglitch.adapt_glitch_end();
+}
+
+void UserAgents::draw(){
+    postglitch.draw_glitch();
 }
 
 void UserAgents::onMouseDown(int x, int y){
@@ -57,10 +74,12 @@ void UserAgents::onMouseDown(int x, int y){
 
 void UserAgents::keyPressed(int key){
     graphLog.keyPressed(key);
+    postglitch.keyPressed(key);
+    
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
-    string tag = "Default";
     
+    string tag = "Default";
     if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
         tag = "SwipeMode::Up";
@@ -112,7 +131,6 @@ int UserAgents::getConnectionSize(){
 }
 
 void UserAgents::setup_user_agent(){//座標をセット
-    
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
     int size = matrix_generator.get_position_num();//生成した座標の数
     

@@ -24,6 +24,7 @@
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
 #include "GraphLog.h"
+#include "PostGlitch.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -36,13 +37,15 @@ public:
     
     UserAgents(){};
     
+    PostGlitch postglitch;
+    ofFbo mFbo;
+    
 private:
     FadeBackgroundUtil back_animation;
     StrechyRectSwiper strechyRectSwiper;
     AlphaSwiper alphaSwiper;
     ofxSuperLogUtil superLogUtil;
     GraphLog graphLog;
-    
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;
