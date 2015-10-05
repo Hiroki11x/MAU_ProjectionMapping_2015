@@ -21,13 +21,18 @@ void UserAgents::init(){
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
-    superLogUtil.init();
+    superLogUtil.init();//Logのセットアップ
+    
+    graphLog.setup();
+    graphLog.set_height_limit(ofGetWidth()/2);
 }
 
 void UserAgents::update(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->update();//回転アニメーションとか
     }
+    //GraphLogの更新(この引数がgraphの値となる)
+    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
 }
 
 void UserAgents::draw(){
@@ -41,6 +46,7 @@ void UserAgents::draw(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->draw();
     }
+    graphLog.draw();
 }
 
 void UserAgents::onMouseDown(int x, int y){
@@ -50,6 +56,7 @@ void UserAgents::onMouseDown(int x, int y){
 }
 
 void UserAgents::keyPressed(int key){
+    graphLog.keyPressed(key);
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
     string tag = "Default";
@@ -71,7 +78,7 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Left";
     }
     strechyRectSwiper.init();
-    superLogUtil.set_log(tag, ofGetElapsedTimef());
+    superLogUtil.set_log(tag, ofGetElapsedTimef());//Log出し
 }
 
 void UserAgents::end(){}
