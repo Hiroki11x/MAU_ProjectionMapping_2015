@@ -15,14 +15,14 @@ void testScene::setup(){
     
     ofDisableArbTex();
     
-//    manager = new SpyMeshSceneManager();
-//    manager->setup();
-//    mode = SceneMode::Introduction;
+    manager = new SpyMeshSceneManager();
+    manager->setup();
+    mode = SceneMode::Introduction;
     
-    manager = new UserAgentsSceneManager();
+   /* manager = new UserAgentsSceneManager();
     manager->setup();
     mode=SceneMode::UserAgent;
-    
+    */
 }
 
 //--------------------------------------------------------------

@@ -60,6 +60,28 @@
 		FA26BD531BC294C8007C3B47 /* JsonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4B49AA1BB5111D00537247 /* ofxJSONElement.cpp */; };
 		FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4B49A61BB5111D00537247 /* jsoncpp.cpp */; };
+		FA26BDA21BC2DD82007C3B47 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD991BC2DBF4007C3B47 /* ofxTween.cpp */; };
+		FA26BDA31BC2DDBD007C3B47 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD811BC2DBF4007C3B47 /* ofxEasing.cpp */; };
+		FA26BDA41BC2DDBD007C3B47 /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD831BC2DBF4007C3B47 /* ofxEasingBack.cpp */; };
+		FA26BDA51BC2DDBD007C3B47 /* ofxEasingBounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD851BC2DBF4007C3B47 /* ofxEasingBounce.cpp */; };
+		FA26BDA61BC2DDBD007C3B47 /* ofxEasingCirc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD871BC2DBF4007C3B47 /* ofxEasingCirc.cpp */; };
+		FA26BDA71BC2DDBD007C3B47 /* ofxEasingCubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD891BC2DBF4007C3B47 /* ofxEasingCubic.cpp */; };
+		FA26BDA81BC2DDBD007C3B47 /* ofxEasingElastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD8B1BC2DBF4007C3B47 /* ofxEasingElastic.cpp */; };
+		FA26BDA91BC2DDBD007C3B47 /* ofxEasingExpo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD8D1BC2DBF4007C3B47 /* ofxEasingExpo.cpp */; };
+		FA26BDAA1BC2DDBD007C3B47 /* ofxEasingLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD8F1BC2DBF4007C3B47 /* ofxEasingLinear.cpp */; };
+		FA26BDAB1BC2DDBD007C3B47 /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD911BC2DBF4007C3B47 /* ofxEasingQuad.cpp */; };
+		FA26BDAC1BC2DDBD007C3B47 /* ofxEasingQuart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD931BC2DBF4007C3B47 /* ofxEasingQuart.cpp */; };
+		FA26BDAD1BC2DDBD007C3B47 /* ofxEasingQuint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD951BC2DBF4007C3B47 /* ofxEasingQuint.cpp */; };
+		FA26BDAE1BC2DDBD007C3B47 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD971BC2DBF4007C3B47 /* ofxEasingSine.cpp */; };
+		FA26BDAF1BC2DDBD007C3B47 /* ofxPostGlitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC1B0C91BA51BB50057ED25 /* ofxPostGlitch.cpp */; };
+		FA26BDB21BC2DEA9007C3B47 /* SwipeMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDB01BC2DEA9007C3B47 /* SwipeMode.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDB51BC2DECA007C3B47 /* GraphLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDB31BC2DECA007C3B47 /* GraphLog.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDB81BC2DEE7007C3B47 /* StrechyRectSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDB61BC2DEE7007C3B47 /* StrechyRectSwiper.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDBB1BC2DEFF007C3B47 /* ofxTweenUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDB91BC2DEFF007C3B47 /* ofxTweenUtil.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDBE1BC2DF1E007C3B47 /* ofxSuperLogUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDBC1BC2DF1E007C3B47 /* ofxSuperLogUtil.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDBF1BC2DF42007C3B47 /* AlphaSwiper.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDC41BC2DF59007C3B47 /* FadeBackgroundUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDC21BC2DF59007C3B47 /* FadeBackgroundUtil.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA26BDC71BC2DF70007C3B47 /* SemiCirclePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDC51BC2DF70007C3B47 /* SemiCirclePath.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -385,6 +407,22 @@
 		FA26BD981BC2DBF4007C3B47 /* ofxEasingSine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasingSine.h; sourceTree = "<group>"; };
 		FA26BD991BC2DBF4007C3B47 /* ofxTween.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween.cpp; sourceTree = "<group>"; };
 		FA26BD9A1BC2DBF4007C3B47 /* ofxTween.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTween.h; sourceTree = "<group>"; };
+		FA26BDB01BC2DEA9007C3B47 /* SwipeMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwipeMode.cpp; sourceTree = "<group>"; };
+		FA26BDB11BC2DEA9007C3B47 /* SwipeMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeMode.h; sourceTree = "<group>"; };
+		FA26BDB31BC2DECA007C3B47 /* GraphLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphLog.cpp; sourceTree = "<group>"; };
+		FA26BDB41BC2DECA007C3B47 /* GraphLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphLog.h; sourceTree = "<group>"; };
+		FA26BDB61BC2DEE7007C3B47 /* StrechyRectSwiper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StrechyRectSwiper.cpp; sourceTree = "<group>"; };
+		FA26BDB71BC2DEE7007C3B47 /* StrechyRectSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrechyRectSwiper.h; sourceTree = "<group>"; };
+		FA26BDB91BC2DEFF007C3B47 /* ofxTweenUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweenUtil.cpp; sourceTree = "<group>"; };
+		FA26BDBA1BC2DEFF007C3B47 /* ofxTweenUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweenUtil.h; sourceTree = "<group>"; };
+		FA26BDBC1BC2DF1E007C3B47 /* ofxSuperLogUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSuperLogUtil.cpp; sourceTree = "<group>"; };
+		FA26BDBD1BC2DF1E007C3B47 /* ofxSuperLogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSuperLogUtil.h; sourceTree = "<group>"; };
+		FA26BDBF1BC2DF42007C3B47 /* AlphaSwiper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlphaSwiper.cpp; sourceTree = "<group>"; };
+		FA26BDC01BC2DF42007C3B47 /* AlphaSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSwiper.h; sourceTree = "<group>"; };
+		FA26BDC21BC2DF59007C3B47 /* FadeBackgroundUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FadeBackgroundUtil.cpp; sourceTree = "<group>"; };
+		FA26BDC31BC2DF59007C3B47 /* FadeBackgroundUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeBackgroundUtil.h; sourceTree = "<group>"; };
+		FA26BDC51BC2DF70007C3B47 /* SemiCirclePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SemiCirclePath.cpp; sourceTree = "<group>"; };
+		FA26BDC61BC2DF70007C3B47 /* SemiCirclePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemiCirclePath.h; sourceTree = "<group>"; };
 		FA4B49791BB5111D00537247 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		FA4B497A1BB5111D00537247 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA4B497B1BB5111D00537247 /* addon_config.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
@@ -1540,6 +1578,22 @@
 		FA5BFD2B1BBA7A310085652C /* AnimationUtils */ = {
 			isa = PBXGroup;
 			children = (
+				FA26BDC51BC2DF70007C3B47 /* SemiCirclePath.cpp */,
+				FA26BDC61BC2DF70007C3B47 /* SemiCirclePath.h */,
+				FA26BDC21BC2DF59007C3B47 /* FadeBackgroundUtil.cpp */,
+				FA26BDC31BC2DF59007C3B47 /* FadeBackgroundUtil.h */,
+				FA26BDBF1BC2DF42007C3B47 /* AlphaSwiper.cpp */,
+				FA26BDC01BC2DF42007C3B47 /* AlphaSwiper.h */,
+				FA26BDBC1BC2DF1E007C3B47 /* ofxSuperLogUtil.cpp */,
+				FA26BDBD1BC2DF1E007C3B47 /* ofxSuperLogUtil.h */,
+				FA26BDB91BC2DEFF007C3B47 /* ofxTweenUtil.cpp */,
+				FA26BDBA1BC2DEFF007C3B47 /* ofxTweenUtil.h */,
+				FA26BDB61BC2DEE7007C3B47 /* StrechyRectSwiper.cpp */,
+				FA26BDB71BC2DEE7007C3B47 /* StrechyRectSwiper.h */,
+				FA26BDB31BC2DECA007C3B47 /* GraphLog.cpp */,
+				FA26BDB41BC2DECA007C3B47 /* GraphLog.h */,
+				FA26BDB01BC2DEA9007C3B47 /* SwipeMode.cpp */,
+				FA26BDB11BC2DEA9007C3B47 /* SwipeMode.h */,
 				FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */,
 				FA5BFD2E1BBA7A4E0085652C /* DelaunayUtil.h */,
 				FA5BFD2F1BBA7A4E0085652C /* LinePoints.cpp */,
@@ -2093,8 +2147,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA26BDA31BC2DDBD007C3B47 /* ofxEasing.cpp in Sources */,
+				FA26BDA41BC2DDBD007C3B47 /* ofxEasingBack.cpp in Sources */,
+				FA26BDBB1BC2DEFF007C3B47 /* ofxTweenUtil.cpp in Sources */,
+				FA26BDA51BC2DDBD007C3B47 /* ofxEasingBounce.cpp in Sources */,
+				FA26BDA61BC2DDBD007C3B47 /* ofxEasingCirc.cpp in Sources */,
+				FA26BDA71BC2DDBD007C3B47 /* ofxEasingCubic.cpp in Sources */,
+				FA26BDA81BC2DDBD007C3B47 /* ofxEasingElastic.cpp in Sources */,
+				FA26BDA91BC2DDBD007C3B47 /* ofxEasingExpo.cpp in Sources */,
+				FA26BDAA1BC2DDBD007C3B47 /* ofxEasingLinear.cpp in Sources */,
+				FA26BDAB1BC2DDBD007C3B47 /* ofxEasingQuad.cpp in Sources */,
+				FA26BDAC1BC2DDBD007C3B47 /* ofxEasingQuart.cpp in Sources */,
+				FA26BDAD1BC2DDBD007C3B47 /* ofxEasingQuint.cpp in Sources */,
+				FA26BDAE1BC2DDBD007C3B47 /* ofxEasingSine.cpp in Sources */,
+				FA26BDAF1BC2DDBD007C3B47 /* ofxPostGlitch.cpp in Sources */,
+				FA26BDA21BC2DD82007C3B47 /* ofxTween.cpp in Sources */,
 				FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */,
 				FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */,
+				FA26BDC41BC2DF59007C3B47 /* FadeBackgroundUtil.cpp in Sources */,
 				FA5BFD481BBACFF90085652C /* texture3DS.cpp in Sources */,
 				FA5BFD471BBACFE70085652C /* model3DS.cpp in Sources */,
 				FA5BFD461BBACFD00085652C /* ofx3dModelLoader.cpp in Sources */,
@@ -2105,7 +2175,11 @@
 				4E1FD97D1AE8F25900E72B7B /* SyphonNameboundClient.h in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */,
 				FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */,
+				FA26BDB21BC2DEA9007C3B47 /* SwipeMode.cpp in Sources */,
+				FA26BDB81BC2DEE7007C3B47 /* StrechyRectSwiper.cpp in Sources */,
+				FA26BDB51BC2DECA007C3B47 /* GraphLog.cpp in Sources */,
 				FA967A341BBD405D0075D3AF /* ModelDrawer.cpp in Sources */,
 				4E1FD97F1AE8F2D800E72B7B /* SyphonNameboundClient.m in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
@@ -2150,7 +2224,9 @@
 				FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */,
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
 				4ED0D5D61BA4733200F47E25 /* UserAgent.cpp in Sources */,
+				FA26BDC71BC2DF70007C3B47 /* SemiCirclePath.cpp in Sources */,
 				1F558B76FB3412843DDAA031 /* ofxSyphonClient.mm in Sources */,
+				FA26BDBE1BC2DF1E007C3B47 /* ofxSuperLogUtil.cpp in Sources */,
 				8D60C222CBD3F869382832E9 /* ofxSyphonServer.mm in Sources */,
 				11DF9AB1B4EAA63E3B190CA0 /* ofxSyphonServerDirectory.mm in Sources */,
 				FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */,
