@@ -23,6 +23,7 @@
 #include "StrechyRectSwiper.h"
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
+#include "GraphLog.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -40,6 +41,7 @@ private:
     StrechyRectSwiper strechyRectSwiper;
     AlphaSwiper alphaSwiper;
     ofxSuperLogUtil superLogUtil;
+    GraphLog graphLog;
     
     MatrixGenerator matrix_generator;
     
