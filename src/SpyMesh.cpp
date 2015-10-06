@@ -26,7 +26,7 @@ void SpyMesh::update(){
     float * val = ofSoundGetSpectrum(1);
     modelSize = val[0] * 1;
 
-    camera.setPosition(329 , 131 , 132);
+    camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
     camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
 }
 
@@ -42,9 +42,6 @@ void SpyMesh::draw(){
     
     if(isStarted){
         ofSetLineWidth(0.3);
-        ofRotateX(ofGetElapsedTimef() * 10);
-        ofRotateY(ofGetElapsedTimef() * 10);
-        ofRotateZ(ofGetElapsedTimef() * 10);
         modelDrawer.drawModel(modelSize);
         modelDrawer.drawColoredMesh();
         ofLine(emitPoint, targetPoint);
@@ -135,6 +132,12 @@ void SpyMesh::keyPressed(int key){
             break;
         case 'p':
             modelDrawer.setPrimitiveMode(OF_PRIMITIVE_POINTS);
+            break;
+        case 'r':
+            modelDrawer.changeColoredModeIsRandom(true);
+            break;
+        case 'n':
+            modelDrawer.changeColoredModeIsRandom(false);
             break;
         default:
             break;

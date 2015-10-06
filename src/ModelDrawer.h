@@ -23,6 +23,7 @@ public:
     int coloredMeshSize;
     int indicesSize;
     int verticesSize;
+    bool coloredMeshIsRandom;
     bool isExpandingColoredMesh;
     
     vector<ofIndexType> indices;
@@ -34,6 +35,7 @@ public:
     
     ofVec3f addVertex(int i);
     void changeColoredPartMesh();
+    void changeColoredModeIsRandom(bool isRandom);
     void drawColoredMesh();
     void drawModel(float scale, bool fill = false);
     void drawPercentage();

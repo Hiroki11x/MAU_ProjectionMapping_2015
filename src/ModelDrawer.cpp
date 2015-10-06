@@ -24,16 +24,24 @@ ofVec3f ModelDrawer::addVertex(int i){
     }
 }
 
+void ModelDrawer::changeColoredModeIsRandom(bool isRandom){
+    coloredMeshIsRandom = isRandom;
+}
+
 void ModelDrawer::changeColoredPartMesh(){
     coloredPartMesh.clear();
     coloredMeshSize = 0;
     coloredIndex+=10;
     for(int i = 0; i < (float)addedIndicesSize / 300.0 * COLORED_MESH_PER_HANDRED_TRIANGLE; i++){
-        
-        if(i + coloredIndex >= addedIndicesSize/3.0){
-            coloredIndex = 0;
+        int index;
+        if(!coloredMeshIsRandom){
+            if(i + coloredIndex >= addedIndicesSize/3.0){
+                coloredIndex = 0;
+            }
+            index = i + coloredIndex;
+        }else{
+            index = ofRandom(0, addedIndicesSize/3);
         }
-        int index = i + coloredIndex;
         
         coloredMeshesVec[i * 3]     = vertices[int(indices[index * 3])];
         coloredMeshesVec[i * 3 + 1] = vertices[int(indices[index * 3 + 1])];
