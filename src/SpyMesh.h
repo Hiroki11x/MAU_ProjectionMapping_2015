@@ -15,9 +15,9 @@
 #include "ofxAssimpModelLoaderExtend.h"
 #include "ofVboMesh.h"
 #include "ModelDrawer.h"
-#include "UserAgent.h"
+#include "DrawerSphere.h"
 
-#define ADD_TRIANGLE_PER_UPDATE 1
+#define ADD_TRIANGLE_PER_UPDATE 10
 
 class SpyMesh : public SceneElement {
 public:
@@ -35,6 +35,7 @@ public:
     ofVec3f emitPoint;
     ofVec3f lineEmitPoints[4];
     ModelDrawer modelDrawer;
+    DrawerSphere sphere;
     
     int mouseX,mouseY;
     int spentFrames;

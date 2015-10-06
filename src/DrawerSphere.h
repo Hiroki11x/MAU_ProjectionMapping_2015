@@ -10,9 +10,19 @@
 #define DrawerSphere_h
 
 #include "ofMain.h"
+#include "ofxAssimpModelLoader.h"
 
 class DrawerSphere {
 public:
+    ofxAssimpModelLoader model;
+
     
+    void drawSphere(ofVec3f position, float scale);
+    
+    DrawerSphere(float scale);
+    DrawerSphere(){};
+  
+private:
+    void drawSphere(ofVec3f position);
 };
 #endif

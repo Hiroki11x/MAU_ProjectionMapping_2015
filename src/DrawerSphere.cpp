@@ -7,3 +7,19 @@
 //
 
 #include "DrawerSphere.h"
+
+DrawerSphere::DrawerSphere(float scale){
+    model.loadModel("sphere.stl");
+    model.setScale(scale, scale, scale);
+}
+
+void DrawerSphere::drawSphere(ofVec3f position){
+    model.setPosition(position.x,position.y,position.z);
+    model.draw(ofPolyRenderMode::OF_MESH_FILL);
+}
+
+void DrawerSphere::drawSphere(ofVec3f position, float scale){
+
+    model.setScale(scale, scale, scale);
+    drawSphere(position);
+}
