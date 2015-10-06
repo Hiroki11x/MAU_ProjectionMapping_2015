@@ -11,14 +11,12 @@ void SpyMesh::update(){
     
     if(isStarted){
         for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = modelDrawer.addVertices(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
+            targetPoint = modelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
         }
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
-        if(spentFrames % 40 == 0){
-            modelDrawer.changeColoredPartMesh();
-        }
+        modelDrawer.changeColoredPartMesh();
         modelDrawer.updateColoredMesh(1.0 + modelSize);
         spentFrames+=1;
     }else{
@@ -50,7 +48,6 @@ void SpyMesh::draw(){
         modelDrawer.drawModel(modelSize);
         modelDrawer.drawColoredMesh();
         ofLine(emitPoint, targetPoint);
-        //ofDrawSphere(emitPoint, (60.0 - float(spentFrames % 60)) * 0.8 + 10);
         sphere.drawSphere(emitPoint, (60.0 - float(spentFrames % 60)) / 60.0 * 0.1 + 0.05);
         ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,emitPoint);
     }
@@ -71,18 +68,18 @@ void SpyMesh::draw(){
 void SpyMesh::drawEmitter(){
 
     ofPushStyle();
+
     ofSetColor(50, 255, 50,150);
+    
     for(int i = 0; i < 8; i++){
         ofPushMatrix();
         ofRotateX(ofGetElapsedTimef() * (i + 1) * 20);
         ofRotateY(ofGetElapsedTimef() * (i + 1) * 20);
         ofRotateZ(ofGetElapsedTimef() * (i + 1) * 20);
         if(wainingFrames < 120){
-            //ofDrawSphere(lineEmitPoints[i % 4] * float(100 - wainingFrames), (60.0 - float(wainingFrames % 60)) * 0.5);
             sphere.drawSphere(lineEmitPoints[i % 4] * float(100 - wainingFrames), 0.15);
         }else{
-            //ofDrawSphere(lineEmitPoints[i % 4], (60.0 - float(spentFrames % 60)) * 0.5);
-            sphere.drawSphere(lineEmitPoints[i % 4], 0.15);
+            sphere.drawSphere(lineEmitPoints[i % 4], 0.1 + 0.5 * modelSize);
         }
         ofPopMatrix();
     }
@@ -119,7 +116,7 @@ void SpyMesh::initModelDrawer(){
     modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
     model.loadModel("MrT3ds/mrt.3ds");
     for(int i = model.getMeshCount() - 1; i > 4; i--){
-        modelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.5);
+        modelDrawer.setVertices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 1.1);
     }
     sphere = *new DrawerSphere(0.15);
 }

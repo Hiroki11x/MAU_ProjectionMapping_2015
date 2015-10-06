@@ -26,8 +26,8 @@ public:
     virtual void onMouseDown(int x,int y) override;
 
     int spentFrames;
-    float lineEmitPointDistance;
     bool isStarted;
+    float lineEmitPointDistance;
     
     TrailRenderer trails;
     ModelDrawer garallyModelDrawer;

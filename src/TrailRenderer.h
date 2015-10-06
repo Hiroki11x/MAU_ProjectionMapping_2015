@@ -21,14 +21,15 @@ public:
     };
     
     int trailNum;
+    float degree;
+    float endPosition;
+    float position;
     float radius;
     float size;
-    float degree;
-    float position;
-    float endPosition;
-    bool rotateMode;
-    bool convergenceMode;
     bool acceralateMode;
+    bool convergenceMode;
+    bool rotateMode;
+    
     ofVec3f startPoint;
     ofVec3f targetPoint;
     TrailShape trailShape;

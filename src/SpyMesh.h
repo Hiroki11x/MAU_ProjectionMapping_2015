@@ -17,13 +17,14 @@
 #include "ModelDrawer.h"
 #include "DrawerSphere.h"
 
-#define ADD_TRIANGLE_PER_UPDATE 10
+#define ADD_TRIANGLE_PER_UPDATE 2
 
 class SpyMesh : public SceneElement {
 public:
-    virtual void update() override;
+    
     virtual void draw() override;
     virtual void init() override;
+    virtual void update() override;
     virtual void onMouseDown(int x,int y) override;
     
     ofxAssimpModelLoaderExtend model;

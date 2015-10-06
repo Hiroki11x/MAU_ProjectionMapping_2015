@@ -11,7 +11,7 @@
 void SpyMeshIntro::update(){
     if(isStarted){
         for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = garallyModelDrawer.addVertices(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
+            targetPoint = garallyModelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
         }
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
@@ -23,14 +23,9 @@ void SpyMeshIntro::update(){
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        70);
-    JsonReceiver::recieve();
 }
 
 void SpyMeshIntro::draw(){
-
-    for(int i = 0; i < JsonReceiver::usersInfo.size(); i++){
-        JsonReceiver::usersInfo.at(i).icon.draw( 100 * i, 0, 100, 100);
-    }
     
     camera.begin();
     
@@ -81,14 +76,13 @@ void SpyMeshIntro::initLineEmitPoints(){
     lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[2] = ofVec3f(lineEmitPointDistance,- lineEmitPointDistance,0);
     lineEmitPoints[3] = ofVec3f(-lineEmitPointDistance,- lineEmitPointDistance,0);
-
 }
 
 void SpyMeshIntro::initModelDrawer(){
 
     model.loadModel("garally.stl");
     for(int i = 0; i < model.getMeshCount(); i++){
-        garallyModelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
+        garallyModelDrawer.setVertices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
     }
 }
 
