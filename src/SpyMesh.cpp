@@ -127,4 +127,18 @@ void SpyMesh::onMouseDown(int x, int y){
     isStarted = true;
 }
 
-void SpyMesh::keyPressed(int key){}
+void SpyMesh::keyPressed(int key){
+    switch (key) {
+        case 't':
+            modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
+            break;
+        case 'l':
+            modelDrawer.setPrimitiveMode(OF_PRIMITIVE_LINE_LOOP);
+            break;
+        case 'p':
+            modelDrawer.setPrimitiveMode(OF_PRIMITIVE_POINTS);
+            break;
+        default:
+            break;
+    }
+}

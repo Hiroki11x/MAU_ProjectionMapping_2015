@@ -9,47 +9,18 @@
 
 ofVec3f ModelDrawer::addVertex(int i){
     if(i < MAX_INDICES/3 - 1 && i < indicesSize/3 - 1){
-        switch(primitiveMode){
-            case OF_PRIMITIVE_TRIANGLES:
-                mesh.addVertex(vertices[int(indices[i * 3])]);
-                mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
-                mesh.addVertex(vertices[int(indices[i * 3 + 2])]);
-                
-                mesh.addIndex(i * 3);
-                mesh.addIndex(i * 3 + 1);
-                mesh.addIndex(i * 3 + 2);
-                
-                addedIndicesSize+=3;
-                
-                return vertices[int(indices[i * 3])];
-                
-            case OF_PRIMITIVE_LINE_LOOP:
-                mesh.addVertex(vertices[i * 3]);
-                mesh.addVertex(vertices[i * 3 + 1]);
-                mesh.addVertex(vertices[i + 3 + 2]);
-                
-                mesh.addIndex(i * 3);
-                mesh.addIndex(i * 3 + 1);
-                mesh.addIndex(i * 3 + 2);
-                
-                addedIndicesSize+=3;
-                return vertices[i * 3];
-                
-            case OF_PRIMITIVE_POINTS:
-                mesh.addVertex(vertices[indices[i * 3]]);
-                mesh.addVertex(vertices[indices[i * 3 + 1]]);
-                mesh.addVertex(vertices[indices[i * 3 + 2]]);
-                
-                mesh.addIndex(i * 3);
-                mesh.addIndex(i * 3 + 1);
-                mesh.addIndex(i * 3 + 2);
-                
-                addedIndicesSize += 3;
-                return vertices[i*3];
-                
-            default:
-                return vertices[0];
-        }
+ 
+        mesh.addVertex(vertices[int(indices[i * 3])]);
+        mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
+        mesh.addVertex(vertices[int(indices[i * 3 + 2])]);
+        
+        mesh.addIndex(i * 3);
+        mesh.addIndex(i * 3 + 1);
+        mesh.addIndex(i * 3 + 2);
+        
+        addedIndicesSize+=3;
+        
+        return vertices[int(indices[i * 3])];
     }
 }
 
