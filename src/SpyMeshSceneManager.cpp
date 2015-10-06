@@ -12,7 +12,3 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new SpyMesh());
     elements.at(0)->init();
 }
-
-void SpyMeshSceneManager::onMouseDown(int x,int y){
-    elements.at(elementIndex)->onMouseDown(x, y);
-}

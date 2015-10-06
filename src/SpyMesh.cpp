@@ -89,7 +89,7 @@ void SpyMesh::drawEmitter(){
 void SpyMesh::init(){
     
     ofBackground(0);
-    soundPlayer.loadSound("mau_music_sample01.aif");
+    soundPlayer.loadSound("mau_music_sample02.aif");
     soundPlayer.setLoop(true);
     soundPlayer.play();
     ofDisableArbTex();
@@ -126,3 +126,5 @@ void SpyMesh::onMouseDown(int x, int y){
     mouseY = y;
     isStarted = true;
 }
+
+void SpyMesh::keyPressed(int key){}

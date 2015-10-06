@@ -24,6 +24,7 @@ public:
     virtual void update() override;
     virtual void init() override;
     virtual void onMouseDown(int x,int y) override;
+    virtual void keyPressed(int key) override;
 
     int spentFrames;
     bool isStarted;

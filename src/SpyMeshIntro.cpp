@@ -89,3 +89,5 @@ void SpyMeshIntro::initModelDrawer(){
 void SpyMeshIntro::onMouseDown(int x, int y){
     isStarted = true;
 }
+
+void SpyMeshIntro::keyPressed(int key){}

@@ -18,6 +18,5 @@
 class SpyMeshSceneManager:public SceneManager {
 public:
     virtual void setup() override;
-    virtual void onMouseDown(int x,int y) override;
 };
 #endif
