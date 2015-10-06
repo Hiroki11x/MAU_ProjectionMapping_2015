@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    ofSetFrameRate(60);
+    /*ofSetFrameRate(60);
     ofBackground(0);
     
     mainOutputSyphonServer.setName("Screen Outputh");//SyphonServer使う上でのセットアップ
@@ -11,7 +11,7 @@ void ofApp::setup(){
     mClient.setApplicationName("Simple Serverh");
     mClient.setServerName("");
 
-    ofSetLoggerChannel(ofxSuperLog::getLogger(false, true, ""));
+    ofSetLoggerChannel(ofxSuperLog::getLogger(false, true, ""));*/
 }
 
 //--------------------------------------------------------------
@@ -23,9 +23,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    //Drawを最後に書くとそれまでに書いたものをSyphonで送信する
+  /*  //Drawを最後に書くとそれまでに書いたものをSyphonで送信する
     mClient.draw(50, 50);
-    mainOutputSyphonServer.publishScreen();
+    mainOutputSyphonServer.publishScreen();*/
 }
 
 //--------------------------------------------------------------

@@ -35,9 +35,9 @@ public:
     
 
     //Syphonで飛ばすため
-    ofxSyphonServer mainOutputSyphonServer;
+    /*ofxSyphonServer mainOutputSyphonServer;
     ofxSyphonServer individualTextureSyphonServer;
-    ofxSyphonClient mClient;
+    ofxSyphonClient mClient;*/
     
     //Loading load = *new Loading(2.0,"Loading Tweets...");
     //Mode mode;
