@@ -125,6 +125,7 @@ public:
         addedIndicesSize = 0;
         mesh.clear();
         mesh.enableIndices();
+        coloredPartMesh.enableColors();
         primitiveMode = OF_PRIMITIVE_TRIANGLES;
         indices = *new vector<ofIndexType>(MAX_INDICES);
     };

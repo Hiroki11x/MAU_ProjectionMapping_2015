@@ -93,6 +93,7 @@ void SpyMesh::init(){
     
     ofBackground(0);
     soundPlayer.loadSound("mau_music_sample01.aif");
+    soundPlayer.setLoop(true);
     soundPlayer.play();
     ofDisableArbTex();
     isStarted = false;

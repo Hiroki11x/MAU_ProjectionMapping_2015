@@ -48,9 +48,10 @@ void ModelDrawer::drawColoredMesh(){
 
 void ModelDrawer::updateColoredMesh(float size){
     for(int i = 0; i < coloredMeshSize; i++){
-        coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i] * size);
+       /* coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i] * size);
         coloredPartMesh.setVertex(3 * i + 1, coloredMeshesVec[3 * i + 1] * size);
-        coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size);
+        coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size);*/
+        coloredPartMesh.addColor(ofColor(50,255,50,ofRandom(255)));
     }
 }
                                     

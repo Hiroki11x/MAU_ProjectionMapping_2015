@@ -17,7 +17,7 @@
 #include "ModelDrawer.h"
 #include "DrawerSphere.h"
 
-#define ADD_TRIANGLE_PER_UPDATE 1
+#define ADD_TRIANGLE_PER_UPDATE 10
 
 class SpyMesh : public SceneElement {
 public:
