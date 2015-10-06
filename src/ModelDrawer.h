@@ -16,6 +16,11 @@
 
 class ModelDrawer {
 public:
+    enum ColoredMeshMode{
+        LINE,
+        RANDOM,
+        AFFECTED_GLAVITY_GLASS,
+    };
     
     int addedIndicesSize;
     int coloredIndices[MAX_INDICES / 3 / COLORED_MESH_PER_HANDRED_TRIANGLE];
@@ -23,10 +28,11 @@ public:
     int coloredMeshSize;
     int indicesSize;
     int verticesSize;
-    bool coloredMeshIsRandom;
+    int grassFrames;
     bool isExpandingColoredMesh;
     
     vector<ofIndexType> indices;
+    ColoredMeshMode coloredMeshMode;
     ofPrimitiveMode primitiveMode;
     ofVboMesh mesh;
     ofVboMesh coloredPartMesh;
@@ -35,7 +41,7 @@ public:
     
     ofVec3f addVertex(int i);
     void changeColoredPartMesh();
-    void changeColoredModeIsRandom(bool isRandom);
+    void changeColoredMode(ColoredMeshMode mode);
     void drawColoredMesh();
     void drawModel(float scale, bool fill = false);
     void drawPercentage();

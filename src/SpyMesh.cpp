@@ -133,11 +133,14 @@ void SpyMesh::keyPressed(int key){
         case 'p':
             modelDrawer.setPrimitiveMode(OF_PRIMITIVE_POINTS);
             break;
-        case 'r':
-            modelDrawer.changeColoredModeIsRandom(true);
-            break;
         case 'n':
-            modelDrawer.changeColoredModeIsRandom(false);
+            modelDrawer.changeColoredMode(ModelDrawer::ColoredMeshMode::LINE);
+            break;
+        case 'r':
+            modelDrawer.changeColoredMode(ModelDrawer::ColoredMeshMode::RANDOM);
+            break;
+        case 'g':
+            modelDrawer.changeColoredMode(ModelDrawer::ColoredMeshMode::AFFECTED_GLAVITY_GLASS);
             break;
         default:
             break;

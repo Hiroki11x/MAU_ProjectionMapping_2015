@@ -24,23 +24,33 @@ ofVec3f ModelDrawer::addVertex(int i){
     }
 }
 
-void ModelDrawer::changeColoredModeIsRandom(bool isRandom){
-    coloredMeshIsRandom = isRandom;
+void ModelDrawer::changeColoredMode(ColoredMeshMode mode){
+    if(mode == AFFECTED_GLAVITY_GLASS) grassFrames = 0;
+    coloredMeshMode = mode;
 }
 
 void ModelDrawer::changeColoredPartMesh(){
-    coloredPartMesh.clear();
+    if(coloredMeshMode != AFFECTED_GLAVITY_GLASS) coloredPartMesh.clear();
     coloredMeshSize = 0;
     coloredIndex+=10;
     for(int i = 0; i < (float)addedIndicesSize / 300.0 * COLORED_MESH_PER_HANDRED_TRIANGLE; i++){
         int index;
-        if(!coloredMeshIsRandom){
-            if(i + coloredIndex >= addedIndicesSize/3.0){
-                coloredIndex = 0;
-            }
-            index = i + coloredIndex;
-        }else{
-            index = ofRandom(0, addedIndicesSize/3);
+        
+        switch (coloredMeshMode) {
+            case LINE:
+                if(i + coloredIndex >= addedIndicesSize/3.0){
+                    coloredIndex = 0;
+                }
+                index = i + coloredIndex;
+                break;
+                
+            case RANDOM:
+            case AFFECTED_GLAVITY_GLASS:
+                index = ofRandom(0, addedIndicesSize/3);
+                break;
+                
+            default:
+                return;
         }
         
         coloredMeshesVec[i * 3]     = vertices[int(indices[index * 3])];
@@ -56,6 +66,14 @@ void ModelDrawer::changeColoredPartMesh(){
 }
 
 void ModelDrawer::drawColoredMesh(){
+    
+    if(coloredMeshMode == AFFECTED_GLAVITY_GLASS){
+        ofPushMatrix();
+        ofTranslate(ofPoint(0, -grassFrames * 6.0, 0));
+        coloredPartMesh.draw(ofPolyRenderMode::OF_MESH_FILL);
+        ofPopMatrix();
+        return;
+    }
     coloredPartMesh.draw(ofPolyRenderMode::OF_MESH_FILL);
 }
 
@@ -101,11 +119,31 @@ void ModelDrawer::setVertices(vector<ofVec3f> newVec, vector<ofIndexType> newInd
 }
 
 void ModelDrawer::updateColoredMesh(float size){
-    for(int i = 0; i < coloredMeshSize; i++){
-        coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i] * size);
-        coloredPartMesh.setVertex(3 * i + 1, coloredMeshesVec[3 * i + 1] * size);
-        coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size);
-        coloredPartMesh.addColor(ofColor(50,255,50,ofRandom(255)));
+
+    switch (coloredMeshMode) {
+        case LINE:
+        case RANDOM:
+            for(int i = 0; i < coloredMeshSize; i++){
+                coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i] * size);
+                coloredPartMesh.setVertex(3 * i + 1, coloredMeshesVec[3 * i + 1] * size);
+                coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size);
+                coloredPartMesh.addColor(ofColor(ofRandom(255),255,ofRandom(255),ofRandom(255)));
+            }
+            break;
+            
+        case AFFECTED_GLAVITY_GLASS:
+            grassFrames++;
+            if(grassFrames > 40) changeColoredMode(LINE);
+            if(grassFrames > 20){
+                return;
+            }
+            for(int i = 0; i < coloredMeshSize; i++){
+                coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i]     * size * grassFrames / 3.0);
+                coloredPartMesh.setVertex(3 * i + 1, coloredMeshesVec[3 * i + 1] * size * grassFrames / 3.0);
+                coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size * grassFrames / 3.0);
+            }
+        default:
+            break;
     }
 }
 
