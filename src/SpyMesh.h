@@ -35,7 +35,7 @@ public:
     ofEasyCam camera;
     ofVec3f targetPoint;
     ofVec3f emitPoint;
-    ofVec3f lineEmitPoints[4];
+    ofVec3f lineEmitPoints[6];
     ModelDrawer modelDrawer;
     DrawerSphere sphere;
     

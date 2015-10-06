@@ -14,7 +14,7 @@ void SpyMesh::update(){
             targetPoint = modelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
         }
         if(spentFrames % 60 == 0){
-            emitPoint = lineEmitPoints[int(ofRandom(0,4))];
+            emitPoint = lineEmitPoints[int(ofRandom(0,6))];
         }
         modelDrawer.changeColoredPartMesh();
         modelDrawer.updateColoredMesh(1.0 + modelSize);
@@ -68,15 +68,15 @@ void SpyMesh::drawEmitter(){
 
     ofSetColor(50, 255, 50,150);
     
-    for(int i = 0; i < 8; i++){
+    for(int i = 0; i < 6; i++){
         ofPushMatrix();
-        ofRotateX(ofGetElapsedTimef() * (i + 1) * 20);
-        ofRotateY(ofGetElapsedTimef() * (i + 1) * 20);
-        ofRotateZ(ofGetElapsedTimef() * (i + 1) * 20);
+        ofRotateX(ofGetElapsedTimef() * (i + 1) * 2);
+        ofRotateY(ofGetElapsedTimef() * (i + 1) * 2);
+        ofRotateZ(ofGetElapsedTimef() * (i + 1) * 2);
         if(wainingFrames < 120){
-            sphere.drawSphere(lineEmitPoints[i % 4] * float(100 - wainingFrames), 0.15);
+            sphere.drawSphere(lineEmitPoints[i] * float(100 - wainingFrames), 0.15);
         }else{
-            sphere.drawSphere(lineEmitPoints[i % 4], 0.1 + 0.5 * modelSize);
+            sphere.drawSphere(lineEmitPoints[i], 0.1 + 0.5 * modelSize);
         }
         ofPopMatrix();
     }
@@ -98,11 +98,13 @@ void SpyMesh::init(){
 
 void SpyMesh::initLineEmitPoints(){
     
-    lineEmitPointDistance = 300;
+    lineEmitPointDistance = 600;
     lineEmitPoints[0] = ofVec3f(lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[2] = ofVec3f(lineEmitPointDistance,- lineEmitPointDistance,0);
     lineEmitPoints[3] = ofVec3f(-lineEmitPointDistance,- lineEmitPointDistance,0);
+    lineEmitPoints[4] = ofVec3f(0,0,lineEmitPointDistance);
+    lineEmitPoints[5] = ofVec3f(0,0,-lineEmitPointDistance);
 }
 
 void SpyMesh::initModelDrawer(){
