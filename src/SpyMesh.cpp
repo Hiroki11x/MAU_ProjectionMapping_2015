@@ -92,7 +92,7 @@ void SpyMesh::drawEmitter(){
 void SpyMesh::init(){
     
     ofBackground(0);
-    soundPlayer.loadSound("star.mp3");
+    soundPlayer.loadSound("mau_music_sample01.aif");
     soundPlayer.play();
     ofDisableArbTex();
     isStarted = false;
