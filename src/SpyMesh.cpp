@@ -89,14 +89,12 @@ void SpyMesh::drawEmitter(){
 void SpyMesh::init(){
     
     ofBackground(0);
-    soundPlayer.loadSound("mau_music_sample02.aif");
-    soundPlayer.setLoop(true);
-    soundPlayer.play();
     ofDisableArbTex();
     isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
-    
+    SoundManager::init();
+    SoundManager::play();
     initModelDrawer();
     initLineEmitPoints();
 }

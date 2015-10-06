@@ -106,6 +106,7 @@
 		FAA0CC251BBA304700A0D408 /* BuildPC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC231BBA304700A0D408 /* BuildPC.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC2B1BBA4ADE00A0D408 /* textExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC291BBA4ADE00A0D408 /* textExplosion.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC2E1BBA4FFF00A0D408 /* Fadeout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC2C1BBA4FFF00A0D408 /* Fadeout.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAA969901BC3F8C0004CD1A3 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95061BA58E9200C71B41 /* Connection.cpp */; };
 		FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */; };
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -577,6 +578,8 @@
 		FAA0CC2A1BBA4ADE00A0D408 /* textExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textExplosion.h; sourceTree = "<group>"; };
 		FAA0CC2C1BBA4FFF00A0D408 /* Fadeout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fadeout.cpp; sourceTree = "<group>"; };
 		FAA0CC2D1BBA4FFF00A0D408 /* Fadeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fadeout.h; sourceTree = "<group>"; };
+		FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
+		FAA9698F1BC3F8C0004CD1A3 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		FAAE95061BA58E9200C71B41 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connection.cpp; sourceTree = "<group>"; };
 		FAAE95071BA58E9200C71B41 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentManager.cpp; sourceTree = "<group>"; };
@@ -1883,6 +1886,8 @@
 				FACD666D1BC23B8500756856 /* DrawerSphere.h */,
 				FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */,
 				FA26BD521BC294C8007C3B47 /* JsonReceiver.h */,
+				FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */,
+				FAA9698F1BC3F8C0004CD1A3 /* SoundManager.h */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -2306,6 +2311,7 @@
 				FA26BDA21BC2DD82007C3B47 /* ofxTween.cpp in Sources */,
 				FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */,
 				FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */,
+				FAA969901BC3F8C0004CD1A3 /* SoundManager.cpp in Sources */,
 				FA26BDC41BC2DF59007C3B47 /* FadeBackgroundUtil.cpp in Sources */,
 				FA5BFD481BBACFF90085652C /* texture3DS.cpp in Sources */,
 				FA5BFD471BBACFE70085652C /* model3DS.cpp in Sources */,

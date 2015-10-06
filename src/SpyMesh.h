@@ -16,6 +16,7 @@
 #include "ofVboMesh.h"
 #include "ModelDrawer.h"
 #include "DrawerSphere.h"
+#include "SoundManager.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 2
 
@@ -31,7 +32,6 @@ public:
     ofxAssimpModelLoaderExtend model;
     ofMesh mesh;
     ofLight	light;
-    ofSoundPlayer soundPlayer;
     ofEasyCam camera;
     ofVec3f targetPoint;
     ofVec3f emitPoint;

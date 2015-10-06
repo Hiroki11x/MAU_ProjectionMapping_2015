@@ -5,12 +5,12 @@
 //  Created by 櫻木善将 on 2015/09/29.
 //
 //
-
 #ifndef SceneManager_h
 #define SceneManager_h
 
 #include "ofMain.h"
 #include "SceneElement.h"
+#include "SoundManager.h"
 
 class SceneManager{
 public:
@@ -34,6 +34,7 @@ public:
     };
     
     bool nextElement(){
+        SoundManager::stop();
         elements[elementIndex]->end();
         elementIndex++;
         if(elementIndex >= elements.size()){
