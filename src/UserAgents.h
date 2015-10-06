@@ -42,7 +42,6 @@ private:
     AlphaSwiper alphaSwiper;
     ofxSuperLogUtil superLogUtil;
     GraphLog graphLog;
-    
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;

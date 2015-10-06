@@ -6,7 +6,7 @@
  //
  //  UserAgentの集合を
  //  UserAgent Model UserAgentのモデル
- //MatrixGenerator 座標生成
+ //  MatrixGenerator 座標生成
  //  Connection UserAgent同士のつながりを描画する
  */
 
@@ -24,13 +24,15 @@ void UserAgents::init(){
     superLogUtil.init();//Logのセットアップ
     
     graphLog.setup();
-    graphLog.set_height_limit(ofGetWidth()/2);
+    graphLog.set_height_limit(ofGetWidth()/4);
 }
 
 void UserAgents::update(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->update();//回転アニメーションとか
     }
+
+//    superLogUtil.set_log("graphLog",ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
     //GraphLogの更新(この引数がgraphの値となる)
     graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
 }
@@ -57,10 +59,11 @@ void UserAgents::onMouseDown(int x, int y){
 
 void UserAgents::keyPressed(int key){
     graphLog.keyPressed(key);
+    
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
-    string tag = "Default";
     
+    string tag = "Default";
     if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
         tag = "SwipeMode::Up";
@@ -91,7 +94,7 @@ void UserAgents::addAgent(ofVec2f position){
     userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
 }
 
-void UserAgents::addConnection(int startIndex,int endIndex,float duration){
+void UserAgents::addConnection(int startIndex,int endIndex,float duration){//Connection追加の際はここを呼ぶ
     userAgentsSize = userAgentArray.size();
     if(startIndex >= userAgentsSize || endIndex >= userAgentsSize || startIndex == endIndex){
         return;
@@ -112,7 +115,6 @@ int UserAgents::getConnectionSize(){
 }
 
 void UserAgents::setup_user_agent(){//座標をセット
-    
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
     int size = matrix_generator.get_position_num();//生成した座標の数
     

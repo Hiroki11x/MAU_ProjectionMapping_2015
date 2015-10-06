@@ -10,6 +10,7 @@
 #define __mauInteractive__GraphLog__
 
 #include "ofMain.h"
+#define MAX_ASSIGN 200
 
 class GraphLog{
     
