@@ -79,6 +79,7 @@
 		FA587D2C1BC4E15C003FCCCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587D251BC4E15C003FCCCA /* README.md */; settings = {ASSET_TAGS = (); }; };
 		FA587D2D1BC4E15C003FCCCA /* ofxRollingCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D271BC4E15C003FCCCA /* ofxRollingCam.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA587D341BC4EA57003FCCCA /* RandomTriangleDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D321BC4EA57003FCCCA /* RandomTriangleDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA587D371BC524F1003FCCCA /* AgentAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D351BC524F1003FCCCA /* AgentAnalysis.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -490,6 +491,8 @@
 		FA587D281BC4E15C003FCCCA /* ofxRollingCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRollingCam.h; sourceTree = "<group>"; };
 		FA587D321BC4EA57003FCCCA /* RandomTriangleDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomTriangleDrawer.cpp; sourceTree = "<group>"; };
 		FA587D331BC4EA57003FCCCA /* RandomTriangleDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomTriangleDrawer.h; sourceTree = "<group>"; };
+		FA587D351BC524F1003FCCCA /* AgentAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentAnalysis.cpp; sourceTree = "<group>"; };
+		FA587D361BC524F1003FCCCA /* AgentAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentAnalysis.h; sourceTree = "<group>"; };
 		FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshSceneManager.cpp; sourceTree = "<group>"; };
 		FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshSceneManager.h; sourceTree = "<group>"; };
 		FA5BFD211BBA69410085652C /* SpyMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMesh.cpp; sourceTree = "<group>"; };
@@ -1589,6 +1592,8 @@
 				FACD666D1BC23B8500756856 /* DrawerSphere.h */,
 				FA587D321BC4EA57003FCCCA /* RandomTriangleDrawer.cpp */,
 				FA587D331BC4EA57003FCCCA /* RandomTriangleDrawer.h */,
+				FA587D351BC524F1003FCCCA /* AgentAnalysis.cpp */,
+				FA587D361BC524F1003FCCCA /* AgentAnalysis.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -2446,6 +2451,7 @@
 				FA92A3A31BC3A6AB00F1F797 /* ofxSyphonClient.mm in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */,
+				FA587D371BC524F1003FCCCA /* AgentAnalysis.cpp in Sources */,
 				FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */,
 				FA26BDB21BC2DEA9007C3B47 /* SwipeMode.cpp in Sources */,
 				FA26BDB81BC2DEE7007C3B47 /* StrechyRectSwiper.cpp in Sources */,

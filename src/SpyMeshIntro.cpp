@@ -11,7 +11,7 @@
 void SpyMeshIntro::update(){
     if(isStarted){
         for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = garallyModelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
+            targetPoint = garallyModelDrawer.addVertex();
         }
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];

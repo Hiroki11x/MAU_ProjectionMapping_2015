@@ -29,6 +29,8 @@ void testScene::setup(){
     manager->setup();
     mode=SceneMode::UserAgent;
     */
+    JsonReceiver::init();
+    AgentAnalysis::init(0.5);
 }
 
 //--------------------------------------------------------------

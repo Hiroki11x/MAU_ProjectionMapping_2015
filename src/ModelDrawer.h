@@ -39,7 +39,7 @@ public:
     ofVec3f vertices[MAX_VERTICES];
     ofVec3f coloredMeshesVec[MAX_INDICES / COLORED_MESH_PER_HANDRED_TRIANGLE];
     
-    ofVec3f addVertex(int i);
+    ofVec3f addVertex();
     void changeColoredPartMesh();
     void changeColoredMode(ColoredMeshMode mode);
     void drawColoredMesh();

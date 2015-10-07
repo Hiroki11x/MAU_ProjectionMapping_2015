@@ -20,9 +20,11 @@
 #include "JsonReceiver.h"
 #include "ofxRollingCam.h"
 #include "RandomTriangleDrawer.h"
+#include "AgentAnalysis.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
+#define ADD_TRIANGLE_PER_AGENT_TRIANGLE 1
 
 class SpyMesh : public SceneElement {
 public:
@@ -45,19 +47,24 @@ public:
     RandomTriangleDrawer rtDrawer;
     ofxRollingCam rollCam;
     
+    vector<AgentAnalysis> agents;
+
     int mouseX,mouseY;
     int spentFrames;
     int wainingFrames;
+    int agentNum;
     float modelSize;
     float lineEmitPointDistance;
     bool isStarted = false;
     bool useRollCam = false;
-    bool modelDrawMode = false;
+    bool modelDrawMode = true;
     bool coloerMeshDrawMode = false;
     bool randomTrianlgeDrawMode = false;
+    bool agentDebug = false;
     
     void initLineEmitPoints();
     void initModelDrawer();
     void drawEmitter();
+    void updateVertices();
 };
 #endif

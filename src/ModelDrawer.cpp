@@ -7,7 +7,8 @@
 //
 #include "ModelDrawer.h"
 
-ofVec3f ModelDrawer::addVertex(int i){
+ofVec3f ModelDrawer::addVertex(){
+    int i = addedIndicesSize/3;
     if(i < MAX_INDICES/3 - 1 && i < indicesSize/3 - 1){
  
         mesh.addVertex(vertices[int(indices[i * 3])]);
@@ -93,9 +94,9 @@ void ModelDrawer::drawModel(float scale, bool fill){
 
 void ModelDrawer::drawPercentage(){
     ofNoFill();
-    ofRect(50, 50, 400, 35);
+    ofRect(50, 50, 400, 20);
     ofFill();
-    ofRect(50, 50, 400 * (float(addedIndicesSize) / float(indicesSize)), 35);
+    ofRect(50, 50, 400 * (float(addedIndicesSize) / float(indicesSize)), 20);
 }
 
 void ModelDrawer::setPrimitiveMode(ofPrimitiveMode primitiveMode){
