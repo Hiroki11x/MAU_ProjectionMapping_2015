@@ -8,8 +8,8 @@
 #include "ofxAssimpModelLoaderExtend.h"
 
 void ofxAssimpModelLoaderExtend::addMesh(){
-    int i  = ofRandom(3.9);
-    meshNum[i]+=100;
+    //int i  = ofRandom(3.9);
+    meshNum[0]+=100;
 }
 
 void ofxAssimpModelLoaderExtend::changeRange(){
@@ -20,7 +20,7 @@ void ofxAssimpModelLoaderExtend::changeRange(){
 
 void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
     
-    spentFrame++;
+    //spentFrame++;
     if(spentFrame % 15 == 0){changeRange();}
     if(scene == NULL) {return;}
     
@@ -67,9 +67,11 @@ void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
         //mesh.vbo.drawElements(GL_TRIANGLES,mesh.indices.size());
         //mesh.vbo.drawElements(GL_LINES,meshNum);
         //mesh.vbo.drawElementsInstanced(GL_LINES, meshNum, ofRandom(2000));
-        mesh.vbo.draw(GL_LINES, showMeshIndex[i], meshNum[i]);
-        //mesh.vbo.draw(GL_LINES, 2000, 20000);
-        cout << "i:" << i << " size:" << mesh.indices.size() << endl;
+       // mesh.vbo.draw(GL_LINES, showMeshIndex[i], meshNum[i]);
+        
+        //mesh.vbo.draw(GL_LINES, 0, spentFrame * 3);
+        mesh.vbo.draw(GL_LINES, 0, mesh.indices.size() * abs(sin(float(ofGetElapsedTimeMillis())/500.0)));
+        cout << "i:" << i << " size:" << spentFrame << endl;
 #else
         switch(renderType){
             case OF_MESH_FILL:

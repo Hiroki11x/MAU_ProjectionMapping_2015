@@ -21,10 +21,11 @@
 #include "ofxRollingCam.h"
 #include "RandomTriangleDrawer.h"
 #include "AgentAnalysis.h"
+#include "SpiralDrawer.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
-#define ADD_TRIANGLE_PER_AGENT_TRIANGLE 1
+#define ADD_TRIANGLE_PER_AGENT_TRIANGLE 0.05
 
 class SpyMesh : public SceneElement {
 public:
@@ -46,6 +47,7 @@ public:
     DrawerSphere sphere;
     RandomTriangleDrawer rtDrawer;
     ofxRollingCam rollCam;
+    SpiralDrawer spiralDrawer;
     
     vector<AgentAnalysis> agents;
 

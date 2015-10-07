@@ -99,6 +99,7 @@
 		FA587DAE1BC55C36003FCCCA /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587D951BC55C36003FCCCA /* LICENSE.md */; settings = {ASSET_TAGS = (); }; };
 		FA587DAF1BC55C36003FCCCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587D961BC55C36003FCCCA /* README.md */; settings = {ASSET_TAGS = (); }; };
 		FA587DB01BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D981BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587DB81BC56FAA003FCCCA /* SpiralDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -598,6 +599,8 @@
 		FA587D961BC55C36003FCCCA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FA587D981BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUL2.cpp; sourceTree = "<group>"; };
 		FA587D991BC55C36003FCCCA /* ofxTrueTypeFontUL2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUL2.h; sourceTree = "<group>"; };
+		FA587DB81BC56FAA003FCCCA /* SpiralDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpiralDrawer.cpp; sourceTree = "<group>"; };
+		FA587DB91BC56FAA003FCCCA /* SpiralDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiralDrawer.h; sourceTree = "<group>"; };
 		FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshSceneManager.cpp; sourceTree = "<group>"; };
 		FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshSceneManager.h; sourceTree = "<group>"; };
 		FA5BFD211BBA69410085652C /* SpyMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMesh.cpp; sourceTree = "<group>"; };
@@ -1706,6 +1709,8 @@
 				FA587D331BC4EA57003FCCCA /* RandomTriangleDrawer.h */,
 				FA587D351BC524F1003FCCCA /* AgentAnalysis.cpp */,
 				FA587D361BC524F1003FCCCA /* AgentAnalysis.h */,
+				FA587DB81BC56FAA003FCCCA /* SpiralDrawer.cpp */,
+				FA587DB91BC56FAA003FCCCA /* SpiralDrawer.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -2886,6 +2891,7 @@
 				FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */,
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
+				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,
 				FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,

@@ -62,6 +62,6 @@ bool AgentAnalysis::removeVertices(){
 AgentAnalysis::AgentAnalysis(ofVec3f pos){
     position = pos;
     mesh.addVertices(vertices);
-    rotateSpeed = ofRandom(5.0, 20.0);
+    rotateSpeed = ofRandom(2.0, 10.0);
     fontDrawer.loadFont("Arial.ttf", 20);
 }

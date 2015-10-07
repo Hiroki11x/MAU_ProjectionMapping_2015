@@ -64,7 +64,8 @@ void SpyMesh::draw(){
     
     ofPushMatrix();
     ofPushStyle();
-    
+    ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     if(useRollCam){
         rollCam.begin();
     }else{
@@ -72,8 +73,8 @@ void SpyMesh::draw(){
         ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     }
 
-
     ofSetColor(50, 255, 50 , 150);
+    spiralDrawer.drawSpiral(modelSize * 10000.0);
     
     if(isStarted){
         ofSetLineWidth(0.3);
@@ -130,6 +131,8 @@ void SpyMesh::init(){
     rollCam.setCamSpeed(0.1);
     rollCam.setRandomScale(1.5, 2.0);
     rollCam.setRandomPos(360);
+    spiralDrawer = *new SpiralDrawer();
+    spiralDrawer.init(1000.0);
 }
 
 void SpyMesh::initLineEmitPoints(){
