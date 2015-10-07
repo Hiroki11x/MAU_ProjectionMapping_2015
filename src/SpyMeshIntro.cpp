@@ -67,6 +67,7 @@ void SpyMeshIntro::init(){
     isStarted = false;
     initModelDrawer();
     initLineEmitPoints();
+    SoundManager::play();
 }
 
 void SpyMeshIntro::initLineEmitPoints(){

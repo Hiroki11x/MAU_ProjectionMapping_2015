@@ -18,15 +18,17 @@ public:
         ofImage icon;
     };
     
+    static int updateNum;
     static bool fetchImageMode;
-    static string cachedTweetId;
+    static int64_t cachedTweetId;
     static vector<UserInfo> usersInfo;
     static vector<string> userNames;
     static ofxJSONElement jsonElement;
     
     static bool checkUpdateJson();
     static void parseJson();
-    static void recieve();
+    static bool recieve();
+    static void init();
     
 private:
     JsonReceiver(){};

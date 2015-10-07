@@ -17,8 +17,10 @@
 #include "ModelDrawer.h"
 #include "DrawerSphere.h"
 #include "SoundManager.h"
+#include "JsonReceiver.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 2
+#define ADD_TRIANGLE_PER_TWEET 50
 
 class SpyMesh : public SceneElement {
 public:

@@ -7,30 +7,35 @@
 //
 #include "JsonReceiver.h"
 
+int JsonReceiver::updateNum = 0;
 bool JsonReceiver::fetchImageMode = false;
-string JsonReceiver::cachedTweetId;
+int64_t JsonReceiver::cachedTweetId;
 vector<JsonReceiver::UserInfo> JsonReceiver::usersInfo;
 vector<string> JsonReceiver::userNames;
 ofxJSONElement JsonReceiver::jsonElement;
 
 bool JsonReceiver::checkUpdateJson(){
-    if(jsonElement["id_str"].asCString() != cachedTweetId){
-        cachedTweetId = jsonElement["id_str"].asCString();
+    
+    if(jsonElement["id"].asInt64() != cachedTweetId){
+        cachedTweetId = jsonElement["id"].asInt64();
         return true;
     }else{
         return false;
     }
 }
 
-void JsonReceiver::recieve(){
+bool JsonReceiver::recieve(){
     bool parsingSuccessful = jsonElement.openLocal("MAU_twit/twitter.json");
     if (parsingSuccessful){
         if(checkUpdateJson()){
             parseJson();
+            updateNum++;
+            return true;
         }
     }else{
         cout << "Failed to parse JSON" << endl;
     }
+    return false;
 }
 
 void JsonReceiver::parseJson(){
@@ -42,4 +47,15 @@ void JsonReceiver::parseJson(){
     }else{
         userNames.push_back(jsonElement["user"]["name"].asCString());
     }
+    return;
+}
+
+void JsonReceiver::init(){
+    bool parsingSuccessful = jsonElement.openLocal("MAU_twit/twitter.json");
+    if (parsingSuccessful){
+        cachedTweetId = jsonElement["id"].asInt64();
+    }else{
+        cout << "Failed to parse JSON" << endl;
+    }
+    updateNum = 0;
 }

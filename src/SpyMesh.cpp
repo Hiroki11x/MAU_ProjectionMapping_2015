@@ -9,10 +9,26 @@
 
 void SpyMesh::update(){
     
+    float * val = ofSoundGetSpectrum(1);
+    modelSize = val[0] * 1;
+    
+    camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
+    camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
+    
     if(isStarted){
-        for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = modelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
+        //本番TwitterStreamingAPi使用時
+        if(JsonReceiver::recieve()){
+            for(int i = 0; i < ADD_TRIANGLE_PER_TWEET; i++){
+                cout << "true" << i << endl;;
+                targetPoint = modelDrawer.addVertex((JsonReceiver::updateNum - 1) * ADD_TRIANGLE_PER_TWEET + i );
+            }
         }
+        
+        //Debug用
+        /*for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
+            targetPoint = modelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
+        }*/
+        
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,6))];
         }
@@ -22,12 +38,6 @@ void SpyMesh::update(){
     }else{
         wainingFrames++;
     }
-    
-    float * val = ofSoundGetSpectrum(1);
-    modelSize = val[0] * 1;
-
-    camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
-    camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
 }
 
 void SpyMesh::draw(){
@@ -90,10 +100,10 @@ void SpyMesh::init(){
     isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
-    SoundManager::init();
     SoundManager::play();
     initModelDrawer();
     initLineEmitPoints();
+    JsonReceiver::init();
 }
 
 void SpyMesh::initLineEmitPoints(){
