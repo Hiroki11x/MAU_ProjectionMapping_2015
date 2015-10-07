@@ -34,6 +34,9 @@ public:
     ofVec2f position;
     UserAgent(){};
     
+//    void set_user_id(string id);
+//    void set_user_name(string name);
+    
     void set_position(ofVec2f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
@@ -43,7 +46,7 @@ public:
     void draw();
     void init();
     
-    void get_info_from_twitter();//twitterからの取得情報を書く
+    void get_info_from_twitter(string name,string id, ofImage image);//twitterからの取得情報を書く
 };
 
 #endif

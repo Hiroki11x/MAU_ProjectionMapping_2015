@@ -76,6 +76,7 @@
 		4E94F13C1BBE102200E0343E /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1341BBE102200E0343E /* ofxSyphonClient.mm */; };
 		4E94F13D1BBE102200E0343E /* ofxSyphonServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1361BBE102200E0343E /* ofxSyphonServer.mm */; };
 		4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1381BBE102200E0343E /* ofxSyphonServerDirectory.mm */; };
+		4ECB408B1BC511A2004EB9AF /* JsonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB40891BC511A2004EB9AF /* JsonReceiver.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19AB0F312D36358FC181E5B /* ofx3dModelLoader.cpp */; };
@@ -358,6 +359,8 @@
 		4E94F1371BBE102200E0343E /* ofxSyphonServerDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSyphonServerDirectory.h; sourceTree = "<group>"; };
 		4E94F1381BBE102200E0343E /* ofxSyphonServerDirectory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSyphonServerDirectory.mm; sourceTree = "<group>"; };
 		4E95FB446A9C9C6F0DE12D75 /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscPrintReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.h; sourceTree = SOURCE_ROOT; };
+		4ECB40891BC511A2004EB9AF /* JsonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonReceiver.cpp; sourceTree = "<group>"; };
+		4ECB408A1BC511A2004EB9AF /* JsonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonReceiver.h; sourceTree = "<group>"; };
 		4EDA77661BC3CE52008DEBEA /* mauInteractiveDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mauInteractiveDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAE4A0F69A8990513603BDF /* ofxAssimpUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAssimpUtils.h; path = ../../../addons/ofxAssimpModelLoader/src/ofxAssimpUtils.h; sourceTree = SOURCE_ROOT; };
 		516717F84C0146512C47A3EC /* ofxCvHaarFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxCvHaarFinder.h; path = ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h; sourceTree = SOURCE_ROOT; };
@@ -1012,6 +1015,7 @@
 		4E88A20C1BBE11AF001E8306 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				4ECB40871BC50EBE004EB9AF /* Json */,
 				4E88A22E1BBE11AF001E8306 /* testScene.cpp */,
 				4E88A22F1BBE11AF001E8306 /* testScene.h */,
 				4E88A2561BBE1223001E8306 /* AnimationUtils */,
@@ -1248,6 +1252,23 @@
 				73157AAE32787C63313C7D8E /* Wrappers.h */,
 			);
 			name = ofxCv;
+			sourceTree = "<group>";
+		};
+		4ECB40871BC50EBE004EB9AF /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				4ECB40881BC50EDD004EB9AF /* JsonReceiver */,
+			);
+			name = Json;
+			sourceTree = "<group>";
+		};
+		4ECB40881BC50EDD004EB9AF /* JsonReceiver */ = {
+			isa = PBXGroup;
+			children = (
+				4ECB40891BC511A2004EB9AF /* JsonReceiver.cpp */,
+				4ECB408A1BC511A2004EB9AF /* JsonReceiver.h */,
+			);
+			name = JsonReceiver;
 			sourceTree = "<group>";
 		};
 		5236346776DB8ECC4B121CA3 /* gpu */ = {
@@ -1954,6 +1975,7 @@
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				4E94F13A1BBE102200E0343E /* SyphonNameboundClient.m in Sources */,
 				4E5ED6C71BC12958004F1AF6 /* ofxEasingCubic.cpp in Sources */,
+				4ECB408B1BC511A2004EB9AF /* JsonReceiver.cpp in Sources */,
 				4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				4E88A2401BBE11AF001E8306 /* IntroductionManager.cpp in Sources */,

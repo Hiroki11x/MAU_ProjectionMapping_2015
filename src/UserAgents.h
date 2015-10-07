@@ -25,6 +25,8 @@
 #include "ofxSuperLogUtil.h"
 #include "GraphLog.h"
 
+#include "JsonReceiver.h"
+
 class UserAgents : public SceneElement {
 public:
     virtual void update() override;
@@ -35,7 +37,6 @@ public:
     virtual void keyPressed(int key) override;
     
     UserAgents(){};
-    
 private:
     FadeBackgroundUtil back_animation;
     StrechyRectSwiper strechyRectSwiper;
@@ -48,10 +49,17 @@ private:
     vector<UserAgent *> userAgentArray;
     int userAgentsSize;
     int connectionSize;
-    void addAgent(ofVec2f position);
+    
+    
     void addConnection(int startIndex,int endIndex,float duration);
     int  getUserAgentSize();
     int  getConnectionSize();
     void setup_user_agent();
+    
+    void check_is_json_new();
+    void addAgent(int add_num);
+    ofVec2f select_position();
+    
+    int json_num;
 };
 #endif

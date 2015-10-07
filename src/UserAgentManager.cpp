@@ -5,6 +5,8 @@
 //  Created by SakuragiYoshimasa on 2015/09/12.
 //
 //
+
+/*
 #include "UserAgentManager.h"
 
 void UserAgentManager::addAgent(ofVec2f position){
@@ -36,3 +38,4 @@ void UserAgentManager::draw(){
 
 int UserAgentManager::getUserAgentSize(){return userAgentsSize;}
 int UserAgentManager::getConnectionSize(){return 0;}
+*/
