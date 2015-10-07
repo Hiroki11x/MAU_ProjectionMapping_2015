@@ -17,17 +17,17 @@ void SpyMesh::update(){
     
     if(isStarted){
         //本番TwitterStreamingAPi使用時
-        if(JsonReceiver::recieve()){
+        /*if(JsonReceiver::recieve()){
             for(int i = 0; i < ADD_TRIANGLE_PER_TWEET; i++){
                 cout << "true" << i << endl;;
                 targetPoint = modelDrawer.addVertex((JsonReceiver::updateNum - 1) * ADD_TRIANGLE_PER_TWEET + i );
             }
-        }
+        }*/
         
         //Debug用
-        /*for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
+        for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
             targetPoint = modelDrawer.addVertex(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
-        }*/
+        }
         
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,6))];
@@ -136,22 +136,22 @@ void SpyMesh::onMouseDown(int x, int y){
 
 void SpyMesh::keyPressed(int key){
     switch (key) {
-        case 't':
+        case 'q':
             modelDrawer.setPrimitiveMode(OF_PRIMITIVE_TRIANGLES);
             break;
-        case 'l':
+        case 'w':
             modelDrawer.setPrimitiveMode(OF_PRIMITIVE_LINE_LOOP);
             break;
-        case 'p':
+        case 'e':
             modelDrawer.setPrimitiveMode(OF_PRIMITIVE_POINTS);
             break;
-        case 'n':
+        case 'a':
             modelDrawer.changeColoredMode(ModelDrawer::ColoredMeshMode::LINE);
             break;
-        case 'r':
+        case 's':
             modelDrawer.changeColoredMode(ModelDrawer::ColoredMeshMode::RANDOM);
             break;
-        case 'g':
+        case 'd':
             modelDrawer.changeColoredMode(ModelDrawer::ColoredMeshMode::AFFECTED_GLAVITY_GLASS);
             break;
         default:

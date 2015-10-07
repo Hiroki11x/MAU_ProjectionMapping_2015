@@ -1541,12 +1541,53 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		FA587D0A1BC4DCDE003FCCCA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */,
+				FA26BD521BC294C8007C3B47 /* JsonReceiver.h */,
+				FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */,
+				FAA9698F1BC3F8C0004CD1A3 /* SoundManager.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		FA587D101BC4DD1A003FCCCA /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				FAF11CBD1BBEBEF2008B96E0 /* TrailRenderer.h */,
+				FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */,
+				FACD666C1BC23B8500756856 /* DrawerSphere.cpp */,
+				FACD666D1BC23B8500756856 /* DrawerSphere.h */,
+			);
+			name = Drawer;
+			sourceTree = "<group>";
+		};
+		FA587D111BC4DD43003FCCCA /* SceneElement */ = {
+			isa = PBXGroup;
+			children = (
+				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
+				FA5BFD221BBA69410085652C /* SpyMesh.h */,
+				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
+				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
+			);
+			name = SceneElement;
+			sourceTree = "<group>";
+		};
+		FA587D121BC4DD5D003FCCCA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */,
+				FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 		FA5BFD1B1BBA67EC0085652C /* SpyMesh */ = {
 			isa = PBXGroup;
 			children = (
 				FA5BFD201BBA69290085652C /* Element */,
-				FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */,
-				FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */,
+				FA587D121BC4DD5D003FCCCA /* Manager */,
 			);
 			name = SpyMesh;
 			sourceTree = "<group>";
@@ -1554,12 +1595,11 @@
 		FA5BFD201BBA69290085652C /* Element */ = {
 			isa = PBXGroup;
 			children = (
+				FA587D111BC4DD43003FCCCA /* SceneElement */,
+				FA587D101BC4DD1A003FCCCA /* Drawer */,
+				FA587D0A1BC4DCDE003FCCCA /* Utils */,
 				FA967A361BBD6FDD0075D3AF /* Class */,
 				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
-				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
-				FA5BFD221BBA69410085652C /* SpyMesh.h */,
-				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
-				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
 			);
 			name = Element;
 			sourceTree = "<group>";
@@ -1880,14 +1920,6 @@
 			children = (
 				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
 				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
-				FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */,
-				FAF11CBD1BBEBEF2008B96E0 /* TrailRenderer.h */,
-				FACD666C1BC23B8500756856 /* DrawerSphere.cpp */,
-				FACD666D1BC23B8500756856 /* DrawerSphere.h */,
-				FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */,
-				FA26BD521BC294C8007C3B47 /* JsonReceiver.h */,
-				FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */,
-				FAA9698F1BC3F8C0004CD1A3 /* SoundManager.h */,
 			);
 			name = Class;
 			sourceTree = "<group>";
