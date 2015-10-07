@@ -126,7 +126,7 @@ void UserAgents::addAgent(int add_num){
         userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
-        userAgentArray.back()->get_info_from_twitter(JsonReceiver::usersInfo.at(json_num).userName, "id", JsonReceiver::usersInfo.at(json_num).icon);
+        userAgentArray.back()->get_info_from_twitter(JsonReceiver::usersInfo.at(json_num).userName, JsonReceiver::usersInfo.at(json_num).twitterId, JsonReceiver::usersInfo.at(json_num).icon);
         json_num++;//json_numはここで
         superLogUtil.set_log("addAgent", ofToString(json_num));
     }

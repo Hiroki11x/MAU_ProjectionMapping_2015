@@ -79,7 +79,7 @@ void UserAgent::draw(){
     
     ofDrawBitmapString(username, position+ofVec2f(size*2.5,-size+2));
     ofDrawBitmapString(id, position+ofVec2f(size*2.5,3));
-    ofDrawBitmapString(ofToString((int)registertime%1000), position+ofVec2f(size*2.5,size+4));
+    ofDrawBitmapString(ofToString(id), position+ofVec2f(size*2.5,size+4));
 }
 
 

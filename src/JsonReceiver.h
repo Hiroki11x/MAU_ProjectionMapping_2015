@@ -18,6 +18,7 @@ class JsonReceiver {
 public:
     struct UserInfo{//Usernameと画像情報を持つ構造体
         string userName;
+        string twitterId;
         ofImage icon;
     };
     
@@ -49,7 +50,7 @@ public:
         ofImage img;
         img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
         if(img.getWidth() == 0){return;}
-        usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img});
+        usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),jsonElement["user"]["screen_name"].asCString(),img});//日本語は表示できない
         return ofToString(jsonElement);
     };
     static bool checkUpdateJson(){
