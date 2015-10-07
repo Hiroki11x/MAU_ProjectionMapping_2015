@@ -18,8 +18,10 @@
 #include "DrawerSphere.h"
 #include "SoundManager.h"
 #include "JsonReceiver.h"
+#include "ofxRollingCam.h"
+#include "RandomTriangleDrawer.h"
 
-#define ADD_TRIANGLE_PER_UPDATE 2
+#define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
 
 class SpyMesh : public SceneElement {
@@ -40,6 +42,8 @@ public:
     ofVec3f lineEmitPoints[6];
     ModelDrawer modelDrawer;
     DrawerSphere sphere;
+    RandomTriangleDrawer rtDrawer;
+    ofxRollingCam rollCam;
     
     int mouseX,mouseY;
     int spentFrames;
@@ -47,6 +51,10 @@ public:
     float modelSize;
     float lineEmitPointDistance;
     bool isStarted = false;
+    bool useRollCam = false;
+    bool modelDrawMode = false;
+    bool coloerMeshDrawMode = false;
+    bool randomTrianlgeDrawMode = false;
     
     void initLineEmitPoints();
     void initModelDrawer();

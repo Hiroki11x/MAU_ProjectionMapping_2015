@@ -75,6 +75,10 @@
 		FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDBF1BC2DF42007C3B47 /* AlphaSwiper.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BDC41BC2DF59007C3B47 /* FadeBackgroundUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDC21BC2DF59007C3B47 /* FadeBackgroundUtil.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BDC71BC2DF70007C3B47 /* SemiCirclePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDC51BC2DF70007C3B47 /* SemiCirclePath.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA587D291BC4E15C003FCCCA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA587D1D1BC4E15C003FCCCA /* Makefile */; settings = {ASSET_TAGS = (); }; };
+		FA587D2C1BC4E15C003FCCCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587D251BC4E15C003FCCCA /* README.md */; settings = {ASSET_TAGS = (); }; };
+		FA587D2D1BC4E15C003FCCCA /* ofxRollingCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D271BC4E15C003FCCCA /* ofxRollingCam.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA587D341BC4EA57003FCCCA /* RandomTriangleDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D321BC4EA57003FCCCA /* RandomTriangleDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -89,7 +93,6 @@
 		FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDD1BBAD6620085652C /* ofxAssimpModelLoader.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
-		FA92A39C1BC3A6AB00F1F797 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3791BC3A6AB00F1F797 /* testApp.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
 		FA92A3A01BC3A6AB00F1F797 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA92A38D1BC3A6AB00F1F797 /* Syphon.framework */; settings = {ASSET_TAGS = (); }; };
 		FA92A3A11BC3A6AB00F1F797 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3901BC3A6AB00F1F797 /* SyphonNameboundClient.m */; settings = {ASSET_TAGS = (); }; };
@@ -154,6 +157,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
 			remoteInfo = example;
+		};
+		FA587D2F1BC4E15C003FCCCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA587D191BC4E15C003FCCCA /* emptyExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
+			remoteInfo = emptyExample;
 		};
 		FA92A3A71BC3A6AB00F1F797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -465,6 +475,21 @@
 		FA4B49A91BB5111D00537247 /* ofxJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxJSON.h; sourceTree = "<group>"; };
 		FA4B49AA1BB5111D00537247 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		FA4B49AB1BB5111D00537247 /* ofxJSONElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
+		FA587D171BC4E15C003FCCCA /* emptyExampleDebug.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = emptyExampleDebug.app; sourceTree = "<group>"; };
+		FA587D181BC4E15C003FCCCA /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
+		FA587D191BC4E15C003FCCCA /* emptyExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = emptyExample.xcodeproj; sourceTree = "<group>"; };
+		FA587D1D1BC4E15C003FCCCA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		FA587D1E1BC4E15C003FCCCA /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		FA587D1F1BC4E15C003FCCCA /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		FA587D211BC4E15C003FCCCA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		FA587D221BC4E15C003FCCCA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
+		FA587D231BC4E15C003FCCCA /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
+		FA587D241BC4E15C003FCCCA /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
+		FA587D251BC4E15C003FCCCA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FA587D271BC4E15C003FCCCA /* ofxRollingCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRollingCam.cpp; sourceTree = "<group>"; };
+		FA587D281BC4E15C003FCCCA /* ofxRollingCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRollingCam.h; sourceTree = "<group>"; };
+		FA587D321BC4EA57003FCCCA /* RandomTriangleDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomTriangleDrawer.cpp; sourceTree = "<group>"; };
+		FA587D331BC4EA57003FCCCA /* RandomTriangleDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomTriangleDrawer.h; sourceTree = "<group>"; };
 		FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshSceneManager.cpp; sourceTree = "<group>"; };
 		FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshSceneManager.h; sourceTree = "<group>"; };
 		FA5BFD211BBA69410085652C /* SpyMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMesh.cpp; sourceTree = "<group>"; };
@@ -1001,6 +1026,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				FA587D141BC4E15C003FCCCA /* ofxRollingCam */,
 				FA92A36E1BC3A6AB00F1F797 /* ofxSyphon */,
 				FA26BD5C1BC2DBF4007C3B47 /* ofxTween */,
 				FA5BFDAB1BBAD6620085652C /* ofxAssimpModelLoader */,
@@ -1555,10 +1581,14 @@
 		FA587D101BC4DD1A003FCCCA /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
+				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
+				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
 				FAF11CBD1BBEBEF2008B96E0 /* TrailRenderer.h */,
 				FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */,
 				FACD666C1BC23B8500756856 /* DrawerSphere.cpp */,
 				FACD666D1BC23B8500756856 /* DrawerSphere.h */,
+				FA587D321BC4EA57003FCCCA /* RandomTriangleDrawer.cpp */,
+				FA587D331BC4EA57003FCCCA /* RandomTriangleDrawer.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -1583,6 +1613,66 @@
 			name = Manager;
 			sourceTree = "<group>";
 		};
+		FA587D141BC4E15C003FCCCA /* ofxRollingCam */ = {
+			isa = PBXGroup;
+			children = (
+				FA587D151BC4E15C003FCCCA /* example */,
+				FA587D241BC4E15C003FCCCA /* ofxaddons_thumbnail.png */,
+				FA587D251BC4E15C003FCCCA /* README.md */,
+				FA587D261BC4E15C003FCCCA /* src */,
+			);
+			path = ofxRollingCam;
+			sourceTree = "<group>";
+		};
+		FA587D151BC4E15C003FCCCA /* example */ = {
+			isa = PBXGroup;
+			children = (
+				FA587D161BC4E15C003FCCCA /* bin */,
+				FA587D181BC4E15C003FCCCA /* config.make */,
+				FA587D191BC4E15C003FCCCA /* emptyExample.xcodeproj */,
+				FA587D1D1BC4E15C003FCCCA /* Makefile */,
+				FA587D1E1BC4E15C003FCCCA /* openFrameworks-Info.plist */,
+				FA587D1F1BC4E15C003FCCCA /* Project.xcconfig */,
+				FA587D201BC4E15C003FCCCA /* src */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
+		FA587D161BC4E15C003FCCCA /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				FA587D171BC4E15C003FCCCA /* emptyExampleDebug.app */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		FA587D1A1BC4E15C003FCCCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA587D301BC4E15C003FCCCA /* emptyExampleDebug.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA587D201BC4E15C003FCCCA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FA587D211BC4E15C003FCCCA /* main.cpp */,
+				FA587D221BC4E15C003FCCCA /* testApp.cpp */,
+				FA587D231BC4E15C003FCCCA /* testApp.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		FA587D261BC4E15C003FCCCA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FA587D271BC4E15C003FCCCA /* ofxRollingCam.cpp */,
+				FA587D281BC4E15C003FCCCA /* ofxRollingCam.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		FA5BFD1B1BBA67EC0085652C /* SpyMesh */ = {
 			isa = PBXGroup;
 			children = (
@@ -1598,7 +1688,6 @@
 				FA587D111BC4DD43003FCCCA /* SceneElement */,
 				FA587D101BC4DD1A003FCCCA /* Drawer */,
 				FA587D0A1BC4DCDE003FCCCA /* Utils */,
-				FA967A361BBD6FDD0075D3AF /* Class */,
 				FA5BFDE71BBADF310085652C /* ofxAssimpModelLoaderExtend */,
 			);
 			name = Element;
@@ -1915,15 +2004,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		FA967A361BBD6FDD0075D3AF /* Class */ = {
-			isa = PBXGroup;
-			children = (
-				FA967A321BBD405D0075D3AF /* ModelDrawer.cpp */,
-				FA967A331BBD405D0075D3AF /* ModelDrawer.h */,
-			);
-			name = Class;
-			sourceTree = "<group>";
-		};
 		FAA0CC0C1BBA13CA00A0D408 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
@@ -2223,6 +2303,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = FA587D1A1BC4E15C003FCCCA /* Products */;
+					ProjectRef = FA587D191BC4E15C003FCCCA /* emptyExample.xcodeproj */;
+				},
+				{
 					ProductGroup = FA26BD721BC2DBF4007C3B47 /* Products */;
 					ProjectRef = FA26BD711BC2DBF4007C3B47 /* example-map.xcodeproj */;
 				},
@@ -2287,6 +2371,13 @@
 			remoteRef = FA26BD9F1BC2DBF4007C3B47 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		FA587D301BC4E15C003FCCCA /* emptyExampleDebug.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = emptyExampleDebug.app;
+			remoteRef = FA587D2F1BC4E15C003FCCCA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		FA92A3A81BC3A6AB00F1F797 /* example_ServerDirectoryDebug.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -2332,7 +2423,6 @@
 				FA26BDA71BC2DDBD007C3B47 /* ofxEasingCubic.cpp in Sources */,
 				FA26BDA81BC2DDBD007C3B47 /* ofxEasingElastic.cpp in Sources */,
 				FA26BDA91BC2DDBD007C3B47 /* ofxEasingExpo.cpp in Sources */,
-				FA92A39C1BC3A6AB00F1F797 /* testApp.cpp in Sources */,
 				FA26BDAA1BC2DDBD007C3B47 /* ofxEasingLinear.cpp in Sources */,
 				FA26BDAB1BC2DDBD007C3B47 /* ofxEasingQuad.cpp in Sources */,
 				FA92A3A41BC3A6AB00F1F797 /* ofxSyphonServer.mm in Sources */,
@@ -2381,6 +2471,7 @@
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
+				FA587D2C1BC4E15C003FCCCA /* README.md in Sources */,
 				FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */,
 				FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */,
 				FA5BFD351BBA7A4E0085652C /* TrianglePoints.cpp in Sources */,
@@ -2392,6 +2483,7 @@
 				FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */,
 				311DF864378748129984EA1D /* Kalman.cpp in Sources */,
 				C602002DE761F9B52DB4400A /* ObjectFinder.cpp in Sources */,
+				FA587D341BC4EA57003FCCCA /* RandomTriangleDrawer.cpp in Sources */,
 				FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */,
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
@@ -2399,11 +2491,13 @@
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,
 				FAA0CC201BBA1FF900A0D408 /* testScene.cpp in Sources */,
+				FA587D291BC4E15C003FCCCA /* Makefile in Sources */,
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
 				FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */,
 				FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */,
+				FA587D2D1BC4E15C003FCCCA /* ofxRollingCam.cpp in Sources */,
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
 				4ED0D5D61BA4733200F47E25 /* UserAgent.cpp in Sources */,
 				FA26BDC71BC2DF70007C3B47 /* SemiCirclePath.cpp in Sources */,

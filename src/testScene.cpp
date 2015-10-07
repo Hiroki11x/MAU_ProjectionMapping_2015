@@ -15,6 +15,12 @@ void testScene::setup(){
     
     ofDisableArbTex();
     
+    mainOutputSyphonServer.setName("Screen Outputh");//SyphonServer使う上でのセットアップ
+    mClient.setup();
+    mClient.setApplicationName("Simple Serverh");
+    mClient.setServerName("");
+
+    
     manager = new SpyMeshSceneManager();
     manager->setup();
     mode = SceneMode::Introduction;
@@ -33,6 +39,9 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
+    //Drawを最後に書くとそれまでに書いたものをSyphonで送信する
+    mClient.draw(50, 50);
+    mainOutputSyphonServer.publishScreen();
 }
 
 //--------------------------------------------------------------
