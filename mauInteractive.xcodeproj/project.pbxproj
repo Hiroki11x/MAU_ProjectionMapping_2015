@@ -101,6 +101,8 @@
 		FA587DB01BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D981BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587DB81BC56FAA003FCCCA /* SpiralDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA587DD11BC61C4E003FCCCA /* TwitterRain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA587DEB1BC67B86003FCCCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587DE51BC67B86003FCCCA /* README.md */; settings = {ASSET_TAGS = (); }; };
+		FA587DEC1BC67B86003FCCCA /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587DE71BC67B86003FCCCA /* ofxTrueTypeFontUC.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -604,6 +606,16 @@
 		FA587DB91BC56FAA003FCCCA /* SpiralDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiralDrawer.h; sourceTree = "<group>"; };
 		FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TwitterRain.cpp; sourceTree = "<group>"; };
 		FA587DD01BC61C4E003FCCCA /* TwitterRain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRain.h; sourceTree = "<group>"; };
+		FA587DDA1BC67704003FCCCA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		FA587DDF1BC67B86003FCCCA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		FA587DE01BC67B86003FCCCA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
+		FA587DE11BC67B86003FCCCA /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
+		FA587DE21BC67B86003FCCCA /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		FA587DE31BC67B86003FCCCA /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		FA587DE41BC67B86003FCCCA /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
+		FA587DE51BC67B86003FCCCA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FA587DE71BC67B86003FCCCA /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
+		FA587DE81BC67B86003FCCCA /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
 		FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshSceneManager.cpp; sourceTree = "<group>"; };
 		FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshSceneManager.h; sourceTree = "<group>"; };
 		FA5BFD211BBA69410085652C /* SpyMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMesh.cpp; sourceTree = "<group>"; };
@@ -1145,6 +1157,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				FA587DDC1BC67B86003FCCCA /* ofxTrueTypeFontUC */,
 				FA587D381BC55C35003FCCCA /* ofx3DFont */,
 				FA587D631BC55C35003FCCCA /* ofxTrueTypeFontUL2 */,
 				FA587D141BC4E15C003FCCCA /* ofxRollingCam */,
@@ -1279,6 +1292,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				FA587DDA1BC67704003FCCCA /* libiconv.tbd */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -2042,6 +2056,47 @@
 			children = (
 				FA587D981BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp */,
 				FA587D991BC55C36003FCCCA /* ofxTrueTypeFontUL2.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		FA587DDC1BC67B86003FCCCA /* ofxTrueTypeFontUC */ = {
+			isa = PBXGroup;
+			children = (
+				FA587DDD1BC67B86003FCCCA /* example */,
+				FA587DE21BC67B86003FCCCA /* install.xml */,
+				FA587DE31BC67B86003FCCCA /* License.txt */,
+				FA587DE41BC67B86003FCCCA /* ofxaddons_thumbnail.png */,
+				FA587DE51BC67B86003FCCCA /* README.md */,
+				FA587DE61BC67B86003FCCCA /* src */,
+			);
+			name = ofxTrueTypeFontUC;
+			path = ../../../addons/ofxTrueTypeFontUC;
+			sourceTree = "<group>";
+		};
+		FA587DDD1BC67B86003FCCCA /* example */ = {
+			isa = PBXGroup;
+			children = (
+				FA587DDE1BC67B86003FCCCA /* src */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
+		FA587DDE1BC67B86003FCCCA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FA587DDF1BC67B86003FCCCA /* main.cpp */,
+				FA587DE01BC67B86003FCCCA /* testApp.cpp */,
+				FA587DE11BC67B86003FCCCA /* testApp.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		FA587DE61BC67B86003FCCCA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FA587DE71BC67B86003FCCCA /* ofxTrueTypeFontUC.cpp */,
+				FA587DE81BC67B86003FCCCA /* ofxTrueTypeFontUC.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -2873,6 +2928,7 @@
 				4ED0D5E01BA5929100F47E25 /* MatrixGenerator.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
 				FA92A3A11BC3A6AB00F1F797 /* SyphonNameboundClient.m in Sources */,
+				FA587DEC1BC67B86003FCCCA /* ofxTrueTypeFontUC.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				FA587DA21BC55C36003FCCCA /* LICENSE.md in Sources */,
 				FA587DA61BC55C36003FCCCA /* Makefile in Sources */,
@@ -2881,6 +2937,7 @@
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				FA587D2C1BC4E15C003FCCCA /* README.md in Sources */,
 				FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */,
+				FA587DEB1BC67B86003FCCCA /* README.md in Sources */,
 				FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */,
 				FA5BFD351BBA7A4E0085652C /* TrianglePoints.cpp in Sources */,
 				45CC483A999BF1065A6B926C /* Distance.cpp in Sources */,

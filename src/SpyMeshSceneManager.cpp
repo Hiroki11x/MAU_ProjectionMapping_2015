@@ -10,8 +10,8 @@
 void SpyMeshSceneManager::setup(){
     SoundManager::init();
     elements.push_back(new TwitterRain());
-    //elements.push_back(new SpyMeshIntro());
-    //elements.push_back(new SpyMesh());
+    elements.push_back(new SpyMeshIntro());
+    elements.push_back(new SpyMesh());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -35,8 +35,14 @@ void SpyMeshSceneManager::keyPressed(int key){
     
     switch (key) {
         case '1':
+            elementIndex = 0;
+            return;
+        case '2':
             elementIndex = 1;
-            break;
+            return;
+        case '3':
+            elementIndex = 2;
+            return;
     }
     elements.at(elementIndex)->keyPressed(key);
 };

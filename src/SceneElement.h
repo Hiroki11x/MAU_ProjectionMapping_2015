@@ -13,6 +13,7 @@
 
 class SceneElement {
 public:
+    
     virtual void update(){};
     virtual void draw(){};
     virtual void init(){};

@@ -24,7 +24,8 @@ public:
         elements.at(elementIndex)->update();
     };
     virtual void draw(){
-         elements.at(elementIndex)->draw();
+        ofSetWindowTitle("FPS:" + ofToString(ofGetFrameRate()));
+        elements.at(elementIndex)->draw();
     };
     virtual void onMouseDown(int x,int y){
         elements.at(elementIndex)->onMouseDown(x, y);

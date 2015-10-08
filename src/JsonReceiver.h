@@ -16,6 +16,7 @@ public:
     struct UserInfo{
         string userName;
         ofImage icon;
+        string text;
     };
     
     static int updateNum;
@@ -29,6 +30,7 @@ public:
     static void parseJson();
     static bool recieve();
     static void init();
+    static UserInfo getRandomTweetInfo();
     
 private:
     JsonReceiver(){};

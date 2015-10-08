@@ -39,14 +39,19 @@ bool JsonReceiver::recieve(){
 }
 
 void JsonReceiver::parseJson(){
-    if(fetchImageMode){
+    
         ofImage img;
+    if(fetchImageMode){
         img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
         if(img.getWidth() == 0){return;}
-        usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img});
-    }else{
-        userNames.push_back(jsonElement["user"]["name"].asCString());
     }
+    //usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img, jsonElement["text"].asCString()});
+    usersInfo.push_back((UserInfo){"ds",img, jsonElement["text"].asCString()});
+    //usersInfo.push_back((UserInfo){"asdfg",img, "sdfg"});
+  
+    //userNames.push_back(jsonElement["user"]["name"].asCString());
+    userNames.push_back("asdfghjk");
+    
     return;
 }
 
@@ -58,4 +63,8 @@ void JsonReceiver::init(){
         cout << "Failed to parse JSON" << endl;
     }
     updateNum = 0;
+}
+
+JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
+    return usersInfo.at(ofRandom(0, usersInfo.size() - 0.1));
 }
