@@ -206,23 +206,23 @@ void SpyMesh::keyPressed(int key){
             randomTrianlgeDrawMode = false;
             break;
         //CamSettings
-        case '0':
+        case 'y':
             useRollCam = !useRollCam;
             break;
-        case '1':
+        case 'u':
             rollCam.setRandomScale(1.5, 2.0);
             rollCam.setRandomPos(360);
             break;
-        case '2':
+        case 'i':
             rollCam.setRandomPos(360);
             break;
-        case '3':
+        case 'o':
             rollCam.setRandomScale(1.5, 2.0);
             break;
-        case '4':
+        case 'g':
             rollCam.setPos(0, 0, 0);
             break;
-        case '5':
+        case 'h':
             rollCam.setScale(1.2);
             break;
         case 'p':

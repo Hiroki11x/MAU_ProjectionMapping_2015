@@ -33,7 +33,7 @@ public:
         elements.at(elementIndex)->keyPressed(key);
     };
     
-    bool nextElement(){
+    virtual bool nextElement(){
         SoundManager::stop();
         elements[elementIndex]->end();
         elementIndex++;

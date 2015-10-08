@@ -13,10 +13,13 @@
 #include "SceneElement.h"
 #include "SpyMesh.h"
 #include "SpyMeshIntro.h"
+#include "TwitterRain.h"
 #include "Fadeout.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:
     virtual void setup() override;
+    virtual bool nextElement() override;
+    virtual void keyPressed(int key) override;
 };
 #endif

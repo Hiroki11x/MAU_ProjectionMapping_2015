@@ -100,6 +100,7 @@
 		FA587DAF1BC55C36003FCCCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587D961BC55C36003FCCCA /* README.md */; settings = {ASSET_TAGS = (); }; };
 		FA587DB01BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D981BC55C36003FCCCA /* ofxTrueTypeFontUL2.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587DB81BC56FAA003FCCCA /* SpiralDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA587DD11BC61C4E003FCCCA /* TwitterRain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD1F1BBA68190085652C /* SpyMeshSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD231BBA69410085652C /* SpyMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD211BBA69410085652C /* SpyMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFD2D1BBA7A4E0085652C /* DelaunayUtil.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -601,6 +602,8 @@
 		FA587D991BC55C36003FCCCA /* ofxTrueTypeFontUL2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUL2.h; sourceTree = "<group>"; };
 		FA587DB81BC56FAA003FCCCA /* SpiralDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpiralDrawer.cpp; sourceTree = "<group>"; };
 		FA587DB91BC56FAA003FCCCA /* SpiralDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiralDrawer.h; sourceTree = "<group>"; };
+		FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TwitterRain.cpp; sourceTree = "<group>"; };
+		FA587DD01BC61C4E003FCCCA /* TwitterRain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRain.h; sourceTree = "<group>"; };
 		FA5BFD1D1BBA68190085652C /* SpyMeshSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshSceneManager.cpp; sourceTree = "<group>"; };
 		FA5BFD1E1BBA68190085652C /* SpyMeshSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshSceneManager.h; sourceTree = "<group>"; };
 		FA5BFD211BBA69410085652C /* SpyMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMesh.cpp; sourceTree = "<group>"; };
@@ -1722,6 +1725,8 @@
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
 				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
 				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
+				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,
+				FA587DD01BC61C4E003FCCCA /* TwitterRain.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -2903,6 +2908,7 @@
 				FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */,
+				FA587DD11BC61C4E003FCCCA /* TwitterRain.cpp in Sources */,
 				FA587D2D1BC4E15C003FCCCA /* ofxRollingCam.cpp in Sources */,
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
 				4ED0D5D61BA4733200F47E25 /* UserAgent.cpp in Sources */,

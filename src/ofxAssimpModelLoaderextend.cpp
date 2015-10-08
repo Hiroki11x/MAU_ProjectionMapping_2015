@@ -87,7 +87,6 @@ void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
                 break;
         }
 #endif
-        
         if(bUsingTextures){
             if(mesh.hasTexture()) {
                 mesh.getTextureRef().unbind();
