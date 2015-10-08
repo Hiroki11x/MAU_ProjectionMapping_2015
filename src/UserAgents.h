@@ -24,6 +24,7 @@
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
 #include "GraphLog.h"
+#include "ExplodeAnimation.h"
 
 #include "JsonReceiver.h"
 
@@ -50,6 +51,8 @@ private:
     int userAgentsSize;
     int connectionSize;
     
+    vector<ExplodeAnimation> explodeanimations;
+    void createExplodeAnimation(ofVec2f pos);
     
     void addConnection(int startIndex,int endIndex,float duration);
     int  getUserAgentSize();

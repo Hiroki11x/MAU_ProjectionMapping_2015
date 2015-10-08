@@ -56,6 +56,11 @@ void UserAgents::draw(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->draw();
     }
+    
+    for(int i=0; i<explodeanimations.size();i++){
+        explodeanimations.at(i).draw();
+    }
+    
     graphLog.draw();
 }
 
@@ -118,18 +123,29 @@ ofVec2f UserAgents::select_position(){
 }
 
 void UserAgents::addAgent(int add_num){
-
+    ofVec2f pos;
     for(int i=0;i<add_num;i++){
+        
         ////---------Legacy-----------
         userAgentArray.push_back(new UserAgent());
-        userAgentArray.back()->set_position(select_position());
+        pos = select_position();
+        userAgentArray.back()->set_position(pos);
         userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
         userAgentArray.back()->get_info_from_twitter(JsonReceiver::usersInfo.at(json_num).userName, JsonReceiver::usersInfo.at(json_num).twitterId, JsonReceiver::usersInfo.at(json_num).icon);
+        createExplodeAnimation(pos);
         json_num++;//json_numはここで
         superLogUtil.set_log("addAgent", ofToString(json_num));
     }
+}
+
+void UserAgents::createExplodeAnimation(ofVec2f pos){
+    //こういう呼び出しをしてあげれば良い
+    explodeanimations.clear();
+    explodeanimations.push_back(ExplodeAnimation());
+    explodeanimations.back().set_position(pos);
+    explodeanimations.back().init();
 }
 
 void UserAgents::addConnection(int startIndex,int endIndex,float duration){//Connection追加の際はここを呼ぶ
