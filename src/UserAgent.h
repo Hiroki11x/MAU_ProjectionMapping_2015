@@ -16,6 +16,9 @@
 #define MAX_CIRCLE_MAGNIFICATION 1.7
 
 #include "ofMain.h"
+#include "ofxTrueTypeFontUC.h"
+
+
 class UserAgent{
 private:
     
@@ -29,10 +32,13 @@ private:
     float registertime;
     
     ofColor color;
-    
+    ofxTrueTypeFontUC font;
 public:
     ofVec2f position;
     UserAgent(){};
+    
+//    void set_user_id(string id);
+//    void set_user_name(string name);
     
     void set_position(ofVec2f _pos);
     void set_size(float _size);
@@ -43,7 +49,7 @@ public:
     void draw();
     void init();
     
-    void get_info_from_twitter();//twitterからの取得情報を書く
+    void get_info_from_twitter(string name,string id, ofImage image);//twitterからの取得情報を書く
 };
 
 #endif

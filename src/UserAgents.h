@@ -24,6 +24,9 @@
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
 #include "GraphLog.h"
+#include "ExplodeAnimation.h"
+
+#include "JsonReceiver.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -35,7 +38,6 @@ public:
     virtual void keyPressed(int key) override;
     
     UserAgents(){};
-    
 private:
     FadeBackgroundUtil back_animation;
     StrechyRectSwiper strechyRectSwiper;
@@ -48,10 +50,19 @@ private:
     vector<UserAgent *> userAgentArray;
     int userAgentsSize;
     int connectionSize;
-    void addAgent(ofVec2f position);
+    
+    vector<ExplodeAnimation> explodeanimations;
+    void createExplodeAnimation(ofVec2f pos);
+    
     void addConnection(int startIndex,int endIndex,float duration);
     int  getUserAgentSize();
     int  getConnectionSize();
     void setup_user_agent();
+    
+    void check_is_json_new();
+    void addAgent(int add_num);
+    ofVec2f select_position();
+    
+    int json_num;
 };
 #endif

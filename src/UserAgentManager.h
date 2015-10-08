@@ -5,7 +5,7 @@
 //  Created by SakuragiYoshimasa on 2015/09/12.
 //
 //
-
+/*
 #ifndef MauInteractive_UserAgentManager_h
 #define MauInteractive_UserAgentManager_h
 
@@ -33,3 +33,4 @@ public:
     UserAgentManager(){userAgentsSize = 0;}
 };
 #endif
+*/

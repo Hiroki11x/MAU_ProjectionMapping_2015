@@ -13,16 +13,17 @@ void UserAgent::init(){
     ofSetCircleResolution(32);
     registertime = ofGetSystemTime();
     set_size(DEFAULT_USER_CIRCLE_SIZE);
-    get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
+//    get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
     calc_line_length();
-    
+    icon.allocate(24, 24,OF_IMAGE_COLOR);
+    font.loadFont("Yu Gothic Medium.otf",8);
 }
 
-void UserAgent::get_info_from_twitter(){
+void UserAgent::get_info_from_twitter(string name,string id, ofImage image){
     //twitterからの取得情報を書く
-    icon;
-    id = "ID:hoge";
-    username = "hoge hoge";
+    icon = image;
+    this->id = id;
+    username = name;
 }
 
 void UserAgent::calc_line_length(){
@@ -49,7 +50,9 @@ void UserAgent::draw(){
     ofFill();
     ofSetColor(color);
     ofCircle(position, size * multiple_of_size/2);
-    
+    ofSetColor(255);
+    icon.draw(position.x-12,position.y-12, 24,24);
+    ofSetColor(color);
     ofNoFill();
     
     ofBeginShape();//回転する内部の円
@@ -70,13 +73,13 @@ void UserAgent::draw(){
     }
     ofEndShape();
     
-    ofSetLineWidth(0.1);
+    ofSetLineWidth(0.01);
     ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
     ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));
     
-    ofDrawBitmapString(username, position+ofVec2f(size*2.5,-size+2));
-    ofDrawBitmapString(id, position+ofVec2f(size*2.5,3));
-    ofDrawBitmapString(ofToString(registertime), position+ofVec2f(size*2.5,size+4));
+    ofSetColor(color,255);
+    font.drawString(username, position.x+size*2.5,position.y-size+10);
+    font.drawString(id, position.x+size*2.5,position.y+10);
 }
 
 

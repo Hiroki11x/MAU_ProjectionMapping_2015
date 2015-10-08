@@ -13,7 +13,11 @@
 #include "UserAgents.h"
 
 void UserAgents::init(){
-    setup_user_agent();
+    superLogUtil.init();//Logのセットアップ
+    matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
+    json_num = 0;
+    superLogUtil.set_log("init", ofToString(JsonReceiver::usersInfo.size()));
+    
     back_animation.set_fade_duration(2000);
     
     strechyRectSwiper.init();
@@ -21,10 +25,12 @@ void UserAgents::init(){
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
-    superLogUtil.init();//Logのセットアップ
+    
+    setup_user_agent();//UserAgentをセット
     
     graphLog.setup();
     graphLog.set_height_limit(ofGetWidth()/4);
+    
 }
 
 void UserAgents::update(){
@@ -35,6 +41,8 @@ void UserAgents::update(){
 //    superLogUtil.set_log("graphLog",ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
     //GraphLogの更新(この引数がgraphの値となる)
     graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
+    JsonReceiver::recieve();
+    check_is_json_new();
 }
 
 void UserAgents::draw(){
@@ -48,13 +56,18 @@ void UserAgents::draw(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->draw();
     }
+    
+    for(int i=0; i<explodeanimations.size();i++){
+        explodeanimations.at(i).draw();
+    }
+    
     graphLog.draw();
 }
 
 void UserAgents::onMouseDown(int x, int y){
-    userAgentsSize = userAgentArray.size();
-    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
-    strechyRectSwiper.init();
+//    userAgentsSize = userAgentArray.size();
+//    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+//    strechyRectSwiper.init();
 }
 
 void UserAgents::keyPressed(int key){
@@ -81,17 +94,58 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Left";
     }
     strechyRectSwiper.init();
-    superLogUtil.set_log(tag, ofGetElapsedTimef());//Log出し
+    superLogUtil.set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
 }
 
 void UserAgents::end(){}
 
-void UserAgents::addAgent(ofVec2f position){
-    userAgentArray.push_back(new UserAgent());
-    userAgentArray.back()->set_position(position);
-    userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
-    userAgentArray.back()->init();
-    userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
+void UserAgents::check_is_json_new(){
+    int add_num;
+    if(json_num<JsonReceiver::usersInfo.size()){
+        add_num = JsonReceiver::usersInfo.size() - json_num;
+        addAgent(add_num);
+        superLogUtil.set_log("check_is_json_new", ofToString(add_num));
+    }
+//    superLogUtil.set_log("check_is_json_new", ofToString(json_num));
+}
+
+ofVec2f UserAgents::select_position(){
+    ofVec2f position;
+    
+    int size = matrix_generator.get_position_num();//生成した座標の数
+    int index = ofRandom(size);//その座標でどこを使うか選ぶ
+    while(matrix_generator.get_is_used().at(index)){//使われていたら選び直し
+        index = ofRandom(size);
+    }
+    matrix_generator.set_is_used_true(index);//使うところは使う(true)に変更
+    position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
+    return position;
+}
+
+void UserAgents::addAgent(int add_num){
+    ofVec2f pos;
+    for(int i=0;i<add_num;i++){
+        
+        ////---------Legacy-----------
+        userAgentArray.push_back(new UserAgent());
+        pos = select_position();
+        userAgentArray.back()->set_position(pos);
+        userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
+        userAgentArray.back()->init();
+        userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
+        userAgentArray.back()->get_info_from_twitter(JsonReceiver::usersInfo.at(json_num).userName, JsonReceiver::usersInfo.at(json_num).twitterId, JsonReceiver::usersInfo.at(json_num).icon);
+        createExplodeAnimation(pos);
+        json_num++;//json_numはここで
+        superLogUtil.set_log("addAgent", ofToString(json_num));
+    }
+}
+
+void UserAgents::createExplodeAnimation(ofVec2f pos){
+    //こういう呼び出しをしてあげれば良い
+    explodeanimations.clear();
+    explodeanimations.push_back(ExplodeAnimation());
+    explodeanimations.back().set_position(pos);
+    explodeanimations.back().init();
 }
 
 void UserAgents::addConnection(int startIndex,int endIndex,float duration){//Connection追加の際はここを呼ぶ
@@ -115,16 +169,9 @@ int UserAgents::getConnectionSize(){
 }
 
 void UserAgents::setup_user_agent(){//座標をセット
-    matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
-    int size = matrix_generator.get_position_num();//生成した座標の数
-    
-    for(int j=0;j<size/3;j++){//GENE_Y_NUM*GENE_X_NUM;
-        int index = ofRandom(size);//その座標でどこを使うか選ぶ
-        while(matrix_generator.get_is_used().at(index)){//使われていたら選び直し
-            index = ofRandom(size);
-        }
-        matrix_generator.set_is_used_true(index);//使うところは使う(true)に変更
-        ofVec2f position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
-        addAgent(position);
+    for(int j=0;j<JsonReceiver::usersInfo.size();j++){//GENE_Y_NUM*GENE_X_NUM;
+        addAgent(1);
     }
+    //ここは最初のところ
+    superLogUtil.set_log("setup_user_agent", ofToString(JsonReceiver::usersInfo.size()));
 }
