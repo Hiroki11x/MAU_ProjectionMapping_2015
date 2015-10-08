@@ -19,7 +19,7 @@ void ExplodeAnimation::set_speed_range(float range){
 ofVec2f ExplodeAnimation::speed_generator(float range){//0に近いスピードができないように
     ofVec2f speed = ofVec2f(1,1);
     float angle = ofRandom(2*PI);
-    float radius = ofRandom(range/2,range);
+    float radius = ofRandom(range*0.8,range);
     speed.x = radius * cos(angle);
     speed.y = radius * sin(angle);
     return speed;

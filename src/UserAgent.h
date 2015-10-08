@@ -16,6 +16,9 @@
 #define MAX_CIRCLE_MAGNIFICATION 1.7
 
 #include "ofMain.h"
+#include "ofxTrueTypeFontUC.h"
+
+
 class UserAgent{
 private:
     
@@ -29,7 +32,7 @@ private:
     float registertime;
     
     ofColor color;
-    
+    ofxTrueTypeFontUC font;
 public:
     ofVec2f position;
     UserAgent(){};

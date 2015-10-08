@@ -81,6 +81,8 @@
 		4EE77D1D1BC62B840070C805 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D1B1BC62B840070C805 /* ParticleConnection.cpp */; };
 		4EE77D201BC62BB70070C805 /* TriangleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D1E1BC62BB70070C805 /* TriangleConnection.cpp */; };
 		4EE77D231BC62CFC0070C805 /* ExplodeAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D211BC62CFC0070C805 /* ExplodeAnimation.cpp */; };
+		4EE77D331BC657F50070C805 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D2D1BC657F50070C805 /* README.md */; };
+		4EE77D341BC657F50070C805 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19AB0F312D36358FC181E5B /* ofx3dModelLoader.cpp */; };
@@ -374,6 +376,12 @@
 		4EE77D1F1BC62BB70070C805 /* TriangleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleConnection.h; sourceTree = "<group>"; };
 		4EE77D211BC62CFC0070C805 /* ExplodeAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExplodeAnimation.cpp; sourceTree = "<group>"; };
 		4EE77D221BC62CFC0070C805 /* ExplodeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeAnimation.h; sourceTree = "<group>"; };
+		4EE77D2A1BC657F50070C805 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		4EE77D2B1BC657F50070C805 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		4EE77D2C1BC657F50070C805 /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
+		4EE77D2D1BC657F50070C805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
+		4EE77D301BC657F50070C805 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
 		4FAE4A0F69A8990513603BDF /* ofxAssimpUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAssimpUtils.h; path = ../../../addons/ofxAssimpModelLoader/src/ofxAssimpUtils.h; sourceTree = SOURCE_ROOT; };
 		516717F84C0146512C47A3EC /* ofxCvHaarFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxCvHaarFinder.h; path = ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h; sourceTree = SOURCE_ROOT; };
 		53EA0E889F34624CE3313E04 /* assimp.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = assimp.hpp; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp.hpp; sourceTree = SOURCE_ROOT; };
@@ -1307,6 +1315,28 @@
 			name = Element;
 			sourceTree = "<group>";
 		};
+		4EE77D241BC657F50070C805 /* ofxTrueTypeFontUC */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D2A1BC657F50070C805 /* install.xml */,
+				4EE77D2B1BC657F50070C805 /* License.txt */,
+				4EE77D2C1BC657F50070C805 /* ofxaddons_thumbnail.png */,
+				4EE77D2D1BC657F50070C805 /* README.md */,
+				4EE77D2E1BC657F50070C805 /* src */,
+			);
+			name = ofxTrueTypeFontUC;
+			path = ../../../addons/ofxTrueTypeFontUC;
+			sourceTree = "<group>";
+		};
+		4EE77D2E1BC657F50070C805 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */,
+				4EE77D301BC657F50070C805 /* ofxTrueTypeFontUC.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		5236346776DB8ECC4B121CA3 /* gpu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1530,6 +1560,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				4EE77D241BC657F50070C805 /* ofxTrueTypeFontUC */,
 				4E7633161BC258C2002F2530 /* ofxPostGlitch */,
 				4E5ED67A1BC12958004F1AF6 /* ofxTween */,
 				4E94F1251BBE102200E0343E /* ofxSyphon */,
@@ -1954,6 +1985,7 @@
 				4E322024174AFB49A3BEA152 /* model3DS.cpp in Sources */,
 				4EE77D201BC62BB70070C805 /* TriangleConnection.cpp in Sources */,
 				4E94F13C1BBE102200E0343E /* ofxSyphonClient.mm in Sources */,
+				4EE77D341BC657F50070C805 /* ofxTrueTypeFontUC.cpp in Sources */,
 				C2B7714E50909A7BCAE5A51C /* texture3DS.cpp in Sources */,
 				59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */,
 				4E5ED6C31BC12958004F1AF6 /* ofxEasing.cpp in Sources */,
@@ -1963,6 +1995,7 @@
 				4E5ED6D81BC12980004F1AF6 /* ofxTweenUtil.cpp in Sources */,
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
+				4EE77D331BC657F50070C805 /* README.md in Sources */,
 				4E88A2471BBE11AF001E8306 /* ofApp.cpp in Sources */,
 				4E88A24A1BBE11AF001E8306 /* SceneManager.cpp in Sources */,
 				4E94F13B1BBE102200E0343E /* README.md in Sources */,
