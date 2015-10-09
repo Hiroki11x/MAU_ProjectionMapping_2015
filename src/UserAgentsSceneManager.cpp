@@ -10,10 +10,9 @@
 
 #include "UserAgentsSceneManager.h"
 
-void UserAgentsSceneManager::setup(){
+void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番がのちのキーに対応
     elements.push_back(new UserAgents());
     elements.push_back(new AgentAnalyze());
-    elements.push_back(new SpyMesh());
     elements.push_back(new Loading());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
@@ -36,13 +35,13 @@ bool UserAgentsSceneManager::nextElement(){
 void UserAgentsSceneManager::keyPressed(int key){
     switch (key) {
         case '1':
-            elementIndex = 0;
+            elementIndex = 0;//UserAgent
             return;
         case '2':
-            elementIndex = 1;
+            elementIndex = 1;//AgentAnalyza
             return;
         case '3':
-            elementIndex = 2;
+            elementIndex = 2;//Loading
             return;
     }
     elements.at(elementIndex)->keyPressed(key);

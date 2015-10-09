@@ -9,7 +9,7 @@
 #ifndef __mauInteractive__AgentCircle__
 #define __mauInteractive__AgentCircle__
 
-#define DEFAULT_USER_CIRCLE_SIZE 30
+#define DEFAULT_USER_CIRCLE_SIZE 300
 #define INNER_CIRCLE_MAGNIFICATION 0.75
 
 #define MIN_CIRCLE_MAGNIFICATION 1.2
@@ -19,7 +19,11 @@
 #include "ofxTrueTypeFontUC.h"
 
 class AgentCircle{
+    
 private:
+    
+    float line_y1 = ofGetHeight()/2;
+    float line_y2 = 3*ofGetHeight()/2;
     
     float size;
     float multiple_of_size;
@@ -35,7 +39,8 @@ private:
     float registertime;
     
     ofColor color;
-    ofxTrueTypeFontUC font,smallfont;
+    ofTrueTypeFont font,smallfont;
+    
 public:
     ofVec2f position;
     AgentCircle(){};
@@ -43,10 +48,10 @@ public:
     void set_position(ofVec2f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
-    void calc_line_length();
     
     void update();
-    void draw();
+    void draw_circle();
+    void draw_line(float line_x);
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く

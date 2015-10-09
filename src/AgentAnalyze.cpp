@@ -7,24 +7,33 @@
 //
 //
 
+
 #include "AgentAnalyze.h"
 
 
-
 void AgentAnalyze::init(){
-    for(int j=0;j<JsonReceiver::usersInfo.size();j++){//GENE_Y_NUM*GENE_X_NUM;
-        addAgent(1);
-    }
-}
-
-void AgentAnalyze::update(){
-
+    json_num=0;
+    check_is_json_new();
 }
 
 void AgentAnalyze::draw(){
-    ofSetColor(255);
-    ofCircle(300,300,ofRandom(300));
+    ofCircle(20,20,10);
+    float line_x;
+    for(int i = 0; i<agent_circles.size();i++){
+        if(i == index){
+            agent_circles.at(i).draw_circle();
+        }else{
+            line_x = ofMap(i, 0, agent_circles.size(), 0, ofGetWidth());
+            agent_circles.at(i).draw_line(line_x);
+        }
+    }
 }
+
+
+void AgentAnalyze::update(){
+    check_is_json_new();
+}
+
 
 void AgentAnalyze::onMouseDown(int x, int y){
 
@@ -49,31 +58,17 @@ void AgentAnalyze::check_is_json_new(){
 void AgentAnalyze::addAgent(int add_num){
     ofVec2f pos;
     for(int i=0;i<add_num;i++){
-        
-        /*
-        userAgentArray.push_back(new UserAgent());
-        pos = select_position();
-        userAgentArray.back()->set_position(pos);
-        userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
-        userAgentArray.back()->init();
-        userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
-        userAgentArray.back()->get_info_from_twitter(
-                                                     JsonReceiver::usersInfo.at(json_num).userName,
-                                                     JsonReceiver::usersInfo.at(json_num).twitterId,
-                                                     JsonReceiver::usersInfo.at(json_num).text,
-                                                     JsonReceiver::usersInfo.at(json_num).friends_count,
-                                                     JsonReceiver::usersInfo.at(json_num).statuses_count,
-                                                     JsonReceiver::usersInfo.at(json_num).followers_count,
-                                                     JsonReceiver::usersInfo.at(json_num).icon);
-        createExplodeAnimation(pos);
-         */
+        agent_circles.push_back(AgentCircle());
+        agent_circles.back().set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
+        agent_circles.back().get_info_from_twitter(
+                                                   JsonReceiver::usersInfo.at(json_num).userName,
+                                                   JsonReceiver::usersInfo.at(json_num).twitterId,
+                                                   JsonReceiver::usersInfo.at(json_num).text,
+                                                   JsonReceiver::usersInfo.at(json_num).friends_count,
+                                                   JsonReceiver::usersInfo.at(json_num).statuses_count,
+                                                   JsonReceiver::usersInfo.at(json_num).followers_count,
+                                                   JsonReceiver::usersInfo.at(json_num).icon);
+
         json_num++;//json_numはここで
     }
 }
-
-
-
-int AgentAnalyze::getUserAgentSize(){
-//    return userAgentArray.size();
-}
-

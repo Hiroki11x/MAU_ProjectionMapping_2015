@@ -9,23 +9,27 @@
 #ifndef __mauInteractive__AgentAnalyze__
 #define __mauInteractive__AgentAnalyze__
 
+#define COLOR_MAX 255
+#define GENE_X_NUM 12
+#define GENE_Y_NUM 18
+
+#define USER_CIRCLE_SIZE 10
+
 #include "SceneElement.h"
 #include "ofMain.h"
-
+#include "AgentCircle.h"
 #include "JsonReceiver.h"
 
 class AgentAnalyze : public SceneElement {
     
 private:
-    
-    void createExplodeAnimation(ofVec2f pos);
-    
-    int  getUserAgentSize();
-    
     void check_is_json_new();
     void addAgent(int add_num);
     
+    int index;
     int json_num;
+    
+    vector<AgentCircle> agent_circles;
     
 public:
     virtual void update() override;
