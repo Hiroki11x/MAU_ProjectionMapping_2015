@@ -7,12 +7,24 @@
 //
 
 
+#include "ofMain.h"
+#include "SceneManager.h"
+#include "SceneElement.h"
+
 #include "SceneManager.h"
 #include "UserAgents.h"
+#include "AgentAnalyze.h"
+
+#include "Loading.h"
+
+#include "SpyMesh.h"
+
+
 
 class UserAgentsSceneManager : public SceneManager {
 public:
     virtual void setup() override;
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
+    virtual bool nextElement() override;
 };

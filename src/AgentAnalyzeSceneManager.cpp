@@ -9,7 +9,7 @@
 #include "AgentAnalyzeSceneManager.h"
 
 void AgentAnalyzeSceneManager::setup(){
-    elements.push_back(new UserAgents());
+    elements.push_back(new AgentAnalyze());
     elements.at(0)->init();
 }
 

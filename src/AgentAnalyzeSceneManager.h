@@ -11,6 +11,8 @@
 
 #include "SceneManager.h"
 #include "UserAgents.h"
+#include "AgentAnalyze.h"
+
 
 class AgentAnalyzeSceneManager : public SceneManager {
 public:

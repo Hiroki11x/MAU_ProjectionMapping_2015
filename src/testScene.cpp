@@ -15,10 +15,6 @@ void testScene::setup(){
     
     ofDisableArbTex();
     
-//    manager = new SpyMeshSceneManager();
-//    manager->setup();
-//    mode = SceneMode::Introduction;
-    
     manager = new UserAgentsSceneManager();
     manager->setup();
     mode=SceneMode::UserAgent;
@@ -33,6 +29,7 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
+    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
 }
 
 //--------------------------------------------------------------
@@ -47,7 +44,11 @@ void testScene::keyPressed(int key){
             switch (mode) {
                 case SceneMode::UserAgent:
                     manager = new UserAgentsSceneManager();
-                    mode = SceneMode::UserAgent;
+                    mode = SceneMode::AgentAnalyze;
+                    break;
+                case SceneMode::AgentAnalyze:
+                    manager = new AgentAnalyzeSceneManager();
+                    mode = SceneMode::Introduction;
                     break;
                 case SceneMode::Introduction:
                     manager = new SpyMeshSceneManager();
@@ -55,12 +56,11 @@ void testScene::keyPressed(int key){
                     break;
                 case SceneMode::SpyMesh:
                     manager = new IntroductionManager();
-                    mode = SceneMode::Introduction;
+                    mode = SceneMode::UserAgent;
                     break;
                 default:
                     break;
             }
-            
             manager->setup();
         }
     }
