@@ -71,7 +71,6 @@ void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
         
         //mesh.vbo.draw(GL_LINES, 0, spentFrame * 3);
         mesh.vbo.draw(GL_LINES, (mesh.indices.size() -10000) * abs(sin(float(ofGetElapsedTimeMillis())/2000.0)), 10000);
-        cout << "i:" << i << " size:" << spentFrame << endl;
 #else
         switch(renderType){
             case OF_MESH_FILL:

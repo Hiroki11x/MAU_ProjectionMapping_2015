@@ -64,8 +64,10 @@ public:
     bool modelDrawMode = true;
     bool coloerMeshDrawMode = false;
     bool randomTrianlgeDrawMode = false;
-    bool agentDebug = false;
     bool garallyDrawMode = false;
+    bool randomExpandMeshDrawMode = false;
+    bool agentDebug = false;
+    
     
     void initLineEmitPoints();
     void initModelDrawer();

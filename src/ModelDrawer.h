@@ -13,6 +13,7 @@
 #define MAX_VERTICES 150000
 #define MAX_INDICES 150000
 #define COLORED_MESH_PER_HANDRED_TRIANGLE 20
+#define EXPAND_MESH_NUM 10
 
 class ModelDrawer {
 public:
@@ -36,14 +37,18 @@ public:
     ofPrimitiveMode primitiveMode;
     ofVboMesh mesh;
     ofVboMesh coloredPartMesh;
+    ofVboMesh randomExpandMesh;
     ofVec3f vertices[MAX_VERTICES];
     ofVec3f coloredMeshesVec[MAX_INDICES / COLORED_MESH_PER_HANDRED_TRIANGLE];
+    ofVec3f randomExpandMeshesVec[EXPAND_MESH_NUM * 3];
     
     ofVec3f addVertex();
     void changeColoredPartMesh();
     void changeColoredMode(ColoredMeshMode mode);
+    void changeRandomExpandMesh();
     void drawColoredMesh();
     void drawModel(float scale, bool fill = false);
+    void drawRandomExpandMesh(float scale);
     void drawPercentage();
     void setPrimitiveMode(ofPrimitiveMode primitiveMode);
     void setVertices(vector<ofVec3f> newVec, vector<ofIndexType> newIndices,float size);

@@ -28,6 +28,7 @@ void SpyMesh::update(){
         if(int(ofGetElapsedTimeMillis() / 30) % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,6))];
             if(randomTrianlgeDrawMode) rtDrawer.changeMesh(15,9);
+            if(randomExpandMeshDrawMode) modelDrawer.changeRandomExpandMesh();
         }
         spentFrames+=1;
     }else{
@@ -88,6 +89,7 @@ void SpyMesh::draw(){
             spiralDrawer.drawSpiral(modelSize);
         }
         if(garallyDrawMode) garallyDrawer.drawGarally();
+        if(randomExpandMeshDrawMode) modelDrawer.drawRandomExpandMesh(modelSize);
     }
 
     ofPopMatrix();
@@ -213,6 +215,13 @@ void SpyMesh::keyPressed(int key){
             break;
         case 'l':
             garallyDrawMode = !garallyDrawMode;
+            break;
+        case 'k':
+            randomExpandMeshDrawMode = !randomExpandMeshDrawMode;
+            break;
+        case 'j':
+            modelDrawer.changeRandomExpandMesh();
+            break;
         //CamSettings
         case 'y':
             useRollCam = !useRollCam;

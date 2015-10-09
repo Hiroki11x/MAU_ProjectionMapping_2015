@@ -5,10 +5,25 @@
 //  Created by 櫻木善将 on 2015/10/09.
 //
 //
+#ifndef ArtSpyDeforming_h
+#define ArtSpyDeforming_h
 
-#ifndef ArtSpyDeforming_hpp
-#define ArtSpyDeforming_hpp
+#include "SceneElement.h"
+//#include "ofxFfd.h"
+#include "ofxAssimpModelLoader.h"
 
-#include <stdio.h>
-
-#endif /* ArtSpyDeforming_hpp */
+class ArtSpyDeforming : public SceneElement {
+public:
+    virtual void draw() override;
+    virtual void init() override;
+    virtual void update() override;
+    //virtual void onMouseDown(int x,int y) override;
+   // virtual void keyPressed(int key) override;
+    
+   // ofxFfd ffd;
+    ofVboMesh mesh;
+    vector<float> rotates;
+    
+    
+};
+#endif
