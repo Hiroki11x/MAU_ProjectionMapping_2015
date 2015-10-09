@@ -15,15 +15,23 @@ void UserAgent::init(){
     set_size(DEFAULT_USER_CIRCLE_SIZE);
 //    get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
     calc_line_length();
-    icon.allocate(24, 24,OF_IMAGE_COLOR);
+    icon.allocate(30, 30,OF_IMAGE_COLOR);
+    
+    smallfont.loadFont("Yu Gothic Medium.otf",5);
     font.loadFont("Yu Gothic Medium.otf",8);
 }
 
-void UserAgent::get_info_from_twitter(string name,string id, ofImage image){
+void UserAgent::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
     //twitterからの取得情報を書く
-    icon = image;
-    this->id = id;
     username = name;
+    this->id = id;
+    this->text = text;
+    this->friends_count = friends_count;
+    this->statuses_count = statuses_count;
+    this->followers_count = followers_count;
+    icon = image;
+    
+    
 }
 
 void UserAgent::calc_line_length(){
@@ -51,7 +59,7 @@ void UserAgent::draw(){
     ofSetColor(color);
     ofCircle(position, size * multiple_of_size/2);
     ofSetColor(255);
-    icon.draw(position.x-12,position.y-12, 24,24);
+    icon.draw(position.x-15,position.y-15, 30,30);
     ofSetColor(color);
     ofNoFill();
     
@@ -74,12 +82,26 @@ void UserAgent::draw(){
     ofEndShape();
     
     ofSetLineWidth(0.01);
-    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
-    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));
+    
+//    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
+//    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));
     
     ofSetColor(color,255);
-    font.drawString(username, position.x+size*2.5,position.y-size+10);
-    font.drawString(id, position.x+size*2.5,position.y+10);
+    font.drawString(username, position.x+size*2.5,position.y-size+3);
+    font.drawString(id, position.x+size*2.5,position.y+3);
+    smallfont.drawString("Follower:"+ofToString(followers_count), position.x+size*2.5,position.y+8);
+    smallfont.drawString("Friends:"+ofToString(friends_count), position.x+size*2.5,position.y+13);
+    smallfont.drawString("Statue:"+ofToString(statuses_count), position.x+size*2.5+50,position.y+8);
+    
+    /*
+    font.drawString(ofToString(JsonReceiver::usersInfo.at(i).followers_count),position.at(i), pos_center_y-line_length-10);
+    font.drawString(ofToString(JsonReceiver::usersInfo.at(i).statuses_count),position.at(i), pos_center_y-line_length-20);
+    font.drawString(ofToString(JsonReceiver::usersInfo.at(i).friends_count),position.at(i), pos_center_y-line_length-30);
+    font.drawString(JsonReceiver::usersInfo.at(i).userId,position.at(i), pos_center_y-line_length-40);
+    font.drawString(JsonReceiver::usersInfo.at(i).userName,position.at(i), pos_center_y-line_length-50);
+    font.drawString(JsonReceiver::usersInfo.at(i).text,position.at(i), pos_center_y-line_length-60);
+     */
+    
 }
 
 

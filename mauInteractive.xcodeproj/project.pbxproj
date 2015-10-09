@@ -67,7 +67,6 @@
 		4E88A24E1BBE11AF001E8306 /* textExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2301BBE11AF001E8306 /* textExplosion.cpp */; };
 		4E88A24F1BBE11AF001E8306 /* TrianglePoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2321BBE11AF001E8306 /* TrianglePoints.cpp */; };
 		4E88A2501BBE11AF001E8306 /* UserAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2341BBE11AF001E8306 /* UserAgent.cpp */; };
-		4E88A2511BBE11AF001E8306 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */; };
 		4E88A2521BBE11AF001E8306 /* UserAgents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2381BBE11AF001E8306 /* UserAgents.cpp */; };
 		4E88A2531BBE11AF001E8306 /* UserAgentsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A23A1BBE11AF001E8306 /* UserAgentsSceneManager.cpp */; };
 		4E94F1391BBE102200E0343E /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E94F12B1BBE102200E0343E /* Syphon.framework */; };
@@ -83,6 +82,8 @@
 		4EE77D231BC62CFC0070C805 /* ExplodeAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D211BC62CFC0070C805 /* ExplodeAnimation.cpp */; };
 		4EE77D331BC657F50070C805 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D2D1BC657F50070C805 /* README.md */; };
 		4EE77D341BC657F50070C805 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */; };
+		4EE77D501BC783C20070C805 /* AgentAnalyzeSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D4E1BC783C20070C805 /* AgentAnalyzeSceneManager.cpp */; };
+		4EE77D541BC786090070C805 /* AgentAnalyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D521BC786090070C805 /* AgentAnalyze.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19AB0F312D36358FC181E5B /* ofx3dModelLoader.cpp */; };
@@ -345,8 +346,6 @@
 		4E88A2331BBE11AF001E8306 /* TrianglePoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrianglePoints.h; sourceTree = "<group>"; };
 		4E88A2341BBE11AF001E8306 /* UserAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgent.cpp; sourceTree = "<group>"; };
 		4E88A2351BBE11AF001E8306 /* UserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgent.h; sourceTree = "<group>"; };
-		4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentManager.cpp; sourceTree = "<group>"; };
-		4E88A2371BBE11AF001E8306 /* UserAgentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgentManager.h; sourceTree = "<group>"; };
 		4E88A2381BBE11AF001E8306 /* UserAgents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgents.cpp; sourceTree = "<group>"; };
 		4E88A2391BBE11AF001E8306 /* UserAgents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgents.h; sourceTree = "<group>"; };
 		4E88A23A1BBE11AF001E8306 /* UserAgentsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentsSceneManager.cpp; sourceTree = "<group>"; };
@@ -382,6 +381,10 @@
 		4EE77D2D1BC657F50070C805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
 		4EE77D301BC657F50070C805 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
+		4EE77D4E1BC783C20070C805 /* AgentAnalyzeSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentAnalyzeSceneManager.cpp; sourceTree = "<group>"; };
+		4EE77D4F1BC783C20070C805 /* AgentAnalyzeSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentAnalyzeSceneManager.h; sourceTree = "<group>"; };
+		4EE77D521BC786090070C805 /* AgentAnalyze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentAnalyze.cpp; sourceTree = "<group>"; };
+		4EE77D531BC786090070C805 /* AgentAnalyze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentAnalyze.h; sourceTree = "<group>"; };
 		4FAE4A0F69A8990513603BDF /* ofxAssimpUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAssimpUtils.h; path = ../../../addons/ofxAssimpModelLoader/src/ofxAssimpUtils.h; sourceTree = SOURCE_ROOT; };
 		516717F84C0146512C47A3EC /* ofxCvHaarFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxCvHaarFinder.h; path = ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h; sourceTree = SOURCE_ROOT; };
 		53EA0E889F34624CE3313E04 /* assimp.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = assimp.hpp; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp.hpp; sourceTree = SOURCE_ROOT; };
@@ -1048,7 +1051,7 @@
 		4E88A2541BBE11CD001E8306 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				4E88A25B1BBE128A001E8306 /* AgentLegacy */,
+				4EE77D4D1BC783950070C805 /* UserAgentAnalyze */,
 				4E88A25A1BBE1279001E8306 /* Introduction */,
 				4E88A2591BBE126F001E8306 /* SpyMesh */,
 				4E88A2581BBE1266001E8306 /* Base */,
@@ -1123,15 +1126,6 @@
 				4E88A2601BBE1377001E8306 /* Element */,
 			);
 			name = Introduction;
-			sourceTree = "<group>";
-		};
-		4E88A25B1BBE128A001E8306 /* AgentLegacy */ = {
-			isa = PBXGroup;
-			children = (
-				4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */,
-				4E88A2371BBE11AF001E8306 /* UserAgentManager.h */,
-			);
-			name = AgentLegacy;
 			sourceTree = "<group>";
 		};
 		4E88A25C1BBE1298001E8306 /* Element */ = {
@@ -1335,6 +1329,25 @@
 				4EE77D301BC657F50070C805 /* ofxTrueTypeFontUC.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		4EE77D4D1BC783950070C805 /* UserAgentAnalyze */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D511BC784D20070C805 /* Element */,
+				4EE77D4E1BC783C20070C805 /* AgentAnalyzeSceneManager.cpp */,
+				4EE77D4F1BC783C20070C805 /* AgentAnalyzeSceneManager.h */,
+			);
+			name = UserAgentAnalyze;
+			sourceTree = "<group>";
+		};
+		4EE77D511BC784D20070C805 /* Element */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D521BC786090070C805 /* AgentAnalyze.cpp */,
+				4EE77D531BC786090070C805 /* AgentAnalyze.h */,
+			);
+			name = Element;
 			sourceTree = "<group>";
 		};
 		5236346776DB8ECC4B121CA3 /* gpu */ = {
@@ -2034,6 +2047,7 @@
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				4E94F13D1BBE102200E0343E /* ofxSyphonServer.mm in Sources */,
+				4EE77D541BC786090070C805 /* AgentAnalyze.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
 				4E5ED6CF1BC12958004F1AF6 /* ofxTween.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
@@ -2046,6 +2060,7 @@
 				4E5ED6CD1BC12958004F1AF6 /* ofxEasingQuint.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				4E94F13A1BBE102200E0343E /* SyphonNameboundClient.m in Sources */,
+				4EE77D501BC783C20070C805 /* AgentAnalyzeSceneManager.cpp in Sources */,
 				4E5ED6C71BC12958004F1AF6 /* ofxEasingCubic.cpp in Sources */,
 				4ECB408B1BC511A2004EB9AF /* JsonReceiver.cpp in Sources */,
 				4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */,
@@ -2059,7 +2074,6 @@
 				4E88A24C1BBE11AF001E8306 /* SpyMeshSceneManager.cpp in Sources */,
 				4E76329B1BC2147B002F2530 /* ofxSuperLogUtil.cpp in Sources */,
 				4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */,
-				4E88A2511BBE11AF001E8306 /* UserAgentManager.cpp in Sources */,
 				4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */,
 				2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */,
 				4E5ED6E31BC12AD0004F1AF6 /* SemiCirclePath.cpp in Sources */,
