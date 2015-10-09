@@ -13,11 +13,11 @@ void SpyMesh::update(){
     modelSize = val[0] * 1;
 
     if(isStarted){
-        if(agentDebug){
+        //if(agentDebug){
+        if(JsonReceiver::recieve()){
             agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))])); //JsonReceiver::recieve()
             agentDebug = false;
             agentNum++;
-            cout << agentNum << endl;
         }
         updateVertices();
         
@@ -61,7 +61,7 @@ void SpyMesh::updateVertices(){
 }
 
 void SpyMesh::draw(){
-    
+   
     ofPushMatrix();
     ofPushStyle();
     ofEnableAlphaBlending();
@@ -72,9 +72,9 @@ void SpyMesh::draw(){
         camera.begin();
         ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     }
-
+    
     ofSetColor(50, 255, 50 , 150);
-    spiralDrawer.drawSpiral(modelSize * 10000.0);
+    
     
     if(isStarted){
         ofSetLineWidth(0.3);
@@ -83,7 +83,11 @@ void SpyMesh::draw(){
             drawEmitter();
         }
         if(coloerMeshDrawMode) modelDrawer.drawColoredMesh();
-        if(randomTrianlgeDrawMode) rtDrawer.drawTriangleMesh();
+        if(randomTrianlgeDrawMode) {
+            rtDrawer.drawTriangleMesh();
+            spiralDrawer.drawSpiral(modelSize);
+        }
+        if(garallyDrawMode) garallyDrawer.drawGarally();
     }
 
     ofPopMatrix();
@@ -132,7 +136,9 @@ void SpyMesh::init(){
     rollCam.setRandomScale(1.5, 2.0);
     rollCam.setRandomPos(360);
     spiralDrawer = *new SpiralDrawer();
-    spiralDrawer.init(1000.0);
+    spiralDrawer.init(2000.0);
+    garallyDrawer = *new GarallyDrawer();
+    garallyDrawer.init();
 }
 
 void SpyMesh::initLineEmitPoints(){
@@ -205,6 +211,8 @@ void SpyMesh::keyPressed(int key){
         case 'c':
             randomTrianlgeDrawMode = false;
             break;
+        case 'l':
+            garallyDrawMode = !garallyDrawMode;
         //CamSettings
         case 'y':
             useRollCam = !useRollCam;

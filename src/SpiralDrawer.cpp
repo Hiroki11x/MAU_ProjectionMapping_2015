@@ -18,7 +18,7 @@ void SpiralDrawer::init(float scale){
         spiralMesh.addVertex(ofVec3f(-RECT_WIDTH,RECT_HEIGHT, - i * INTERVAL ));
         spiralMesh.addVertex(ofVec3f(RECT_WIDTH,RECT_HEIGHT, - i * INTERVAL ));
     }*/
-    scale = 1;
+    scale = 1.5;
     spiralMesh.clear();
     model.loadModel("Spiral/s5.stl");
     model.setScale(scale, scale, scale);

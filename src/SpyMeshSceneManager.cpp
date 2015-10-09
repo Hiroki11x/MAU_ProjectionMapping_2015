@@ -31,6 +31,26 @@ bool SpyMeshSceneManager::nextElement(){
      }
 }
 
+void SpyMeshSceneManager::draw(){
+
+    ofSetWindowTitle("FPS:" + ofToString(ofGetFrameRate()));
+    if(!splitView){
+        elements.at(elementIndex)->draw();
+    }else{
+        glViewport(0, 0, ofGetWidth()/2, ofGetHeight()/2);
+        elements.at(elementIndex)->draw();
+    
+        glViewport(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight()/2);
+        elements.at(elementIndex)->draw();
+        
+        glViewport(0, ofGetHeight()/2, ofGetWidth()/2, ofGetHeight()/2);
+        elements.at(elementIndex)->draw();
+        
+        glViewport(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth()/2, ofGetHeight()/2);
+        elements.at(elementIndex)->draw();
+    }
+}
+
 void SpyMeshSceneManager::keyPressed(int key){
     
     switch (key) {
@@ -42,6 +62,9 @@ void SpyMeshSceneManager::keyPressed(int key){
             return;
         case '3':
             elementIndex = 2;
+            return;
+        case '4':
+            splitView = !splitView;
             return;
     }
     elements.at(elementIndex)->keyPressed(key);

@@ -6,9 +6,29 @@
 //
 //
 
-#ifndef GarallyDrawer_hpp
-#define GarallyDrawer_hpp
+#ifndef GarallyDrawer_h
+#define GarallyDrawer_h
 
-#include <stdio.h>
+#include "ofMain.h"
+#include "ofxAssimpModelLoader.h"
 
-#endif /* GarallyDrawer_hpp */
+class GarallyDrawer {
+public:
+    ofxAssimpModelLoader model;
+    
+    void drawGarally();
+    void init(float scale = 50);
+    int patternIndex;
+
+    GLushort patterns[8] = {
+        0x5555,
+        0x1234,
+        0x7333,
+        0x4113,
+        0x2335,
+        0x7422,
+        0x1323,
+        0x1111
+    };
+};
+#endif

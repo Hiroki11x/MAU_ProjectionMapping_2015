@@ -22,15 +22,10 @@ void TwitterRain::init(){
     align = UL2_TEXT_ALIGN_V_TOP|UL2_TEXT_ALIGN_CENTER;
     strAlign="top-center [8]";
     strDirection="Left to Right (TTB)";
-    glEnable(GL_CULL_FACE);//カリングON
+   // glEnable(GL_CULL_FACE);//カリングON
     glCullFace(GL_BACK);//裏面をカリング
     glEnable(GL_DEPTH_TEST);
     
-   /* show.append(L"ofx3DFont Openframeworks 3Dタイポグラフィ\n");
-    show.append(L"arabic: الأطر المفتوحة الطباعة غير موقعة طويل\n");
-    show.append(L"OpenFrameworksのAPIは、常に進化しています。ぜひ、修正、追加、コメントをしてください。\n");
-    show.append(L"The openFrameworks API is constantly evolving: any corrections, additions or comments are very welcome!");
-   */ 
     renderingMode=true;
     bRotation=false;
 }
@@ -85,23 +80,7 @@ void TwitterRain::draw(){
                 font.draw3dString("this is a 3dfont test",x,y,0,w,h,align);
                 glPolygonMode(GL_FRONT, GL_FILL);
             }
-        /*
-            if(bRotation){
-                ofRectangle rc= font.getStringBoundingBox(show,x,y,w,h,align);
-                glTranslatef(ofGetWidth()*.5,0,0);
-                glRotatef(ofGetElapsedTimef()*10,0,1,0);
-                glTranslatef(x-rc.x -rc.width*.5,0,0);
-            }
-            
-            if(renderingMode){
-                ofSetColor(255,255,255,255);
-                font.draw3dString(show,x,y,z,w,h,align);
-            }else{
-                ofSetColor(127,255,127,255);
-                glPolygonMode(GL_FRONT, GL_LINE);
-                font.draw3dString("this is a 3dfont test",x,y,0,w,h,align);
-                glPolygonMode(GL_FRONT, GL_FILL);
-            }*/
+
             glPopMatrix();
         }
         
@@ -112,22 +91,21 @@ void TwitterRain::draw(){
 }
 
 void TwitterRain::update(){
-    if(tweets.size() < DISPLAY_TWEET_NUM){
-       // if(tweetDebug){
-        //if(JsonReceiver::recieve()){
-        //cout << "S" << JsonReceiver::usersInfo.size() << endl;
-        JsonReceiver::recieve();
-        if(JsonReceiver::usersInfo.size() > 0){
-            JsonReceiver::UserInfo info = JsonReceiver::getRandomTweetInfo();
+    
+    if(spentFrames % 5 == 0){
+        if(tweets.size() < DISPLAY_TWEET_NUM){
+            //if(tweetDebug){
+            JsonReceiver::recieve();
+            if(JsonReceiver::usersInfo.size() > 0){
+                JsonReceiver::UserInfo info = JsonReceiver::getRandomTweetInfo();
             
-            wstring twi;
-            string text = info.text;
+                wstring twi;
+                string text = info.text;
             
-            //convert(info.text.c_str(),twi);
-            //twi.append(L"testTweet");
-            twi.append(convToWString(text));
-            tweets.push_back((Tweet){twi,ofVec3f(ofRandom(0,1024),-100,ofRandom(-200, 200)),ofRandom(30),ofRandom(10,20)});
-            tweetDebug = false;
+                twi.append(convToWString(text));
+                tweets.push_back((Tweet){twi,ofVec3f(ofRandom(0,1024),-100,ofRandom(-200, 200)),ofRandom(30),ofRandom(10,20)});
+                tweetDebug = false;
+            }
         }
     }
     for(int i = 0; i < tweets.size(); i++){
@@ -139,6 +117,7 @@ void TwitterRain::update(){
         }
     
     }
+    spentFrames++;
 }
 
 void TwitterRain::onMouseDown(int x, int y){

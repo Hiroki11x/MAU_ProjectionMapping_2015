@@ -22,6 +22,7 @@
 #include "RandomTriangleDrawer.h"
 #include "AgentAnalysis.h"
 #include "SpiralDrawer.h"
+#include "GarallyDrawer.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
@@ -48,6 +49,7 @@ public:
     RandomTriangleDrawer rtDrawer;
     ofxRollingCam rollCam;
     SpiralDrawer spiralDrawer;
+    GarallyDrawer garallyDrawer;
     
     vector<AgentAnalysis> agents;
 
@@ -63,6 +65,7 @@ public:
     bool coloerMeshDrawMode = false;
     bool randomTrianlgeDrawMode = false;
     bool agentDebug = false;
+    bool garallyDrawMode = false;
     
     void initLineEmitPoints();
     void initModelDrawer();

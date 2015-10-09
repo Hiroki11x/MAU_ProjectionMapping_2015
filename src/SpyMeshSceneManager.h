@@ -21,5 +21,8 @@ public:
     virtual void setup() override;
     virtual bool nextElement() override;
     virtual void keyPressed(int key) override;
+    virtual void draw() override;
+    
+    bool splitView = false;
 };
 #endif

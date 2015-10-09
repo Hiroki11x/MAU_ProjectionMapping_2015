@@ -47,6 +47,7 @@ public:
     int mouseX;
     int mouseY;
     int z;
+    int spentFrames;
     bool tweetDebug;
     ofLight light;
 };

@@ -16,7 +16,7 @@ void SpyMeshIntro::update(){
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
-        trails.update();
+        //trails.update();
         spentFrames+=1;
     }
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
@@ -29,7 +29,7 @@ void SpyMeshIntro::draw(){
     
     camera.begin();
     
-    if(spentFrames > 500){
+    /*if(spentFrames > 500){
         ofSetColor(255 * -  (spentFrames - 500), 255, 255 * -  (spentFrames - 500));
         ofDrawSphere(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70),50 * (spentFrames - 500));
     }
@@ -38,11 +38,11 @@ void SpyMeshIntro::draw(){
     }
     if(spentFrames > 400){
         trails.convergenceMode = true;
-    }
+    }*/
     
     ofPushMatrix();
     ofPushStyle();
-    trails.drawTrailer();
+    //trails.drawTrailer();
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofSetLineWidth(0.3);
