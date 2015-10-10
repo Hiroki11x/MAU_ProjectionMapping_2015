@@ -24,7 +24,7 @@
 #include "SpiralDrawer.h"
 #include "GarallyDrawer.h"
 
-#define ADD_TRIANGLE_PER_UPDATE 1
+//#define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
 #define ADD_TRIANGLE_PER_AGENT_TRIANGLE 0.05
 

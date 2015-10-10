@@ -9,10 +9,28 @@
 
 int JsonReceiver::updateNum = 0;
 bool JsonReceiver::fetchImageMode = false;
+bool JsonReceiver::isNewData = false;
 int64_t JsonReceiver::cachedTweetId;
 vector<JsonReceiver::UserInfo> JsonReceiver::usersInfo;
 vector<string> JsonReceiver::userNames;
 ofxJSONElement JsonReceiver::jsonElement;
+
+bool JsonReceiver::checkIsNewData(){
+
+    if(isNewData){
+        isNewData = false;
+        return true;
+    }
+    return false;
+}
+
+vector<JsonReceiver::UserInfo> JsonReceiver::getUsersInfo(){
+    return usersInfo;
+}
+
+vector<string> JsonReceiver::getUserNames(){
+    return  userNames;
+}
 
 bool JsonReceiver::checkUpdateJson(){
     
@@ -30,6 +48,7 @@ bool JsonReceiver::recieve(){
         if(checkUpdateJson()){
             parseJson();
             updateNum++;
+            isNewData = true;
             return true;
         }
     }else{
@@ -40,16 +59,16 @@ bool JsonReceiver::recieve(){
 
 void JsonReceiver::parseJson(){
     
-        ofImage img;
+    ofImage img;
     if(fetchImageMode){
         img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
         if(img.getWidth() == 0){return;}
     }
-    //usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img, jsonElement["text"].asCString()});
-    usersInfo.push_back((UserInfo){"ds",img, jsonElement["text"].asCString()});
+    usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img, jsonElement["text"].asCString()});
+    //usersInfo.push_back((UserInfo){"ds",img, jsonElement["text"].asCString()});
     //usersInfo.push_back((UserInfo){"asdfg",img, "sdfg"});
-    //userNames.push_back(jsonElement["user"]["name"].asCString());
-    userNames.push_back("asdfghjk");
+    userNames.push_back(jsonElement["user"]["name"].asCString());
+    //userNames.push_back("asdfghjk");
     
     return;
 }
@@ -65,5 +84,6 @@ void JsonReceiver::init(){
 }
 
 JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
-    return usersInfo.at(ofRandom(0, usersInfo.size() - 0.1));
+    
+    return getUsersInfo().at(ofRandom(0, usersInfo.size() - 0.1));
 }

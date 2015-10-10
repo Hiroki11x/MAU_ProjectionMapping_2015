@@ -12,6 +12,7 @@
 #include "SceneElement.h"
 #include "ofx3DFont.h"
 #include "JsonReceiver.h"
+#include "ofxTrueTypeFontUL2.h"
 
 
 #define DISPLAY_TWEET_NUM 20
@@ -49,5 +50,6 @@ public:
     int spentFrames;
     bool tweetDebug;
     ofLight light;
+    ofxTrueTypeFontUL2 font2;
 };
 #endif

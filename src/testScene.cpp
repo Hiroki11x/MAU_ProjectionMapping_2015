@@ -30,7 +30,14 @@ void testScene::setup(){
     mode=SceneMode::UserAgent;
     */
     JsonReceiver::init();
+    //JsonReceiver::startRecieveThread();
+    thread.startThread();
     AgentAnalysis::init(0.5);
+}
+
+void testScene::exit(){
+    //JsonReceiver::stopRecieveThread();
+    thread.stopThread();
 }
 
 //--------------------------------------------------------------

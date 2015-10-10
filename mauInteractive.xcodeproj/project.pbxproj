@@ -122,6 +122,7 @@
 		FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDD1BBAD6620085652C /* ofxAssimpModelLoader.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
 		FA92A3A01BC3A6AB00F1F797 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA92A38D1BC3A6AB00F1F797 /* Syphon.framework */; settings = {ASSET_TAGS = (); }; };
 		FA92A3A11BC3A6AB00F1F797 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3901BC3A6AB00F1F797 /* SyphonNameboundClient.m */; settings = {ASSET_TAGS = (); }; };
@@ -715,6 +716,8 @@
 		FA5BFDE11BBAD6620085652C /* ofxAssimpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpUtils.h; sourceTree = "<group>"; };
 		FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpModelLoaderExtend.cpp; sourceTree = "<group>"; };
 		FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpModelLoaderExtend.h; sourceTree = "<group>"; };
+		FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
+		FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
 		FA92A36F1BC3A6AB00F1F797 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA92A3711BC3A6AB00F1F797 /* ofxSyphonExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ofxSyphonExample.xcodeproj; sourceTree = "<group>"; };
 		FA92A3751BC3A6AB00F1F797 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -1742,6 +1745,8 @@
 				FA26BD521BC294C8007C3B47 /* JsonReceiver.h */,
 				FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */,
 				FAA9698F1BC3F8C0004CD1A3 /* SoundManager.h */,
+				FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */,
+				FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1885,7 +1890,7 @@
 		FA587D3D1BC55C35003FCCCA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA587DB31BC55C36003FCCCA /* emptyExampleDebug.app */,
+				FA587DB31BC55C36003FCCCA /* 3dFontExampleDebug.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2927,10 +2932,9 @@
 			remoteRef = FA587D2F1BC4E15C003FCCCA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FA587DB31BC55C36003FCCCA /* emptyExampleDebug.app */ = {
+		FA587DB31BC55C36003FCCCA /* 3dFontExampleDebug.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			name = emptyExampleDebug.app;
 			path = 3dFontExampleDebug.app;
 			remoteRef = FA587DB21BC55C36003FCCCA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -3007,6 +3011,7 @@
 				FA26BDA21BC2DD82007C3B47 /* ofxTween.cpp in Sources */,
 				FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */,
 				FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */,
+				FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */,
 				FAA969901BC3F8C0004CD1A3 /* SoundManager.cpp in Sources */,
 				FA26BDC41BC2DF59007C3B47 /* FadeBackgroundUtil.cpp in Sources */,
 				FA587DA41BC55C36003FCCCA /* ofx3DFont.cpp in Sources */,

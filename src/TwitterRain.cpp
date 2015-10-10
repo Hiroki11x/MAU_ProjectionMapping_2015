@@ -26,10 +26,19 @@ void TwitterRain::init(){
     glEnable(GL_DEPTH_TEST);
     renderingMode=true;
     bRotation=false;
+    
+   // font2.setup(60, 0.3);
+    font2.loadFont("Arial.ttf", 10);
+    font2.loadFont("Yumin Demibold",32,true,true,0.3f,0,true)||font2.loadSubFont("YuMincho");
+    font2.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
+    font2.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
+    font2.useProportional(true);
+    font2.useVrt2Layout(true);
+    font2.setLineHeight(font.getFontSize()*1.5);
 }
 
 void TwitterRain::draw(){
-    
+    ofSetColor(255);
     int w,h,x,y;
     x=100;
     y=100;
@@ -52,19 +61,27 @@ void TwitterRain::draw(){
         for(int i = 0; i < tweets.size(); i++){
             glPushMatrix();
             if(bRotation){
-                ofRectangle rc= font.getStringBoundingBox(tweets.at(i).tweetInfo,x,y,w,h,align);
+                //3D
+              /*  ofRectangle rc= font.getStringBoundingBox(tweets.at(i).tweetInfo,x,y,w,h,align);
                 glTranslatef(ofGetWidth()*.5,0,0);
                 glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed,0,1,0);
                 glTranslatef(x-rc.x -rc.width*.5,0,0);
+                */
+                //2D
+                glTranslatef(tweets.at(i).position.x, tweets.at(i).position.y, tweets.at(i).position.z);
+                glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed, 0, 1, 0);
                 
             }
             if(renderingMode){
                 ofSetColor(25,255,25,255);
-                font.draw3dString(tweets.at(i).tweetInfo,
+                //3D
+                /*font.draw3dString(tweets.at(i).tweetInfo,
                                   tweets.at(i).position.x,
                                   tweets.at(i).position.y,
                                   tweets.at(i).position.z,
-                                  300,300,align);
+                                  300,300,align);*/
+                //2D
+                font2.drawString(tweets.at(i).tweetInfo, tweets.at(i).position.x, tweets.at(i).position.y);
             }else{
                 ofSetColor(127,255,127,255);
                 glPolygonMode(GL_FRONT, GL_LINE);
@@ -84,15 +101,15 @@ void TwitterRain::update(){
     if(spentFrames % 5 == 0){
         if(tweets.size() < DISPLAY_TWEET_NUM){
             //if(tweetDebug){
-            JsonReceiver::recieve();
-            if(JsonReceiver::usersInfo.size() > 0){
+            //JsonReceiver::recieve();
+            if(JsonReceiver::getUsersInfo().size() > 0){
                 JsonReceiver::UserInfo info = JsonReceiver::getRandomTweetInfo();
             
                 wstring twi;
                 string text = info.text;
             
                 twi.append(convToWString(text));
-                tweets.push_back((Tweet){twi,ofVec3f(ofRandom(0,1024),-100,ofRandom(-200, 200)),ofRandom(30),ofRandom(10,20)});
+                tweets.push_back((Tweet){twi,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(5,10)});
                 tweetDebug = false;
             }
         }

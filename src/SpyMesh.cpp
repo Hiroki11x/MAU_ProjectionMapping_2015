@@ -14,7 +14,8 @@ void SpyMesh::update(){
 
     if(isStarted){
         //if(agentDebug){
-        if(JsonReceiver::recieve()){
+        //if(JsonReceiver::recieve()){
+        if(JsonReceiver::checkIsNewData()){
             agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))])); //JsonReceiver::recieve()
             agentDebug = false;
             agentNum++;
@@ -110,6 +111,7 @@ void SpyMesh::drawEmitter(){
 
     ofPushStyle();
     ofSetColor(50, 255, 50,150);
+    
     for(int i = 0; i < agents.size(); i++){
         ofPushMatrix();
         agents.at(i).drawAgent();

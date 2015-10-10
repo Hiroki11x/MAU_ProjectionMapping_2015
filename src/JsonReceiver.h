@@ -13,19 +13,16 @@
 
 class JsonReceiver {
 public:
+    
     struct UserInfo{
         string userName;
         ofImage icon;
         string text;
     };
     
-    static int updateNum;
-    static bool fetchImageMode;
-    static int64_t cachedTweetId;
-    static vector<UserInfo> usersInfo;
-    static vector<string> userNames;
-    static ofxJSONElement jsonElement;
-    
+    static vector<UserInfo> getUsersInfo();
+    static vector<string> getUserNames();
+    static bool checkIsNewData();
     static bool checkUpdateJson();
     static void parseJson();
     static bool recieve();
@@ -33,6 +30,14 @@ public:
     static UserInfo getRandomTweetInfo();
     
 private:
+    static int updateNum;
+    static bool fetchImageMode;
+    static bool isNewData;
+    static int64_t cachedTweetId;
+    static vector<UserInfo> usersInfo;
+    static vector<string> userNames;
+    static ofxJSONElement jsonElement;
     JsonReceiver(){};
 };
+
 #endif
