@@ -15,6 +15,12 @@ void testScene::setup(){
     
     ofDisableArbTex();
     
+    mainOutputSyphonServer.setName("Screen Outputh");//SyphonServer使う上でのセットアップ
+    mClient.setup();
+    mClient.setApplicationName("Simple Serverh");
+    mClient.setServerName("");
+
+    
     manager = new SpyMeshSceneManager();
     manager->setup();
     mode = SceneMode::Introduction;
@@ -23,6 +29,8 @@ void testScene::setup(){
     manager->setup();
     mode=SceneMode::UserAgent;
     */
+    JsonReceiver::init();
+    AgentAnalysis::init(0.5);
 }
 
 //--------------------------------------------------------------
@@ -33,12 +41,15 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
+    //Drawを最後に書くとそれまでに書いたものをSyphonで送信する
+    mClient.draw(50, 50);
+    mainOutputSyphonServer.publishScreen();
 }
 
 //--------------------------------------------------------------
 void testScene::keyPressed(int key){
     manager->keyPressed(key);
-    if(key == 'f'){
+    if(key == 'F'){
         ofToggleFullscreen();
     }else if (key == ' '){
         if(!manager->nextElement()){

@@ -14,6 +14,7 @@
 #include "IntroductionManager.h"
 #include "SpyMeshSceneManager.h"
 #include "UserAgentsSceneManager.h"
+#include "ofxSyphon.h"
 
 class testScene : public ofBaseApp{
     
@@ -35,6 +36,9 @@ public:
     SceneManager * manager;
     SceneMode::Mode mode;
     
+    ofxSyphonServer mainOutputSyphonServer;
+    ofxSyphonServer individualTextureSyphonServer;
+    ofxSyphonClient mClient;
 };
 
 

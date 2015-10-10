@@ -11,30 +11,25 @@
 void SpyMeshIntro::update(){
     if(isStarted){
         for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = garallyModelDrawer.addVertices(spentFrames * ADD_TRIANGLE_PER_UPDATE + i );
+            targetPoint = garallyModelDrawer.addVertex();
         }
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
-        trails.update();
+        //trails.update();
         spentFrames+=1;
     }
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        70);
-    JsonReceiver::recieve();
 }
 
 void SpyMeshIntro::draw(){
-
-    for(int i = 0; i < JsonReceiver::usersInfo.size(); i++){
-        JsonReceiver::usersInfo.at(i).icon.draw( 100 * i, 0, 100, 100);
-    }
     
     camera.begin();
     
-    if(spentFrames > 500){
+    /*if(spentFrames > 500){
         ofSetColor(255 * -  (spentFrames - 500), 255, 255 * -  (spentFrames - 500));
         ofDrawSphere(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70),50 * (spentFrames - 500));
     }
@@ -43,11 +38,11 @@ void SpyMeshIntro::draw(){
     }
     if(spentFrames > 400){
         trails.convergenceMode = true;
-    }
+    }*/
     
     ofPushMatrix();
     ofPushStyle();
-    trails.drawTrailer();
+    //trails.drawTrailer();
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofSetLineWidth(0.3);
@@ -72,6 +67,7 @@ void SpyMeshIntro::init(){
     isStarted = false;
     initModelDrawer();
     initLineEmitPoints();
+    SoundManager::play();
 }
 
 void SpyMeshIntro::initLineEmitPoints(){
@@ -81,17 +77,18 @@ void SpyMeshIntro::initLineEmitPoints(){
     lineEmitPoints[1] = ofVec3f(- lineEmitPointDistance,lineEmitPointDistance,0);
     lineEmitPoints[2] = ofVec3f(lineEmitPointDistance,- lineEmitPointDistance,0);
     lineEmitPoints[3] = ofVec3f(-lineEmitPointDistance,- lineEmitPointDistance,0);
-
 }
 
 void SpyMeshIntro::initModelDrawer(){
 
     model.loadModel("garally.stl");
     for(int i = 0; i < model.getMeshCount(); i++){
-        garallyModelDrawer.setVerices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
+        garallyModelDrawer.setVertices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
     }
 }
 
 void SpyMeshIntro::onMouseDown(int x, int y){
     isStarted = true;
 }
+
+void SpyMeshIntro::keyPressed(int key){}
