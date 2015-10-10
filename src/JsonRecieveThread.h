@@ -16,6 +16,7 @@ public:
     void threadedFunction(){
         while (isThreadRunning()) {
             JsonReceiver::recieve();
+            sleep(500);
         }
     }
 };

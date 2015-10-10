@@ -29,5 +29,4 @@ void GarallyDrawer::drawGarally(){
     model.drawWireframe();
     glDisable(GL_LINE_STIPPLE);
     ofPopStyle();
-    
 }

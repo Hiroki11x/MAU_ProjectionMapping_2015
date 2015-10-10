@@ -30,19 +30,17 @@ void AgentAnalysis::drawAgent(){
     ofLine(targetPodsition,(position + mesh.vertices.back()).rotated(ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed));
+    ofSetColor(100, 255, 100,150);
+    glPushMatrix();
+    glTranslatef(position.x,
+                 position.y,
+                 position.z);
+    font->drawString(userName,0,0);
+    glPopMatrix();
     ofRotateX(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofRotateY(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofRotateZ(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
-
-    ofDrawBitmapString("twitter ID ", position * float(vertices.size()) / 3000.0);
-    ofDrawBitmapString("Tweeeeeeeeeeeeeeeeeet", position * float(vertices.size()) / 3000.0);
-
     ofTranslate(position);
-    ofSetColor(100, 255, 100,150);
-   
-    
-    /*fontDrawer.drawString("twitter ID and twitter name", 0,0);
-    fontDrawer.drawString("Tweeeeeeeeeeeeeeeeeet", 0,-150);*/
     ofSetColor(150,255,100,150);
     mesh.draw(OF_MESH_WIREFRAME);
     ofPopStyle();
@@ -59,9 +57,17 @@ bool AgentAnalysis::removeVertices(){
     return true;
 }
 
-AgentAnalysis::AgentAnalysis(ofVec3f pos){
+AgentAnalysis::AgentAnalysis(ofVec3f pos, wstring name){
+    font = new ofxTrueTypeFontUL2();
     position = pos;
     mesh.addVertices(vertices);
     rotateSpeed = ofRandom(2.0, 10.0);
-    fontDrawer.loadFont("Arial.ttf", 20);
+    font->loadFont("Arial.ttf", 10);
+    font->loadSubFont("YuMincho");
+    font->loadSubFont(OF_TTF_SERIF,1.2,-0.02);
+    font->loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
+    font->useProportional(true);
+    font->useVrt2Layout(true);
+    font->setLineHeight(font->getFontSize()*1.5);
+    userName = name;
 }

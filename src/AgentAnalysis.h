@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
+#include "ofxTrueTypeFontUL2.h"
 
 class AgentAnalysis {
 public:
@@ -20,13 +21,14 @@ public:
     ofMesh mesh;
     ofVec3f targetPodsition;
     ofVec3f position;
-    ofTrueTypeFont fontDrawer;
+    ofxTrueTypeFontUL2* font;
+    wstring userName;
 
     void drawAgent();
     void drawLine();
     bool removeVertices();
     float rotateSpeed;
     
-    AgentAnalysis(ofVec3f pos);
+    AgentAnalysis(ofVec3f pos, wstring name);
 };
 #endif

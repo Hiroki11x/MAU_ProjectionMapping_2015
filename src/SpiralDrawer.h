@@ -11,11 +11,6 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoaderExtend.h"
 
-#define RECT_LENGTH 10
-#define INTERVAL 50
-#define RECT_WIDTH 200
-#define RECT_HEIGHT 50
-
 class SpiralDrawer {
 public:
     ofxAssimpModelLoaderExtend model;

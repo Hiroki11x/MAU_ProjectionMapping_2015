@@ -17,11 +17,11 @@ public:
     struct UserInfo{
         string userName;
         ofImage icon;
-        string text;
+        wstring text;
     };
     
     static vector<UserInfo> getUsersInfo();
-    static vector<string> getUserNames();
+    static vector<wstring> getUserNames();
     static bool checkIsNewData();
     static bool checkUpdateJson();
     static void parseJson();
@@ -29,15 +29,17 @@ public:
     static void init();
     static UserInfo getRandomTweetInfo();
     
-private:
     static int updateNum;
     static bool fetchImageMode;
     static bool isNewData;
     static int64_t cachedTweetId;
     static vector<UserInfo> usersInfo;
-    static vector<string> userNames;
+    static vector<wstring> userNames;
     static ofxJSONElement jsonElement;
     JsonReceiver(){};
+    
+    static wstring convToWString(string src);
+    template <class T>
+    static wstring convToUCS4(basic_string<T> src);
 };
-
 #endif

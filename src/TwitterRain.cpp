@@ -24,10 +24,10 @@ void TwitterRain::init(){
    // glEnable(GL_CULL_FACE);//カリングON
     glCullFace(GL_BACK);//裏面をカリング
     glEnable(GL_DEPTH_TEST);
-    renderingMode=true;
+    renderingMode=false;
     bRotation=false;
     
-   // font2.setup(60, 0.3);
+    //font2.setup(60, 0.3);
     font2.loadFont("Arial.ttf", 10);
     font2.loadFont("Yumin Demibold",32,true,true,0.3f,0,true)||font2.loadSubFont("YuMincho");
     font2.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
@@ -61,6 +61,7 @@ void TwitterRain::draw(){
         for(int i = 0; i < tweets.size(); i++){
             glPushMatrix();
             if(bRotation){
+                ofSetColor(25,255,25,tweets.at(i).alpha);
                 //3D
               /*  ofRectangle rc= font.getStringBoundingBox(tweets.at(i).tweetInfo,x,y,w,h,align);
                 glTranslatef(ofGetWidth()*.5,0,0);
@@ -68,12 +69,15 @@ void TwitterRain::draw(){
                 glTranslatef(x-rc.x -rc.width*.5,0,0);
                 */
                 //2D
+                ofRectangle rc= font2.getStringBoundingBox(tweets.at(i).tweetInfo,x,y,w,h,align);
                 glTranslatef(tweets.at(i).position.x, tweets.at(i).position.y, tweets.at(i).position.z);
                 glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed, 0, 1, 0);
+                glTranslatef(x-rc.x -rc.width*.5,0,0);
+                font2.drawString(tweets.at(i).tweetInfo,0,0);
                 
-            }
-            if(renderingMode){
-                ofSetColor(25,255,25,255);
+            }else{
+           // if(renderingMode){
+                ofSetColor(25,255,25,tweets.at(i).alpha);
                 //3D
                 /*font.draw3dString(tweets.at(i).tweetInfo,
                                   tweets.at(i).position.x,
@@ -82,11 +86,12 @@ void TwitterRain::draw(){
                                   300,300,align);*/
                 //2D
                 font2.drawString(tweets.at(i).tweetInfo, tweets.at(i).position.x, tweets.at(i).position.y);
-            }else{
+          /*  }else{
                 ofSetColor(127,255,127,255);
                 glPolygonMode(GL_FRONT, GL_LINE);
                 font.draw3dString("this is a 3dfont test",x,y,0,w,h,align);
                 glPolygonMode(GL_FRONT, GL_FILL);
+            }*/
             }
             glPopMatrix();
         }
@@ -98,18 +103,12 @@ void TwitterRain::draw(){
 
 void TwitterRain::update(){
     
-    if(spentFrames % 5 == 0){
+    if(spentFrames % 7 == 0){
         if(tweets.size() < DISPLAY_TWEET_NUM){
-            //if(tweetDebug){
-            //JsonReceiver::recieve();
             if(JsonReceiver::getUsersInfo().size() > 0){
-                JsonReceiver::UserInfo info = JsonReceiver::getRandomTweetInfo();
-            
                 wstring twi;
-                string text = info.text;
-            
-                twi.append(convToWString(text));
-                tweets.push_back((Tweet){twi,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(5,10)});
+                twi.append(JsonReceiver::getRandomTweetInfo().text);
+                tweets.push_back((Tweet){twi,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(8,15),ofRandom(100,255)});
                 tweetDebug = false;
             }
         }
@@ -117,7 +116,7 @@ void TwitterRain::update(){
     for(int i = 0; i < tweets.size(); i++){
         
         tweets.at(i).position.y += tweets.at(i).downSpeed;
-        if(tweets.at(i).position.y > ofGetHeight() + 20){
+        if(tweets.at(i).position.y > ofGetHeight()){
             tweets.erase(tweets.begin() + i);
             i--;
         }
@@ -137,94 +136,7 @@ void TwitterRain::keyPressed(int key){
         tweetDebug = true;
     }else if(key == 'r'){
         bRotation = !bRotation;
+    }else if (key == 'l'){
+        renderingMode = !renderingMode;
     }
-}
-
-wstring TwitterRain::convToWString(string src) {
-    
-#ifdef TARGET_WIN32
-    wstring dst = L"";
-    typedef codecvt<wchar_t, char, mbstate_t> codecvt_t;
-    
-    locale loc = locale("");
-    if(!std::has_facet<codecvt_t>(loc))
-        return dst;
-    
-    const codecvt_t & conv = use_facet<codecvt_t>(loc);
-    
-    const std::size_t size = src.length();
-    std::vector<wchar_t> dst_vctr(size);
-    
-    if (dst_vctr.size() == 0)
-        return dst;
-    
-    wchar_t * const buf = &dst_vctr[0];
-    
-    const char * dummy;
-    wchar_t * next;
-    mbstate_t state = {0};
-    const char * const s = src.c_str();
-    
-    if (conv.in(state, s, s + size, dummy, buf, buf + size, next) == codecvt_t::ok)
-        dst = std::wstring(buf, next - buf);
-    
-    return dst;
-#elif defined __clang__
-    wstring dst = L"";
-    for (int i=0; i<src.size(); ++i)
-        dst += src[i];
-#if defined(__clang_major__) && (__clang_major__ >= 4)
-    dst = convToUCS4<wchar_t>(dst);
-#endif
-    return dst;
-#else
-    return convToUCS4<char>(src);
-#endif
-}
-
-template <class T>
-wstring TwitterRain::convToUCS4(basic_string<T> src) {
-    wstring dst = L"";
-    // convert UTF-8 on char or wchar_t to UCS-4 on wchar_t
-    int size = src.size();
-    int index = 0;
-    while (index < size) {
-        wchar_t c = (unsigned char)src[index];
-        if (c < 0x80) {
-            dst += (c);
-        }else if (c < 0xe0) {
-            if (index + 1 < size) {
-                dst += (((c & 0x1f) << 6) | (src[index+1] & 0x3f));
-                index++;
-            }
-        }else if (c < 0xf0) {
-            if (index + 2 < size) {
-                dst += (((c & 0x0f) << 12) | ((src[index+1] & 0x3f) << 6) |
-                        (src[index+2] & 0x3f));
-                index += 2;
-            }
-        }else if (c < 0xf8) {
-            if (index + 3 < size) {
-                dst += (((c & 0x07) << 18) | ((src[index+1] & 0x3f) << 12) |
-                        ((src[index+2] & 0x3f) << 6) | (src[index+3] & 0x3f));
-                index += 3;
-            }
-        }else if (c < 0xfc) {
-            if (index + 4 < size) {
-                dst += (((c & 0x03) << 24) | ((src[index+1] & 0x3f) << 18) |
-                        ((src[index+2] & 0x3f) << 12) | ((src[index+3] & 0x3f) << 6) |
-                        (src[index+4] & 0x3f));
-                index += 4;
-            }
-        }else if (c < 0xfe) {
-            if (index + 5 < size) {
-                dst += (((c & 0x01) << 30) | ((src[index+1] & 0x3f) << 24) |
-                        ((src[index+2] & 0x3f) << 18) | ((src[index+3] & 0x3f) << 12) |
-                        ((src[index+4] & 0x3f) << 6) | (src[index+5] & 0x3f));
-                index += 5;
-            }
-        }
-        index++;
-    }
-    return dst;
 }

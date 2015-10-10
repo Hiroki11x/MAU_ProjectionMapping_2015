@@ -16,7 +16,7 @@ void SpyMesh::update(){
         //if(agentDebug){
         //if(JsonReceiver::recieve()){
         if(JsonReceiver::checkIsNewData()){
-            agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))])); //JsonReceiver::recieve()
+            agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getUserNames().at(JsonReceiver::updateNum - 1))); //JsonReceiver::recieve()
             agentDebug = false;
             agentNum++;
         }
