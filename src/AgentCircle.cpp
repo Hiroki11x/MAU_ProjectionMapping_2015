@@ -58,7 +58,7 @@ void AgentCircle::draw_circle(){
     ofSetColor(color);
     ofCircle(position, size * multiple_of_size/2);
     ofSetColor(255);
-    icon.draw(position.x-150,position.y-150, 300,300);
+    icon.draw(position.x-100,position.y-100, 200,200);
     ofSetColor(color);
     ofNoFill();
     
@@ -66,7 +66,7 @@ void AgentCircle::draw_circle(){
     for(int i=0;i<240;i++){
         angle = i + ofGetElapsedTimef()*50;
         ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = position+ basis_vec*multiple_of_size*INNER_CIRCLE_MAGNIFICATION*size;
+        ofVec2f vec = position+ basis_vec*INNER_CIRCLE_MAGNIFICATION*size;
         ofVertex(vec.x, vec.y);
     }
     ofEndShape();
@@ -75,19 +75,9 @@ void AgentCircle::draw_circle(){
     for(int i=0;i<240;i++){
         angle = 100 + i + ofGetElapsedTimef()*50;
         ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
-        ofVec2f vec = position + basis_vec*multiple_of_size*size;
+        ofVec2f vec = position + basis_vec*size;
         ofVertex(vec.x, vec.y);
     }
     ofEndShape();
-    
-    ofSetLineWidth(0.01);
-
-    ofSetColor(color,255);
-    FontManager::mfont.drawString(username, position.x+size*2.5,position.y-size+3);
-    FontManager::mfont.drawString(id, position.x+size*2.5,position.y+3);
-    FontManager::mfont.drawString(text, position.x+size*2.5,position.y+13);
-    FontManager::mfont.drawString("Follower:"+ofToString(followers_count), position.x+size*2.5,position.y+23);
-    FontManager::mfont.drawString("Friends:"+ofToString(friends_count), position.x+size*2.5,position.y+33);
-    FontManager::mfont.drawString("Statue:"+ofToString(statuses_count), position.x+size*2.5,position.y+43);
     
 }

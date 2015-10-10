@@ -21,10 +21,11 @@ void AgentAnalyze::init(){
 
 void AgentAnalyze::draw(){
     int agent_size = user_agent.size();
-    int max_row = ofGetHeight()/50;
-    float x;;
+    int max_row = ofGetHeight()/50 -1;
+    int max_column = ofGetWidth()/170;
+    float x;
     float y;
-    for(int i = 0; i<agent_size ;i++){
+    for(int i = 0; i< agent_size ;i++){
         if(i == agent_size-1){
             user_agent.at(i).draw_circle();
         }else{
