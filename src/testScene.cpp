@@ -16,8 +16,12 @@ void testScene::setup(){
     ofBackground(0);
     ofSetFrameRate(60);
     ofEnableSmoothing();
-    
     ofDisableArbTex();
+    
+    mainOutputSyphonServer.setName("Screen Outputh");//SyphonServer使う上でのセットアップ
+    mClient.setup();
+    mClient.setApplicationName("Simple Serverh");
+    mClient.setServerName("");
     
     manager = new UserAgentsSceneManager();
     manager->setup();
@@ -35,6 +39,8 @@ void testScene::update(){
 void testScene::draw(){
     manager->draw();
     ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
+    mClient.draw(50, 50);
+    mainOutputSyphonServer.publishScreen();
 }
 
 //--------------------------------------------------------------
