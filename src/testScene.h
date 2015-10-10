@@ -47,6 +47,7 @@ public:
     ofxSyphonServer mainOutputSyphonServer;
     ofxSyphonServer individualTextureSyphonServer;
     ofxSyphonClient mClient;
+
 };
 
 

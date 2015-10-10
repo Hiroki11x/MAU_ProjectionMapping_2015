@@ -14,8 +14,12 @@
 
 class FontManager{
 public:
+    
+    FontManager(){};
+    
     static ofxTrueTypeFontUL2 mfont;
     static ofxTrueTypeFontUL2 msmallfont;
+    
     void loadFont(string arg, int size);
     void drawString(string arg ,float x, float y);
 };

@@ -8,6 +8,9 @@
 
 #include "FontManager.h"
 
+ofxTrueTypeFontUL2 FontManager::mfont;
+ofxTrueTypeFontUL2 FontManager::msmallfont;
+
 void FontManager::loadFont(string arg, int size){
     mfont.loadFont(arg, size);
 }

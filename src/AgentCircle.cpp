@@ -1,4 +1,4 @@
-//
+
 //  AgentCircle.cpp
 //  mauInteractive
 //
@@ -12,8 +12,8 @@ void AgentCircle::init(){
     ofSetCircleResolution(32);
     registertime = ofGetSystemTime();
     set_size(DEFAULT_USER_CIRCLE_SIZE);
-    icon.allocate(30, 30,OF_IMAGE_COLOR);
-    
+    icon.allocate(300, 300,OF_IMAGE_COLOR);
+    set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
 }
 
 void AgentCircle::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -40,9 +40,15 @@ void AgentCircle::set_color(ofColor _color){
 
 void AgentCircle::update(){
 }
-void AgentCircle::draw_line(float line_x){
-    ofLine(line_x, line_y1,line_x, line_y2);
-    FontManager::mfont.drawString(username, line_x,line_y1);
+void AgentCircle::draw_line(float x, float y){
+    ofPushMatrix();
+    ofTranslate(x, y);
+    FontManager::mfont.drawString(username, 0,0);
+    FontManager::mfont.drawString(id, 0,10);
+    FontManager::mfont.drawString("Follower:"+ofToString(followers_count), 0,20);
+    FontManager::mfont.drawString("Friends:"+ofToString(friends_count), 0,30);
+    FontManager::mfont.drawString("Statue:"+ofToString(statuses_count), 0,40);
+    ofPopMatrix();
 }
 
 void AgentCircle::draw_circle(){
@@ -52,7 +58,7 @@ void AgentCircle::draw_circle(){
     ofSetColor(color);
     ofCircle(position, size * multiple_of_size/2);
     ofSetColor(255);
-    icon.draw(position.x-15,position.y-15, 30,30);
+    icon.draw(position.x-150,position.y-150, 300,300);
     ofSetColor(color);
     ofNoFill();
     

@@ -11,7 +11,7 @@
 void testScene::setup(){
     
     FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
-    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
+//    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
     
     ofBackground(0);
     ofSetFrameRate(60);

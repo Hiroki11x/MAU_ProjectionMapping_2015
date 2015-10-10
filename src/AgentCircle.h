@@ -50,7 +50,7 @@ public:
     
     void update();
     void draw_circle();
-    void draw_line(float line_x);
+    void draw_line(float x, float y);
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く

@@ -20,20 +20,24 @@ void AgentAnalyze::init(){
 }
 
 void AgentAnalyze::draw(){
-    ofCircle(20,20,10);
-    float line_x;
-    for(int i = 0; i<user_agent.size();i++){
-        if(i == index){
+    int agent_size = user_agent.size();
+    int max_row = ofGetHeight()/50;
+    float x;;
+    float y;
+    for(int i = 0; i<agent_size ;i++){
+        if(i == agent_size-1){
             user_agent.at(i).draw_circle();
         }else{
-            line_x = ofMap(i, 0, user_agent.size(), 0, ofGetWidth());
-            user_agent.at(i).draw_line(line_x);
+            x = (i/max_row)*170 +20;
+            y = 60 * (i%max_row) +20;
+            user_agent.at(i).draw_line(x,y);
         }
     }
 }
 
 
 void AgentAnalyze::update(){
+    JsonReceiver::recieve();
     check_is_json_new();
 }
 

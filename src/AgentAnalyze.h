@@ -26,7 +26,6 @@ private:
     void check_is_json_new();
     void addAgent(int add_num);
     
-    int index;
     int json_num;
     
     vector<AgentCircle> user_agent;
