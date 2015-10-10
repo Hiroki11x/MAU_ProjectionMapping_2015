@@ -50,7 +50,6 @@ public:
     ofxRollingCam rollCam;
     SpiralDrawer spiralDrawer;
     GarallyDrawer garallyDrawer;
-    
     vector<AgentAnalysis> agents;
 
     int mouseX,mouseY;
@@ -67,7 +66,6 @@ public:
     bool garallyDrawMode = false;
     bool randomExpandMeshDrawMode = false;
     bool agentDebug = false;
-    
     
     void initLineEmitPoints();
     void initModelDrawer();

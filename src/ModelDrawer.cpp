@@ -83,7 +83,6 @@ void ModelDrawer::changeRandomExpandMesh(){
 
 void ModelDrawer::drawRandomExpandMesh(float scale){
 
-    cout << scale * 100.0 << endl;
     for(int i = 0; i < randomExpandMesh.vertices.size() / 3; i++){
          randomExpandMesh.setVertex(i * 3, randomExpandMeshesVec[i * 3] * scale * 50.0);
     }

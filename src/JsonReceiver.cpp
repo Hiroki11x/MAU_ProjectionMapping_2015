@@ -48,7 +48,6 @@ void JsonReceiver::parseJson(){
     //usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img, jsonElement["text"].asCString()});
     usersInfo.push_back((UserInfo){"ds",img, jsonElement["text"].asCString()});
     //usersInfo.push_back((UserInfo){"asdfg",img, "sdfg"});
-  
     //userNames.push_back(jsonElement["user"]["name"].asCString());
     userNames.push_back("asdfghjk");
     

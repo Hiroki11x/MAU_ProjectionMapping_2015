@@ -34,7 +34,6 @@ void SpyMesh::update(){
     }else{
         wainingFrames++;
     }
-    
     if(useRollCam){
         rollCam.update();
     }else{
@@ -43,15 +42,15 @@ void SpyMesh::update(){
 
         light.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
         light.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
-        
     }
 }
 
 void SpyMesh::updateVertices(){
     
     for(int n = 0; n < agents.size(); n++){
-        for(float f = 0; f < 1; f+=ADD_TRIANGLE_PER_AGENT_TRIANGLE){ agents.at(n).removeVertices(); }
-
+        for(float f = 0; f < 1; f+=ADD_TRIANGLE_PER_AGENT_TRIANGLE){
+            agents.at(n).removeVertices();
+        }
         if(agents.at(n).removeVertices()){
             agents.at(n).targetPodsition = modelDrawer.addVertex();
         }else{
@@ -75,7 +74,6 @@ void SpyMesh::draw(){
     }
     
     ofSetColor(50, 255, 50 , 150);
-    
     
     if(isStarted){
         ofSetLineWidth(0.3);
@@ -111,9 +109,7 @@ void SpyMesh::draw(){
 void SpyMesh::drawEmitter(){
 
     ofPushStyle();
-
     ofSetColor(50, 255, 50,150);
-    
     for(int i = 0; i < agents.size(); i++){
         ofPushMatrix();
         agents.at(i).drawAgent();

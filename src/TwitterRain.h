@@ -18,7 +18,6 @@
 
 class TwitterRain : public SceneElement {
 public:
-    
     struct Tweet{
         wstring tweetInfo;
         ofVec3f position;

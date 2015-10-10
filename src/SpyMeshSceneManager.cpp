@@ -19,17 +19,13 @@ void SpyMeshSceneManager::setup(){
 }
 
 bool SpyMeshSceneManager::nextElement(){
-    
-     //SoundManager::stop();
+
      elements[elementIndex]->end();
      elementIndex++;
      if(elementIndex >= elements.size()){
          elementIndex = 0;
-         return true;
-     }else{
-         //elements[elementIndex]->init();
-         return true;
      }
+    return true;
 }
 
 void SpyMeshSceneManager::draw(){

@@ -10,7 +10,6 @@
 void TwitterRain::init(){
     
     tweets = *new vector<Tweet>;
-    
     font.setup(60, 0.3);
     font.loadFont("Arial.ttf", 20);
     font.loadFont("Yumin Demibold",128,true,true,0.3f,0,true)||font.loadSubFont("YuMincho");
@@ -25,7 +24,6 @@ void TwitterRain::init(){
    // glEnable(GL_CULL_FACE);//カリングON
     glCullFace(GL_BACK);//裏面をカリング
     glEnable(GL_DEPTH_TEST);
-    
     renderingMode=true;
     bRotation=false;
 }
@@ -38,35 +36,28 @@ void TwitterRain::draw(){
     w=mouseX-x;
     h=mouseY-y;
     
-    //base line
     ofSetColor(255,50,50,255);
     ofLine(0,y,ofGetWidth(),y);
     ofLine(x,0,x,ofGetHeight());
     
-    //cursor
     ofSetColor(255,50,50,255);
     ofLine(mouseX,0,mouseX,ofGetHeight());
     ofLine(0,mouseY,ofGetWidth(),mouseY);
     
-    //draw
     glPushMatrix();{
-        
         if(renderingMode){
             light.enable();
             light.setPosition(ofGetWidth()*.5,ofGetHeight()*.5,ofGetWidth());
         }
-        
         for(int i = 0; i < tweets.size(); i++){
             glPushMatrix();
             if(bRotation){
-                
                 ofRectangle rc= font.getStringBoundingBox(tweets.at(i).tweetInfo,x,y,w,h,align);
                 glTranslatef(ofGetWidth()*.5,0,0);
                 glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed,0,1,0);
                 glTranslatef(x-rc.x -rc.width*.5,0,0);
                 
             }
-            
             if(renderingMode){
                 ofSetColor(25,255,25,255);
                 font.draw3dString(tweets.at(i).tweetInfo,
@@ -80,10 +71,8 @@ void TwitterRain::draw(){
                 font.draw3dString("this is a 3dfont test",x,y,0,w,h,align);
                 glPolygonMode(GL_FRONT, GL_FILL);
             }
-
             glPopMatrix();
         }
-        
         light.disable();
         glDisable(GL_LIGHTING);
         
@@ -115,7 +104,6 @@ void TwitterRain::update(){
             tweets.erase(tweets.begin() + i);
             i--;
         }
-    
     }
     spentFrames++;
 }
@@ -176,7 +164,6 @@ wstring TwitterRain::convToWString(string src) {
     return convToUCS4<char>(src);
 #endif
 }
-
 
 template <class T>
 wstring TwitterRain::convToUCS4(basic_string<T> src) {

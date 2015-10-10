@@ -7,7 +7,6 @@
 //
 #include "SpyMeshIntro.h"
 
-
 void SpyMeshIntro::update(){
     if(isStarted){
         for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
@@ -16,7 +15,6 @@ void SpyMeshIntro::update(){
         if(spentFrames % 60 == 0){
             emitPoint = lineEmitPoints[int(ofRandom(0,4))];
         }
-        //trails.update();
         spentFrames+=1;
     }
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
@@ -28,21 +26,8 @@ void SpyMeshIntro::update(){
 void SpyMeshIntro::draw(){
     
     camera.begin();
-    
-    /*if(spentFrames > 500){
-        ofSetColor(255 * -  (spentFrames - 500), 255, 255 * -  (spentFrames - 500));
-        ofDrawSphere(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70),50 * (spentFrames - 500));
-    }
-    if(spentFrames > 550 || spentFrames == 0){
-        return;
-    }
-    if(spentFrames > 400){
-        trails.convergenceMode = true;
-    }*/
-    
     ofPushMatrix();
     ofPushStyle();
-    //trails.drawTrailer();
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofSetLineWidth(0.3);
@@ -55,7 +40,6 @@ void SpyMeshIntro::draw(){
     ofPopMatrix();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,camera.getPosition() + ofPoint(200,0,0));
-    
     camera.end();
 }
 

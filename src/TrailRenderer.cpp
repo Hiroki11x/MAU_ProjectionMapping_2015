@@ -24,52 +24,43 @@ void TrailRenderer::drawTrailer(){
     ofTranslate(0,trailPosition.y,trailPosition.z );
     for(int i = 0; i < trailNum; i++){
         ofPushMatrix();
-        
         ofRotateX(degree + 360 * i / trailNum);
         
         switch (this->trailShape) {
             case SimpelSphere:
                 ofDrawSphere(trailPosition.x,0,radius, size);
                 break;
-                
             case SimpleBox:
                 ofDrawBox(trailPosition.x,0,radius, size);
                 break;
-                
             case SimpleLine:
                 ofLine(trailPosition.x, 0, radius, trailPosition.x - 100, 0 ,radius);
                 break;
-                
             case MultiBox:
-                
                 for(int i = 0; i < 9; i++){
                     ofRotateX( -i * 5);
                     ofDrawBox(trailPosition.x - 200 * i,0,radius, size  * (1.0 - float(i)/9.0));
                 }
                 break;
-                
             case MultiSphere:
                 for(int i = 0; i < 9; i++){
                     ofRotateX( -i * 5);
                     ofDrawSphere(trailPosition.x - 200 * i,0,radius, size  * (1.0 - float(i)/9.0));
                 }
                 break;
-                
             default:
                 break;
         }
         ofPopMatrix();
     }
-    
     ofPopMatrix();
     ofPopStyle();
 }
 
 void TrailRenderer::update(){
-    
+
     position += 0.7;
     size /= 1.005;
-    
     if(rotateMode){
         degree+=2;
     }

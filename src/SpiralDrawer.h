@@ -19,14 +19,8 @@
 class SpiralDrawer {
 public:
     ofxAssimpModelLoaderExtend model;
-    ofMesh spiralMesh;
-    ofVbo spiralVbo;
-    
-    
+
     void init(float scale);
-    void drawSpiral(float t); //0=<t = 1
-    
-    ofMatrix4x4 modelMatrix; //.glscale
-    
+    void drawSpiral(float t);
 };
 #endif

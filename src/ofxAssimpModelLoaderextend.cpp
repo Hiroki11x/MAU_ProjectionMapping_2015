@@ -67,7 +67,7 @@ void ofxAssimpModelLoaderExtend::draw(ofPolyRenderMode renderType){
         //mesh.vbo.drawElements(GL_TRIANGLES,mesh.indices.size());
         //mesh.vbo.drawElements(GL_LINES,meshNum);
         //mesh.vbo.drawElementsInstanced(GL_LINES, meshNum, ofRandom(2000));
-       // mesh.vbo.draw(GL_LINES, showMeshIndex[i], meshNum[i]);
+        //mesh.vbo.draw(GL_LINES, showMeshIndex[i], meshNum[i]);
         
         //mesh.vbo.draw(GL_LINES, 0, spentFrame * 3);
         mesh.vbo.draw(GL_LINES, (mesh.indices.size() -10000) * abs(sin(float(ofGetElapsedTimeMillis())/2000.0)), 10000);
