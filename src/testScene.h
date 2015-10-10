@@ -20,6 +20,8 @@
 
 #include "SceneElement.h"
 
+#include "FontManager.h"
+
 class testScene : public ofBaseApp{
     
 public:

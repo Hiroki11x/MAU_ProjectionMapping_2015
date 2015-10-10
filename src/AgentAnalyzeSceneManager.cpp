@@ -10,7 +10,7 @@
 
 void AgentAnalyzeSceneManager::setup(){
     elements.push_back(new AgentAnalyze());
-    elements.at(0)->init();
+    elements.back()->init();
 }
 
 void AgentAnalyzeSceneManager::onMouseDown(int x, int y){

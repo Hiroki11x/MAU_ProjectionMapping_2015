@@ -14,17 +14,20 @@
 void AgentAnalyze::init(){
     json_num=0;
     check_is_json_new();
+    for(int i = 0; i<user_agent.size();i++){
+        user_agent.at(i).init();
+    }
 }
 
 void AgentAnalyze::draw(){
     ofCircle(20,20,10);
     float line_x;
-    for(int i = 0; i<agent_circles.size();i++){
+    for(int i = 0; i<user_agent.size();i++){
         if(i == index){
-            agent_circles.at(i).draw_circle();
+            user_agent.at(i).draw_circle();
         }else{
-            line_x = ofMap(i, 0, agent_circles.size(), 0, ofGetWidth());
-            agent_circles.at(i).draw_line(line_x);
+            line_x = ofMap(i, 0, user_agent.size(), 0, ofGetWidth());
+            user_agent.at(i).draw_line(line_x);
         }
     }
 }
@@ -58,9 +61,10 @@ void AgentAnalyze::check_is_json_new(){
 void AgentAnalyze::addAgent(int add_num){
     ofVec2f pos;
     for(int i=0;i<add_num;i++){
-        agent_circles.push_back(AgentCircle());
-        agent_circles.back().set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
-        agent_circles.back().get_info_from_twitter(
+        user_agent.push_back(AgentCircle());
+        user_agent.back().set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
+        user_agent.back().init();
+        user_agent.back().get_info_from_twitter(
                                                    JsonReceiver::usersInfo.at(json_num).userName,
                                                    JsonReceiver::usersInfo.at(json_num).twitterId,
                                                    JsonReceiver::usersInfo.at(json_num).text,

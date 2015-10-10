@@ -13,8 +13,7 @@ void AgentCircle::init(){
     registertime = ofGetSystemTime();
     set_size(DEFAULT_USER_CIRCLE_SIZE);
     icon.allocate(30, 30,OF_IMAGE_COLOR);
-
-    font.loadFont("Yu Gothic Medium.otf",8);
+    
 }
 
 void AgentCircle::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -40,11 +39,10 @@ void AgentCircle::set_color(ofColor _color){
 }
 
 void AgentCircle::update(){
-    multiple_of_size = ofRandom(MIN_CIRCLE_MAGNIFICATION,MAX_CIRCLE_MAGNIFICATION);
 }
 void AgentCircle::draw_line(float line_x){
     ofLine(line_x, line_y1,line_x, line_y2);
-    font.drawString(username, line_x,line_y1);
+    FontManager::mfont.drawString(username, line_x,line_y1);
 }
 
 void AgentCircle::draw_circle(){
@@ -79,10 +77,11 @@ void AgentCircle::draw_circle(){
     ofSetLineWidth(0.01);
 
     ofSetColor(color,255);
-    font.drawString(username, position.x+size*2.5,position.y-size+3);
-    font.drawString(id, position.x+size*2.5,position.y+3);
-    font.drawString(text, position.x+size*2.5,position.y+13);
-    font.drawString("Follower:"+ofToString(followers_count), position.x+size*2.5,position.y+23);
-    font.drawString("Friends:"+ofToString(friends_count), position.x+size*2.5,position.y+33);
-    font.drawString("Statue:"+ofToString(statuses_count), position.x+size*2.5,position.y+43);
+    FontManager::mfont.drawString(username, position.x+size*2.5,position.y-size+3);
+    FontManager::mfont.drawString(id, position.x+size*2.5,position.y+3);
+    FontManager::mfont.drawString(text, position.x+size*2.5,position.y+13);
+    FontManager::mfont.drawString("Follower:"+ofToString(followers_count), position.x+size*2.5,position.y+23);
+    FontManager::mfont.drawString("Friends:"+ofToString(friends_count), position.x+size*2.5,position.y+33);
+    FontManager::mfont.drawString("Statue:"+ofToString(statuses_count), position.x+size*2.5,position.y+43);
+    
 }

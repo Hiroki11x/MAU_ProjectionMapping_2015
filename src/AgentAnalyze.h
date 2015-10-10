@@ -29,7 +29,7 @@ private:
     int index;
     int json_num;
     
-    vector<AgentCircle> agent_circles;
+    vector<AgentCircle> user_agent;
     
 public:
     virtual void update() override;

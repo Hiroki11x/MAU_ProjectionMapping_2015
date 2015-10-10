@@ -16,11 +16,14 @@
 #define MAX_CIRCLE_MAGNIFICATION 1.7
 
 #include "ofMain.h"
-#include "ofxTrueTypeFontUC.h"
+#include "FontManager.h"
 
 
 class UserAgent{
 private:
+    
+    float line_y1 = ofGetHeight()/2;
+    float line_y2 = 3*ofGetHeight()/2;
     
     float size;
     float multiple_of_size;
@@ -36,7 +39,6 @@ private:
     float registertime;
     
     ofColor color;
-    ofxTrueTypeFontUC font,smallfont;
 public:
     ofVec2f position;
     UserAgent(){};
@@ -54,6 +56,11 @@ public:
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
+    
+    
+    
+    void draw_line(float line_x);
+    void draw_circle();
 };
 
 #endif

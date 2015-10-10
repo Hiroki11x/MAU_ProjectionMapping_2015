@@ -16,7 +16,7 @@
 #define MAX_CIRCLE_MAGNIFICATION 1.7
 
 #include "ofMain.h"
-#include "ofxTrueTypeFontUC.h"
+#include "FontManager.h"
 
 class AgentCircle{
     
@@ -39,7 +39,6 @@ private:
     float registertime;
     
     ofColor color;
-    ofTrueTypeFont font,smallfont;
     
 public:
     ofVec2f position;
