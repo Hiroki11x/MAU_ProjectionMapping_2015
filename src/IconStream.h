@@ -18,6 +18,14 @@
 
 class IconStream : public SceneElement {
 public:
+    enum Mode{
+        LoadIcon,
+        MakeCircle,
+        Convergence,
+        End,
+        Down
+    };
+    
     virtual void draw() override;
     virtual void init() override;
     virtual void update() override;
@@ -29,14 +37,19 @@ public:
     ofxAssimpModelLoader doorModel;
     ofLight light;
     ofCamera camera;
+    Mode mode;
+    ofVec3f lastPosition;
+    ofVec3f lastParticlePosition;
+    ofVec3f cameraPosition;
     
     int iconNum;
     int spentFrames;
     float rotation;
     bool rotationMode;
+    bool drawWhiteRect;
     float doorDeg;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
-    
+    ofVec3f targetPosition[MAX_ICON * ICON_SIZE * ICON_SIZE];
     void drawDoor(float deg);
 };
 #endif
