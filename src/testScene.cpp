@@ -9,19 +9,24 @@
 #include "testScene.h"
 
 void testScene::setup(){
+    
+    FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
+//    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
+    
     ofBackground(0);
     ofSetFrameRate(60);
     ofEnableSmoothing();
-    
     ofDisableArbTex();
     
-//    manager = new SpyMeshSceneManager();
-//    manager->setup();
-//    mode = SceneMode::Introduction;
+    mainOutputSyphonServer.setName("Screen Outputh");//SyphonServer使う上でのセットアップ
+    mClient.setup();
+    mClient.setApplicationName("Simple Serverh");
+    mClient.setServerName("");
     
     manager = new UserAgentsSceneManager();
     manager->setup();
     mode=SceneMode::UserAgent;
+
     
 }
 
@@ -33,6 +38,9 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
+    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
+    mClient.draw(50, 50);
+    mainOutputSyphonServer.publishScreen();
 }
 
 //--------------------------------------------------------------
@@ -47,7 +55,11 @@ void testScene::keyPressed(int key){
             switch (mode) {
                 case SceneMode::UserAgent:
                     manager = new UserAgentsSceneManager();
-                    mode = SceneMode::UserAgent;
+                    mode = SceneMode::AgentAnalyze;
+                    break;
+                case SceneMode::AgentAnalyze:
+                    manager = new AgentAnalyzeSceneManager();
+                    mode = SceneMode::Introduction;
                     break;
                 case SceneMode::Introduction:
                     manager = new SpyMeshSceneManager();
@@ -55,12 +67,11 @@ void testScene::keyPressed(int key){
                     break;
                 case SceneMode::SpyMesh:
                     manager = new IntroductionManager();
-                    mode = SceneMode::Introduction;
+                    mode = SceneMode::UserAgent;
                     break;
                 default:
                     break;
             }
-            
             manager->setup();
         }
     }

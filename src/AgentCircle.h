@@ -1,15 +1,15 @@
 //
-//  UserAgent.h
-//  MauInteractive
+//  AgentCircle.h
+//  mauInteractive
 //
-//  Created by HirokiNaganuma on 2015/09/12.
+//  Created by HirokiNaganuma on 2015/10/09.
 //
 //
 
-#ifndef MauInteractive_UserAgent_h
-#define MauInteractive_UserAgent_h
+#ifndef __mauInteractive__AgentCircle__
+#define __mauInteractive__AgentCircle__
 
-#define DEFAULT_USER_CIRCLE_SIZE 3
+#define DEFAULT_USER_CIRCLE_SIZE 300
 #define INNER_CIRCLE_MAGNIFICATION 0.75
 
 #define MIN_CIRCLE_MAGNIFICATION 1.2
@@ -18,8 +18,8 @@
 #include "ofMain.h"
 #include "FontManager.h"
 
-
-class UserAgent{
+class AgentCircle{
+    
 private:
     
     float line_y1 = ofGetHeight()/2;
@@ -39,28 +39,21 @@ private:
     float registertime;
     
     ofColor color;
+    
 public:
     ofVec2f position;
-    UserAgent(){};
-    
-//    void set_user_id(string id);
-//    void set_user_name(string name);
+    AgentCircle(){};
     
     void set_position(ofVec2f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
-    void calc_line_length();
     
     void update();
-    void draw();
+    void draw_circle();
+    void draw_line(float x, float y);
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
-    
-    
-    
-    void draw_line(float line_x);
-    void draw_circle();
 };
 
-#endif
+#endif /* defined(__mauInteractive__AgentCircle__) */

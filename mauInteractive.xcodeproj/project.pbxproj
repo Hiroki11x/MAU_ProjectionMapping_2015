@@ -67,7 +67,6 @@
 		4E88A24E1BBE11AF001E8306 /* textExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2301BBE11AF001E8306 /* textExplosion.cpp */; };
 		4E88A24F1BBE11AF001E8306 /* TrianglePoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2321BBE11AF001E8306 /* TrianglePoints.cpp */; };
 		4E88A2501BBE11AF001E8306 /* UserAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2341BBE11AF001E8306 /* UserAgent.cpp */; };
-		4E88A2511BBE11AF001E8306 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */; };
 		4E88A2521BBE11AF001E8306 /* UserAgents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A2381BBE11AF001E8306 /* UserAgents.cpp */; };
 		4E88A2531BBE11AF001E8306 /* UserAgentsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A23A1BBE11AF001E8306 /* UserAgentsSceneManager.cpp */; };
 		4E94F1391BBE102200E0343E /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E94F12B1BBE102200E0343E /* Syphon.framework */; };
@@ -81,8 +80,18 @@
 		4EE77D1D1BC62B840070C805 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D1B1BC62B840070C805 /* ParticleConnection.cpp */; };
 		4EE77D201BC62BB70070C805 /* TriangleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D1E1BC62BB70070C805 /* TriangleConnection.cpp */; };
 		4EE77D231BC62CFC0070C805 /* ExplodeAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D211BC62CFC0070C805 /* ExplodeAnimation.cpp */; };
-		4EE77D331BC657F50070C805 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D2D1BC657F50070C805 /* README.md */; };
-		4EE77D341BC657F50070C805 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */; };
+		4EE77D501BC783C20070C805 /* AgentAnalyzeSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D4E1BC783C20070C805 /* AgentAnalyzeSceneManager.cpp */; };
+		4EE77D541BC786090070C805 /* AgentAnalyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D521BC786090070C805 /* AgentAnalyze.cpp */; };
+		4EE77D9B1BC904950070C805 /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE77D8B1BC904950070C805 /* libharfbuzz.a */; };
+		4EE77D9C1BC904950070C805 /* libharfbuzz.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE77D8E1BC904950070C805 /* libharfbuzz.lib */; };
+		4EE77D9D1BC904950070C805 /* libharfbuzzd.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE77D8F1BC904950070C805 /* libharfbuzzd.lib */; };
+		4EE77D9E1BC904950070C805 /* libharfbuzz.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE77D911BC904950070C805 /* libharfbuzz.lib */; };
+		4EE77D9F1BC904950070C805 /* libharfbuzzd.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE77D921BC904950070C805 /* libharfbuzzd.lib */; };
+		4EE77DA01BC904950070C805 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D931BC904950070C805 /* LICENSE.md */; };
+		4EE77DA11BC904950070C805 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D941BC904950070C805 /* README.md */; };
+		4EE77DA21BC904950070C805 /* ofxTrueTypeFontUL2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D961BC904950070C805 /* ofxTrueTypeFontUL2.cpp */; };
+		4EE77DA81BC905280070C805 /* AgentCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77DA61BC905280070C805 /* AgentCircle.cpp */; };
+		4EE77DAB1BC90AD70070C805 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77DA91BC90AD70070C805 /* FontManager.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19AB0F312D36358FC181E5B /* ofx3dModelLoader.cpp */; };
@@ -345,8 +354,6 @@
 		4E88A2331BBE11AF001E8306 /* TrianglePoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrianglePoints.h; sourceTree = "<group>"; };
 		4E88A2341BBE11AF001E8306 /* UserAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgent.cpp; sourceTree = "<group>"; };
 		4E88A2351BBE11AF001E8306 /* UserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgent.h; sourceTree = "<group>"; };
-		4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentManager.cpp; sourceTree = "<group>"; };
-		4E88A2371BBE11AF001E8306 /* UserAgentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgentManager.h; sourceTree = "<group>"; };
 		4E88A2381BBE11AF001E8306 /* UserAgents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgents.cpp; sourceTree = "<group>"; };
 		4E88A2391BBE11AF001E8306 /* UserAgents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgents.h; sourceTree = "<group>"; };
 		4E88A23A1BBE11AF001E8306 /* UserAgentsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentsSceneManager.cpp; sourceTree = "<group>"; };
@@ -376,12 +383,42 @@
 		4EE77D1F1BC62BB70070C805 /* TriangleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleConnection.h; sourceTree = "<group>"; };
 		4EE77D211BC62CFC0070C805 /* ExplodeAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExplodeAnimation.cpp; sourceTree = "<group>"; };
 		4EE77D221BC62CFC0070C805 /* ExplodeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeAnimation.h; sourceTree = "<group>"; };
-		4EE77D2A1BC657F50070C805 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
-		4EE77D2B1BC657F50070C805 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
-		4EE77D2C1BC657F50070C805 /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
-		4EE77D2D1BC657F50070C805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
-		4EE77D301BC657F50070C805 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
+		4EE77D4E1BC783C20070C805 /* AgentAnalyzeSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentAnalyzeSceneManager.cpp; sourceTree = "<group>"; };
+		4EE77D4F1BC783C20070C805 /* AgentAnalyzeSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentAnalyzeSceneManager.h; sourceTree = "<group>"; };
+		4EE77D521BC786090070C805 /* AgentAnalyze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentAnalyze.cpp; sourceTree = "<group>"; };
+		4EE77D531BC786090070C805 /* AgentAnalyze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentAnalyze.h; sourceTree = "<group>"; };
+		4EE77D621BC904950070C805 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		4EE77D631BC904950070C805 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4EE77D781BC904950070C805 /* hb-blob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-blob.h"; sourceTree = "<group>"; };
+		4EE77D791BC904950070C805 /* hb-buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-buffer.h"; sourceTree = "<group>"; };
+		4EE77D7A1BC904950070C805 /* hb-common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-common.h"; sourceTree = "<group>"; };
+		4EE77D7B1BC904950070C805 /* hb-deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-deprecated.h"; sourceTree = "<group>"; };
+		4EE77D7C1BC904950070C805 /* hb-face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-face.h"; sourceTree = "<group>"; };
+		4EE77D7D1BC904950070C805 /* hb-font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-font.h"; sourceTree = "<group>"; };
+		4EE77D7E1BC904950070C805 /* hb-ft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-ft.h"; sourceTree = "<group>"; };
+		4EE77D7F1BC904950070C805 /* hb-glib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-glib.h"; sourceTree = "<group>"; };
+		4EE77D801BC904950070C805 /* hb-ot-layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-ot-layout.h"; sourceTree = "<group>"; };
+		4EE77D811BC904950070C805 /* hb-ot-tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-ot-tag.h"; sourceTree = "<group>"; };
+		4EE77D821BC904950070C805 /* hb-ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-ot.h"; sourceTree = "<group>"; };
+		4EE77D831BC904950070C805 /* hb-set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-set.h"; sourceTree = "<group>"; };
+		4EE77D841BC904950070C805 /* hb-shape-plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-shape-plan.h"; sourceTree = "<group>"; };
+		4EE77D851BC904950070C805 /* hb-shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-shape.h"; sourceTree = "<group>"; };
+		4EE77D861BC904950070C805 /* hb-unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-unicode.h"; sourceTree = "<group>"; };
+		4EE77D871BC904950070C805 /* hb-version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hb-version.h"; sourceTree = "<group>"; };
+		4EE77D881BC904950070C805 /* hb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hb.h; sourceTree = "<group>"; };
+		4EE77D8B1BC904950070C805 /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libharfbuzz.a; sourceTree = "<group>"; };
+		4EE77D8E1BC904950070C805 /* libharfbuzz.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libharfbuzz.lib; sourceTree = "<group>"; };
+		4EE77D8F1BC904950070C805 /* libharfbuzzd.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libharfbuzzd.lib; sourceTree = "<group>"; };
+		4EE77D911BC904950070C805 /* libharfbuzz.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libharfbuzz.lib; sourceTree = "<group>"; };
+		4EE77D921BC904950070C805 /* libharfbuzzd.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libharfbuzzd.lib; sourceTree = "<group>"; };
+		4EE77D931BC904950070C805 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		4EE77D941BC904950070C805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4EE77D961BC904950070C805 /* ofxTrueTypeFontUL2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUL2.cpp; sourceTree = "<group>"; };
+		4EE77D971BC904950070C805 /* ofxTrueTypeFontUL2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUL2.h; sourceTree = "<group>"; };
+		4EE77DA61BC905280070C805 /* AgentCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentCircle.cpp; sourceTree = "<group>"; };
+		4EE77DA71BC905280070C805 /* AgentCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentCircle.h; sourceTree = "<group>"; };
+		4EE77DA91BC90AD70070C805 /* FontManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FontManager.cpp; sourceTree = "<group>"; };
+		4EE77DAA1BC90AD70070C805 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
 		4FAE4A0F69A8990513603BDF /* ofxAssimpUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAssimpUtils.h; path = ../../../addons/ofxAssimpModelLoader/src/ofxAssimpUtils.h; sourceTree = SOURCE_ROOT; };
 		516717F84C0146512C47A3EC /* ofxCvHaarFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxCvHaarFinder.h; path = ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h; sourceTree = SOURCE_ROOT; };
 		53EA0E889F34624CE3313E04 /* assimp.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = assimp.hpp; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp.hpp; sourceTree = SOURCE_ROOT; };
@@ -583,13 +620,18 @@
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
+				4EE77D9F1BC904950070C805 /* libharfbuzzd.lib in Frameworks */,
 				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				4EE77D9E1BC904950070C805 /* libharfbuzz.lib in Frameworks */,
 				4E94F1391BBE102200E0343E /* Syphon.framework in Frameworks */,
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				4EE77D9B1BC904950070C805 /* libharfbuzz.a in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
+				4EE77D9C1BC904950070C805 /* libharfbuzz.lib in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				4EE77D9D1BC904950070C805 /* libharfbuzzd.lib in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
@@ -1048,7 +1090,7 @@
 		4E88A2541BBE11CD001E8306 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				4E88A25B1BBE128A001E8306 /* AgentLegacy */,
+				4EE77D4D1BC783950070C805 /* UserAgentAnalyze */,
 				4E88A25A1BBE1279001E8306 /* Introduction */,
 				4E88A2591BBE126F001E8306 /* SpyMesh */,
 				4E88A2581BBE1266001E8306 /* Base */,
@@ -1101,6 +1143,8 @@
 				4E88A2291BBE11AF001E8306 /* SceneManager.h */,
 				4E88A21E1BBE11AF001E8306 /* mode.cpp */,
 				4E88A21F1BBE11AF001E8306 /* mode.h */,
+				4EE77DA91BC90AD70070C805 /* FontManager.cpp */,
+				4EE77DAA1BC90AD70070C805 /* FontManager.h */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -1123,15 +1167,6 @@
 				4E88A2601BBE1377001E8306 /* Element */,
 			);
 			name = Introduction;
-			sourceTree = "<group>";
-		};
-		4E88A25B1BBE128A001E8306 /* AgentLegacy */ = {
-			isa = PBXGroup;
-			children = (
-				4E88A2361BBE11AF001E8306 /* UserAgentManager.cpp */,
-				4E88A2371BBE11AF001E8306 /* UserAgentManager.h */,
-			);
-			name = AgentLegacy;
 			sourceTree = "<group>";
 		};
 		4E88A25C1BBE1298001E8306 /* Element */ = {
@@ -1315,24 +1350,139 @@
 			name = Element;
 			sourceTree = "<group>";
 		};
-		4EE77D241BC657F50070C805 /* ofxTrueTypeFontUC */ = {
+		4EE77D4D1BC783950070C805 /* UserAgentAnalyze */ = {
 			isa = PBXGroup;
 			children = (
-				4EE77D2A1BC657F50070C805 /* install.xml */,
-				4EE77D2B1BC657F50070C805 /* License.txt */,
-				4EE77D2C1BC657F50070C805 /* ofxaddons_thumbnail.png */,
-				4EE77D2D1BC657F50070C805 /* README.md */,
-				4EE77D2E1BC657F50070C805 /* src */,
+				4EE77D511BC784D20070C805 /* Element */,
+				4EE77D4E1BC783C20070C805 /* AgentAnalyzeSceneManager.cpp */,
+				4EE77D4F1BC783C20070C805 /* AgentAnalyzeSceneManager.h */,
 			);
-			name = ofxTrueTypeFontUC;
-			path = ../../../addons/ofxTrueTypeFontUC;
+			name = UserAgentAnalyze;
 			sourceTree = "<group>";
 		};
-		4EE77D2E1BC657F50070C805 /* src */ = {
+		4EE77D511BC784D20070C805 /* Element */ = {
 			isa = PBXGroup;
 			children = (
-				4EE77D2F1BC657F50070C805 /* ofxTrueTypeFontUC.cpp */,
-				4EE77D301BC657F50070C805 /* ofxTrueTypeFontUC.h */,
+				4EE77D551BC7BDD30070C805 /* Class */,
+				4EE77D521BC786090070C805 /* AgentAnalyze.cpp */,
+				4EE77D531BC786090070C805 /* AgentAnalyze.h */,
+			);
+			name = Element;
+			sourceTree = "<group>";
+		};
+		4EE77D551BC7BDD30070C805 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77DA61BC905280070C805 /* AgentCircle.cpp */,
+				4EE77DA71BC905280070C805 /* AgentCircle.h */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		4EE77D611BC904950070C805 /* ofxTrueTypeFontUL2 */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D621BC904950070C805 /* .gitattributes */,
+				4EE77D631BC904950070C805 /* .gitignore */,
+				4EE77D751BC904950070C805 /* libs */,
+				4EE77D931BC904950070C805 /* LICENSE.md */,
+				4EE77D941BC904950070C805 /* README.md */,
+				4EE77D951BC904950070C805 /* src */,
+			);
+			name = ofxTrueTypeFontUL2;
+			path = ../../../addons/ofxTrueTypeFontUL2;
+			sourceTree = "<group>";
+		};
+		4EE77D751BC904950070C805 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D761BC904950070C805 /* harfbuzz */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		4EE77D761BC904950070C805 /* harfbuzz */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D771BC904950070C805 /* include */,
+				4EE77D891BC904950070C805 /* lib */,
+			);
+			path = harfbuzz;
+			sourceTree = "<group>";
+		};
+		4EE77D771BC904950070C805 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D781BC904950070C805 /* hb-blob.h */,
+				4EE77D791BC904950070C805 /* hb-buffer.h */,
+				4EE77D7A1BC904950070C805 /* hb-common.h */,
+				4EE77D7B1BC904950070C805 /* hb-deprecated.h */,
+				4EE77D7C1BC904950070C805 /* hb-face.h */,
+				4EE77D7D1BC904950070C805 /* hb-font.h */,
+				4EE77D7E1BC904950070C805 /* hb-ft.h */,
+				4EE77D7F1BC904950070C805 /* hb-glib.h */,
+				4EE77D801BC904950070C805 /* hb-ot-layout.h */,
+				4EE77D811BC904950070C805 /* hb-ot-tag.h */,
+				4EE77D821BC904950070C805 /* hb-ot.h */,
+				4EE77D831BC904950070C805 /* hb-set.h */,
+				4EE77D841BC904950070C805 /* hb-shape-plan.h */,
+				4EE77D851BC904950070C805 /* hb-shape.h */,
+				4EE77D861BC904950070C805 /* hb-unicode.h */,
+				4EE77D871BC904950070C805 /* hb-version.h */,
+				4EE77D881BC904950070C805 /* hb.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		4EE77D891BC904950070C805 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D8A1BC904950070C805 /* osx */,
+				4EE77D8C1BC904950070C805 /* vs */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		4EE77D8A1BC904950070C805 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D8B1BC904950070C805 /* libharfbuzz.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		4EE77D8C1BC904950070C805 /* vs */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D8D1BC904950070C805 /* Win32 */,
+				4EE77D901BC904950070C805 /* x64 */,
+			);
+			path = vs;
+			sourceTree = "<group>";
+		};
+		4EE77D8D1BC904950070C805 /* Win32 */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D8E1BC904950070C805 /* libharfbuzz.lib */,
+				4EE77D8F1BC904950070C805 /* libharfbuzzd.lib */,
+			);
+			path = Win32;
+			sourceTree = "<group>";
+		};
+		4EE77D901BC904950070C805 /* x64 */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D911BC904950070C805 /* libharfbuzz.lib */,
+				4EE77D921BC904950070C805 /* libharfbuzzd.lib */,
+			);
+			path = x64;
+			sourceTree = "<group>";
+		};
+		4EE77D951BC904950070C805 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77D961BC904950070C805 /* ofxTrueTypeFontUL2.cpp */,
+				4EE77D971BC904950070C805 /* ofxTrueTypeFontUL2.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1560,7 +1710,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				4EE77D241BC657F50070C805 /* ofxTrueTypeFontUC */,
+				4EE77D611BC904950070C805 /* ofxTrueTypeFontUL2 */,
 				4E7633161BC258C2002F2530 /* ofxPostGlitch */,
 				4E5ED67A1BC12958004F1AF6 /* ofxTween */,
 				4E94F1251BBE102200E0343E /* ofxSyphon */,
@@ -1985,17 +2135,16 @@
 				4E322024174AFB49A3BEA152 /* model3DS.cpp in Sources */,
 				4EE77D201BC62BB70070C805 /* TriangleConnection.cpp in Sources */,
 				4E94F13C1BBE102200E0343E /* ofxSyphonClient.mm in Sources */,
-				4EE77D341BC657F50070C805 /* ofxTrueTypeFontUC.cpp in Sources */,
 				C2B7714E50909A7BCAE5A51C /* texture3DS.cpp in Sources */,
 				59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */,
 				4E5ED6C31BC12958004F1AF6 /* ofxEasing.cpp in Sources */,
 				4E88A2521BBE11AF001E8306 /* UserAgents.cpp in Sources */,
 				4EE77D1A1BC62B000070C805 /* ParticleElement.cpp in Sources */,
+				4EE77DAB1BC90AD70070C805 /* FontManager.cpp in Sources */,
 				3B8120368B4FCCD80883BAF3 /* ofxAssimpAnimation.cpp in Sources */,
 				4E5ED6D81BC12980004F1AF6 /* ofxTweenUtil.cpp in Sources */,
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
-				4EE77D331BC657F50070C805 /* README.md in Sources */,
 				4E88A2471BBE11AF001E8306 /* ofApp.cpp in Sources */,
 				4E88A24A1BBE11AF001E8306 /* SceneManager.cpp in Sources */,
 				4E94F13B1BBE102200E0343E /* README.md in Sources */,
@@ -2034,11 +2183,14 @@
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				4E94F13D1BBE102200E0343E /* ofxSyphonServer.mm in Sources */,
+				4EE77D541BC786090070C805 /* AgentAnalyze.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
+				4EE77DA11BC904950070C805 /* README.md in Sources */,
 				4E5ED6CF1BC12958004F1AF6 /* ofxTween.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
 				4E7632A71BC241AD002F2530 /* GraphLog.cpp in Sources */,
 				4E5ED6CC1BC12958004F1AF6 /* ofxEasingQuart.cpp in Sources */,
+				4EE77DA81BC905280070C805 /* AgentCircle.cpp in Sources */,
 				4E88A2461BBE11AF001E8306 /* ModelDrawer.cpp in Sources */,
 				4E88A24B1BBE11AF001E8306 /* SpyMesh.cpp in Sources */,
 				4E7633751BC258C2002F2530 /* ofxPostGlitch.cpp in Sources */,
@@ -2046,6 +2198,8 @@
 				4E5ED6CD1BC12958004F1AF6 /* ofxEasingQuint.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				4E94F13A1BBE102200E0343E /* SyphonNameboundClient.m in Sources */,
+				4EE77D501BC783C20070C805 /* AgentAnalyzeSceneManager.cpp in Sources */,
+				4EE77DA01BC904950070C805 /* LICENSE.md in Sources */,
 				4E5ED6C71BC12958004F1AF6 /* ofxEasingCubic.cpp in Sources */,
 				4ECB408B1BC511A2004EB9AF /* JsonReceiver.cpp in Sources */,
 				4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */,
@@ -2054,12 +2208,12 @@
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				45CC483A999BF1065A6B926C /* Distance.cpp in Sources */,
 				5CC34D433F5806179935B89D /* Flow.cpp in Sources */,
+				4EE77DA21BC904950070C805 /* ofxTrueTypeFontUL2.cpp in Sources */,
 				4E88A24D1BBE11AF001E8306 /* testScene.cpp in Sources */,
 				4EE77D1D1BC62B840070C805 /* ParticleConnection.cpp in Sources */,
 				4E88A24C1BBE11AF001E8306 /* SpyMeshSceneManager.cpp in Sources */,
 				4E76329B1BC2147B002F2530 /* ofxSuperLogUtil.cpp in Sources */,
 				4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */,
-				4E88A2511BBE11AF001E8306 /* UserAgentManager.cpp in Sources */,
 				4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */,
 				2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */,
 				4E5ED6E31BC12AD0004F1AF6 /* SemiCirclePath.cpp in Sources */,
@@ -2419,6 +2573,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"$(PROJECT_DIR)/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(PROJECT_DIR)",
+					/Users/hirokinaganuma/Documents/hackenv/of_v0.8.4_osx_release/addons/ofxTrueTypeFontUL2/libs/harfbuzz/lib/osx,
+					/Users/hirokinaganuma/Documents/hackenv/of_v0.8.4_osx_release/addons/ofxTrueTypeFontUL2/libs/harfbuzz/lib/vs/Win32,
+					/Users/hirokinaganuma/Documents/hackenv/of_v0.8.4_osx_release/addons/ofxTrueTypeFontUL2/libs/harfbuzz/lib/vs/x64,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
@@ -2510,6 +2667,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(PROJECT_DIR)/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(PROJECT_DIR)",
+					/Users/hirokinaganuma/Documents/hackenv/of_v0.8.4_osx_release/addons/ofxTrueTypeFontUL2/libs/harfbuzz/lib/osx,
+					/Users/hirokinaganuma/Documents/hackenv/of_v0.8.4_osx_release/addons/ofxTrueTypeFontUL2/libs/harfbuzz/lib/vs/Win32,
+					/Users/hirokinaganuma/Documents/hackenv/of_v0.8.4_osx_release/addons/ofxTrueTypeFontUL2/libs/harfbuzz/lib/vs/x64,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";

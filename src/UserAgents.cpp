@@ -106,10 +106,12 @@ void UserAgents::check_is_json_new(){
         addAgent(add_num);
         superLogUtil.set_log("check_is_json_new", ofToString(add_num));
     }
-//    superLogUtil.set_log("check_is_json_new", ofToString(json_num));
 }
 
+
+//TODO positionが足りなくなったらの対応してない
 ofVec2f UserAgents::select_position(){
+    
     ofVec2f position;
     
     int size = matrix_generator.get_position_num();//生成した座標の数
@@ -133,7 +135,14 @@ void UserAgents::addAgent(int add_num){
         userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
-        userAgentArray.back()->get_info_from_twitter(JsonReceiver::usersInfo.at(json_num).userName, JsonReceiver::usersInfo.at(json_num).twitterId, JsonReceiver::usersInfo.at(json_num).icon);
+        userAgentArray.back()->get_info_from_twitter(
+                                                     JsonReceiver::usersInfo.at(json_num).userName,
+                                                     JsonReceiver::usersInfo.at(json_num).twitterId,
+                                                     JsonReceiver::usersInfo.at(json_num).text,
+                                                     JsonReceiver::usersInfo.at(json_num).friends_count,
+                                                     JsonReceiver::usersInfo.at(json_num).statuses_count,
+                                                     JsonReceiver::usersInfo.at(json_num).followers_count,
+                                                     JsonReceiver::usersInfo.at(json_num).icon);
         createExplodeAnimation(pos);
         json_num++;//json_numはここで
         superLogUtil.set_log("addAgent", ofToString(json_num));
