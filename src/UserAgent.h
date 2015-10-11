@@ -22,6 +22,8 @@
 class UserAgent{
 private:
     
+    int generater_index;
+    
     float line_y1 = ofGetHeight()/2;
     float line_y2 = 3*ofGetHeight()/2;
     
@@ -57,10 +59,13 @@ public:
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
     
-    
+    void set_generater_index(int index);
+    int get_generater_index();
     
     void draw_line(float line_x);
     void draw_circle();
+    
+    
 };
 
 #endif

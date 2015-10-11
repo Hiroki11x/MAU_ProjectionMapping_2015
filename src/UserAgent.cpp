@@ -47,6 +47,15 @@ void UserAgent::set_color(ofColor _color){
     color = _color;
 }
 
+void UserAgent::set_generater_index(int index){
+    generater_index = index;
+}
+
+int UserAgent::get_generater_index(){
+    return generater_index;
+}
+
+
 void UserAgent::update(){
     multiple_of_size = ofRandom(MIN_CIRCLE_MAGNIFICATION,MAX_CIRCLE_MAGNIFICATION);
 }

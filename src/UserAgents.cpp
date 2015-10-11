@@ -50,6 +50,7 @@ void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvector�
         int delete_num = userAgentArray.size()+1 - GENE_X_NUM*GENE_Y_NUM +delete_adder;
         for(int i =0 ;i < delete_num ; i++){
             userAgentArray.erase(userAgentArray.begin());
+            matrix_generator.set_is_used_false(userAgentArray.at(0)->get_generater_index());
         }
     }
 }
@@ -120,9 +121,9 @@ void UserAgents::check_is_json_new(){
 
 
 //TODO positionが足りなくなったらの対応してない
-ofVec2f UserAgents::select_position(){
+ofVec3f UserAgents::select_position(){
     
-    ofVec2f position;
+    ofVec3f position;
     
     int size = matrix_generator.get_position_num();//生成した座標の数
     int index = ofRandom(size);//その座標でどこを使うか選ぶ
@@ -131,17 +132,25 @@ ofVec2f UserAgents::select_position(){
     }
     matrix_generator.set_is_used_true(index);//使うところは使う(true)に変更
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
+    position.z = index;
     return position;
+    
+    //この時のIndexも渡したい
 }
 
 void UserAgents::addAgent(int add_num){
-    ofVec2f pos;
+    ofVec3f pos3f;
+    ofVec2f pos2f;
     for(int i=0;i<add_num;i++){
         
         ////---------Legacy-----------
         userAgentArray.push_back(new UserAgent());
-        pos = select_position();
-        userAgentArray.back()->set_position(pos);
+        
+        pos3f = select_position();
+        userAgentArray.back()->set_generater_index(pos3f.z);
+        pos2f.x = pos3f.x;
+        pos2f.y = pos3f.y;
+        userAgentArray.back()->set_position(pos2f);
         userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
@@ -153,7 +162,7 @@ void UserAgents::addAgent(int add_num){
                                                      JsonReceiver::usersInfo.at(json_num).statuses_count,
                                                      JsonReceiver::usersInfo.at(json_num).followers_count,
                                                      JsonReceiver::usersInfo.at(json_num).icon);
-        createExplodeAnimation(pos);
+        createExplodeAnimation(pos2f);
         json_num++;//json_numはここで
         superLogUtil.set_log("addAgent", ofToString(json_num));
     }
