@@ -38,7 +38,7 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
-    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
+//    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
 }

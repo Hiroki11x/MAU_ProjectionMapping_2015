@@ -20,17 +20,25 @@ void AgentAnalyze::init(){
 }
 
 void AgentAnalyze::draw(){
+    
     int agent_size = user_agent.size();
-    int max_row = ofGetHeight()/50 -1;
+    int max_row = ofGetHeight()/50 -2;
     int max_column = ofGetWidth()/170;
+    
+    ofSetColor(255);
+    
+    if((max_row+2)*max_column < agent_size ){
+        user_agent.erase(user_agent.begin());
+    }
+    
     float x;
     float y;
     for(int i = 0; i< agent_size ;i++){
         if(i == agent_size-1){
-            user_agent.at(i).draw_circle();
+//            user_agent.at(i).draw_circle();
         }else{
             x = (i/max_row)*170 +20;
-            y = 60 * (i%max_row) +20;
+            y = 60 * (i%max_row -1) +20;
             user_agent.at(i).draw_line(x,y);
         }
     }
@@ -67,7 +75,6 @@ void AgentAnalyze::addAgent(int add_num){
     ofVec2f pos;
     for(int i=0;i<add_num;i++){
         user_agent.push_back(AgentCircle());
-        user_agent.back().set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         user_agent.back().init();
         user_agent.back().get_info_from_twitter(
                                                    JsonReceiver::usersInfo.at(json_num).userName,
