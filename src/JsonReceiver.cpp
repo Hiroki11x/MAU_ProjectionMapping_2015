@@ -7,14 +7,6 @@
 //
 #include "JsonReceiver.h"
 
-/*int JsonReceiver::updateNum = 0;
-bool JsonReceiver::fetchImageMode = false;
-bool JsonReceiver::isNewData = false;
-int64_t JsonReceiver::cachedTweetId;
-vector<JsonReceiver::UserInfo> JsonReceiver::usersInfo;
-vector<wstring> JsonReceiver::userNames;
-ofxJSONElement JsonReceiver::jsonElement;
-*/
 JsonReceiver &JsonReceiver::getInstance() {
     static JsonReceiver instance;
     return instance;
@@ -62,12 +54,9 @@ bool JsonReceiver::recieve(){
 
 void JsonReceiver::parseJson(){
     
-    ofImage img;
-    if(fetchImageMode){
-        img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
-        if(img.getWidth() == 0){return;}
-    }
-    usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),img, convToWString(jsonElement["text"].asCString())});
+    usersInfo.push_back((UserInfo){jsonElement["user"]["name"].asCString(),
+        jsonElement["user"]["profile_image_url"].asCString(),
+        convToWString(jsonElement["text"].asCString())});
     userNames.push_back(convToWString(jsonElement["user"]["name"].asCString()));
     updateNum++;
     isNewData = true;

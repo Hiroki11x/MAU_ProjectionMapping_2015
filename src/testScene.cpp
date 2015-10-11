@@ -19,18 +19,12 @@ void testScene::setup(){
     mClient.setup();
     mClient.setApplicationName("Simple Serverh");
     mClient.setServerName("");
-
     
     manager = new SpyMeshSceneManager();
     manager->setup();
     mode = SceneMode::Introduction;
-    
-   /* manager = new UserAgentsSceneManager();
-    manager->setup();
-    mode=SceneMode::UserAgent;
-    */
+
     JsonReceiver::getInstance().init();
-    //JsonReceiver::startRecieveThread();
     thread.startThread();
     AgentAnalysis::init(0.5);
 }

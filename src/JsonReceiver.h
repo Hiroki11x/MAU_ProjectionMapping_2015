@@ -16,7 +16,7 @@ public:
     
     struct UserInfo{
         string userName;
-        ofImage icon;
+        string iconURL;
         wstring text;
     };
     

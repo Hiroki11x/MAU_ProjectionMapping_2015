@@ -123,6 +123,7 @@
 		FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
 		FA92A3A01BC3A6AB00F1F797 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA92A38D1BC3A6AB00F1F797 /* Syphon.framework */; settings = {ASSET_TAGS = (); }; };
 		FA92A3A11BC3A6AB00F1F797 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3901BC3A6AB00F1F797 /* SyphonNameboundClient.m */; settings = {ASSET_TAGS = (); }; };
@@ -718,6 +719,8 @@
 		FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpModelLoaderExtend.h; sourceTree = "<group>"; };
 		FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
 		FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
+		FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconStream.cpp; sourceTree = "<group>"; };
+		FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconStream.h; sourceTree = "<group>"; };
 		FA92A36F1BC3A6AB00F1F797 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA92A3711BC3A6AB00F1F797 /* ofxSyphonExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ofxSyphonExample.xcodeproj; sourceTree = "<group>"; };
 		FA92A3751BC3A6AB00F1F797 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -1783,6 +1786,8 @@
 				FA587DD01BC61C4E003FCCCA /* TwitterRain.h */,
 				FA587E121BC80251003FCCCA /* ArtSpyDeforming.cpp */,
 				FA587E131BC80251003FCCCA /* ArtSpyDeforming.h */,
+				FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */,
+				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3083,6 +3088,7 @@
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
 				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,
+				FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */,
 				FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,

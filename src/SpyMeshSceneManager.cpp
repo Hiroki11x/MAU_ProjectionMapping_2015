@@ -13,6 +13,7 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new TwitterRain());
     elements.push_back(new SpyMeshIntro());
     elements.push_back(new SpyMesh());
+    elements.push_back(new IconStream());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -64,6 +65,9 @@ void SpyMeshSceneManager::keyPressed(int key){
             elementIndex = 3;
             return;
         case '5':
+            elementIndex = 4;
+            return;
+        case '6':
             splitView = !splitView;
             return;
     }
