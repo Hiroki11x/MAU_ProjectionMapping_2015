@@ -22,6 +22,9 @@ public:
     
     void loadFont(string arg, int size);
     void drawString(string arg ,float x, float y);
+    
+    void loadSmallFont(string arg, int size);
+    void drawSmallString(string arg ,float x, float y);
 };
 
 #endif /* defined(__mauInteractive__FontManager__) */

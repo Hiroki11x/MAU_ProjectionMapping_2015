@@ -33,3 +33,7 @@ int MatrixGenerator::get_position_num(){
 void MatrixGenerator::set_is_used_true(int index){
     is_used[index] = true;
 }
+
+void MatrixGenerator::set_is_used_false(int index){
+    is_used[index] = false;
+}

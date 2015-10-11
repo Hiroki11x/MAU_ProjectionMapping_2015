@@ -34,15 +34,24 @@ void UserAgents::init(){
 }
 
 void UserAgents::update(){
+    
+    JsonReceiver::recieve();
+    
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->update();//回転アニメーションとか
     }
-
-//    superLogUtil.set_log("graphLog",ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
-    //GraphLogの更新(この引数がgraphの値となる)
+    
     graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
-    JsonReceiver::recieve();
     check_is_json_new();
+}
+
+void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvectorから消していく
+    if(GENE_X_NUM*GENE_Y_NUM < userAgentArray.size()+1){
+        int delete_num = userAgentArray.size()+1 - GENE_X_NUM*GENE_Y_NUM +delete_adder;
+        for(int i =0 ;i < delete_num ; i++){
+            userAgentArray.erase(userAgentArray.begin());
+        }
+    }
 }
 
 void UserAgents::draw(){
@@ -103,6 +112,7 @@ void UserAgents::check_is_json_new(){
     int add_num;
     if(json_num<JsonReceiver::usersInfo.size()){
         add_num = JsonReceiver::usersInfo.size() - json_num;
+        check_agent_size(add_num);
         addAgent(add_num);
         superLogUtil.set_log("check_is_json_new", ofToString(add_num));
     }

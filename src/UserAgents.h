@@ -64,5 +64,7 @@ private:
     ofVec2f select_position();
     
     int json_num;
+    
+    void check_agent_size(int delete_adder);
 };
 #endif
