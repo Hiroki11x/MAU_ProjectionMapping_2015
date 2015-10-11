@@ -7,13 +7,18 @@
 //
 #include "JsonReceiver.h"
 
-int JsonReceiver::updateNum = 0;
+/*int JsonReceiver::updateNum = 0;
 bool JsonReceiver::fetchImageMode = false;
 bool JsonReceiver::isNewData = false;
 int64_t JsonReceiver::cachedTweetId;
 vector<JsonReceiver::UserInfo> JsonReceiver::usersInfo;
 vector<wstring> JsonReceiver::userNames;
 ofxJSONElement JsonReceiver::jsonElement;
+*/
+JsonReceiver &JsonReceiver::getInstance() {
+    static JsonReceiver instance;
+    return instance;
+}
 
 bool JsonReceiver::checkIsNewData(){
 

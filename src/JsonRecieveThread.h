@@ -15,7 +15,7 @@ class JsonRecieveThread : public ofThread {
 public:
     void threadedFunction(){
         while (isThreadRunning()) {
-            JsonReceiver::recieve();
+            JsonReceiver::getInstance().recieve();
             sleep(500);
         }
     }

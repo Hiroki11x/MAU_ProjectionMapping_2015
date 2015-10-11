@@ -105,9 +105,9 @@ void TwitterRain::update(){
     
     if(spentFrames % 7 == 0){
         if(tweets.size() < DISPLAY_TWEET_NUM){
-            if(JsonReceiver::getUsersInfo().size() > 0){
+            if(JsonReceiver::getInstance().getUsersInfo().size() > 0){
                 wstring twi;
-                twi.append(JsonReceiver::getRandomTweetInfo().text);
+                twi.append(JsonReceiver::getInstance().getRandomTweetInfo().text);
                 tweets.push_back((Tweet){twi,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(8,15),ofRandom(100,255)});
                 tweetDebug = false;
             }
