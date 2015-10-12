@@ -10,7 +10,6 @@
 #define __mauInteractive__AgentAnalyzeSceneManager__
 
 #include "SceneManager.h"
-#include "UserAgents.h"
 #include "AgentAnalyze.h"
 
 
