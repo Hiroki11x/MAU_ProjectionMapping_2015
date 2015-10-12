@@ -40,6 +40,7 @@ public:
     Mode mode;
     ofVec3f lastPosition;
     ofVec3f lastParticlePosition;
+    ofVec3f targetPosition[MAX_ICON * ICON_SIZE * ICON_SIZE];
     ofVec3f cameraPosition;
     
     int iconNum;
@@ -49,7 +50,12 @@ public:
     bool drawWhiteRect;
     float doorDeg;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
-    ofVec3f targetPosition[MAX_ICON * ICON_SIZE * ICON_SIZE];
+    
     void drawDoor(float deg);
+    void loadIcon();
+    void makeCircle();
+    void convergence();
+    void reconvergence();
+    void down();
 };
 #endif
