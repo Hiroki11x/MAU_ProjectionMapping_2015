@@ -28,18 +28,8 @@ void SingleAgentAnalyze::draw(){
     if((max_row+2)*max_column < agent_size ){
         user_agent.erase(user_agent.begin());
     }
+    if(user_agent.size()>0)user_agent.back().draw();
     
-    float x;
-    float y;
-    for(int i = 0; i< agent_size ;i++){
-        if(i == agent_size-1){
-            //            user_agent.at(i).draw_circle();
-        }else{
-            x = (i/max_row)*170 +20;
-            y = 60 * (i%max_row -1) +20;
-            user_agent.at(i).draw_line(x,y);
-        }
-    }
 }
 
 

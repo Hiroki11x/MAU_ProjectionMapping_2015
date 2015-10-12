@@ -82,8 +82,7 @@ void AgentAnalyze::addAgent(int add_num){
                                                    JsonReceiver::usersInfo.at(json_num).text,
                                                    JsonReceiver::usersInfo.at(json_num).friends_count,
                                                    JsonReceiver::usersInfo.at(json_num).statuses_count,
-                                                   JsonReceiver::usersInfo.at(json_num).followers_count,
-                                                   JsonReceiver::usersInfo.at(json_num).icon);
+                                                   JsonReceiver::usersInfo.at(json_num).followers_count);
 
         json_num++;//json_numはここで
     }

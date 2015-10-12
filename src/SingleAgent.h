@@ -9,19 +9,22 @@
 #ifndef __mauInteractive__SingleAgent__
 #define __mauInteractive__SingleAgent__
 
+#define INNER_CIRCLE_MAGNIFICATION 100
+#define OUTER_CIRCLE_MAGNIFICATION 150
+
 #include "ofMain.h"
 #include "FontManager.h"
+#include "ShiseidoLifeClock.h"
+
 
 class SingleAgent{
     
 private:
     
-    float line_y1 = ofGetHeight()/2;
-    float line_y2 = 3*ofGetHeight()/2;
+    ShiseidoLifeClock shiseido;
     
     float size;
     float multiple_of_size;
-    float line_length;
     
     ofImage icon;
     string id;
@@ -43,8 +46,9 @@ public:
     void set_color(ofColor _color);
     
     void update();
-    void draw_circle();
-    void draw_line(float x, float y);
+    void draw_circle(float x, float y);
+    
+    void draw();
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く

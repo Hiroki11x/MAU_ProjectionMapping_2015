@@ -14,7 +14,7 @@
 void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番がのちのキーに対応
     elements.push_back(new UserAgents());
     elements.push_back(new AgentAnalyze());
-    elements.push_back(new Loading());
+    elements.push_back(new SingleAgentAnalyze());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
