@@ -13,7 +13,8 @@
 #include "JsonReceiver.h"
 #include "ofxAssimpModelLoader.h"
 
-#define MAX_ICON 18
+#define SPY_ICON_SIZE 4
+#define MAX_ICON 16
 #define ICON_SIZE 32
 
 class IconStream : public SceneElement {
@@ -22,8 +23,9 @@ public:
         LoadIcon,
         MakeCircle,
         Convergence,
-        End,
-        Down
+        RemakeCircle,
+        Down,
+        RemakeIcon
     };
     
     virtual void draw() override;
@@ -42,20 +44,23 @@ public:
     ofVec3f lastParticlePosition;
     ofVec3f targetPosition[MAX_ICON * ICON_SIZE * ICON_SIZE];
     ofVec3f cameraPosition;
+    ofColor remakeIconsColor[MAX_ICON * ICON_SIZE * ICON_SIZE];
     
     int iconNum;
     int spentFrames;
-    float rotation;
-    bool rotationMode;
-    bool drawWhiteRect;
+    bool remakeFlag;
     float doorDeg;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
     
+    void updatePoint();
     void drawDoor(float deg);
     void loadIcon();
-    void makeCircle();
-    void convergence();
-    void reconvergence();
-    void down();
+    void makeCircle(int w, int h, int x, int y);
+    void convergence(int w, int h, int x, int y);
+    void remakeCircle(int w, int h, int x, int y);
+    void down(int w, int h, int x, int y);
+    void remake(int w, int h, int x, int y);
+    void nextPhase();
+    void loadSpyIcon();
 };
 #endif
