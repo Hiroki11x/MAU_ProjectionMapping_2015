@@ -1,24 +1,20 @@
 //
-//  AgentAnalyze.h
+//  SingleAgentAnalyze.h
 //  mauInteractive
 //
-//  Created by HirokiNaganuma on 2015/10/09.
+//  Created by HirokiNaganuma on 2015/10/12.
 //
 //
 
-#ifndef __mauInteractive__AgentAnalyze__
-#define __mauInteractive__AgentAnalyze__
-
-#define COLOR_MAX 255
-#define GENE_X_NUM 12
-#define GENE_Y_NUM 18
+#ifndef __mauInteractive__SingleAgentAnalyze__
+#define __mauInteractive__SingleAgentAnalyze__
 
 #include "SceneElement.h"
 #include "ofMain.h"
-#include "AgentCircle.h"
+#include "SingleAgent.h"
 #include "JsonReceiver.h"
 
-class AgentAnalyze : public SceneElement {
+class SingleAgentAnalyze : public SceneElement {
     
 private:
     void check_is_json_new();
@@ -26,7 +22,7 @@ private:
     
     int json_num;
     
-    vector<AgentCircle> user_agent;
+    vector<SingleAgent> user_agent;
     
 public:
     virtual void update() override;
@@ -36,7 +32,7 @@ public:
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
     
-    AgentAnalyze(){};
+    SingleAgentAnalyze(){};
 };
 
-#endif /* defined(__mauInteractive__AgentAnalyze__) */
+#endif /* defined(__mauInteractive__SingleAgentAnalyze__) */

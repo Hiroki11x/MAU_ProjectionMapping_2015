@@ -14,10 +14,7 @@
 #include "SceneManager.h"
 #include "UserAgents.h"
 #include "AgentAnalyze.h"
-
-#include "Loading.h"
-
-#include "SpyMesh.h"
+#include "SingleAgentAnalyze.h"
 
 
 

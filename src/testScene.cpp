@@ -11,7 +11,7 @@
 void testScene::setup(){
     
     FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
-//    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
+    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",5);
     
     ofBackground(0);
     ofSetFrameRate(60);
@@ -38,7 +38,7 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
-    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
+//    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
 }

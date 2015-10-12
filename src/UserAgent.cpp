@@ -47,6 +47,15 @@ void UserAgent::set_color(ofColor _color){
     color = _color;
 }
 
+void UserAgent::set_generater_index(int index){
+    generater_index = index;
+}
+
+int UserAgent::get_generater_index(){
+    return generater_index;
+}
+
+
 void UserAgent::update(){
     multiple_of_size = ofRandom(MIN_CIRCLE_MAGNIFICATION,MAX_CIRCLE_MAGNIFICATION);
 }
@@ -87,40 +96,10 @@ void UserAgent::draw(){
     ofSetColor(color,255);
     FontManager::mfont.drawString(username, position.x+size*2.5,position.y-size+3);
     FontManager::mfont.drawString(id, position.x+size*2.5,position.y+3);
-    FontManager::msmallfont.drawString("Follower:"+ofToString(followers_count), position.x+size*2.5,position.y+8);
-    FontManager::msmallfont.drawString("Friends:"+ofToString(friends_count), position.x+size*2.5,position.y+13);
-    FontManager::msmallfont.drawString("Statue:"+ofToString(statuses_count), position.x+size*2.5+50,position.y+8);
-    
-    /*
-    font.drawString(ofToString(JsonReceiver::usersInfo.at(i).followers_count),position.at(i), pos_center_y-line_length-10);
-    font.drawString(ofToString(JsonReceiver::usersInfo.at(i).statuses_count),position.at(i), pos_center_y-line_length-20);
-    font.drawString(ofToString(JsonReceiver::usersInfo.at(i).friends_count),position.at(i), pos_center_y-line_length-30);
-    font.drawString(JsonReceiver::usersInfo.at(i).userId,position.at(i), pos_center_y-line_length-40);
-    font.drawString(JsonReceiver::usersInfo.at(i).userName,position.at(i), pos_center_y-line_length-50);
-    font.drawString(JsonReceiver::usersInfo.at(i).text,position.at(i), pos_center_y-line_length-60);
-     */
-    
-}
+    FontManager::msmallfont.drawString("Follower: "+ofToString(followers_count), position.x+size*2.5,position.y+10);
+    FontManager::msmallfont.drawString("Friends: "+ofToString(friends_count), position.x+size*2.5,position.y+16);
+    FontManager::msmallfont.drawString("Statue: "+ofToString(statuses_count), position.x+size*2.5+50,position.y+10);
 
-void UserAgent::draw_line(float line_x){
-    ofLine(line_x, line_y1,line_x, line_y2);
-    FontManager::mfont.drawString(username, line_x,line_y1);
-    FontManager::mfont.drawString(id, line_x,line_y1+10);
-    FontManager::mfont.drawString(text, line_x,line_y1+20);
-}
-
-void UserAgent::draw_circle(){
-    float arg;
-    ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    ofBeginShape();
-    for(int i=0;i<240;i++){
-        arg = ofRandom(2*PI);
-        ofVertex(200*cos(arg), 200*sin(arg));
-    }
-    ofEndShape();
-    icon.draw(-100,-100,200,200);
-    ofPopMatrix();
 }
 
 

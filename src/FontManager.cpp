@@ -18,3 +18,11 @@ void FontManager::loadFont(string arg, int size){
 void FontManager::drawString(string arg ,float x, float y){
     mfont.drawString(arg, x, y);
 }
+
+void FontManager::loadSmallFont(string arg, int size){
+    msmallfont.loadFont(arg, size);
+}
+
+void FontManager::drawSmallString(string arg ,float x, float y){
+    msmallfont.drawString(arg, x, y);
+}

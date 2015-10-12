@@ -1,35 +1,30 @@
 //
-//  UserAgent.h
-//  MauInteractive
+//  SingleAgent.h
+//  mauInteractive
 //
-//  Created by HirokiNaganuma on 2015/09/12.
+//  Created by HirokiNaganuma on 2015/10/12.
 //
 //
 
-#ifndef MauInteractive_UserAgent_h
-#define MauInteractive_UserAgent_h
+#ifndef __mauInteractive__SingleAgent__
+#define __mauInteractive__SingleAgent__
 
-#define DEFAULT_USER_CIRCLE_SIZE 3
-#define INNER_CIRCLE_MAGNIFICATION 0.75
-
-#define MIN_CIRCLE_MAGNIFICATION 1.2
-#define MAX_CIRCLE_MAGNIFICATION 1.7
+#define INNER_CIRCLE_MAGNIFICATION 100
+#define OUTER_CIRCLE_MAGNIFICATION 150
 
 #include "ofMain.h"
 #include "FontManager.h"
+#include "ShiseidoLifeClock.h"
 
 
-class UserAgent{
+class SingleAgent{
+    
 private:
     
-    int generater_index;
-    
-    float line_y1 = ofGetHeight()/2;
-    float line_y2 = 3*ofGetHeight()/2;
+    ShiseidoLifeClock shiseido;
     
     float size;
     float multiple_of_size;
-    float line_length;
     
     ofImage icon;
     string id;
@@ -41,31 +36,22 @@ private:
     float registertime;
     
     ofColor color;
+    
 public:
     ofVec2f position;
-    UserAgent(){};
-    
-//    void set_user_id(string id);
-//    void set_user_name(string name);
+    SingleAgent(){};
     
     void set_position(ofVec2f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
-    void calc_line_length();
     
     void update();
+    void draw_circle(float x, float y);
+    
     void draw();
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
-    
-    void set_generater_index(int index);
-    int get_generater_index();
-    
-    void draw_line(float line_x);
-    void draw_circle();
-    
-    
 };
 
-#endif
+#endif /* defined(__mauInteractive__SingleAgent__) */

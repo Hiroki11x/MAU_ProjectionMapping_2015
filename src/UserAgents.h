@@ -61,8 +61,10 @@ private:
     
     void check_is_json_new();
     void addAgent(int add_num);
-    ofVec2f select_position();
+    ofVec3f select_position();
     
     int json_num;
+    
+    void check_agent_size(int delete_adder);
 };
 #endif

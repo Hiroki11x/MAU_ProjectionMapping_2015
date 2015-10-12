@@ -44,7 +44,8 @@ public:
         
         if (parsingSuccessful){
             if(checkUpdateJson()){//新規キャッシュの際はパース
-                log.set_log("JSON",parseJson());
+//                log.set_log("JSON",parseJson());
+                parseJson();
             }
         }else{
             cout << "Failed to parse JSON" << endl;

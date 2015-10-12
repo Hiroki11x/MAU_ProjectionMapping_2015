@@ -75,6 +75,10 @@
 		4E94F13C1BBE102200E0343E /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1341BBE102200E0343E /* ofxSyphonClient.mm */; };
 		4E94F13D1BBE102200E0343E /* ofxSyphonServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1361BBE102200E0343E /* ofxSyphonServer.mm */; };
 		4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1381BBE102200E0343E /* ofxSyphonServerDirectory.mm */; };
+		4EACBCC21BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EACBCC01BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp */; };
+		4EC0478E1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */; };
+		4EC047921BCB6FD100D069EB /* SingleAgentAnalyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */; };
+		4EC047961BCB716900D069EB /* SingleAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047941BCB716900D069EB /* SingleAgent.cpp */; };
 		4ECB408B1BC511A2004EB9AF /* JsonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB40891BC511A2004EB9AF /* JsonReceiver.cpp */; };
 		4EE77D1A1BC62B000070C805 /* ParticleElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D181BC62B000070C805 /* ParticleElement.cpp */; };
 		4EE77D1D1BC62B840070C805 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE77D1B1BC62B840070C805 /* ParticleConnection.cpp */; };
@@ -372,6 +376,14 @@
 		4E94F1371BBE102200E0343E /* ofxSyphonServerDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSyphonServerDirectory.h; sourceTree = "<group>"; };
 		4E94F1381BBE102200E0343E /* ofxSyphonServerDirectory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSyphonServerDirectory.mm; sourceTree = "<group>"; };
 		4E95FB446A9C9C6F0DE12D75 /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscPrintReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.h; sourceTree = SOURCE_ROOT; };
+		4EACBCC01BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiseidoLifeClock.cpp; sourceTree = "<group>"; };
+		4EACBCC11BCBEA8C00D0AAC7 /* ShiseidoLifeClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiseidoLifeClock.h; sourceTree = "<group>"; };
+		4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentSceneManager.cpp; sourceTree = "<group>"; };
+		4EC0478D1BCB6EAF00D069EB /* SingleAgentSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleAgentSceneManager.h; sourceTree = "<group>"; };
+		4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentAnalyze.cpp; sourceTree = "<group>"; };
+		4EC047911BCB6FD100D069EB /* SingleAgentAnalyze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleAgentAnalyze.h; sourceTree = "<group>"; };
+		4EC047941BCB716900D069EB /* SingleAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgent.cpp; sourceTree = "<group>"; };
+		4EC047951BCB716900D069EB /* SingleAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleAgent.h; sourceTree = "<group>"; };
 		4ECB40891BC511A2004EB9AF /* JsonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonReceiver.cpp; sourceTree = "<group>"; };
 		4ECB408A1BC511A2004EB9AF /* JsonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonReceiver.h; sourceTree = "<group>"; };
 		4EDA77661BC3CE52008DEBEA /* mauInteractiveDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mauInteractiveDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1090,6 +1102,7 @@
 		4E88A2541BBE11CD001E8306 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4EC0478B1BCB6E7E00D069EB /* SingleAgentAnalyze */,
 				4EE77D4D1BC783950070C805 /* UserAgentAnalyze */,
 				4E88A25A1BBE1279001E8306 /* Introduction */,
 				4E88A2591BBE126F001E8306 /* SpyMesh */,
@@ -1112,6 +1125,7 @@
 		4E88A2561BBE1223001E8306 /* AnimationUtils */ = {
 			isa = PBXGroup;
 			children = (
+				4EACBCBF1BCBEA3900D0AAC7 /* ShiseidoLifeClock */,
 				4EE77D161BC62AD50070C805 /* ExplodeAnimation */,
 				4E7633121BC256DB002F2530 /* PostGlitch */,
 				4E12E4801BBEF40A001D9BA2 /* Delaunay */,
@@ -1292,6 +1306,15 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		4EACBCBF1BCBEA3900D0AAC7 /* ShiseidoLifeClock */ = {
+			isa = PBXGroup;
+			children = (
+				4EACBCC01BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp */,
+				4EACBCC11BCBEA8C00D0AAC7 /* ShiseidoLifeClock.h */,
+			);
+			name = ShiseidoLifeClock;
+			sourceTree = "<group>";
+		};
 		4EB038C7DF921AA8A4070286 /* ofxCv */ = {
 			isa = PBXGroup;
 			children = (
@@ -1308,6 +1331,35 @@
 				73157AAE32787C63313C7D8E /* Wrappers.h */,
 			);
 			name = ofxCv;
+			sourceTree = "<group>";
+		};
+		4EC0478B1BCB6E7E00D069EB /* SingleAgentAnalyze */ = {
+			isa = PBXGroup;
+			children = (
+				4EC0478F1BCB6EB300D069EB /* Element */,
+				4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */,
+				4EC0478D1BCB6EAF00D069EB /* SingleAgentSceneManager.h */,
+			);
+			name = SingleAgentAnalyze;
+			sourceTree = "<group>";
+		};
+		4EC0478F1BCB6EB300D069EB /* Element */ = {
+			isa = PBXGroup;
+			children = (
+				4EC047931BCB715700D069EB /* Class */,
+				4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */,
+				4EC047911BCB6FD100D069EB /* SingleAgentAnalyze.h */,
+			);
+			name = Element;
+			sourceTree = "<group>";
+		};
+		4EC047931BCB715700D069EB /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				4EC047941BCB716900D069EB /* SingleAgent.cpp */,
+				4EC047951BCB716900D069EB /* SingleAgent.h */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 		4ECB40871BC50EBE004EB9AF /* Json */ = {
@@ -2146,8 +2198,10 @@
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
 				4E88A2471BBE11AF001E8306 /* ofApp.cpp in Sources */,
+				4EC047921BCB6FD100D069EB /* SingleAgentAnalyze.cpp in Sources */,
 				4E88A24A1BBE11AF001E8306 /* SceneManager.cpp in Sources */,
 				4E94F13B1BBE102200E0343E /* README.md in Sources */,
+				4EC047961BCB716900D069EB /* SingleAgent.cpp in Sources */,
 				B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
@@ -2168,6 +2222,8 @@
 				4E88A23F1BBE11AF001E8306 /* Fadeout.cpp in Sources */,
 				4EE77D231BC62CFC0070C805 /* ExplodeAnimation.cpp in Sources */,
 				4E5ED6CE1BC12958004F1AF6 /* ofxEasingSine.cpp in Sources */,
+				4EACBCC21BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp in Sources */,
+				4EC0478E1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp in Sources */,
 				8F5205AEF8861EF234F0651A /* ofxOscSender.cpp in Sources */,
 				4E5ED6C81BC12958004F1AF6 /* ofxEasingElastic.cpp in Sources */,
 				4E88A2451BBE11AF001E8306 /* mode.cpp in Sources */,

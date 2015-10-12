@@ -30,6 +30,7 @@ public:
     vector<bool> get_is_used();
     int get_position_num();
     void set_is_used_true(int index);
+    void set_is_used_false(int index);
 };
 
 #endif /* defined(__MauInteractive__MatrixGenerator__) */
