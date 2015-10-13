@@ -36,7 +36,7 @@ public:
             elementIndex = 0;
             return true;
         }else{
-            //elements[elementIndex]->init();
+            elements[elementIndex]->init();
             return true;
         }
     };

@@ -65,11 +65,11 @@ void SingleAgent::draw(float x, float y){
             int valueG = pixels[j*3 * w + i*3+1];
             int valueB = pixels[j*3 * w + i*3+2];
             ofSetColor(255, 0, 0, 63);
-            ofCircle(200+i, j-50, 10*valueR/255.0);
+            ofCircle(200+i, j-50, 6*valueR/255.0);
             ofSetColor(0, 255, 0, 63);
-            ofCircle(200+i, j, 10*valueG/255.0);
+            ofCircle(200+i, j, 6*valueG/255.0);
             ofSetColor(0, 0, 255, 63);
-            ofCircle(250+i, j-50, 10*valueB/255.0);
+            ofCircle(250+i, j-50, 6*valueB/255.0);
         }
     }
     

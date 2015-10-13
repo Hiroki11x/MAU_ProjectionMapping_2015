@@ -27,7 +27,8 @@ private:
     int json_num;
     
     vector<AgentCircle> user_agent;
-    
+    int max_row;
+    int max_column;
 public:
     virtual void update() override;
     virtual void draw() override;

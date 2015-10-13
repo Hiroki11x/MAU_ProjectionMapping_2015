@@ -18,6 +18,8 @@ void SingleAgentAnalyze::init(){
     shiseido.init();
     max_row = ofGetHeight()/50 -2;
     max_column = ofGetWidth()/170;
+    
+    MAX_AGENT = (max_row+2)*max_column;
 }
 
 void SingleAgentAnalyze::draw(){
@@ -27,8 +29,8 @@ void SingleAgentAnalyze::draw(){
     float y;
     
     ofSetColor(255);
-    
-    if((max_row+2)*max_column < agent_size ){
+//    cout<<"max_size]]]]"<<(max_row+2)*max_column <<endl;
+    if(MAX_AGENT < agent_size ){
         user_agent.erase(user_agent.begin());
     }
 
