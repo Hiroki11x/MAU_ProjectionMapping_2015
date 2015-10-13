@@ -13,7 +13,7 @@ void SingleAgent::init(){
     ofSetCircleResolution(32);
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
-    set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
+    set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));    
 }
 
 void SingleAgent::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -42,9 +42,7 @@ void SingleAgent::update(){
 }
 
 void SingleAgent::draw(float x, float y){
-    int angle;
-    int hue;
-    
+
     ofPushMatrix();
     ofTranslate(x, y);
     
@@ -56,6 +54,24 @@ void SingleAgent::draw(float x, float y){
     FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 70,20);
     FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 70,30);
     FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 70,40);
+    
+    unsigned char * pixels =icon.getPixels();
+    int w = icon.width;
+    int h = icon.height;
+    
+    for (int i = 0; i < w; i+=8){
+        for (int j = 0; j < h; j+=8){
+            int valueR = pixels[j*3 * w + i*3];
+            int valueG = pixels[j*3 * w + i*3+1];
+            int valueB = pixels[j*3 * w + i*3+2];
+            ofSetColor(255, 0, 0, 63);
+            ofCircle(200+i, j-50, 10*valueR/255.0);
+            ofSetColor(0, 255, 0, 63);
+            ofCircle(200+i, j, 10*valueG/255.0);
+            ofSetColor(0, 0, 255, 63);
+            ofCircle(250+i, j-50, 10*valueB/255.0);
+        }
+    }
     
     ofPopMatrix();
 }

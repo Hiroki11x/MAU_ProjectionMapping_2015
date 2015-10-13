@@ -31,7 +31,6 @@ private:
     int statuses_count;//つぶやいてる数
     int followers_count;
     float registertime;
-    
     ofColor color;
     
 public:
