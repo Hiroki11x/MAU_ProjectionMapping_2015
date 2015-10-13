@@ -197,6 +197,8 @@ int UserAgents::getConnectionSize(){
 }
 
 void UserAgents::setup_user_agent(){//座標をセット
+    userAgentArray.clear();
+    
     for(int j=0;j<JsonReceiver::usersInfo.size();j++){//GENE_Y_NUM*GENE_X_NUM;
         addAgent(1);
     }

@@ -18,46 +18,52 @@ void ShiseidoLifeClock::init(){
     start_time = ofGetElapsedTimef();
     
     vec.clear();
-    for(int i = 0;i< 300 ;i++){
+    for(int i = 0;i< 200 ;i++){
         vec.push_back(ofVec2f());
         vec.back() = ofVec2f(
                              cos(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
                              sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI)
                              );
-        vec.back() *= 200;
+        
     }
 }
 
-void ShiseidoLifeClock::update(){
+void ShiseidoLifeClock::update(int num){
     max_angle = (ofGetElapsedTimef()-start_time)*10;
     if(max_angle>=360){
         init();
     }
+    
+    if (num>vec.size()) {//numの方が多かったらvecをpush_back
+        while (num>vec.size()) {
+            vec.push_back(ofVec2f());
+        }
+    }
+    
     for(int i = 0;i< vec.size() ;i++){
         vec.at(i) = ofVec2f(
                             cos(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI),
                             sin(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI)
                             );
-        vec.at(i)*= 350;
+        vec.at(i)*= 300;
     }
 }
 
-void ShiseidoLifeClock::draw(){
+void ShiseidoLifeClock::draw(int num){
     switch (mode) {
         case 0:
-            draw_default_circle();
             break;
         case 1:
-            draw_bezier_map();
+            draw_bezier_map(num);
             break;
         default:
             break;
     }
 }
 
-void ShiseidoLifeClock::draw_bezier_map(){
+void ShiseidoLifeClock::draw_bezier_map(int num){
     
-    update();
+    update(num);//数とかを更新
     
     ofNoFill();
     ofPushMatrix();
@@ -77,47 +83,11 @@ void ShiseidoLifeClock::draw_bezier_map(){
                  vec.at(index3).x,vec.at(index3).y);
         
         ofCircle(vec.at(index3)*1.01,2);
+//        if(i == vec.size()-1){
+//            ofSetColor(255);
+//            JsonReceiver::usersInfo.back().icon.drawSubsection(vec.at(index3).x*1.1-25, vec.at(index3).y*1.1-25,50,50,2,2);
+//        }
     }
     
     ofPopMatrix();
-}
-
-
-void ShiseidoLifeClock::draw_default_circle(){//使わない
-//    ofVec2f basis_vec;//大きい全体のベクトル
-//    ofVec2f inner_vec;//Bezier用の中間点ベクトル
-//    int angle;
-//    int hue;
-//    
-//    ofSetLineWidth(0.1);
-//    ofPushMatrix();
-//    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-//    
-//    for(int i =0;i<ofGetElapsedTimef()*10;i+=1){
-//        angle = i;
-//        
-//        inner_vec = ofVec2f(
-//                            cos(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
-//                            sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI)
-//                            );
-//        inner_vec *= 50;
-//        
-//        basis_vec = ofVec2f(
-//                            cos(angle/180.0*PI),
-//                            sin(angle/180.0*PI)
-//                            );
-//        basis_vec *= 300;
-//        
-//        hue = ofMap(i, 0, 360, 0, 255);
-//        ofSetColor(ofColor::fromHsb(hue, 170, 200));
-//        ofNoFill();
-//        
-//        ofBezier(0, 0,
-//                 basis_vec.x/2+inner_vec.x,basis_vec.y/2+inner_vec.y,
-//                 basis_vec.x+inner_vec.x, basis_vec.y+inner_vec.y,
-//                 basis_vec.x, basis_vec.y);
-//        ofFill();
-//        ofCircle(basis_vec.x*1.01, basis_vec.y*1.01, 1);
-//    }
-//    ofPopMatrix();
 }

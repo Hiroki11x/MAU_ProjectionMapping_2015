@@ -10,21 +10,21 @@
 #define __mauInteractive__ShiseidoLifeClock__
 
 #include "ofMain.h"
+#include "JsonReceiver.h"
 
 class ShiseidoLifeClock{
 public:
     static float start_time;
     void init();
-    void draw();
-    void update();
+    void draw(int num);
+    void update(int num);
     void switch_mode();
 private:
     int mode = 1;
     ofPath path;
     float max_angle;
     vector<ofVec2f> vec;
-    void draw_default_circle();
-    void draw_bezier_map();
+    void draw_bezier_map(int num);
 };
 
 #endif /* defined(__mauInteractive__ShiseidoLifeClock__) */

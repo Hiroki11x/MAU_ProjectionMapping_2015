@@ -40,7 +40,7 @@ void SingleAgentAnalyze::draw(){
             user_agent.at(agent_size-1-i).draw(100,y+100);
         }
     }
-    shiseido.draw();
+    shiseido.draw(user_agent.size());
     
 }
 

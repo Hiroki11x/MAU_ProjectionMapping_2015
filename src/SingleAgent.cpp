@@ -51,6 +51,12 @@ void SingleAgent::draw(float x, float y){
     ofSetColor(255);
     ofFill();
     icon.draw(-50, -50, 100,100);
+    FontManager::mfont.drawString(username, 70,0);
+    FontManager::mfont.drawString(id, 70,10);
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 70,20);
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 70,30);
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 70,40);
+    
     ofPopMatrix();
 }
 
