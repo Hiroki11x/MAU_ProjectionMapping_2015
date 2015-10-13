@@ -13,13 +13,18 @@
 
 class ShiseidoLifeClock{
 public:
+    static float start_time;
     void init();
     void draw();
     void update();
+    void switch_mode();
 private:
+    int mode = 1;
     ofPath path;
     float max_angle;
-    float start_time;
+    vector<ofVec2f> vec;
+    void draw_default_circle();
+    void draw_bezier_map();
 };
 
 #endif /* defined(__mauInteractive__ShiseidoLifeClock__) */

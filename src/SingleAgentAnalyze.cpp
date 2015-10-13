@@ -15,25 +15,33 @@ void SingleAgentAnalyze::init(){
     for(int i = 0; i<user_agent.size();i++){
         user_agent.at(i).init();
     }
+    shiseido.init();
+    max_row = ofGetHeight()/50 -2;
+    max_column = ofGetWidth()/170;
 }
 
 void SingleAgentAnalyze::draw(){
+
+    int agent_size = user_agent.size();
+
+    float y;
     
-    if(mode){
-        int agent_size = user_agent.size();
-        int max_row = ofGetHeight()/50 -2;
-        int max_column = ofGetWidth()/170;
-        
-        ofSetColor(255);
-        
-        if((max_row+2)*max_column < agent_size ){
-            user_agent.erase(user_agent.begin());
-        }
-        if(user_agent.size()>0)user_agent.back().draw();
-        
-    }else{
-        if(user_agent.size()>0)user_agent.back().draw_analyze_bezier();
+    ofSetColor(255);
+    
+    if((max_row+2)*max_column < agent_size ){
+        user_agent.erase(user_agent.begin());
     }
+
+    agent_size = user_agent.size();
+    
+    if(agent_size>0){
+        for(int i = 0; i < ((4<agent_size)?4:agent_size) ; i++){
+            y = 200 * (i%max_row -1) +200;
+            user_agent.at(agent_size-1-i).draw(100,y+100);
+        }
+    }
+    shiseido.draw();
+    
 }
 
 
@@ -50,6 +58,8 @@ void SingleAgentAnalyze::onMouseDown(int x, int y){
 void SingleAgentAnalyze::keyPressed(int key){
     if(key == 'p'){
         mode = !mode;
+    }else if(key =='q'){
+        shiseido.switch_mode();
     }
 }
 

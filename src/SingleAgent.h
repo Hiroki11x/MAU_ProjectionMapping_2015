@@ -14,14 +14,11 @@
 
 #include "ofMain.h"
 #include "FontManager.h"
-#include "ShiseidoLifeClock.h"
 
 
 class SingleAgent{
     
 private:
-    
-    ShiseidoLifeClock shiseido;
     
     float size;
     float multiple_of_size;
@@ -45,14 +42,11 @@ public:
     void set_color(ofColor _color);
     
     void update();
-    void draw_circle(float x, float y);
     
-    void draw();
+    void draw(float x, float y);
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
-    
-    void draw_analyze_bezier();
 };
 
 #endif /* defined(__mauInteractive__SingleAgent__) */

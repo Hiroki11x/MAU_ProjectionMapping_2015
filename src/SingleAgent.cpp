@@ -14,8 +14,6 @@ void SingleAgent::init(){
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
     set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
-    
-    shiseido.init();
 }
 
 void SingleAgent::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -43,42 +41,12 @@ void SingleAgent::set_color(ofColor _color){
 void SingleAgent::update(){
 }
 
-void SingleAgent::draw(){
+void SingleAgent::draw(float x, float y){
     int angle;
     int hue;
     
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    ofNoFill();
-    
-    //---------------FRIENDS---------------
-    hue = ofMap(friends_count, 0, 1000, 0, 255);
-    ofSetColor(ofColor::fromHsb(hue, 155, 200), 200);
-    
-    ofBeginShape();
-    for(int i=0;i<100;i++){
-        angle = i*hue + ofGetElapsedTimef()*50;
-        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = basis_vec*OUTER_CIRCLE_MAGNIFICATION;
-        ofVertex(vec.x, vec.y);
-    }
-    ofEndShape(false);
-    //---------------FRIENDS---------------
-    
-    //---------------FOLLOWER---------------
-    hue = ofMap(followers_count, 0, 1000, 0, 255);
-    ofSetColor(ofColor::fromHsb(hue, 155, 200), 200);
-    
-    ofBeginShape();
-    for(int i=0;i<100;i++){
-        angle = i*hue + ofGetElapsedTimef()*50;
-        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = basis_vec*INNER_CIRCLE_MAGNIFICATION;
-        ofVertex(vec.x, vec.y);
-    }
-    ofEndShape(false);
-    //---------------FOLLOWER---------------
-    
+    ofTranslate(x, y);
     
     ofSetColor(255);
     ofFill();
@@ -86,7 +54,4 @@ void SingleAgent::draw(){
     ofPopMatrix();
 }
 
-void SingleAgent::draw_analyze_bezier(){
-    shiseido.draw();
-}
 
