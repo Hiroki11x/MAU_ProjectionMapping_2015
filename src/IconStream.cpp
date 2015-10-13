@@ -23,7 +23,6 @@ void IconStream::init(){
     lastPosition = ofVec3f(0,ofGetHeight()/2 + 50,-5000);
     lastParticlePosition = ofVec3f(0,ofGetHeight()/2 - 200,-5000);
     mode = LoadIcon;
-    doorDeg = 0;
     spentFrames = 0;
     cameraPosition = ofVec3f(0, ofGetHeight()/2, 600);
     ofEnableDepthTest();
@@ -37,48 +36,40 @@ void IconStream::update(){
     
     updatePoint();
     spentFrames++;
-    
     switch (mode) {
         case LoadIcon:
             loadIcon();
             break;
         case MakeCircle:
-            if(spentFrames > 600){
-                nextPhase();
-                spentFrames = 0;
-                for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
-                    downSpeed[i] = ofRandom(0.01, 0.5);
-                }
+            if(spentFrames < 600) break;
+            nextPhase();
+            spentFrames = 0;
+            for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
+                downSpeed[i] = ofRandom(0.01, 0.5);
             }
             break;
         case Convergence:
             cameraPosition = cameraPosition + 0.01 * (lastPosition - cameraPosition);
-            if(spentFrames > 100){
-                if(doorDeg < 100) doorDeg+=0.5;
-            }
-            if(spentFrames > 350){
-                nextPhase();
-                lastParticlePosition = ofVec3f(0,ofGetHeight()/2 - 300,-6000);
-                spentFrames = 0;
-            }
+            if(!(spentFrames > 350)) break;
+            nextPhase();
+            lastParticlePosition = ofVec3f(0,ofGetHeight()/2 - 300,-6000);
+            spentFrames = 0;
             break;
         case RemakeCircle:
-            if(spentFrames > 200){
-                nextPhase();
-                spentFrames = 0;
-                for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
-                    downSpeed[i] = ofRandom(10, 20);
-                }
+            if(spentFrames < 200) break;
+            nextPhase();
+            spentFrames = 0;
+            for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
+                downSpeed[i] = ofRandom(10, 20);
             }
             break;
         case Down:
-            if(spentFrames > 100){
-                nextPhase();
-                remakeFlag = true;
-                spentFrames = 0;
-                for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
-                    downSpeed[i] = ofRandom(0.005, 0.008);
-                }
+            if(spentFrames < 100) break;
+            nextPhase();
+            remakeFlag = true;
+            spentFrames = 0;
+            for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
+                downSpeed[i] = ofRandom(0.005, 0.008);
             }
             break;
         default:
@@ -213,10 +204,9 @@ void IconStream::loadIcon(){
         }
     }
     iconNum++;
-    if(iconNum >= MAX_ICON ){
-        mode = MakeCircle;
-        spentFrames = 0;
-    }
+    if(!(iconNum >= MAX_ICON)) return;
+    mode = MakeCircle;
+    spentFrames = 0;
 }
 
 void IconStream::makeCircle(int w, int h, int x, int y){
@@ -279,7 +269,6 @@ void IconStream::nextPhase(){
 void IconStream::onMouseDown(int x, int y){}
 
 void IconStream::keyPressed(int key){
-    if(key == 'R'){
-        init();
-    }
+    if(key != 'R') return;
+    init();
 }

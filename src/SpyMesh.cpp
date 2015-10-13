@@ -247,10 +247,9 @@ void SpyMesh::keyPressed(int key){
         case 'p':
             agentDebug = true;
             break;
+        case 'R':
+            reset();
         default:
             break;
-    }
-    if(key == 'R'){
-        reset();
     }
 }

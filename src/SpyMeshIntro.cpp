@@ -8,19 +8,17 @@
 #include "SpyMeshIntro.h"
 
 void SpyMeshIntro::update(){
-    if(isStarted){
-        for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = garallyModelDrawer.addVertex();
-        }
-        if(spentFrames % 60 == 0){
-            emitPoint = lineEmitPoints[int(ofRandom(0,4))];
-        }
-        spentFrames+=1;
-    }
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        70);
+    if(!isStarted) return;
+    for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
+        targetPoint = garallyModelDrawer.addVertex();
+    }
+    spentFrames+=1;
+    if(spentFrames % 60 != 0) return;
+    emitPoint = lineEmitPoints[int(ofRandom(0,4))];
 }
 
 void SpyMeshIntro::draw(){
@@ -79,7 +77,6 @@ void SpyMeshIntro::onMouseDown(int x, int y){
 }
 
 void SpyMeshIntro::keyPressed(int key){
-    if(key == 'R'){
-        reset();
-    }
+    if(key != 'R') return;
+    reset();
 }

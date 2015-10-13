@@ -17,7 +17,6 @@
 
 class StringNetwork :public SceneElement {
 public:
-    
     virtual void draw() override;
     virtual void init() override;
     virtual void update() override;
@@ -30,12 +29,11 @@ public:
     vector<NetworkAgent> networkAgents;
     
     int agentNum;
+    int fontSize;
     int spentFrames;
     float expandingArea;
     float cameraZ;
-    int fontSize;
-    
-    void reset();
+   
     void updateAgents();
 };
 #endif

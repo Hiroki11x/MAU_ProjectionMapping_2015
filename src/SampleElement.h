@@ -18,6 +18,5 @@ public:
     virtual void update() override;
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
-    
 };
 #endif

@@ -8,7 +8,6 @@
 #include "StringNetwork.h"
 
 void StringNetwork::init(){
-    reset();
     networkAgents = *new vector<NetworkAgent>;
     for(int i = 0; i < MAX_AGENTS; i++){
         networkAgents.push_back(*new NetworkAgent());
@@ -16,8 +15,6 @@ void StringNetwork::init(){
     for(int i = 0; i < MAX_AGENTS; i++){
         networkAgents.at(i).position = ofVec2f((i % 8) * 100 , (i / 8) * 100);
         for(int j = 0; j < MAX_AGENTS; j++){
-            //if(i == j) continue;
-            //networkAgents.at(i).connectedAgentsPositions.at(j) = networkAgents.at(j);
             networkAgents.at(i).NorP.push_back(ofRandom(-0.8,0.9));
         }
     }
@@ -32,6 +29,7 @@ void StringNetwork::init(){
     font.useVrt2Layout(true);
     font.setLineHeight(font.getFontSize()*1.5);
     agentNum = 0;
+    spentFrames = 0;
 }
 
 void StringNetwork::update(){
@@ -44,8 +42,6 @@ void StringNetwork::update(){
     if(JsonReceiver::getInstance().getUserNames().size() <= agentNum) return;
     networkAgents.at(agentNum).validate(JsonReceiver::getInstance().getUserNames().at(agentNum));
     agentNum++;
-    cout << agentNum << endl;
-
 }
 
 void StringNetwork::draw(){
@@ -66,7 +62,6 @@ void StringNetwork::draw(){
                 ofSetColor(255, 50, 50, 150);
             }else{
                 ofSetColor(100, 255, 100, 150);
-            
             }
             ofSetLineWidth(400.0
                            /(networkAgents.at(i).position - networkAgents.at(j).position).length());
@@ -92,7 +87,6 @@ void StringNetwork::updateAgents(){
     
     for(int i = 0; i< agentNum; i++){
         networkAgents.at(i).nextPosition = networkAgents.at(i).position;
-        
         for(int j = 0; j < agentNum; j++){
             networkAgents.at(i).nextPosition += 0.0020 * networkAgents.at(i).NorP.at(j) * (networkAgents.at(j).position - networkAgents.at(i).position);
         }
@@ -100,7 +94,6 @@ void StringNetwork::updateAgents(){
            || networkAgents.at(i).position.x < -expandingArea
            || networkAgents.at(i).position.y > ofGetHeight() + expandingArea
            || networkAgents.at(i).position.y < -expandingArea){
-            
             networkAgents.at(i).nextPosition += 0.02 * (ofVec2f(ofGetWidth()/2,ofGetHeight()/2) - networkAgents.at(i).position);
         }else{
             networkAgents.at(i).nextPosition += 0.002 * (ofVec2f(ofGetWidth()/2,ofGetHeight()/2) - networkAgents.at(i).position);
@@ -108,12 +101,7 @@ void StringNetwork::updateAgents(){
     }
 }
 
-void StringNetwork::onMouseDown(int x, int y){}
-
 void StringNetwork::keyPressed(int key){
-    if(key == 'R'){
-        init();
-    }
     switch (key) {
         case 'p':
             cameraZ+=50;
@@ -142,10 +130,10 @@ void StringNetwork::keyPressed(int key){
             font.loadFont("Arial.ttf", fontSize);
             font.loadFont("Yumin Demibold",fontSize,true,true,0.3f,0,true)||font.loadSubFont("YuMincho");
             break;
+        case 'R':
+            init();
         default:
             break;
     }
 }
-
-void StringNetwork::reset(){
-}
+void StringNetwork::onMouseDown(int x, int y){}

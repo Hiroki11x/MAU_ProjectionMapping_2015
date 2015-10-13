@@ -32,24 +32,17 @@ public:
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
     
-   /* wstring convToWString(string src);
-    template <class T>
-    wstring convToUCS4(basic_string<T> src);*/
-    
-    ofx3DFont font;
     vector<Tweet> tweets;
     wstring show;
     string strAlign;
     string strDirection;
-    bool renderingMode;
+
     bool bRotation;
     int align;
     int mouseX;
     int mouseY;
-    int z;
     int spentFrames;
-    bool tweetDebug;
     ofLight light;
-    ofxTrueTypeFontUL2 font2;
+    ofxTrueTypeFontUL2 font;
 };
 #endif

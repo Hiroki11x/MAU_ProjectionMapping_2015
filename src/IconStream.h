@@ -49,7 +49,6 @@ public:
     int iconNum;
     int spentFrames;
     bool remakeFlag;
-    float doorDeg;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
     float noiseElement;
     
