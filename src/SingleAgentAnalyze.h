@@ -13,16 +13,24 @@
 #include "ofMain.h"
 #include "SingleAgent.h"
 #include "JsonReceiver.h"
+#include "ShiseidoLifeClock.h"
 
 class SingleAgentAnalyze : public SceneElement {
     
 private:
+    int max_row ;
+    int max_column ;
+    
+    bool mode = false;
+    
     void check_is_json_new();
     void addAgent(int add_num);
     
     int json_num;
     
     vector<SingleAgent> user_agent;
+    
+    ShiseidoLifeClock shiseido;
     
 public:
     virtual void update() override;

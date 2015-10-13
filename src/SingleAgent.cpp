@@ -13,7 +13,7 @@ void SingleAgent::init(){
     ofSetCircleResolution(32);
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
-    set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
+    set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));    
 }
 
 void SingleAgent::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -41,80 +41,39 @@ void SingleAgent::set_color(ofColor _color){
 void SingleAgent::update(){
 }
 
-void SingleAgent::draw(){
-    int angle;
-    int hue;
-    
-    shiseido.draw();
-    
+void SingleAgent::draw(float x, float y){
+
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    ofNoFill();
-    
-    //---------------FRIENDS---------------
-    hue = ofMap(friends_count, 0, 1000, 0, 255);
-    ofSetColor(ofColor::fromHsb(hue, 155, 200), 200);
-    
-    ofBeginShape();
-    for(int i=0;i<100;i++){
-        angle = i*hue + ofGetElapsedTimef()*50;
-        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = basis_vec*OUTER_CIRCLE_MAGNIFICATION;
-        ofVertex(vec.x, vec.y);
-    }
-    ofEndShape(false);
-    //---------------FRIENDS---------------
-    
-    //---------------FOLLOWER---------------
-    hue = ofMap(followers_count, 0, 1000, 0, 255);
-    ofSetColor(ofColor::fromHsb(hue, 155, 200), 200);
-    
-    ofBeginShape();
-    for(int i=0;i<100;i++){
-        angle = i*hue + ofGetElapsedTimef()*50;
-        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = basis_vec*INNER_CIRCLE_MAGNIFICATION;
-        ofVertex(vec.x, vec.y);
-    }
-    ofEndShape(false);
-    //---------------FOLLOWER---------------
-    
-    
+    ofTranslate(x, y);
     
     ofSetColor(255);
     ofFill();
     icon.draw(-50, -50, 100,100);
+    FontManager::mfont.drawString(username, 70,0);
+    FontManager::mfont.drawString(id, 70,10);
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 70,20);
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 70,30);
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 70,40);
+    
+    unsigned char * pixels =icon.getPixels();
+    int w = icon.width;
+    int h = icon.height;
+    
+    for (int i = 0; i < w; i+=8){
+        for (int j = 0; j < h; j+=8){
+            int valueR = pixels[j*3 * w + i*3];
+            int valueG = pixels[j*3 * w + i*3+1];
+            int valueB = pixels[j*3 * w + i*3+2];
+            ofSetColor(255, 0, 0, 63);
+            ofCircle(200+i, j-50, 6*valueR/255.0);
+            ofSetColor(0, 255, 0, 63);
+            ofCircle(200+i, j, 6*valueG/255.0);
+            ofSetColor(0, 0, 255, 63);
+            ofCircle(250+i, j-50, 6*valueB/255.0);
+        }
+    }
+    
     ofPopMatrix();
-    
-    
 }
 
-void SingleAgent::draw_circle(float x, float y){
-    int angle;
-    
-    ofPushMatrix();
-    ofTranslate(x, y);
-    ofFill();
-    ofSetColor(255);
-    icon.draw(0,0, 50,50);
-    ofPopMatrix();
-//    
-//    ofBeginShape();//回転する内部の円
-//    for(int i=0;i<240;i++){
-//        angle = i + ofGetElapsedTimef()*50;
-//        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-//        ofVec2f vec = position+ basis_vec*INNER_CIRCLE_MAGNIFICATION*size;
-//        ofVertex(vec.x, vec.y);
-//    }
-//    ofEndShape();
-//    
-//    ofBeginShape();//回転する外部の円
-//    for(int i=0;i<240;i++){
-//        angle = 100 + i + ofGetElapsedTimef()*50;
-//        ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
-//        ofVec2f vec = position + basis_vec*size;
-//        ofVertex(vec.x, vec.y);
-//    }
-//    ofEndShape();
 
-}

@@ -37,12 +37,14 @@ void UserAgents::update(){
     
     JsonReceiver::recieve();
     
+    check_is_json_new();
+    
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->update();//回転アニメーションとか
     }
     
     graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
-    check_is_json_new();
+   
 }
 
 void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvectorから消していく
@@ -105,6 +107,8 @@ void UserAgents::keyPressed(int key){
     }
     strechyRectSwiper.init();
     superLogUtil.set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
+    
+    check_agent_size(10);
 }
 
 void UserAgents::end(){}
@@ -126,10 +130,13 @@ ofVec3f UserAgents::select_position(){
     ofVec3f position;
     
     int size = matrix_generator.get_position_num();//生成した座標の数
-    int index = ofRandom(size);//その座標でどこを使うか選ぶ
-    while(matrix_generator.get_is_used().at(index)){//使われていたら選び直し
-        index = ofRandom(size);
+    int index = ofRandom(size-1);//その座標でどこを使うか選ぶ
+    if(size>0){
+        while(matrix_generator.get_is_used().at(index)){//使われていたら選び直し
+            index = ofRandom(size);
+        }
     }
+    
     matrix_generator.set_is_used_true(index);//使うところは使う(true)に変更
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
     position.z = index;
@@ -197,6 +204,8 @@ int UserAgents::getConnectionSize(){
 }
 
 void UserAgents::setup_user_agent(){//座標をセット
+    userAgentArray.clear();
+    
     for(int j=0;j<JsonReceiver::usersInfo.size();j++){//GENE_Y_NUM*GENE_X_NUM;
         addAgent(1);
     }
