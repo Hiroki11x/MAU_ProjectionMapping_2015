@@ -141,6 +141,9 @@
 		FAA0CC2B1BBA4ADE00A0D408 /* textExplosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC291BBA4ADE00A0D408 /* textExplosion.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA0CC2E1BBA4FFF00A0D408 /* Fadeout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA0CC2C1BBA4FFF00A0D408 /* Fadeout.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAA969901BC3F8C0004CD1A3 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAAD71491BCCBE7200D721EC /* SampleElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAD71471BCCBE7200D721EC /* SampleElement.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAAD71551BCCEDC400D721EC /* StringNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAAD71591BCCEEF900D721EC /* NetworkAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAD71571BCCEEF900D721EC /* NetworkAgent.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95061BA58E9200C71B41 /* Connection.cpp */; };
 		FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */; };
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -769,6 +772,12 @@
 		FAA0CC2D1BBA4FFF00A0D408 /* Fadeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fadeout.h; sourceTree = "<group>"; };
 		FAA9698E1BC3F8C0004CD1A3 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
 		FAA9698F1BC3F8C0004CD1A3 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		FAAD71471BCCBE7200D721EC /* SampleElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleElement.cpp; sourceTree = "<group>"; };
+		FAAD71481BCCBE7200D721EC /* SampleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleElement.h; sourceTree = "<group>"; };
+		FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringNetwork.cpp; sourceTree = "<group>"; };
+		FAAD71541BCCEDC400D721EC /* StringNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringNetwork.h; sourceTree = "<group>"; };
+		FAAD71571BCCEEF900D721EC /* NetworkAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkAgent.cpp; sourceTree = "<group>"; };
+		FAAD71581BCCEEF900D721EC /* NetworkAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkAgent.h; sourceTree = "<group>"; };
 		FAAE95061BA58E9200C71B41 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connection.cpp; sourceTree = "<group>"; };
 		FAAE95071BA58E9200C71B41 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserAgentManager.cpp; sourceTree = "<group>"; };
@@ -1788,6 +1797,10 @@
 				FA587E131BC80251003FCCCA /* ArtSpyDeforming.h */,
 				FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */,
 				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
+				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
+				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
+				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
+				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -2232,6 +2245,7 @@
 		FA5BFD201BBA69290085652C /* Element */ = {
 			isa = PBXGroup;
 			children = (
+				FAAD71561BCCEEDD00D721EC /* Entity */,
 				FA587D111BC4DD43003FCCCA /* SceneElement */,
 				FA587D101BC4DD1A003FCCCA /* Drawer */,
 				FA587D0A1BC4DCDE003FCCCA /* Utils */,
@@ -2626,6 +2640,15 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 			);
 			name = MainApp;
+			sourceTree = "<group>";
+		};
+		FAAD71561BCCEEDD00D721EC /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FAAD71571BCCEEF900D721EC /* NetworkAgent.cpp */,
+				FAAD71581BCCEEF900D721EC /* NetworkAgent.h */,
+			);
+			name = Entity;
 			sourceTree = "<group>";
 		};
 		FAC1B0721BA51BB50057ED25 /* ofxPostGlitch */ = {
@@ -3069,6 +3092,7 @@
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				FA587D2C1BC4E15C003FCCCA /* README.md in Sources */,
+				FAAD71591BCCEEF900D721EC /* NetworkAgent.cpp in Sources */,
 				FAF2FB491BBBE423007F19B0 /* UserAgents.cpp in Sources */,
 				FA587DEB1BC67B86003FCCCA /* README.md in Sources */,
 				FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */,
@@ -3090,6 +3114,7 @@
 				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,
 				FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */,
 				FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */,
+				FAAD71551BCCEDC400D721EC /* StringNetwork.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,
 				FAA0CC201BBA1FF900A0D408 /* testScene.cpp in Sources */,
@@ -3105,6 +3130,7 @@
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
 				4ED0D5D61BA4733200F47E25 /* UserAgent.cpp in Sources */,
 				FA26BDC71BC2DF70007C3B47 /* SemiCirclePath.cpp in Sources */,
+				FAAD71491BCCBE7200D721EC /* SampleElement.cpp in Sources */,
 				FA26BDBE1BC2DF1E007C3B47 /* ofxSuperLogUtil.cpp in Sources */,
 				FA587D9E1BC55C36003FCCCA /* advancing_front.cc in Sources */,
 				FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */,

@@ -45,13 +45,13 @@ void TwitterRain::draw(){
     w=mouseX-x;
     h=mouseY-y;
     
-    ofSetColor(255,50,50,255);
-    ofLine(0,y,ofGetWidth(),y);
-    ofLine(x,0,x,ofGetHeight());
+    //ofSetColor(255,50,50,255);
+    //ofLine(0,y,ofGetWidth(),y);
+    //ofLine(x,0,x,ofGetHeight());
     
-    ofSetColor(255,50,50,255);
-    ofLine(mouseX,0,mouseX,ofGetHeight());
-    ofLine(0,mouseY,ofGetWidth(),mouseY);
+    //ofSetColor(255,50,50,255);
+    //ofLine(mouseX,0,mouseX,ofGetHeight());
+    //ofLine(0,mouseY,ofGetWidth(),mouseY);
     
     glPushMatrix();{
         if(renderingMode){

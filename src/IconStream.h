@@ -51,6 +51,7 @@ public:
     bool remakeFlag;
     float doorDeg;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
+    float noiseElement;
     
     void updatePoint();
     void drawDoor(float deg);

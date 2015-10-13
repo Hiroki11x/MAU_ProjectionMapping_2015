@@ -28,6 +28,7 @@ void IconStream::init(){
     cameraPosition = ofVec3f(0, ofGetHeight()/2, 600);
     ofEnableDepthTest();
     ofBackground(0);
+    noiseElement = 0.0;
 }
 
 void IconStream::update(){
@@ -175,6 +176,7 @@ void IconStream::updatePoint(){
     for(int y = 0; y < ICON_SIZE; y++){
         switch (mode) {
             case MakeCircle:
+                noiseElement += 0.1;
                 makeCircle(w, h, x, y);
                 break;
             case Convergence:
@@ -214,13 +216,13 @@ void IconStream::loadIcon(){
 }
 
 void IconStream::makeCircle(int w, int h, int x, int y){
-    ofVec3f v = iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x) + downSpeed[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE] * (targetPosition[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE] - iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x));
+    ofVec3f v = iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x) + downSpeed[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE] * ((0.5 + 0.5 * ofNoise(noiseElement)) * targetPosition[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE] - iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x));
     iconPoints.at(w * SPY_ICON_SIZE + h).setVertex(y + x * ICON_SIZE, v);
 
 }
 
 void IconStream::convergence(int w, int h, int x, int y){
-    ofVec3f v = iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x) + downSpeed[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE] *( lastParticlePosition + 0.2 * targetPosition[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE]  - iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x));
+    ofVec3f v = iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x) + downSpeed[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE] * ((0.6 + 0.4 * ofNoise(x,y)) *lastParticlePosition + (0 + 0.5 * ofNoise(x,y)) * targetPosition[ (w * SPY_ICON_SIZE + h) * ICON_SIZE * ICON_SIZE + y + x * ICON_SIZE]  - iconPoints.at(w * SPY_ICON_SIZE + h).vertices.at(y + ICON_SIZE * x));
     iconPoints.at(w * SPY_ICON_SIZE + h).setVertex(y + x * ICON_SIZE, v);
 }
 

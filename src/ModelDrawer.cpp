@@ -116,8 +116,8 @@ void ModelDrawer::drawModel(float scale, bool fill){
 };
 
 void ModelDrawer::drawPercentage(){
-    ofNoFill();
-    ofRect(50, 50, 400, 20);
+    /*ofNoFill();
+    ofRect(50, 50, 400, 20);*/
     ofFill();
     ofRect(50, 50, 400 * (float(addedIndicesSize) / float(indicesSize)), 20);
 }

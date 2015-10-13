@@ -23,7 +23,7 @@ public:
    // ofxFfd ffd;
     ofVboMesh mesh;
     vector<float> rotates;
-    
-    
+    ofLight light;
+    float rotation;
 };
 #endif

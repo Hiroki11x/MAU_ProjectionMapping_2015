@@ -26,6 +26,7 @@ void ArtSpyDeforming::update(){
             ffd.setControlPointPosition(j%2, i, int(j/2)%2, ofVec3f(cos(jj*(TWO_PI/4.0)+rotates[i])*141.42135623731, i*100 - 100, sin(jj*(TWO_PI/4.0)+rotates[i])*141.42135623731));
         }
     }*/
+    rotation +=2.0;
 }
 
 void ArtSpyDeforming::draw(){
@@ -37,7 +38,12 @@ void ArtSpyDeforming::draw(){
     ofRotateX(90);
    // ffd.deformMesh(mesh).drawWireframe();
    // ffd.debugDraw();
+    ofRotateZ(rotation);
+    light.enable();
+    glEnable(GL_LIGHTING);
     mesh.draw();
+    light.disable();
+    glDisable(GL_LIGHTING);
     ofPopStyle();
     ofPopMatrix();
 }
