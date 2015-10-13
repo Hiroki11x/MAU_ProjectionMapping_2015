@@ -8,9 +8,15 @@
 
 #include "ShiseidoLifeClock.h"
 
+void ShiseidoLifeClock::init(){
+    start_time = ofGetElapsedTimef();
+}
+
 void ShiseidoLifeClock::update(){
-    if(ofGetElapsedTimef()*10>=359)return;
-    max_angle = ofGetElapsedTimef()*10;
+    max_angle = (ofGetElapsedTimef()-start_time)*10;
+    if(max_angle>=360){
+        init();
+    }
 }
 
 void ShiseidoLifeClock::draw(){

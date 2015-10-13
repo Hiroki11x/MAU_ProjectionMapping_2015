@@ -40,7 +40,6 @@ private:
 public:
     ofVec2f position;
     SingleAgent(){};
-    
     void set_position(ofVec2f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
@@ -52,6 +51,8 @@ public:
     void init();
     
     void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
+    
+    void draw_analyze_bezier();
 };
 
 #endif /* defined(__mauInteractive__SingleAgent__) */

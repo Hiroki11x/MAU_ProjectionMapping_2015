@@ -17,6 +17,8 @@
 class SingleAgentAnalyze : public SceneElement {
     
 private:
+    bool mode = false;
+    
     void check_is_json_new();
     void addAgent(int add_num);
     

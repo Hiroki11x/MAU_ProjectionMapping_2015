@@ -14,6 +14,8 @@ void SingleAgent::init(){
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
     set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
+    
+    shiseido.init();
 }
 
 void SingleAgent::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -44,8 +46,6 @@ void SingleAgent::update(){
 void SingleAgent::draw(){
     int angle;
     int hue;
-    
-    shiseido.draw();
     
     ofPushMatrix();
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
@@ -80,41 +80,13 @@ void SingleAgent::draw(){
     //---------------FOLLOWER---------------
     
     
-    
     ofSetColor(255);
     ofFill();
     icon.draw(-50, -50, 100,100);
     ofPopMatrix();
-    
-    
 }
 
-void SingleAgent::draw_circle(float x, float y){
-    int angle;
-    
-    ofPushMatrix();
-    ofTranslate(x, y);
-    ofFill();
-    ofSetColor(255);
-    icon.draw(0,0, 50,50);
-    ofPopMatrix();
-//    
-//    ofBeginShape();//回転する内部の円
-//    for(int i=0;i<240;i++){
-//        angle = i + ofGetElapsedTimef()*50;
-//        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-//        ofVec2f vec = position+ basis_vec*INNER_CIRCLE_MAGNIFICATION*size;
-//        ofVertex(vec.x, vec.y);
-//    }
-//    ofEndShape();
-//    
-//    ofBeginShape();//回転する外部の円
-//    for(int i=0;i<240;i++){
-//        angle = 100 + i + ofGetElapsedTimef()*50;
-//        ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
-//        ofVec2f vec = position + basis_vec*size;
-//        ofVertex(vec.x, vec.y);
-//    }
-//    ofEndShape();
-
+void SingleAgent::draw_analyze_bezier(){
+    shiseido.draw();
 }
+

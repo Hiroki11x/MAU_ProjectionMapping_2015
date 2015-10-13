@@ -19,17 +19,21 @@ void SingleAgentAnalyze::init(){
 
 void SingleAgentAnalyze::draw(){
     
-    int agent_size = user_agent.size();
-    int max_row = ofGetHeight()/50 -2;
-    int max_column = ofGetWidth()/170;
-    
-    ofSetColor(255);
-    
-    if((max_row+2)*max_column < agent_size ){
-        user_agent.erase(user_agent.begin());
+    if(mode){
+        int agent_size = user_agent.size();
+        int max_row = ofGetHeight()/50 -2;
+        int max_column = ofGetWidth()/170;
+        
+        ofSetColor(255);
+        
+        if((max_row+2)*max_column < agent_size ){
+            user_agent.erase(user_agent.begin());
+        }
+        if(user_agent.size()>0)user_agent.back().draw();
+        
+    }else{
+        if(user_agent.size()>0)user_agent.back().draw_analyze_bezier();
     }
-    if(user_agent.size()>0)user_agent.back().draw();
-    
 }
 
 
@@ -44,7 +48,9 @@ void SingleAgentAnalyze::onMouseDown(int x, int y){
 }
 
 void SingleAgentAnalyze::keyPressed(int key){
-    
+    if(key == 'p'){
+        mode = !mode;
+    }
 }
 
 void SingleAgentAnalyze::end(){}
