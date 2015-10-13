@@ -20,15 +20,20 @@ void StringNetwork::init(){
 void StringNetwork::update(){}
 
 void StringNetwork::draw(){
+    
+    
+    
     camera.begin();
-    
-    
     camera.end();
 }
 
 void StringNetwork::onMouseDown(int x, int y){}
 
-void StringNetwork::keyPressed(int key){}
+void StringNetwork::keyPressed(int key){
+    if(key == 'R'){
+        init();
+    }
+}
 
 class StringNetwork::NetworkAgent{
 public:

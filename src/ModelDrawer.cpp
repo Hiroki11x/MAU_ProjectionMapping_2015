@@ -172,6 +172,13 @@ void ModelDrawer::updateColoredMesh(float size){
     }
 }
 
+void ModelDrawer::reset(){
+    mesh.clear();
+    coloredPartMesh.clear();
+    randomExpandMesh.clear();
+    addedIndicesSize = 0;
+}
+
 ModelDrawer::ModelDrawer(){
     verticesSize = 0;
     indicesSize = 0;

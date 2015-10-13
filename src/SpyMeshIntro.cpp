@@ -51,7 +51,6 @@ void SpyMeshIntro::init(){
     isStarted = false;
     initModelDrawer();
     initLineEmitPoints();
-    SoundManager::play();
 }
 
 void SpyMeshIntro::initLineEmitPoints(){
@@ -64,15 +63,23 @@ void SpyMeshIntro::initLineEmitPoints(){
 }
 
 void SpyMeshIntro::initModelDrawer(){
-
     model.loadModel("garally.stl");
     for(int i = 0; i < model.getMeshCount(); i++){
         garallyModelDrawer.setVertices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
     }
 }
 
+void SpyMeshIntro::reset(){
+    spentFrames = 0;
+    garallyModelDrawer.reset();
+}
+
 void SpyMeshIntro::onMouseDown(int x, int y){
     isStarted = true;
 }
 
-void SpyMeshIntro::keyPressed(int key){}
+void SpyMeshIntro::keyPressed(int key){
+    if(key == 'R'){
+        reset();
+    }
+}

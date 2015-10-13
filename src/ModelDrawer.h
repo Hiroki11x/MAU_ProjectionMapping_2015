@@ -53,6 +53,7 @@ public:
     void setPrimitiveMode(ofPrimitiveMode primitiveMode);
     void setVertices(vector<ofVec3f> newVec, vector<ofIndexType> newIndices,float size);
     void updateColoredMesh(float size);
+    void reset();
     
     ModelDrawer();
 };

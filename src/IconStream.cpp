@@ -29,6 +29,8 @@ void IconStream::init(){
     ofEnableDepthTest();
     ofBackground(0);
     noiseElement = 0.0;
+    iconNum = 0;
+    spentFrames = false;
 }
 
 void IconStream::update(){
@@ -275,7 +277,7 @@ void IconStream::nextPhase(){
 void IconStream::onMouseDown(int x, int y){}
 
 void IconStream::keyPressed(int key){
-    if(key == 'p'){
+    if(key == 'R'){
         init();
     }
 }

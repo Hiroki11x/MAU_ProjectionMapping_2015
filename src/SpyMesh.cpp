@@ -170,6 +170,10 @@ void SpyMesh::onMouseDown(int x, int y){
     isStarted = true;
 }
 
+void SpyMesh::reset(){
+    modelDrawer.reset();
+}
+
 void SpyMesh::keyPressed(int key){
     switch (key) {
         case 'q':
@@ -245,5 +249,8 @@ void SpyMesh::keyPressed(int key){
             break;
         default:
             break;
+    }
+    if(key == 'R'){
+        reset();
     }
 }

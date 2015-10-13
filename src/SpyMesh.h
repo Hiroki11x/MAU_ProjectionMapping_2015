@@ -71,5 +71,6 @@ public:
     void initModelDrawer();
     void drawEmitter();
     void updateVertices();
+    void reset();
 };
 #endif

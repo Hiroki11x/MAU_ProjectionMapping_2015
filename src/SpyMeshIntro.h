@@ -40,5 +40,6 @@ public:
     
     void initLineEmitPoints();
     void initModelDrawer();
+    void reset();
 };
 #endif

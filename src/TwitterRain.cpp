@@ -139,4 +139,7 @@ void TwitterRain::keyPressed(int key){
     }else if (key == 'l'){
         renderingMode = !renderingMode;
     }
+    if(key == 'R'){
+        init();
+    }
 }
