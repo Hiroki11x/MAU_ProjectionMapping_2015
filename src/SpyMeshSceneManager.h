@@ -16,6 +16,7 @@
 #include "TwitterRain.h"
 #include "ArtSpyDeforming.h"
 #include "IconStream.h"
+#include "StringNetwork.h"
 
 
 class SpyMeshSceneManager:public SceneManager {

@@ -10,9 +10,14 @@
 
 #include "SceneElement.h"
 #include "ofxTrueTypeFontUL2.h"
+#include "NetworkAgent.h"
+#include "JsonReceiver.h"
+
+#define MAX_AGENTS 40
 
 class StringNetwork :public SceneElement {
 public:
+    
     virtual void draw() override;
     virtual void init() override;
     virtual void update() override;
@@ -21,9 +26,17 @@ public:
     
     ofxTrueTypeFontUL2 font;
     ofCamera camera;
+    ofLight light;
+    vector<NetworkAgent> networkAgents;
     
+    int agentNum;
+    int spentFrames;
+    float expandingArea;
+    float cameraZ;
+    int fontSize;
     
-    class NetworkAgent;
+    void reset();
+    void updateAgents();
 };
 #endif
 

@@ -92,6 +92,7 @@ void IconStream::update(){
 
 void IconStream::draw(){
     camera.begin();
+    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
     glPushMatrix();
     glRotatef(180, 0, 0, 1); //Need to reverce
     glTranslatef(0, -600, 0);
@@ -138,6 +139,7 @@ void IconStream::draw(){
     }glPopMatrix();
     glPopMatrix();
     camera.end();
+    ofDisableBlendMode();
 }
 
 void IconStream::drawDoor(float deg){
