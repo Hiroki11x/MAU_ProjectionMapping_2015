@@ -70,25 +70,25 @@ void UserAgent::draw(){
     ofSetColor(color);
     ofNoFill();
     
-    ofBeginShape();//回転する内部の円
-    for(int i=0;i<240;i++){
-        angle = i + ofGetElapsedTimef()*50;
-        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
-        ofVec2f vec = position+ basis_vec*multiple_of_size*INNER_CIRCLE_MAGNIFICATION*size;
-        ofVertex(vec.x, vec.y);
-    }
-    ofEndShape();
+//    ofBeginShape();//回転する内部の円
+//    for(int i=0;i<240;i++){
+//        angle = i + ofGetElapsedTimef()*50;
+//        ofVec2f basis_vec =ofVec2f(sin(angle/180.0*PI), cos(angle/180.0*PI));
+//        ofVec2f vec = position+ basis_vec*multiple_of_size*INNER_CIRCLE_MAGNIFICATION*size;
+//        ofVertex(vec.x, vec.y);
+//    }
+//    ofEndShape();
+//    
+//    ofBeginShape();//回転する外部の円
+//    for(int i=0;i<240;i++){
+//        angle = 100 + i + ofGetElapsedTimef()*50;
+//        ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
+//        ofVec2f vec = position + basis_vec*multiple_of_size*size;
+//        ofVertex(vec.x, vec.y);
+//    }
+//    ofEndShape();
     
-    ofBeginShape();//回転する外部の円
-    for(int i=0;i<240;i++){
-        angle = 100 + i + ofGetElapsedTimef()*50;
-        ofVec2f basis_vec =ofVec2f(sin(-angle/180.0*PI), cos(-angle/180.0*PI));
-        ofVec2f vec = position + basis_vec*multiple_of_size*size;
-        ofVertex(vec.x, vec.y);
-    }
-    ofEndShape();
-    
-    ofSetLineWidth(0.01);
+//    ofSetLineWidth(0.01);
     
 //    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
 //    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));

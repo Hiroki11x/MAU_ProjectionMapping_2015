@@ -48,7 +48,7 @@ void SingleAgentAnalyze::draw(){
 
 
 void SingleAgentAnalyze::update(){
-    JsonReceiver::getInstance().recieve();
+//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
 }
 

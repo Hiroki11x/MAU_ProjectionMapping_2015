@@ -17,12 +17,15 @@
 #include "SceneElement.h"
 #include "FontManager.h"
 
+#include "JsonRecieveThread.h"
+
 class testScene : public ofBaseApp{
     
 public:
     void setup();
     void update();
     void draw();
+    void exit();
     
     void keyPressed(int key);
     void keyReleased(int key);
@@ -42,6 +45,8 @@ public:
     ofxSyphonServer mainOutputSyphonServer;
     ofxSyphonServer individualTextureSyphonServer;
     ofxSyphonClient mClient;
+    
+    JsonRecieveThread thread;
 
 };
 

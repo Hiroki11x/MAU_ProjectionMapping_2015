@@ -9,7 +9,6 @@
 #include "testScene.h"
 
 void testScene::setup(){
-    
     FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
     FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",5);
     
@@ -27,7 +26,13 @@ void testScene::setup(){
     manager->setup();
     mode=SceneMode::UserAgent;
 
-    
+    JsonReceiver::getInstance().init();
+    thread.startThread();
+}
+
+void testScene::exit(){
+    //JsonReceiver::stopRecieveThread();
+    thread.stopThread();
 }
 
 //--------------------------------------------------------------

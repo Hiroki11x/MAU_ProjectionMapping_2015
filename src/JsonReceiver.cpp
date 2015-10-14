@@ -41,7 +41,7 @@ bool JsonReceiver::checkUpdateJson(){
 }
 
 bool JsonReceiver::recieve(){
-    bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");
+    bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");//Nodeで取得したJSON
     if (parsingSuccessful){
         if(checkUpdateJson()){
             parseJson();

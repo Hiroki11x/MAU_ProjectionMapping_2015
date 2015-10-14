@@ -28,23 +28,20 @@ void UserAgents::init(){
     
     setup_user_agent();//UserAgentをセット
     
-    graphLog.setup();
-    graphLog.set_height_limit(ofGetWidth()/4);
+//    graphLog.setup();
+//    graphLog.set_height_limit(ofGetWidth()/4);
     
 }
 
 void UserAgents::update(){
-    
-    JsonReceiver::getInstance().recieve();
-    
+//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
     
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->update();//回転アニメーションとか
     }
     
-    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
-   
+//    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
 }
 
 void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvectorから消していく
@@ -73,7 +70,7 @@ void UserAgents::draw(){
         explodeanimations.at(i).draw();
     }
     
-    graphLog.draw();
+//    graphLog.draw();
 }
 
 void UserAgents::onMouseDown(int x, int y){
@@ -83,7 +80,7 @@ void UserAgents::onMouseDown(int x, int y){
 }
 
 void UserAgents::keyPressed(int key){
-    graphLog.keyPressed(key);
+//    graphLog.keyPressed(key);
     
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
@@ -171,7 +168,7 @@ void UserAgents::addAgent(int add_num){
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL
                                                      );
-        createExplodeAnimation(pos2f);
+//        createExplodeAnimation(pos2f);
         json_num++;//json_numはここで
         superLogUtil.set_log("addAgent", ofToString(json_num));
     }
