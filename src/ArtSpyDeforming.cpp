@@ -11,17 +11,17 @@ void ArtSpyDeforming::init(){
     ofxAssimpModelLoader modelLoader;
     modelLoader.loadModel("logo.stl");
     mesh = modelLoader.getMesh(0);
-    light.setDirectional();
-    light.setAmbientColor(ofFloatColor(1.0, 1.0, 1.0, 1.0));//環境反射光の色
-    light.setDiffuseColor(ofFloatColor(1.0, 1.0, 1.0));//拡散反射光の色
-    light.setSpecularColor(ofFloatColor(1.0, 1.0, 1.0));//鏡面反射光の色
+    light.setPointLight();
+    light.setAmbientColor(ofFloatColor(0.2, 0.5, 1.0, 1.0));//環境反射光の色
+    light.setDiffuseColor(ofFloatColor(0.2, 1.0, 0.2));//拡散反射光の色
+    light.setSpecularColor(ofFloatColor(0, 0, 0));//鏡面反射光の色
     circuitDrawer = *new CircuitDrawer();
     circuitDrawer.init();
 }
 
 void ArtSpyDeforming::update(){
-    rotation +=2.0;
-    circuitDrawer.updateCircuite();
+    rotation +=1.4;
+    if(drawCircuitMode) circuitDrawer.updateCircuite();
 }
 
 void ArtSpyDeforming::draw(){
@@ -34,7 +34,7 @@ void ArtSpyDeforming::draw(){
     
     ofEnableAlphaBlending();
     ofDisableDepthTest();
-    circuitDrawer.drawCircuit();
+    if(drawCircuitMode) circuitDrawer.drawCircuit();
     ofDisableBlendMode();
     ofDisableAlphaBlending();
     ofPushMatrix();
@@ -55,4 +55,32 @@ void ArtSpyDeforming::draw(){
     ofPushStyle();
     ofSetColor(0);
     ofPopStyle();
+}
+
+void ArtSpyDeforming::keyPressed(int key){
+    switch (key) {
+        case 'z':
+            drawCircuitMode = !drawCircuitMode;
+            break;
+        case 'x':
+            circuitDrawer.changeMode(CircuitDrawer::NORMAL);
+            break;
+        case 'c':
+            circuitDrawer.changeMode(CircuitDrawer::HORIZONTAL);
+            break;
+        case 'v':
+            circuitDrawer.changeMode(CircuitDrawer::VERTICAL);
+            break;
+        case 'b':
+            circuitDrawer.changeMode(CircuitDrawer::RIGHT_UP);
+            break;
+        case 'n':
+            circuitDrawer.changeMode(CircuitDrawer::LEFT_UP);
+            break;
+        case 'm':
+            circuitDrawer.changeMode(CircuitDrawer::CROSS);
+            break;
+        default:
+            break;
+    }
 }

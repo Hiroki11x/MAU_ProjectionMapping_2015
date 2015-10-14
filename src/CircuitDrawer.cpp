@@ -10,7 +10,7 @@
 
 void CircuitDrawer::init(){
     for(int i = 0; i < CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM; i++){
-        points[i] = ofVec3f((i  % CIRCUIT_WIDTH_NUM) * CIRCUIT_POINT_INTERVAL - 38,
+        points[i] = ofVec3f((i  % CIRCUIT_WIDTH_NUM) * CIRCUIT_POINT_INTERVAL - 10,
                             (i / CIRCUIT_HEIGHT_NUM) * CIRCUIT_POINT_INTERVAL - 116,0);
     }
     reset();
@@ -43,10 +43,16 @@ void CircuitDrawer::updateCircuite(){
             lineStartPoint[n] = targetPoint[n];
             arrivedNextPoint[n] = false;
             positionCounter[n] = 0;
-            Direction nextDirection = Direction(ofRandom(4));
+            Direction nextDirection = Direction(ofRandom(8));
             for(int i = 0; true; i++){
                 if(setNextPoint(nextDirection, n)){break;}
-                if(i == 1){
+                if(i == 3 && mode == NORMAL){
+                    circuit[n].addVertex(targetPoint[n]);
+                    setRandomPoint(n);
+                    circuit[n].addVertex(targetPoint[n]);
+                    break;
+                }
+                if(i >= 7 && mode != NORMAL){
                     circuit[n].addVertex(targetPoint[n]);
                     setRandomPoint(n);
                     circuit[n].addVertex(targetPoint[n]);
@@ -86,8 +92,8 @@ void CircuitDrawer::drawCircuit(){
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_POINTS);
         circuit[n].draw();
     }
-    ofSetColor(0,0,0,100 + 50 * sin(ofGetElapsedTimeMillis()/100.0));
-    //ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofSetColor(0,0,0,50 + 50 * sin(ofGetElapsedTimeMillis()/100.0));
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
     if(addedPoint != CIRCUIT_HEIGHT_NUM * CIRCUIT_WIDTH_NUM){
         ofSetColor(0, 255, 255);
         ofSetLineWidth(1);
@@ -103,6 +109,7 @@ bool CircuitDrawer::setNextPoint(Direction nextDirection, int n){
     switch (nextDirection) {
         
         case UP:
+            if(!(mode == NORMAL || mode == VERTICAL)) return false;
             if((nextIndex[n] - CIRCUIT_WIDTH_NUM > 0) && (!usedPoint[nextIndex[n] - CIRCUIT_WIDTH_NUM]))
             {
                 nextIndex[n] = nextIndex[n] - CIRCUIT_WIDTH_NUM;
@@ -112,6 +119,7 @@ bool CircuitDrawer::setNextPoint(Direction nextDirection, int n){
             }
             break;
         case DOWN:
+            if(!(mode == NORMAL || mode == VERTICAL)) return false;
             if((nextIndex[n] + CIRCUIT_WIDTH_NUM < CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM) && (!usedPoint[nextIndex[n] + CIRCUIT_WIDTH_NUM]))
             {
                 nextIndex[n] = nextIndex[n] + CIRCUIT_WIDTH_NUM;
@@ -121,6 +129,7 @@ bool CircuitDrawer::setNextPoint(Direction nextDirection, int n){
             }
             break;
         case RIGHT:
+            if(!(mode == NORMAL || mode == HORIZONTAL)) return false;
             if((nextIndex[n] + 1 < CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM) && (!usedPoint[nextIndex[n] + 1]) && ((nextIndex[n] + 1) % CIRCUIT_WIDTH_NUM != 0))
             {
                 nextIndex[n] = nextIndex[n] + 1;
@@ -130,9 +139,58 @@ bool CircuitDrawer::setNextPoint(Direction nextDirection, int n){
             }
             break;
         case LEFT:
-            if(nextIndex - 1 > 0 && !usedPoint[nextIndex[n] -1] && (nextIndex[n] - 1) % CIRCUIT_WIDTH_NUM != CIRCUIT_WIDTH_NUM - 1)
+            if(!(mode == NORMAL || mode == HORIZONTAL)) return false;
+            if(nextIndex[n] - 1 > 0 && !usedPoint[nextIndex[n] -1] && (nextIndex[n] - 1) % CIRCUIT_WIDTH_NUM != CIRCUIT_WIDTH_NUM - 1)
             {
                 nextIndex[n] = nextIndex[n] - 1;
+                targetPoint[n] = points[nextIndex[n]];
+                usedPoint[nextIndex[n]] = true;
+                return true;
+            }
+            break;
+        case UP_RIGHT:
+            if(!(mode == NORMAL || mode == RIGHT_UP || mode == CROSS)) return false;
+            if(nextIndex[n] - CIRCUIT_WIDTH_NUM + 1 > 0
+               && !usedPoint[nextIndex[n] - CIRCUIT_WIDTH_NUM + 1]
+               && (nextIndex[n] - CIRCUIT_WIDTH_NUM + 1) % CIRCUIT_WIDTH_NUM != 0)
+            {
+                nextIndex[n] = nextIndex[n] - CIRCUIT_WIDTH_NUM + 1;
+                targetPoint[n] = points[nextIndex[n]];
+                usedPoint[nextIndex[n]] = true;
+                return true;
+            }
+            break;
+        case UP_LEFT:
+            if(!(mode == NORMAL || mode == LEFT_UP || mode == CROSS)) return false;
+            if(nextIndex[n] - CIRCUIT_WIDTH_NUM - 1  > 0
+               && !usedPoint[nextIndex[n] - CIRCUIT_WIDTH_NUM - 1]
+               && (nextIndex[n] - CIRCUIT_WIDTH_NUM - 1) % CIRCUIT_WIDTH_NUM != CIRCUIT_WIDTH_NUM - 1)
+            {
+                nextIndex[n] = nextIndex[n] - CIRCUIT_WIDTH_NUM - 1;
+                targetPoint[n] = points[nextIndex[n]];
+                usedPoint[nextIndex[n]] = true;
+                return true;
+            }
+            break;
+        case DOWN_RIGHT:
+            if(!(mode == NORMAL || mode == LEFT_UP || mode == CROSS)) return false;
+            if(nextIndex[n] + CIRCUIT_WIDTH_NUM + 1 < (CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM)
+               && !usedPoint[nextIndex[n] + CIRCUIT_WIDTH_NUM + 1]
+               && (nextIndex[n] + CIRCUIT_WIDTH_NUM + 1) % CIRCUIT_WIDTH_NUM != 0)
+            {
+                nextIndex[n] = nextIndex[n] + CIRCUIT_WIDTH_NUM + 1;
+                targetPoint[n] = points[nextIndex[n]];
+                usedPoint[nextIndex[n]] = true;
+                return true;
+            }
+            break;
+        case DOWN_LEFT:
+            if(!(mode == NORMAL || mode == RIGHT_UP || mode == CROSS)) return false;
+            if(nextIndex[n] + CIRCUIT_WIDTH_NUM - 1 < (CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM)
+               && !usedPoint[nextIndex[n] + CIRCUIT_WIDTH_NUM - 1]
+               && (nextIndex[n] + CIRCUIT_WIDTH_NUM - 1) % CIRCUIT_WIDTH_NUM != CIRCUIT_WIDTH_NUM - 1)
+            {
+                nextIndex[n] = nextIndex[n] + CIRCUIT_WIDTH_NUM - 1;
                 targetPoint[n] = points[nextIndex[n]];
                 usedPoint[nextIndex[n]] = true;
                 return true;
@@ -152,5 +210,10 @@ void CircuitDrawer::setRandomPoint(int n){
     }
     nextIndex[n] = randomIndex;
     targetPoint[n] = points[nextIndex[n]];
+    lineStartPoint[n] = targetPoint[n];
     usedPoint[nextIndex[n]] = true;
+}
+
+void CircuitDrawer::changeMode(Mode nextMode){
+    mode = nextMode;
 }
