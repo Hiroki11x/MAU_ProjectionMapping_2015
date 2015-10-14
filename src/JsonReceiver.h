@@ -11,72 +11,47 @@
 
 #include "ofxJSON.h"
 #include "ofMain.h"
-#include "ofxSuperLogUtil.h"
 
 class JsonReceiver {
-    
 public:
+    
     struct UserInfo{//Usernameと画像情報を持つ構造体
-        string text;//つぶやいた内容(これだけ["user"]内ではない)
+        wstring text;//つぶやいた内容(これだけ["user"]内ではない)
         string userName;
         string twitterId;//screen_name @アカウント名
         int friends_count;//フォローしてるアカウント数
         int statuses_count;//つぶやいてる数
         int followers_count;
-        ofImage icon;
+        string iconURL;
     };
     
-    static string cachedTweetId;
+    vector<UserInfo> getUsersInfo();
+    vector<wstring> getUserNames();
+    bool checkIsNewData();
+    bool checkUpdateJson();
+    void parseJson();
+    bool recieve();
+    void init();
+    UserInfo getRandomTweetInfo();
     
-    static ofxJSONElement jsonElement;
-    static vector<UserInfo> usersInfo;
+    int updateNum;
+    bool fetchImageMode;
+    bool isNewData;
+    int64_t cachedTweetId;
+    vector<UserInfo> usersInfo;
+    vector<wstring> userNames;
+    ofxJSONElement jsonElement;
     
-    static void recieve(){
-        
-        //        bool parsingSuccessful = jsonElement.openLocal("MAU_twit/twitter.json");//Nodeで取得したJSON
-        //Nodeを　プロジェクトディレクトリとおなじ階層にいれた
-        
-        bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");//Nodeで取得したJSON
-        
-//        parsingSuccessful =false; // Node動かさないときはこのコメントを外す
-        
-        static ofxSuperLogUtil log;
-        
-        if (parsingSuccessful){
-            if(checkUpdateJson()){//新規キャッシュの際はパース
-//                log.set_log("JSON",parseJson());
-                parseJson();
-            }
-        }else{
-            cout << "Failed to parse JSON" << endl;
-        }
-    };
-    static string parseJson(){//userInfonい貯めていく
-        ofImage img;
-        img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
-        if(img.getWidth() == 0){return;}
-        usersInfo.push_back((UserInfo){
-            jsonElement["text"].asCString(),
-            jsonElement["user"]["name"].asCString(),
-            jsonElement["user"]["screen_name"].asCString(),
-            jsonElement["user"]["friends_count"].asInt(),
-            jsonElement["user"]["statuses_count"].asInt(),
-            jsonElement["user"]["followers_count"].asInt(),
-            img});
-        return ofToString(jsonElement);
-    };
-    static bool checkUpdateJson(){
-        if(jsonElement["id_str"].asCString() != cachedTweetId){//JSONで読んだidがキャッシュされていなかったらキャッシュ
-            cachedTweetId = jsonElement["id_str"].asCString();
-            return true;
-        }else{
-            return false;
-        }
-    };
+    static wstring convToWString(string src);
+    template <class T>
+    static wstring convToUCS4(basic_string<T> src);
     
+    
+    static JsonReceiver &getInstance();
 private:
-    JsonReceiver(){};
+    JsonReceiver(){}
+    JsonReceiver(const JsonReceiver &other){}
+    JsonReceiver &operator=(const JsonReceiver &other){}
 };
-
 
 #endif /* defined(__mauInteractive__JsonReceiver__) */

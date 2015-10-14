@@ -63,14 +63,6 @@ void testScene::keyPressed(int key){
                     manager = new AgentAnalyzeSceneManager();
                     mode = SceneMode::Introduction;
                     break;
-                case SceneMode::Introduction:
-                    manager = new SpyMeshSceneManager();
-                    mode = SceneMode::SpyMesh;
-                    break;
-                case SceneMode::SpyMesh:
-                    manager = new IntroductionManager();
-                    mode = SceneMode::UserAgent;
-                    break;
                 default:
                     break;
             }

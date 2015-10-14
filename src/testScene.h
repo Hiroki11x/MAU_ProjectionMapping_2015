@@ -11,15 +11,10 @@
 #include "ofMain.h"
 #include "SceneManager.h"
 #include "mode.h"
-#include "IntroductionManager.h"
-#include "SpyMeshSceneManager.h"
 #include "UserAgentsSceneManager.h"
 #include "AgentAnalyzeSceneManager.h"
-
 #include "ofxSyphon.h"
-
 #include "SceneElement.h"
-
 #include "FontManager.h"
 
 class testScene : public ofBaseApp{

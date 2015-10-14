@@ -13,7 +13,7 @@ void AgentCircle::init(){
     registertime = ofGetSystemTime();
 }
 
-void AgentCircle::get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count){
+void AgentCircle::get_info_from_twitter(string name,string id, wstring text,int friends_count,int statuses_count,int followers_count){
     //twitterからの取得情報を書く
     username = name;
     this->id = id;

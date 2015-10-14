@@ -16,7 +16,7 @@ void UserAgents::init(){
     superLogUtil.init();//Logのセットアップ
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
     json_num = 0;
-    superLogUtil.set_log("init", ofToString(JsonReceiver::usersInfo.size()));
+    superLogUtil.set_log("init", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
     
     back_animation.set_fade_duration(2000);
     
@@ -35,7 +35,7 @@ void UserAgents::init(){
 
 void UserAgents::update(){
     
-    JsonReceiver::recieve();
+    JsonReceiver::getInstance().recieve();
     
     check_is_json_new();
     
@@ -115,8 +115,8 @@ void UserAgents::end(){}
 
 void UserAgents::check_is_json_new(){
     int add_num;
-    if(json_num<JsonReceiver::usersInfo.size()){
-        add_num = JsonReceiver::usersInfo.size() - json_num;
+    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
+        add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
         check_agent_size(add_num);
         addAgent(add_num);
         superLogUtil.set_log("check_is_json_new", ofToString(add_num));
@@ -163,13 +163,14 @@ void UserAgents::addAgent(int add_num){
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
         userAgentArray.back()->get_info_from_twitter(
-                                                     JsonReceiver::usersInfo.at(json_num).userName,
-                                                     JsonReceiver::usersInfo.at(json_num).twitterId,
-                                                     JsonReceiver::usersInfo.at(json_num).text,
-                                                     JsonReceiver::usersInfo.at(json_num).friends_count,
-                                                     JsonReceiver::usersInfo.at(json_num).statuses_count,
-                                                     JsonReceiver::usersInfo.at(json_num).followers_count,
-                                                     JsonReceiver::usersInfo.at(json_num).icon);
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).text,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL
+                                                     );
         createExplodeAnimation(pos2f);
         json_num++;//json_numはここで
         superLogUtil.set_log("addAgent", ofToString(json_num));
@@ -207,9 +208,9 @@ int UserAgents::getConnectionSize(){
 void UserAgents::setup_user_agent(){//座標をセット
     userAgentArray.clear();
     
-    for(int j=0;j<JsonReceiver::usersInfo.size();j++){//GENE_Y_NUM*GENE_X_NUM;
+    for(int j=0;j<JsonReceiver::getInstance().getUsersInfo().size();j++){//GENE_Y_NUM*GENE_X_NUM;
         addAgent(1);
     }
     //ここは最初のところ
-    superLogUtil.set_log("setup_user_agent", ofToString(JsonReceiver::usersInfo.size()));
+    superLogUtil.set_log("setup_user_agent", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
 }
