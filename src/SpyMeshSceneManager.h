@@ -13,11 +13,19 @@
 #include "SceneElement.h"
 #include "SpyMesh.h"
 #include "SpyMeshIntro.h"
-#include "Fadeout.h"
+#include "TwitterRain.h"
+#include "ArtSpyDeforming.h"
+#include "IconStream.h"
+#include "StringNetwork.h"
+
 
 class SpyMeshSceneManager:public SceneManager {
 public:
     virtual void setup() override;
-    virtual void onMouseDown(int x,int y) override;
+    virtual bool nextElement() override;
+    virtual void keyPressed(int key) override;
+    virtual void draw() override;
+    
+    bool splitView = false;
 };
 #endif

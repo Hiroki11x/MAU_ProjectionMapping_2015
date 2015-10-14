@@ -24,10 +24,11 @@ public:
     virtual void update() override;
     virtual void init() override;
     virtual void onMouseDown(int x,int y) override;
+    virtual void keyPressed(int key) override;
 
     int spentFrames;
-    float lineEmitPointDistance;
     bool isStarted;
+    float lineEmitPointDistance;
     
     TrailRenderer trails;
     ModelDrawer garallyModelDrawer;
@@ -39,5 +40,6 @@ public:
     
     void initLineEmitPoints();
     void initModelDrawer();
+    void reset();
 };
 #endif
