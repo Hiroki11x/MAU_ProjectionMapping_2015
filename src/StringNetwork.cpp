@@ -39,7 +39,7 @@ void StringNetwork::update(){
     camera.lookAt(ofPoint(-ofGetWidth()/2, -ofGetHeight()/2, 0));
     if(!(spentFrames % 10 == 0)) return;
     if(!(agentNum < MAX_AGENTS)) return;
-    if(JsonReceiver::getInstance().getUserNames().size() <= agentNum) return;
+    if(JsonReceiver::getInstance().updateNum <= agentNum) return;
     networkAgents.at(agentNum).validate(JsonReceiver::getInstance().getUserNames().at(agentNum));
     agentNum++;
 }

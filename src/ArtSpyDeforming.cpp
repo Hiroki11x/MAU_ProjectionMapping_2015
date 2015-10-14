@@ -11,22 +11,33 @@ void ArtSpyDeforming::init(){
     ofxAssimpModelLoader modelLoader;
     modelLoader.loadModel("logo.stl");
     mesh = modelLoader.getMesh(0);
+    light.setDirectional();
+    light.setAmbientColor(ofFloatColor(1.0, 1.0, 1.0, 1.0));//環境反射光の色
+    light.setDiffuseColor(ofFloatColor(1.0, 1.0, 1.0));//拡散反射光の色
+    light.setSpecularColor(ofFloatColor(1.0, 1.0, 1.0));//鏡面反射光の色
+    circuitDrawer = *new CircuitDrawer();
+    circuitDrawer.init();
 }
 
 void ArtSpyDeforming::update(){
     rotation +=2.0;
+    circuitDrawer.updateCircuite();
 }
 
 void ArtSpyDeforming::draw(){
     ofEnableAlphaBlending();
-    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
+    ofDisableDepthTest();
+    circuitDrawer.drawCircuit();
+    ofDisableBlendMode();
+    ofDisableAlphaBlending();
     ofPushMatrix();
     ofPushStyle();
-    ofSetColor(100, 255, 100);
+    ofSetColor(40, 255, 40);
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
-    ofTranslate(0,350,0);
+    ofTranslate(0,300,0);
     ofRotateX(90);
     ofRotateZ(rotation);
+    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
     light.enable();
     glEnable(GL_LIGHTING);
     mesh.draw();
@@ -34,10 +45,7 @@ void ArtSpyDeforming::draw(){
     glDisable(GL_LIGHTING);
     ofPopStyle();
     ofPopMatrix();
-    ofDisableBlendMode();
-    ofDisableAlphaBlending();
     ofPushStyle();
     ofSetColor(0);
-    ofRect(0, 0, ofGetWidth(), 150);
     ofPopStyle();
 }

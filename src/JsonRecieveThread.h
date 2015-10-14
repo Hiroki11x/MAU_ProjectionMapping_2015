@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "JsonReceiver.h"
+#include <sstream>
 
 class JsonRecieveThread : public ofThread {
 public:

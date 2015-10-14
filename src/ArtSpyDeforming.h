@@ -10,6 +10,7 @@
 
 #include "SceneElement.h"
 #include "ofxAssimpModelLoader.h"
+#include "CircuitDrawer.h"
 
 class ArtSpyDeforming : public SceneElement {
 public:
@@ -20,6 +21,7 @@ public:
     vector<float> rotates;
     ofVboMesh mesh;
     ofLight light;
+    CircuitDrawer circuitDrawer;
     float rotation;
 };
 #endif

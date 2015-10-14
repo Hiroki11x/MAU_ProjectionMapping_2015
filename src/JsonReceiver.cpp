@@ -64,6 +64,7 @@ void JsonReceiver::parseJson(){
 }
 
 void JsonReceiver::init(){
+    
     bool parsingSuccessful = jsonElement.openLocal("MAU_twit/twitter.json");
     if (parsingSuccessful){
         cachedTweetId = jsonElement["id"].asInt64();
@@ -75,7 +76,7 @@ void JsonReceiver::init(){
 
 JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
     
-    return getUsersInfo().at(ofRandom(0, usersInfo.size() - 0.1));
+    return getUsersInfo().at(ofRandom(0, updateNum - 0.1));
 }
 
 

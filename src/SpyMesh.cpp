@@ -13,8 +13,6 @@ void SpyMesh::update(){
     modelSize = val[0] * 1;
 
     if(isStarted){
-        //if(agentDebug){
-        //if(JsonReceiver::recieve()){
         if(JsonReceiver::getInstance().checkIsNewData()){
             agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
             agentDebug = false;
