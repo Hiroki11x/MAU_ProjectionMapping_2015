@@ -17,20 +17,15 @@ void AgentAnalyze::init(){
     for(int i = 0; i<user_agent.size();i++){
         user_agent.at(i).init();
     }
-    
     max_row = ofGetHeight()/50 -2;
     max_column = ofGetWidth()/170;
-    
     MAX_AGENT = (max_row+2)*max_column;
 }
 
 void AgentAnalyze::draw(){
     
     int agent_size = user_agent.size();
-    
-    
     ofSetColor(255);
-    
     if(MAX_AGENT < agent_size ){
         user_agent.erase(user_agent.begin());
     }

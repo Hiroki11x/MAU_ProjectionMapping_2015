@@ -64,17 +64,14 @@ void ShiseidoLifeClock::draw(int num){
 void ShiseidoLifeClock::draw_bezier_map(int num){
     
     update(num);//数とかを更新
-    
+    ofSetLineWidth(0.5);
     ofNoFill();
     ofPushMatrix();
     ofTranslate(2*ofGetWidth()/3, ofGetHeight()/2);
     
-    
     int index1,index2,index3;
     for(int i = 0;i<vec.size();i++){
-        
         ofSetColor(ofColor::fromHsb((ofMap(i, 0, vec.size(), 0, 255)), 200, 200));
-        
         index1 = pow(ofSignedNoise(i,ofGetFrameNum()/1000),2)*vec.size();
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/100),2)*vec.size();
         ofBezier(vec.at(index1).x,vec.at(index1).y,
@@ -83,11 +80,6 @@ void ShiseidoLifeClock::draw_bezier_map(int num){
                  vec.at(index3).x,vec.at(index3).y);
         
         ofCircle(vec.at(index3)*1.01,2);
-//        if(i == vec.size()-1){
-//            ofSetColor(255);
-//            JsonReceiver::usersInfo.back().icon.drawSubsection(vec.at(index3).x*1.1-25, vec.at(index3).y*1.1-25,50,50,2,2);
-//        }
     }
-    
     ofPopMatrix();
 }

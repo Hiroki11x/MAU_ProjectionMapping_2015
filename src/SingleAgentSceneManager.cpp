@@ -9,8 +9,8 @@
 #include "SingleAgentSceneManager.h"
 
 void SingleAgentSceneManager::setup(){
-    elements.push_back(new SingleAgentAnalyze());
-    elements.back()->init();
+//    elements.push_back(new SingleAgentAnalyze());
+//    elements.back()->init();
 }
 
 void SingleAgentSceneManager::onMouseDown(int x, int y){

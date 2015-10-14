@@ -10,7 +10,6 @@
 
 #include "UserAgentsSceneManager.h"
 
-
 void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番がのちのキーに対応
     elements.push_back(new UserAgents());
     elements.push_back(new AgentAnalyze());
@@ -21,16 +20,12 @@ void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番�
 }
 
 bool UserAgentsSceneManager::nextElement(){
-    //SoundManager::stop();
     elements[elementIndex]->end();
     elementIndex++;
     if(elementIndex >= elements.size()){
         elementIndex = 0;
-        return true;
-    }else{
-        //elements[elementIndex]->init();
-        return true;
     }
+    return true;
 }
 
 void UserAgentsSceneManager::keyPressed(int key){
@@ -42,7 +37,7 @@ void UserAgentsSceneManager::keyPressed(int key){
             elementIndex = 1;//AgentAnalyza
             return;
         case '3':
-            elementIndex = 2;//Loading
+            elementIndex = 2;//SingleAnalyze
             return;
     }
     elements.at(elementIndex)->keyPressed(key);
@@ -50,4 +45,8 @@ void UserAgentsSceneManager::keyPressed(int key){
 
 void UserAgentsSceneManager::onMouseDown(int x, int y){
     elements.at(0)->onMouseDown(x, y);
+}
+
+void UserAgentsSceneManager::draw(){
+    elements.at(elementIndex)->draw();
 }
