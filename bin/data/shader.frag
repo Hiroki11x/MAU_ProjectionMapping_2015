@@ -9,11 +9,11 @@ uniform float freq[20];  // 波の数だけくりかえす
     gl_FragColor = vec4(red, green, blue, 1.0);
 }*///点滅
 
-/*void main() {
+void main() {
     // 画面の解像度から、0.0~1.0に正規化する
-    vec2 st = gl_FragCoord.xy/u_resolution;
-    gl_FragColor = vec4(st.x,st.y,0.0,1.0);
-}*///グラデーション
+    vec2 st = gl_FragCoord.xy/u_resolution/10.0;
+    gl_FragColor = vec4(0,st.y,st.x,1.0);
+}///グラデーション
 
 /*void main() {
     //画面の解像度から、0.0~1.0に正規化する
@@ -40,7 +40,7 @@ uniform float freq[20];  // 波の数だけくりかえす
     // 色を設定
     gl_FragColor = vec4(color.r * 0.2, color.g * 0.5, color.b * 1.0, 1.0);
 }*///sin波
-void main() {
+/*void main() {
     vec3 color;
  
     for (int i = 0; i < NUM; i++) {
@@ -55,5 +55,5 @@ void main() {
         // 色を設定
         gl_FragColor = vec4(color.r * 0.2, color.g * 0.5, color.b * 1.0, 1.0);
     }
-}
+}*/
 

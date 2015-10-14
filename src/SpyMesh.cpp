@@ -12,27 +12,25 @@ void SpyMesh::update(){
     float * val = ofSoundGetSpectrum(1);
     modelSize = val[0] * 1;
 
-    if(isStarted){
-        if(JsonReceiver::getInstance().checkIsNewData()){
-            agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
-            agentDebug = false;
-            agentNum++;
-        }
-        updateVertices();
-        
-        if(coloerMeshDrawMode){
-            modelDrawer.changeColoredPartMesh();
-            modelDrawer.updateColoredMesh(1.0 + modelSize);
-        }
-        if(int(ofGetElapsedTimeMillis() / 30) % 60 == 0){
-            emitPoint = lineEmitPoints[int(ofRandom(0,6))];
-            if(randomTrianlgeDrawMode) rtDrawer.changeMesh(15,9);
-            if(randomExpandMeshDrawMode) modelDrawer.changeRandomExpandMesh();
-        }
-        spentFrames+=1;
-    }else{
-        wainingFrames++;
+    markerDrawer.update();
+    if(JsonReceiver::getInstance().checkIsNewData()){
+        agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
+        agentDebug = false;
+        agentNum++;
     }
+    updateVertices();
+    
+    if(coloerMeshDrawMode){
+        modelDrawer.changeColoredPartMesh();
+        modelDrawer.updateColoredMesh(1.0 + modelSize);
+    }
+    if(int(ofGetElapsedTimeMillis() / 30) % 60 == 0){
+        emitPoint = lineEmitPoints[int(ofRandom(0,6))];
+        if(randomTrianlgeDrawMode) rtDrawer.changeMesh(15,9);
+        if(randomExpandMeshDrawMode) modelDrawer.changeRandomExpandMesh();
+    }
+    spentFrames+=1;
+    
     if(useRollCam){
         rollCam.update();
     }else{
@@ -60,6 +58,13 @@ void SpyMesh::updateVertices(){
 }
 
 void SpyMesh::draw(){
+    markerDrawer.drawTargetMarker();
+    backShader.load("","shader.frag");
+    backShader.begin();
+    backShader.setUniform1f("u_time", ofGetElapsedTimef());
+    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    ofRect(0,0,ofGetWidth(), ofGetHeight());
+    backShader.end();
    
     ofPushMatrix();
     ofPushStyle();
@@ -74,20 +79,20 @@ void SpyMesh::draw(){
     
     ofSetColor(50, 255, 50 , 150);
     
-    if(isStarted){
-        ofSetLineWidth(0.3);
-        if(modelDrawMode) {
-            modelDrawer.drawModel(modelSize);
-            drawEmitter();
-        }
-        if(coloerMeshDrawMode) modelDrawer.drawColoredMesh();
-        if(randomTrianlgeDrawMode) {
-            rtDrawer.drawTriangleMesh();
-            spiralDrawer.drawSpiral(modelSize);
-        }
-        if(garallyDrawMode) garallyDrawer.drawGarally();
-        if(randomExpandMeshDrawMode) modelDrawer.drawRandomExpandMesh(modelSize);
+    
+    ofSetLineWidth(0.3);
+    if(modelDrawMode) {
+        modelDrawer.drawModel(modelSize);
+        drawEmitter();
     }
+    if(coloerMeshDrawMode) modelDrawer.drawColoredMesh();
+    if(randomTrianlgeDrawMode) {
+        rtDrawer.drawTriangleMesh();
+        spiralDrawer.drawSpiral(modelSize);
+    }
+    if(garallyDrawMode) garallyDrawer.drawGarally();
+    if(randomExpandMeshDrawMode) modelDrawer.drawRandomExpandMesh(modelSize);
+    
 
     ofPopMatrix();
     ofPopStyle();
@@ -103,6 +108,7 @@ void SpyMesh::draw(){
     modelDrawer.drawPercentage();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,0,0);
+    
 }
 
 void SpyMesh::drawEmitter(){
@@ -122,7 +128,6 @@ void SpyMesh::init(){
     
     ofBackground(0);
     ofDisableArbTex();
-    isStarted = false;
     spentFrames = 0;
     wainingFrames = 0;
     SoundManager::play();
@@ -137,6 +142,7 @@ void SpyMesh::init(){
     spiralDrawer.init(2000.0);
     garallyDrawer = *new GarallyDrawer();
     garallyDrawer.init();
+    markerDrawer.init(60);
 }
 
 void SpyMesh::initLineEmitPoints(){
@@ -165,7 +171,6 @@ void SpyMesh::initModelDrawer(){
 void SpyMesh::onMouseDown(int x, int y){
     mouseX = x;
     mouseY = y;
-    isStarted = true;
 }
 
 void SpyMesh::reset(){

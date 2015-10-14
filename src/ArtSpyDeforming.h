@@ -22,6 +22,7 @@ public:
     ofVboMesh mesh;
     ofLight light;
     CircuitDrawer circuitDrawer;
+    ofShader backShader;
     float rotation;
 };
 #endif

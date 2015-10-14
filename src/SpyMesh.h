@@ -23,6 +23,7 @@
 #include "AgentAnalysis.h"
 #include "SpiralDrawer.h"
 #include "GarallyDrawer.h"
+#include "TargetMarkerDrawer.h"
 
 //#define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
@@ -50,7 +51,9 @@ public:
     ofxRollingCam rollCam;
     SpiralDrawer spiralDrawer;
     GarallyDrawer garallyDrawer;
+    TargetMarkerDrawer markerDrawer;
     vector<AgentAnalysis> agents;
+    ofShader backShader;
 
     int mouseX,mouseY;
     int spentFrames;
@@ -58,7 +61,6 @@ public:
     int agentNum;
     float modelSize;
     float lineEmitPointDistance;
-    bool isStarted = false;
     bool useRollCam = false;
     bool modelDrawMode = true;
     bool coloerMeshDrawMode = false;

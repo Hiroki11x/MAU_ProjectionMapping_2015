@@ -13,7 +13,7 @@
 #include "ofxAssimpModelLoaderExtend.h"
 #include "SceneManager.h"
 #include "TrailRenderer.h"
-#include "JsonReceiver.h"
+#include "TargetMarkerDrawer.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 7
 
@@ -27,7 +27,6 @@ public:
     virtual void keyPressed(int key) override;
 
     int spentFrames;
-    bool isStarted;
     float lineEmitPointDistance;
     
     TrailRenderer trails;
@@ -37,6 +36,7 @@ public:
     ofVec3f emitPoint;
     ofVec3f lineEmitPoints[4];
     ofCamera camera;
+    ofShader backShader;
     
     void initLineEmitPoints();
     void initModelDrawer();

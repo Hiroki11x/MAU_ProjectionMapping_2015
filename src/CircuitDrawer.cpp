@@ -130,8 +130,7 @@ bool CircuitDrawer::setNextPoint(Direction nextDirection, int n){
             }
             break;
         case LEFT:
-            if(nextIndex - 1 > 0
-               && !usedPoint[nextIndex[n] -1] && (nextIndex[n] - 1) % CIRCUIT_WIDTH_NUM != CIRCUIT_WIDTH_NUM - 1)
+            if(nextIndex - 1 > 0 && !usedPoint[nextIndex[n] -1] && (nextIndex[n] - 1) % CIRCUIT_WIDTH_NUM != CIRCUIT_WIDTH_NUM - 1)
             {
                 nextIndex[n] = nextIndex[n] - 1;
                 targetPoint[n] = points[nextIndex[n]];

@@ -12,7 +12,6 @@ void SpyMeshIntro::update(){
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        70);
-    if(!isStarted) return;
     for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
         targetPoint = garallyModelDrawer.addVertex();
     }
@@ -22,6 +21,12 @@ void SpyMeshIntro::update(){
 }
 
 void SpyMeshIntro::draw(){
+    backShader.load("","shader.frag");
+    backShader.begin();
+    backShader.setUniform1f("u_time", ofGetElapsedTimef());
+    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    ofRect(0,0,ofGetWidth(), ofGetHeight());
+    backShader.end();
     
     camera.begin();
     ofPushMatrix();
@@ -45,8 +50,8 @@ void SpyMeshIntro::init(){
     
     trails = *new TrailRenderer(ofVec3f(ofGetWidth()/2 -ofGetWidth() * 5 ,ofGetHeight() * 1, 70),
                                 ofVec3f(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
+    
     spentFrames = 0;
-    isStarted = false;
     initModelDrawer();
     initLineEmitPoints();
 }
@@ -73,7 +78,6 @@ void SpyMeshIntro::reset(){
 }
 
 void SpyMeshIntro::onMouseDown(int x, int y){
-    isStarted = true;
 }
 
 void SpyMeshIntro::keyPressed(int key){

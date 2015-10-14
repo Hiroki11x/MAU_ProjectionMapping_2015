@@ -45,6 +45,7 @@ public:
     ofVec3f targetPosition[MAX_ICON * ICON_SIZE * ICON_SIZE];
     ofVec3f cameraPosition;
     ofColor remakeIconsColor[MAX_ICON * ICON_SIZE * ICON_SIZE];
+    ofShader backShader;
     
     int iconNum;
     int spentFrames;

@@ -44,5 +44,6 @@ public:
     int spentFrames;
     ofLight light;
     ofxTrueTypeFontUL2 font;
+    ofShader backShader;
 };
 #endif

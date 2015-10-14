@@ -45,6 +45,13 @@ void StringNetwork::update(){
 }
 
 void StringNetwork::draw(){
+    backShader.load("","shader.frag");
+    backShader.begin();
+    backShader.setUniform1f("u_time", ofGetElapsedTimef());
+    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    ofRect(0,0,ofGetWidth(), ofGetHeight());
+    backShader.end();
+    
     camera.begin();
     glPushMatrix();
     glRotatef(180, 0, 0, 1);

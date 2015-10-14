@@ -27,6 +27,7 @@ public:
     ofCamera camera;
     ofLight light;
     vector<NetworkAgent> networkAgents;
+    ofShader backShader;
     
     int agentNum;
     int fontSize;
