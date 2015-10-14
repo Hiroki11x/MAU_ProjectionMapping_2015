@@ -18,14 +18,9 @@ public:
     ofVec2f nextPosition;
     vector<float> NorP;
     wstring name;
-    
     float noiseElementX,noiseElementY;
-    int index;
-    
-    void updatePosition();
     void moveToNextPosition();
     void validate(wstring agentName);
-    
     NetworkAgent();
 };
 #endif

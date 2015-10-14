@@ -18,6 +18,8 @@ void ArtSpyDeforming::update(){
 }
 
 void ArtSpyDeforming::draw(){
+    ofEnableAlphaBlending();
+    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
     ofPushMatrix();
     ofPushStyle();
     ofSetColor(100, 255, 100);
@@ -32,4 +34,10 @@ void ArtSpyDeforming::draw(){
     glDisable(GL_LIGHTING);
     ofPopStyle();
     ofPopMatrix();
+    ofDisableBlendMode();
+    ofDisableAlphaBlending();
+    ofPushStyle();
+    ofSetColor(0);
+    ofRect(0, 0, ofGetWidth(), 150);
+    ofPopStyle();
 }

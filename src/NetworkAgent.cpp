@@ -7,17 +7,6 @@
 //
 #include "NetworkAgent.h"
 
-void NetworkAgent::updatePosition(){
-    nextPosition = position;
-   /* nextPosition.x += (-0.5 + ofNoise(noiseElementX))* 2.0;
-    nextPosition.x += ofRandom(-2.0,2.0);
-    noiseElementX += ofRandom(1.0);
-    nextPosition.y += (-0.5 + ofNoise(noiseElementY))* 2.0;
-    nextPosition.y += ofRandom(-2.0,2.0);
-    noiseElementY += ofRandom(1.0);*/
-
-}
-
 void NetworkAgent::moveToNextPosition(){
     position = nextPosition;
 }

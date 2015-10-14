@@ -1787,20 +1787,20 @@
 		FA587D111BC4DD43003FCCCA /* SceneElement */ = {
 			isa = PBXGroup;
 			children = (
-				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
-				FA5BFD221BBA69410085652C /* SpyMesh.h */,
-				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
-				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
-				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,
-				FA587DD01BC61C4E003FCCCA /* TwitterRain.h */,
 				FA587E121BC80251003FCCCA /* ArtSpyDeforming.cpp */,
 				FA587E131BC80251003FCCCA /* ArtSpyDeforming.h */,
+				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,
+				FA587DD01BC61C4E003FCCCA /* TwitterRain.h */,
+				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
+				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
+				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
+				FA5BFD221BBA69410085652C /* SpyMesh.h */,
+				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
+				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 				FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */,
 				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
 				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
 				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
-				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
-				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
