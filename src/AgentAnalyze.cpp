@@ -20,6 +20,7 @@ void AgentAnalyze::init(){
     
     max_row = ofGetHeight()/50 -2;
     max_column = ofGetWidth()/170;
+    
     MAX_AGENT = (max_row+2)*max_column;
 }
 
@@ -71,7 +72,6 @@ void AgentAnalyze::check_is_json_new(){
         addAgent(add_num);
     }
 }
-
 
 
 void AgentAnalyze::addAgent(int add_num){

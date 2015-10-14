@@ -41,6 +41,8 @@ void testScene::draw(){
 //    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
+    
+    ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), 10,10);
 }
 
 //--------------------------------------------------------------

@@ -133,7 +133,8 @@ ofVec3f UserAgents::select_position(){
     int index = ofRandom(size-1);//その座標でどこを使うか選ぶ
     if(size>0){
         while(matrix_generator.get_is_used().at(index)){//使われていたら選び直し
-            index = ofRandom(size);
+            check_agent_size(1);
+            index = ofRandom(size-1);
         }
     }
     
