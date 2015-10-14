@@ -7,42 +7,25 @@
 //
 #include "SpyMeshIntro.h"
 
-
 void SpyMeshIntro::update(){
-    if(isStarted){
-        for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
-            targetPoint = garallyModelDrawer.addVertex();
-        }
-        if(spentFrames % 60 == 0){
-            emitPoint = lineEmitPoints[int(ofRandom(0,4))];
-        }
-        //trails.update();
-        spentFrames+=1;
-    }
     camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
     camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
                        70);
+    if(!isStarted) return;
+    for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
+        targetPoint = garallyModelDrawer.addVertex();
+    }
+    spentFrames+=1;
+    if(spentFrames % 60 != 0) return;
+    emitPoint = lineEmitPoints[int(ofRandom(0,4))];
 }
 
 void SpyMeshIntro::draw(){
     
     camera.begin();
-    
-    /*if(spentFrames > 500){
-        ofSetColor(255 * -  (spentFrames - 500), 255, 255 * -  (spentFrames - 500));
-        ofDrawSphere(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70),50 * (spentFrames - 500));
-    }
-    if(spentFrames > 550 || spentFrames == 0){
-        return;
-    }
-    if(spentFrames > 400){
-        trails.convergenceMode = true;
-    }*/
-    
     ofPushMatrix();
     ofPushStyle();
-    //trails.drawTrailer();
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofSetLineWidth(0.3);
@@ -55,7 +38,6 @@ void SpyMeshIntro::draw(){
     ofPopMatrix();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,camera.getPosition() + ofPoint(200,0,0));
-    
     camera.end();
 }
 
@@ -67,7 +49,6 @@ void SpyMeshIntro::init(){
     isStarted = false;
     initModelDrawer();
     initLineEmitPoints();
-    SoundManager::play();
 }
 
 void SpyMeshIntro::initLineEmitPoints(){
@@ -80,15 +61,22 @@ void SpyMeshIntro::initLineEmitPoints(){
 }
 
 void SpyMeshIntro::initModelDrawer(){
-
     model.loadModel("garally.stl");
     for(int i = 0; i < model.getMeshCount(); i++){
         garallyModelDrawer.setVertices(model.getMesh(i).vertices, model.getMesh(i).getIndices(), 200.0);
     }
 }
 
+void SpyMeshIntro::reset(){
+    spentFrames = 0;
+    garallyModelDrawer.reset();
+}
+
 void SpyMeshIntro::onMouseDown(int x, int y){
     isStarted = true;
 }
 
-void SpyMeshIntro::keyPressed(int key){}
+void SpyMeshIntro::keyPressed(int key){
+    if(key != 'R') return;
+    reset();
+}

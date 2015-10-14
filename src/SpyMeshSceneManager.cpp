@@ -13,23 +13,21 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new TwitterRain());
     elements.push_back(new SpyMeshIntro());
     elements.push_back(new SpyMesh());
+    elements.push_back(new IconStream());
+    elements.push_back(new StringNetwork());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
 }
 
 bool SpyMeshSceneManager::nextElement(){
-    
-     //SoundManager::stop();
+
      elements[elementIndex]->end();
      elementIndex++;
      if(elementIndex >= elements.size()){
          elementIndex = 0;
-         return true;
-     }else{
-         //elements[elementIndex]->init();
-         return true;
      }
+    return true;
 }
 
 void SpyMeshSceneManager::draw(){
@@ -68,6 +66,12 @@ void SpyMeshSceneManager::keyPressed(int key){
             elementIndex = 3;
             return;
         case '5':
+            elementIndex = 4;
+            return;
+        case '6':
+            elementIndex = 5;
+            return;
+        case '7':
             splitView = !splitView;
             return;
     }

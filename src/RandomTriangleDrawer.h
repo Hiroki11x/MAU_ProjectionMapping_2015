@@ -13,7 +13,6 @@
 
 class RandomTriangleDrawer{
 public:
-    
     int triangleNum = 0;
     
     ofMesh mesh;

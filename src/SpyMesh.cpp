@@ -14,8 +14,9 @@ void SpyMesh::update(){
 
     if(isStarted){
         //if(agentDebug){
-        if(JsonReceiver::recieve()){
-            agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))])); //JsonReceiver::recieve()
+        //if(JsonReceiver::recieve()){
+        if(JsonReceiver::getInstance().checkIsNewData()){
+            agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
             agentDebug = false;
             agentNum++;
         }
@@ -34,7 +35,6 @@ void SpyMesh::update(){
     }else{
         wainingFrames++;
     }
-    
     if(useRollCam){
         rollCam.update();
     }else{
@@ -43,15 +43,15 @@ void SpyMesh::update(){
 
         light.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
         light.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
-        
     }
 }
 
 void SpyMesh::updateVertices(){
     
     for(int n = 0; n < agents.size(); n++){
-        for(float f = 0; f < 1; f+=ADD_TRIANGLE_PER_AGENT_TRIANGLE){ agents.at(n).removeVertices(); }
-
+        for(float f = 0; f < 1; f+=ADD_TRIANGLE_PER_AGENT_TRIANGLE){
+            agents.at(n).removeVertices();
+        }
         if(agents.at(n).removeVertices()){
             agents.at(n).targetPodsition = modelDrawer.addVertex();
         }else{
@@ -75,7 +75,6 @@ void SpyMesh::draw(){
     }
     
     ofSetColor(50, 255, 50 , 150);
-    
     
     if(isStarted){
         ofSetLineWidth(0.3);
@@ -111,7 +110,6 @@ void SpyMesh::draw(){
 void SpyMesh::drawEmitter(){
 
     ofPushStyle();
-
     ofSetColor(50, 255, 50,150);
     
     for(int i = 0; i < agents.size(); i++){
@@ -170,6 +168,10 @@ void SpyMesh::onMouseDown(int x, int y){
     mouseX = x;
     mouseY = y;
     isStarted = true;
+}
+
+void SpyMesh::reset(){
+    modelDrawer.reset();
 }
 
 void SpyMesh::keyPressed(int key){
@@ -245,6 +247,8 @@ void SpyMesh::keyPressed(int key){
         case 'p':
             agentDebug = true;
             break;
+        case 'R':
+            reset();
         default:
             break;
     }

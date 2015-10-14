@@ -24,7 +24,7 @@
 #include "SpiralDrawer.h"
 #include "GarallyDrawer.h"
 
-#define ADD_TRIANGLE_PER_UPDATE 1
+//#define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
 #define ADD_TRIANGLE_PER_AGENT_TRIANGLE 0.05
 
@@ -50,7 +50,6 @@ public:
     ofxRollingCam rollCam;
     SpiralDrawer spiralDrawer;
     GarallyDrawer garallyDrawer;
-    
     vector<AgentAnalysis> agents;
 
     int mouseX,mouseY;
@@ -68,10 +67,10 @@ public:
     bool randomExpandMeshDrawMode = false;
     bool agentDebug = false;
     
-    
     void initLineEmitPoints();
     void initModelDrawer();
     void drawEmitter();
     void updateVertices();
+    void reset();
 };
 #endif

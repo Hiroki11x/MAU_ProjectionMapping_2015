@@ -10,7 +10,7 @@
 ofSoundPlayer SoundManager::soundPlayer;
 
 void SoundManager::init(){
-    soundPlayer.loadSound("mau_music_sample02.aif");
+    soundPlayer.loadSound("mau_music_sample03.mp3");
     soundPlayer.setLoop(true);
 }
 

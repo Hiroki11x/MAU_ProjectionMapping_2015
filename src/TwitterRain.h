@@ -12,18 +12,18 @@
 #include "SceneElement.h"
 #include "ofx3DFont.h"
 #include "JsonReceiver.h"
-
+#include "ofxTrueTypeFontUL2.h"
 
 #define DISPLAY_TWEET_NUM 20
 
 class TwitterRain : public SceneElement {
 public:
-    
     struct Tweet{
         wstring tweetInfo;
         ofVec3f position;
         float rotateSpeed;
         float downSpeed;
+        int alpha;
     };
     
     virtual void draw() override;
@@ -32,23 +32,17 @@ public:
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
     
-    wstring convToWString(string src);
-    template <class T>
-    wstring convToUCS4(basic_string<T> src);
-    
-    ofx3DFont font;
     vector<Tweet> tweets;
     wstring show;
     string strAlign;
     string strDirection;
-    bool renderingMode;
+
     bool bRotation;
     int align;
     int mouseX;
     int mouseY;
-    int z;
     int spentFrames;
-    bool tweetDebug;
     ofLight light;
+    ofxTrueTypeFontUL2 font;
 };
 #endif

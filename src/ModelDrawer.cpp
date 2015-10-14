@@ -83,7 +83,6 @@ void ModelDrawer::changeRandomExpandMesh(){
 
 void ModelDrawer::drawRandomExpandMesh(float scale){
 
-    cout << scale * 100.0 << endl;
     for(int i = 0; i < randomExpandMesh.vertices.size() / 3; i++){
          randomExpandMesh.setVertex(i * 3, randomExpandMeshesVec[i * 3] * scale * 50.0);
     }
@@ -117,8 +116,8 @@ void ModelDrawer::drawModel(float scale, bool fill){
 };
 
 void ModelDrawer::drawPercentage(){
-    ofNoFill();
-    ofRect(50, 50, 400, 20);
+    /*ofNoFill();
+    ofRect(50, 50, 400, 20);*/
     ofFill();
     ofRect(50, 50, 400 * (float(addedIndicesSize) / float(indicesSize)), 20);
 }
@@ -171,6 +170,13 @@ void ModelDrawer::updateColoredMesh(float size){
         default:
             break;
     }
+}
+
+void ModelDrawer::reset(){
+    mesh.clear();
+    coloredPartMesh.clear();
+    randomExpandMesh.clear();
+    addedIndicesSize = 0;
 }
 
 ModelDrawer::ModelDrawer(){

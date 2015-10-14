@@ -19,6 +19,7 @@ public:
     void drawGarally();
     void init(float scale = 50);
     int patternIndex;
+    float noiseElement;
 
     GLushort patterns[8] = {
         0x5555,
