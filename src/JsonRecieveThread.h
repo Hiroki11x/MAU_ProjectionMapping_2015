@@ -12,10 +12,10 @@
 #include "ofMain.h"
 #include "JsonReceiver.h"
 
-class JsonRecieveThread : public ofThread {
+class JsonRecieveThread : public ofThread{
+    
 public:
     void threadedFunction(){
-        
         while (isThreadRunning()) {
             if(lock()){
                 JsonReceiver::getInstance().recieve();

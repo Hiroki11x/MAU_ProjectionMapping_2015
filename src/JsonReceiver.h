@@ -23,14 +23,17 @@ public:
         int statuses_count;//つぶやいてる数
         int followers_count;
         string iconURL;
+//        ofImage iconURL;
     };
     
     vector<UserInfo> getUsersInfo();
-    vector<wstring> getUserNames();
+    
     bool checkIsNewData();
     bool checkUpdateJson();
     void parseJson();
     bool recieve();
+    string parseJson_icon();
+    string recieve_icon();
     void init();
     UserInfo getRandomTweetInfo();
     
@@ -38,14 +41,15 @@ public:
     bool fetchImageMode;
     bool isNewData;
     int64_t cachedTweetId;
+    
     vector<UserInfo> usersInfo;
-    vector<wstring> userNames;
+    vector<ofImage> icons;
+    
     ofxJSONElement jsonElement;
     
     static wstring convToWString(string src);
     template <class T>
     static wstring convToUCS4(basic_string<T> src);
-    
     
     static JsonReceiver &getInstance();
 private:

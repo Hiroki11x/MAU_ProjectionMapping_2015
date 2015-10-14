@@ -68,6 +68,9 @@
 		4E94F13D1BBE102200E0343E /* ofxSyphonServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1361BBE102200E0343E /* ofxSyphonServer.mm */; };
 		4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4E94F1381BBE102200E0343E /* ofxSyphonServerDirectory.mm */; };
 		4EACBCC21BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EACBCC01BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp */; };
+		4EB7A3CF1BCE8E1400A86BF2 /* BaseImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3CD1BCE8E1400A86BF2 /* BaseImage.cpp */; };
+		4EB7A3D41BCE919000A86BF2 /* ofxThreadedImageLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3D21BCE919000A86BF2 /* ofxThreadedImageLoader.cpp */; };
+		4EB7A3D71BCE978A00A86BF2 /* JsonImageReceiveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3D51BCE978A00A86BF2 /* JsonImageReceiveThread.cpp */; };
 		4EC0478E1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */; };
 		4EC047921BCB6FD100D069EB /* SingleAgentAnalyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */; };
 		4EC047961BCB716900D069EB /* SingleAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047941BCB716900D069EB /* SingleAgent.cpp */; };
@@ -354,6 +357,12 @@
 		4E95FB446A9C9C6F0DE12D75 /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscPrintReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.h; sourceTree = SOURCE_ROOT; };
 		4EACBCC01BCBEA8C00D0AAC7 /* ShiseidoLifeClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiseidoLifeClock.cpp; sourceTree = "<group>"; };
 		4EACBCC11BCBEA8C00D0AAC7 /* ShiseidoLifeClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiseidoLifeClock.h; sourceTree = "<group>"; };
+		4EB7A3CD1BCE8E1400A86BF2 /* BaseImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseImage.cpp; sourceTree = "<group>"; };
+		4EB7A3CE1BCE8E1400A86BF2 /* BaseImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImage.h; sourceTree = "<group>"; };
+		4EB7A3D21BCE919000A86BF2 /* ofxThreadedImageLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxThreadedImageLoader.cpp; sourceTree = "<group>"; };
+		4EB7A3D31BCE919000A86BF2 /* ofxThreadedImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxThreadedImageLoader.h; sourceTree = "<group>"; };
+		4EB7A3D51BCE978A00A86BF2 /* JsonImageReceiveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonImageReceiveThread.cpp; sourceTree = "<group>"; };
+		4EB7A3D61BCE978A00A86BF2 /* JsonImageReceiveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonImageReceiveThread.h; sourceTree = "<group>"; };
 		4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentSceneManager.cpp; sourceTree = "<group>"; };
 		4EC0478D1BCB6EAF00D069EB /* SingleAgentSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleAgentSceneManager.h; sourceTree = "<group>"; };
 		4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentAnalyze.cpp; sourceTree = "<group>"; };
@@ -1133,6 +1142,8 @@
 				4E88A21F1BBE11AF001E8306 /* mode.h */,
 				4EE77DA91BC90AD70070C805 /* FontManager.cpp */,
 				4EE77DAA1BC90AD70070C805 /* FontManager.h */,
+				4EB7A3CD1BCE8E1400A86BF2 /* BaseImage.cpp */,
+				4EB7A3CE1BCE8E1400A86BF2 /* BaseImage.h */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -1243,6 +1254,24 @@
 			name = ofxCv;
 			sourceTree = "<group>";
 		};
+		4EB7A3D01BCE919000A86BF2 /* ofxThreadedImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				4EB7A3D11BCE919000A86BF2 /* src */,
+			);
+			name = ofxThreadedImageLoader;
+			path = ../../../addons/ofxThreadedImageLoader;
+			sourceTree = "<group>";
+		};
+		4EB7A3D11BCE919000A86BF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4EB7A3D21BCE919000A86BF2 /* ofxThreadedImageLoader.cpp */,
+				4EB7A3D31BCE919000A86BF2 /* ofxThreadedImageLoader.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		4EC0478B1BCB6E7E00D069EB /* SingleAgentAnalyze */ = {
 			isa = PBXGroup;
 			children = (
@@ -1287,6 +1316,8 @@
 				4ECB408A1BC511A2004EB9AF /* JsonReceiver.h */,
 				4E735F061BCE36BF00DA9F85 /* JsonRecieveThread.cpp */,
 				4E735F071BCE36BF00DA9F85 /* JsonRecieveThread.h */,
+				4EB7A3D51BCE978A00A86BF2 /* JsonImageReceiveThread.cpp */,
+				4EB7A3D61BCE978A00A86BF2 /* JsonImageReceiveThread.h */,
 			);
 			name = JsonReceiver;
 			sourceTree = "<group>";
@@ -1674,6 +1705,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				4EB7A3D01BCE919000A86BF2 /* ofxThreadedImageLoader */,
 				4EE77D611BC904950070C805 /* ofxTrueTypeFontUL2 */,
 				4E7633161BC258C2002F2530 /* ofxPostGlitch */,
 				4E5ED67A1BC12958004F1AF6 /* ofxTween */,
@@ -2100,6 +2132,7 @@
 				4EE77D201BC62BB70070C805 /* TriangleConnection.cpp in Sources */,
 				4E94F13C1BBE102200E0343E /* ofxSyphonClient.mm in Sources */,
 				C2B7714E50909A7BCAE5A51C /* texture3DS.cpp in Sources */,
+				4EB7A3CF1BCE8E1400A86BF2 /* BaseImage.cpp in Sources */,
 				59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */,
 				4E5ED6C31BC12958004F1AF6 /* ofxEasing.cpp in Sources */,
 				4E88A2521BBE11AF001E8306 /* UserAgents.cpp in Sources */,
@@ -2110,8 +2143,10 @@
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
 				4E88A2471BBE11AF001E8306 /* ofApp.cpp in Sources */,
+				4EB7A3D71BCE978A00A86BF2 /* JsonImageReceiveThread.cpp in Sources */,
 				4EC047921BCB6FD100D069EB /* SingleAgentAnalyze.cpp in Sources */,
 				4E88A24A1BBE11AF001E8306 /* SceneManager.cpp in Sources */,
+				4EB7A3D41BCE919000A86BF2 /* ofxThreadedImageLoader.cpp in Sources */,
 				4E94F13B1BBE102200E0343E /* README.md in Sources */,
 				4EC047961BCB716900D069EB /* SingleAgent.cpp in Sources */,
 				B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */,

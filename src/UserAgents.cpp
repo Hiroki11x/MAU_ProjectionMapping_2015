@@ -30,6 +30,7 @@ void UserAgents::init(){
     
 //    graphLog.setup();
 //    graphLog.set_height_limit(ofGetWidth()/4);
+    superLogUtil.set_log("init","call useragnts init()");
     
 }
 
@@ -166,6 +167,7 @@ void UserAgents::addAgent(int add_num){
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
+//                                                     JsonImageRecieveThread::icons.at(json_num)
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL
                                                      );
 //        createExplodeAnimation(pos2f);

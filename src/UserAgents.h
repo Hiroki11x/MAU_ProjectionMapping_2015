@@ -26,6 +26,7 @@
 //#include "GraphLog.h"
 #include "ExplodeAnimation.h"
 #include "JsonReceiver.h"
+#include "JsonImageReceiveThread.h"
 
 class UserAgents : public SceneElement {
 public:

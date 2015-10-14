@@ -14,7 +14,6 @@ JsonReceiver &JsonReceiver::getInstance() {
 }
 
 bool JsonReceiver::checkIsNewData(){
-    
     if(isNewData){
         isNewData = false;
         return true;
@@ -26,10 +25,6 @@ vector<JsonReceiver::UserInfo> JsonReceiver::getUsersInfo(){
     return usersInfo;
 }
 
-vector<wstring> JsonReceiver::getUserNames(){
-    return  userNames;
-}
-
 bool JsonReceiver::checkUpdateJson(){
     
     if(jsonElement["id"].asInt64() != cachedTweetId){
@@ -39,6 +34,23 @@ bool JsonReceiver::checkUpdateJson(){
         return false;
     }
 }
+
+//---------------------image----------------------
+string JsonReceiver::recieve_icon(){
+    bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");//Nodeで取得したJSON
+    if (parsingSuccessful){
+        if(checkUpdateJson()){
+            return parseJson_icon();
+        }
+    }else{
+        cout << "Failed to parse JSON" << endl;
+    }
+    return "";
+}
+string JsonReceiver::parseJson_icon(){
+    return jsonElement["user"]["profile_image_url"].asCString();
+}
+//---------------------image----------------------
 
 bool JsonReceiver::recieve(){
     bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");//Nodeで取得したJSON
@@ -53,8 +65,9 @@ bool JsonReceiver::recieve(){
     return false;
 }
 
+
+
 void JsonReceiver::parseJson(){
-    
     usersInfo.push_back((UserInfo){
         convToWString(jsonElement["text"].asCString()),
         jsonElement["user"]["name"].asCString(),
@@ -63,7 +76,7 @@ void JsonReceiver::parseJson(){
         jsonElement["user"]["statuses_count"].asInt(),
         jsonElement["user"]["followers_count"].asInt(),
         jsonElement["user"]["profile_image_url"].asCString()});
-    userNames.push_back(convToWString(jsonElement["user"]["name"].asCString()));
+ 
     updateNum++;
     isNewData = true;
     return;

@@ -28,6 +28,7 @@ void testScene::setup(){
 
     JsonReceiver::getInstance().init();
     thread.startThread();
+//    image_thread.startThread();
 }
 
 void testScene::exit(){
