@@ -21,13 +21,18 @@ void GarallySceneGuiDrawer::update(){
     if(drawGraphMode) graph.updateGraphParams();
     if(drawTargetMarkerMode) marker.update();
     if(drawCenterCircleMode) centerDeg += 0.2;
+    if(drawClockMode){
+        for(int i = 0; i < 3; i++){
+            clockDeg[i] += ofRandom(0, (i + 1) * 10);
+        }
+    }
     frameCounter++;
 }
 
 void GarallySceneGuiDrawer::drawGui(){
     ofPushMatrix();
     ofPushStyle();
-    
+    if(drawClockMode) drawClock();
     if(drawTargetMarkerMode) marker.drawTargetMarker();
     ofSetColor(100, 238, 238, 180);
     ofSetLineWidth(3);
@@ -71,6 +76,33 @@ void GarallySceneGuiDrawer::drawGui(){
     
     ofPopStyle();
     ofPopMatrix();
+}
+
+void GarallySceneGuiDrawer::drawClock(){
+    ofPushMatrix();
+    ofPushStyle();
+    ofTranslate(830,70);
+    ofSetColor(0,100,100,100);
+    ofNoFill();
+    ofSetLineWidth(5);
+    ofRect(0, 0, 100, 280);
+    ofTranslate(50, 50);
+    for(int i = 0; i < 3; i++){
+        ofPushMatrix();
+        ofTranslate(0, i * 90);
+        ofSetColor(100,255,255,180);
+        ofDrawBitmapString("Data" + ofToString(i + 1), -20, -33);
+        ofSetLineWidth(2);
+        ofSetColor(0,200,200,150);
+        ofCircle(0, 0, 25);
+        ofRotateZ(clockDeg[i]);
+        ofSetColor(0,250,250,180);
+        ofSetLineWidth(3);
+        ofLine(0, 0, 30, 0);
+        ofPopMatrix();
+    }
+    ofPopMatrix();
+    ofPopStyle();
 }
 
 void GarallySceneGuiDrawer::initCenterCircle(){

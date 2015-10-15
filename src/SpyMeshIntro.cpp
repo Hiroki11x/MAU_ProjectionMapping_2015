@@ -153,6 +153,9 @@ void SpyMeshIntro::keyPressed(int key){
             drawFPSAndSPFMode = !drawFPSAndSPFMode;
             break;
         case 'y':
+            gui.drawClockMode = !gui.drawClockMode;
+            break;
+        case 't':
             garallyStripMode = (garallyStripMode + 1) % 3;
             break;
         case 'R':

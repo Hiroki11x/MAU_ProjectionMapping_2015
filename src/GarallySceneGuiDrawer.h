@@ -20,6 +20,7 @@ public:
     void update();
     void initFrame();
     void initCenterCircle();
+    void drawClock();
     ofVboMesh frameMesh;
     ofVboMesh centerCircle;
     float centerDeg;
@@ -31,6 +32,8 @@ public:
     bool drawCenterCircleMode = true;
     bool drawGraphMode = true;
     bool drawTargetMarkerMode = true;
+    bool drawClockMode = true;
 
+    float clockDeg[3];
 };
 #endif
