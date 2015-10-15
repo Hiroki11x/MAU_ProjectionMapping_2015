@@ -5,14 +5,13 @@
 //  Created by 櫻木善将 on 2015/10/15.
 //
 //
-
 #include "GarallySceneGuiDrawer.h"
 
 void GarallySceneGuiDrawer::init(){
     frameCounter = 0;
     initFrame();
     initCenterCircle();
-    graph = *new GraphGuiDrawer(ofVec2f(300,100));
+    graph = *new GraphGuiDrawer();
     marker = *new TargetMarkerDrawer();
     marker.init(50);
 }
@@ -68,12 +67,10 @@ void GarallySceneGuiDrawer::drawGui(){
         ofPopMatrix();
         ofPopStyle();
     }
-    
     if(drawGraphMode){
         ofTranslate(80, 580);
         graph.drawGraphGui();
     }
-    
     ofPopStyle();
     ofPopMatrix();
 }
@@ -122,7 +119,6 @@ void GarallySceneGuiDrawer::initCenterCircle(){
 }
 
 void GarallySceneGuiDrawer::initFrame(){
-    
     //leftSide
     frameMesh.addVertex(ofVec3f(70,34,0));
     frameMesh.addVertex(ofVec3f(70,234,0));

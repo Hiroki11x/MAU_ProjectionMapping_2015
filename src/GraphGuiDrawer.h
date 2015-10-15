@@ -25,14 +25,14 @@ public:
     void drawCircleGraph();
     void updateGraphParams();
     
-    ofShader graphBack;
     int graphNum;
+    float graphParamatar[5];
+    
+    ofShader graphBack;
     ofVec2f scale;
     GraphMode mode;
     ofxTrueTypeFontUL2* font;
-    float graphParamatar[5];
     
-    GraphGuiDrawer(ofVec2f scale);
-    GraphGuiDrawer(){};
+    GraphGuiDrawer();
 };
 #endif

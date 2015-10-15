@@ -14,13 +14,18 @@
 
 class NetworkAgent {
 public:
+    
     ofVec2f position;
     ofVec2f nextPosition;
+    
     vector<float> NorP;
     wstring name;
+    
     float noiseElementX,noiseElementY;
+    
     void moveToNextPosition();
     void validate(wstring agentName);
+    
     NetworkAgent();
 };
 #endif

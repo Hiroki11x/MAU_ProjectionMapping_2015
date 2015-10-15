@@ -25,20 +25,16 @@ public:
     
     int frameCount;
     int modeFrames[5];
-    
-    ofVboMesh insideDrawer;
-    ofVboMesh outsideDrawer;
-    
     float insideSpeed = 5.0;
     float outsideSpeed = -3.0;
-    
     float insideDeg;
     float outsideDeg;
     
+    ofVboMesh insideDrawer;
+    ofVboMesh outsideDrawer;
     ofVec2f position;
-    
     Mode mode = ROTATE;
-    
+        
     void init(float radius);
     void update();
     void drawTargetMarker();

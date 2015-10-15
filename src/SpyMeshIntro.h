@@ -19,7 +19,6 @@
 
 class SpyMeshIntro : public SceneElement {
 public:
-    
     virtual void draw() override;
     virtual void update() override;
     virtual void init() override;
@@ -28,6 +27,10 @@ public:
 
     int spentFrames;
     int cameraRotateFrames;
+    int rotateFrame;
+    int waitFrame;
+    int garallyStripMode = 0;
+    bool drawFPSAndSPFMode = true;
     float lineEmitPointDistance;
     
     TrailRenderer trails;
@@ -45,14 +48,10 @@ public:
     ofVec3f befCameraLookPoint;
     ofVec3f nextCameraLookPoint;
     ofVec2f fpsPoint;
-    int rotateFrame;
-    int waitFrame;
     ofLight light;
     ofShader backShader;
     GarallySceneGuiDrawer gui;
-    bool drawFPSAndSPFMode = true;
-    int garallyStripMode = 0;
-    
+
     void initLineEmitPoints();
     void initModelDrawer();
     void reset();

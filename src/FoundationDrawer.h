@@ -28,7 +28,6 @@ public:
     float insideSpeed = -5.0;
     float middleSpeed = 8.0;
     float outsideSpeed = 1.0;
-    
     float insideDeg;
     float middleDeg;
     float outsideDeg;

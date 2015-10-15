@@ -40,10 +40,10 @@ public:
     void init();
     void drawCircuit();
     void updateCircuite();
-    bool setNextPoint(Direction nextDirection, int n);
     void setRandomPoint(int n);
     void changeMode(Mode nextMode);
     void reset();
+    bool setNextPoint(Direction nextDirection, int n);
     
     ofVboMesh circuit[4];
     ofVec3f targetPoint[4];
@@ -51,11 +51,11 @@ public:
     ofVec3f points[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
     Mode mode = NORMAL;
     
-    bool usedPoint[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
-    bool arrivedNextPoint[4];
-    float positionCounter[4]; //0~1
     int nextIndex[4];
     int addedPoint;
     int waitFrames;
+    bool usedPoint[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
+    bool arrivedNextPoint[4];
+    float positionCounter[4]; //0~1
 };
 #endif

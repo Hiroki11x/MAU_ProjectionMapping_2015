@@ -34,18 +34,19 @@ public:
     virtual void keyPressed(int key) override;
     void reset();
     
-    vector<Tweet> tweets;
-    wstring show;
-    string strAlign;
-    string strDirection;
-
-    bool bRotation;
-    bool drawCircuitMode = false;
     int align;
     int mouseX;
     int mouseY;
     int spentFrames;
     int tweetNum;
+    bool bRotation;
+    bool drawCircuitMode = false;
+    
+    vector<Tweet> tweets;
+    wstring show;
+    string strAlign;
+    string strDirection;
+
     ofLight light;
     ofxTrueTypeFontUL2 font;
     ofShader backShader;

@@ -93,8 +93,7 @@ void ArtSpyDeforming::drawSpyLogo(){
     mesh.draw();
     light.disable();
     glDisable(GL_LIGHTING);
-    if(!drawCircuitMode)
-    {
+    if(!drawCircuitMode){
         ofDisableBlendMode();
         ofDisableAlphaBlending();
     }

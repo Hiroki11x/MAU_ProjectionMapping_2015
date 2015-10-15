@@ -53,7 +53,6 @@ void TargetMarkerDrawer::update(){
             break;
     }
     
-    
     frameCount++;
     if(frameCount > modeFrames[int(mode)]){
         if((int)mode + 1 == 5){

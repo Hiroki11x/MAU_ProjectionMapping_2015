@@ -150,7 +150,7 @@ void SpyMesh::init(){
     garallyDrawer = *new GarallyDrawer();
     garallyDrawer.init();
     markerDrawer.init(60);
-    graphDrawer = *new GraphGuiDrawer(ofVec2f(300,100));
+    graphDrawer = *new GraphGuiDrawer();
 }
 
 void SpyMesh::initLineEmitPoints(){

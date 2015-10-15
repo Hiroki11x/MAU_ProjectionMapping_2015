@@ -5,7 +5,6 @@
 //  Created by 櫻木善将 on 2015/10/15.
 //
 //
-
 #ifndef GarallySceneGuiDrawer_h
 #define GarallySceneGuiDrawer_h
 
@@ -21,19 +20,18 @@ public:
     void initFrame();
     void initCenterCircle();
     void drawClock();
-    ofVboMesh frameMesh;
-    ofVboMesh centerCircle;
-    float centerDeg;
-    GraphGuiDrawer graph;
-    TargetMarkerDrawer marker;
     
     int frameCounter;
-    
     bool drawCenterCircleMode = true;
     bool drawGraphMode = true;
     bool drawTargetMarkerMode = true;
     bool drawClockMode = true;
-
+    float centerDeg;
     float clockDeg[3];
+    
+    ofVboMesh frameMesh;
+    ofVboMesh centerCircle;
+    GraphGuiDrawer graph;
+    TargetMarkerDrawer marker;
 };
 #endif

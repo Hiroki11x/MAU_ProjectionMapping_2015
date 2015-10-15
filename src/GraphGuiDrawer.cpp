@@ -9,11 +9,9 @@
 
 void GraphGuiDrawer::drawGraphGui(){
     ofDisableDepthTest();
-    //graphBack.begin();
     ofSetColor(0,30,30);
     ofRect(0, 0, scale.x, scale.y);
-    //graphBack.end();
-    
+
     switch (mode) {
         case RECT_BAR:
             drawRectBarGraph();
@@ -30,10 +28,13 @@ void GraphGuiDrawer::drawGraphGui(){
 }
 
 void GraphGuiDrawer::drawRectBarGraph(){
-    ofSetColor(0, 100, 100);
+    
     for(int i = 0; i < graphNum; i++){
-        ofRect(16,16 + 27 * i,
-               15 + graphParamatar[i], 12);
+        ofSetColor(100, 180, 150);
+        ofDrawBitmapString("elem" + ofToString(i + 1),5, 27 + 27 * i );
+        ofSetColor(0, 100, 100);
+        ofRect(50,16 + 27 * i,
+               graphParamatar[i], 12);
     }
 }
 
@@ -46,13 +47,13 @@ void GraphGuiDrawer::updateGraphParams(){
         graphParamatar[i] += ofRandom(-10.0, 10.0);
         if(graphParamatar[i] < 0){
             graphParamatar[i] = 0;
-        }else if (graphParamatar[i] > 250){
-            graphParamatar[i] = 250;
+        }else if (graphParamatar[i] > 240){
+            graphParamatar[i] = 240;
         }
     }
 }
 
-GraphGuiDrawer::GraphGuiDrawer(ofVec2f scale){
+GraphGuiDrawer::GraphGuiDrawer(){
     this-> scale = ofVec2f(300, 100);
     graphNum = 3;
     for(int i = 0; i < 5; i++){

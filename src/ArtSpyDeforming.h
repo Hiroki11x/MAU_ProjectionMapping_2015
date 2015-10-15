@@ -19,6 +19,9 @@ public:
     virtual void init() override;
     virtual void update() override;
     virtual void keyPressed(int key) override;
+
+    bool drawCircuitMode = false;
+    float rotation;
     
     vector<float> rotates;
     ofVboMesh mesh;
@@ -26,8 +29,6 @@ public:
     CircuitDrawer circuitDrawer;
     FoundationDrawer foundationDrawer;
     ofShader backShader;
-    float rotation;
-    bool drawCircuitMode = false;
     
     void drawSpyLogo();
 };

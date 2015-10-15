@@ -34,7 +34,6 @@ void CircuitDrawer::reset(){
 
 void CircuitDrawer::updateCircuite(){
     
-    
     for(int n = 0; n < 4; n++){
         if(arrivedNextPoint[n] && addedPoint < CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM){
             //最初と最後以外はニコ入れる
@@ -71,7 +70,6 @@ void CircuitDrawer::updateCircuite(){
                 arrivedNextPoint[n] = true;
             }
         }
-
     }
     if(addedPoint == CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM) {
         waitFrames++;
@@ -92,8 +90,6 @@ void CircuitDrawer::drawCircuit(){
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_POINTS);
         circuit[n].draw();
     }
-    //ofSetColor(0,0,0,50 + 25 * sin(ofGetElapsedTimeMillis()/200.0));
-    //ofRect(0, 0, ofGetWidth(), ofGetHeight());
     if(addedPoint != CIRCUIT_HEIGHT_NUM * CIRCUIT_WIDTH_NUM){
         ofSetColor(0, 255, 255);
         ofSetLineWidth(1);
