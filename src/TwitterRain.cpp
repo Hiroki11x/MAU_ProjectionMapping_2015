@@ -8,8 +8,14 @@
 #include "TwitterRain.h"
 
 void TwitterRain::init(){
-    
-    tweets = *new vector<Tweet>;
+    tweetNum = 0;
+    tweets = *new vector<Tweet>(DISPLAY_TWEET_NUM);
+    for(int index = 0; index < DISPLAY_TWEET_NUM; index++){
+        tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
+        tweets.at(index).rotateSpeed = ofRandom(-30,30);
+        tweets.at(index).downSpeed = ofRandom(8,15);
+        tweets.at(index).alpha = ofRandom(150,255);
+    }
     align = UL2_TEXT_ALIGN_V_TOP|UL2_TEXT_ALIGN_CENTER;
     strAlign="top-center [8]";
     strDirection="Left to Right (TTB)";
@@ -35,6 +41,7 @@ void TwitterRain::draw(){
     ofRect(0,0,ofGetWidth(), ofGetHeight());
     backShader.end();
     
+    ofPushStyle();
     ofSetColor(255);
     int w,h,x,y;
     x=100;
@@ -44,14 +51,13 @@ void TwitterRain::draw(){
     glPushMatrix();{
         light.enable();
         light.setPosition(ofGetWidth()*.5,ofGetHeight()*.5,ofGetWidth());
-        for(int i = 0; i < tweets.size(); i++){
+        for(int i = 0; i < DISPLAY_TWEET_NUM; i++){
+            if(!tweets.at(i).visible) continue;
             glPushMatrix();
             if(bRotation){
                 ofSetColor(25,255,25,tweets.at(i).alpha);
-                ofRectangle rc= font.getStringBoundingBox(tweets.at(i).tweetInfo,x,y,w,h,align);
                 glTranslatef(tweets.at(i).position.x, tweets.at(i).position.y, tweets.at(i).position.z);
                 glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed, 0, 1, 0);
-                glTranslatef(x-rc.x -rc.width*.5,0,0);
                 font.drawString(tweets.at(i).tweetInfo,0,0);
             }else{
                 ofSetColor(25,255,25,tweets.at(i).alpha);
@@ -62,21 +68,33 @@ void TwitterRain::draw(){
         light.disable();
         glDisable(GL_LIGHTING);
     }glPopMatrix();
+    ofPopStyle();
 }
 
 void TwitterRain::update(){
 
-    for(int i = 0; i < tweets.size(); i++){
+    for(int i = 0; i < DISPLAY_TWEET_NUM; i++){
+        if(!tweets.at(i).visible) continue;
         tweets.at(i).position.y += tweets.at(i).downSpeed;
         if(tweets.at(i).position.y < ofGetHeight()) continue;
-        tweets.erase(tweets.begin() + i);
-        i--;
+        tweets.at(i).visible = false;
+        tweetNum--;
     }
     spentFrames++;
     if(!(spentFrames % 7 == 0)) return;
-    if(!(tweets.size() < DISPLAY_TWEET_NUM)) return;
+    if(!(tweetNum < DISPLAY_TWEET_NUM)) return;
     if(!(JsonReceiver::getInstance().updateNum > 0)) return;
-    tweets.push_back((Tweet){JsonReceiver::getInstance().getRandomTweetInfo().text,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(8,15),ofRandom(100,255)});
+    int index = 0;
+    for(int i = 0; i < DISPLAY_TWEET_NUM; i++){
+        if(!tweets.at(i).visible){
+            index = i;
+            break;
+        }
+    }
+    tweets.at(index).tweetInfo = JsonReceiver::getInstance().getRandomTweetInfo().text;
+    tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
+    tweets.at(index).visible = true;
+    tweetNum++;
 }
 
 void TwitterRain::onMouseDown(int x, int y){

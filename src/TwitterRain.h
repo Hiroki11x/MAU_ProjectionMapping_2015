@@ -24,6 +24,7 @@ public:
         float rotateSpeed;
         float downSpeed;
         int alpha;
+        bool visible;
     };
     
     virtual void draw() override;
@@ -42,6 +43,7 @@ public:
     int mouseX;
     int mouseY;
     int spentFrames;
+    int tweetNum;
     ofLight light;
     ofxTrueTypeFontUL2 font;
     ofShader backShader;
