@@ -13,6 +13,7 @@
 #include "ofxAssimpModelLoaderExtend.h"
 #include "SceneManager.h"
 #include "TrailRenderer.h"
+#include "GarallySceneGuiDrawer.h"
 
 #define ADD_TRIANGLE_PER_UPDATE 7
 
@@ -26,6 +27,7 @@ public:
     virtual void keyPressed(int key) override;
 
     int spentFrames;
+    int cameraRotateFrames;
     float lineEmitPointDistance;
     
     TrailRenderer trails;
@@ -34,11 +36,36 @@ public:
     ofVec3f targetPoint;
     ofVec3f emitPoint;
     ofVec3f lineEmitPoints[4];
+    ofVec3f cameraTarget;
     ofCamera camera;
+    ofVec3f cameraPosition;
+    ofVec3f befCameraPosition;
+    ofVec3f nextCameraPosition;
+    ofVec3f cameraLookPoint;
+    ofVec3f befCameraLookPoint;
+    ofVec3f nextCameraLookPoint;
+    ofVec2f fpsPoint;
+    int rotateFrame;
+    int waitFrame;
+    ofLight light;
     ofShader backShader;
+    GarallySceneGuiDrawer gui;
+    bool drawFPSAndSPFMode = true;
+    int garallyStripMode = 0;
     
     void initLineEmitPoints();
     void initModelDrawer();
     void reset();
+    
+    GLushort pattern[8] = {
+        0x0003,
+        0x000C,
+        0x0030,
+        0x00C0,
+        0x0300,
+        0x0F00,
+        0x3000,
+        0xF000
+    };
 };
 #endif

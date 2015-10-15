@@ -9,6 +9,8 @@
 #define GraphGuiDrawer_h
 
 #include "ofMain.h"
+#include "ofxTrueTypeFontUL2.h"
+
 class GraphGuiDrawer{
 public:
     enum GraphMode{
@@ -27,6 +29,7 @@ public:
     int graphNum;
     ofVec2f scale;
     GraphMode mode;
+    ofxTrueTypeFontUL2* font;
     float graphParamatar[5];
     
     GraphGuiDrawer(ofVec2f scale);

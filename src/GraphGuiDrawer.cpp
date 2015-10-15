@@ -43,7 +43,12 @@ void GraphGuiDrawer::drawCircleGraph(){}
 
 void GraphGuiDrawer::updateGraphParams(){
     for(int i = 0; i < 5; i++){
-        graphParamatar[i] += ofRandom(-2.0, 2.0);
+        graphParamatar[i] += ofRandom(-10.0, 10.0);
+        if(graphParamatar[i] < 0){
+            graphParamatar[i] = 0;
+        }else if (graphParamatar[i] > 250){
+            graphParamatar[i] = 250;
+        }
     }
 }
 
@@ -54,4 +59,14 @@ GraphGuiDrawer::GraphGuiDrawer(ofVec2f scale){
         graphParamatar[i] += ofRandom(0,100);
     }
     mode = RECT_BAR;
+    font = new ofxTrueTypeFontUL2();
+    font->loadFont("Fonts/Futura.ttc",32,true,true,0.3f,0,true);
+    font->loadSubFont("Fonts/Gidole-Regular.ttf");
+    font->loadSubFont("Fonts/FiraCode-Regular.otf");
+    font->loadSubFont("Yumincho");
+    font->loadSubFont(OF_TTF_SERIF,1.2,-0.02);
+    font->loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
+    font->useProportional(true);
+    font->useVrt2Layout(true);
+    font->setLineHeight(font->getFontSize()*1.5);
 }

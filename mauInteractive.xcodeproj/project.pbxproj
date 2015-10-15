@@ -124,6 +124,7 @@
 		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA64A9181BCF3C5800A686E4 /* FoundationDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9161BCF3C5800A686E4 /* FoundationDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA64A91B1BCF691A00A686E4 /* GraphGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
@@ -728,6 +729,8 @@
 		FA64A9171BCF3C5800A686E4 /* FoundationDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundationDrawer.h; sourceTree = "<group>"; };
 		FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphGuiDrawer.cpp; sourceTree = "<group>"; };
 		FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGuiDrawer.h; sourceTree = "<group>"; };
+		FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GarallySceneGuiDrawer.cpp; sourceTree = "<group>"; };
+		FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarallySceneGuiDrawer.h; sourceTree = "<group>"; };
 		FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
 		FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
 		FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconStream.cpp; sourceTree = "<group>"; };
@@ -1800,6 +1803,8 @@
 				FA64A9171BCF3C5800A686E4 /* FoundationDrawer.h */,
 				FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */,
 				FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */,
+				FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */,
+				FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -3132,6 +3137,7 @@
 				C602002DE761F9B52DB4400A /* ObjectFinder.cpp in Sources */,
 				FA587D341BC4EA57003FCCCA /* RandomTriangleDrawer.cpp in Sources */,
 				FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */,
+				FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */,
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
 				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,

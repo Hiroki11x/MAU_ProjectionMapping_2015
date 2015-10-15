@@ -32,6 +32,7 @@ public:
     virtual void update() override;
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
+    void reset();
     
     vector<Tweet> tweets;
     wstring show;
@@ -39,6 +40,7 @@ public:
     string strDirection;
 
     bool bRotation;
+    bool drawCircuitMode = false;
     int align;
     int mouseX;
     int mouseY;

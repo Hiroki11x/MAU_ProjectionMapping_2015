@@ -6,9 +6,31 @@
 //
 //
 
-#ifndef GarallySceneGuiDrawer_hpp
-#define GarallySceneGuiDrawer_hpp
+#ifndef GarallySceneGuiDrawer_h
+#define GarallySceneGuiDrawer_h
 
-#include <stdio.h>
+#include "ofMain.h"
+#include "GraphGuiDrawer.h"
+#include "TargetMarkerDrawer.h"
 
-#endif /* GarallySceneGuiDrawer_hpp */
+class GarallySceneGuiDrawer{
+public:
+    void init();
+    void drawGui();
+    void update();
+    void initFrame();
+    void initCenterCircle();
+    ofVboMesh frameMesh;
+    ofVboMesh centerCircle;
+    float centerDeg;
+    GraphGuiDrawer graph;
+    TargetMarkerDrawer marker;
+    
+    int frameCounter;
+    
+    bool drawCenterCircleMode = true;
+    bool drawGraphMode = true;
+    bool drawTargetMarkerMode = true;
+
+};
+#endif

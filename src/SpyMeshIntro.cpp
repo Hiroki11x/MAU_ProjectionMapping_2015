@@ -8,19 +8,43 @@
 #include "SpyMeshIntro.h"
 
 void SpyMeshIntro::update(){
-    camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
-    camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
-                       ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
-                       70);
+    
+    if(spentFrames < 650){
+        camera.lookAt(ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70));
+        camera.setPosition(ofGetWidth()/2 -ofGetWidth() * 5 * (1.0 - (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
+                           ofGetHeight() * (1.0 - 0.5 * (float)spentFrames * 25.0 / (float)garallyModelDrawer.verticesSize),
+                           70);
+    }else{
+        cameraRotateFrames++;
+        if(cameraRotateFrames < waitFrame){
+            if(cameraRotateFrames < rotateFrame){
+                cameraPosition += (nextCameraPosition - befCameraPosition) / float(rotateFrame);
+                cameraLookPoint += (nextCameraLookPoint - befCameraLookPoint) / float(rotateFrame);
+                camera.setPosition(cameraPosition);
+                camera.lookAt(cameraLookPoint);
+            }
+        }else{
+            cameraRotateFrames = 0;
+            befCameraPosition = cameraPosition;
+            nextCameraPosition = ofVec3f(ofGetWidth()/2 + 400 + ofRandom(-500, 500), ofGetHeight()/2 + ofRandom(-500, 500),70 + ofRandom(-500, 500));
+            befCameraLookPoint = cameraLookPoint;
+            nextCameraLookPoint = ofPoint(ofGetWidth()/2 + ofRandom(-500,500), ofGetHeight()/2 + ofRandom(-150, 150),70 + ofRandom(-500,500));
+            waitFrame = ofRandom(50,100);
+            rotateFrame = ofRandom(10,50);
+        }
+    }
+        
     for(int i = 0; i < ADD_TRIANGLE_PER_UPDATE; i++){
         targetPoint = garallyModelDrawer.addVertex();
     }
     spentFrames+=1;
+    gui.update();
     if(spentFrames % 60 != 0) return;
     emitPoint = lineEmitPoints[int(ofRandom(0,4))];
 }
 
 void SpyMeshIntro::draw(){
+    
     ofDisableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     backShader.load("","shader.frag");
@@ -29,6 +53,14 @@ void SpyMeshIntro::draw(){
     backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
     ofRect(0,0,ofGetWidth(), ofGetHeight());
     backShader.end();
+
+    gui.drawGui();
+    if(drawFPSAndSPFMode){
+        ofSetColor(120, 240, 240, 170);
+        gui.graph.font->drawString(ofToString(spentFrames) + ":" + ofToString(ofGetFrameRate()), fpsPoint.x, fpsPoint.y);
+    }
+    light.enable();
+    glEnable(GL_LIGHTING);
     
     camera.begin();
     ofPushMatrix();
@@ -38,13 +70,27 @@ void SpyMeshIntro::draw(){
     ofSetLineWidth(0.3);
     ofSetColor(255, 255, 255 , 150);
     ofRotateX(90);
+    if(garallyStripMode == 1){
+        glEnable(GL_LINE_STIPPLE);
+        glLineStipple(1, pattern[spentFrames/10 % 8]);
+        garallyModelDrawer.drawModel(0);
+        glDisable(GL_LINE_STIPPLE);
+    }else if(garallyStripMode == 0){
+        garallyModelDrawer.drawModel(0);
+    }else if(garallyStripMode == 2){
+        glEnable(GL_LINE_STIPPLE);
+        glLineStipple(1, pattern[0]);
+        garallyModelDrawer.drawModel(0);
+        glDisable(GL_LINE_STIPPLE);
+    }
+    ofSetColor(0, 255, 255, 150);
+    ofLine(emitPoint, targetPoint);
     
-    garallyModelDrawer.drawModel(0);
-    ofLine(emitPoint, targetPoint );
+    light.disable();
+    glDisable(GL_LIGHTING);
     
     ofPopMatrix();
     ofPopStyle();
-    ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,camera.getPosition() + ofPoint(200,0,0));
     camera.end();
 }
 
@@ -56,6 +102,15 @@ void SpyMeshIntro::init(){
     spentFrames = 0;
     initModelDrawer();
     initLineEmitPoints();
+    gui.init();
+    light.setPointLight();
+    light.setAmbientColor(ofFloatColor(0.5, 0.5, 0.6, 1.0));
+    light.setDiffuseColor(ofFloatColor(0.2, 1.0, 0.2));
+    light.setSpecularColor(ofFloatColor(0, 0, 0));
+    cameraRotateFrames = 300;
+    cameraLookPoint = ofPoint(ofGetWidth()/2 + 400, ofGetHeight()/2,70);
+    rotateFrame = 50;
+    waitFrame = 100;
 }
 
 void SpyMeshIntro::initLineEmitPoints(){
@@ -80,9 +135,30 @@ void SpyMeshIntro::reset(){
 }
 
 void SpyMeshIntro::onMouseDown(int x, int y){
+    fpsPoint = ofVec2f(x,y);
 }
 
 void SpyMeshIntro::keyPressed(int key){
-    if(key != 'R') return;
-    reset();
+    switch (key) {
+        case 'p':
+            gui.drawCenterCircleMode = !gui.drawCenterCircleMode;
+            break;
+        case 'o':
+            gui.drawGraphMode = !gui.drawGraphMode;
+            break;
+        case 'i':
+            gui.drawTargetMarkerMode = !gui.drawTargetMarkerMode;
+            break;
+        case 'u':
+            drawFPSAndSPFMode = !drawFPSAndSPFMode;
+            break;
+        case 'y':
+            garallyStripMode = (garallyStripMode + 1) % 3;
+            break;
+        case 'R':
+            reset();
+            break;
+        default:
+            break;
+    }
 }

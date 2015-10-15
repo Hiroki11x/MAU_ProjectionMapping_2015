@@ -14,7 +14,7 @@ void TwitterRain::init(){
         tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
         tweets.at(index).rotateSpeed = ofRandom(-30,30);
         tweets.at(index).downSpeed = ofRandom(8,15);
-        tweets.at(index).alpha = ofRandom(150,255);
+        tweets.at(index).alpha = ofRandom(190,255);
     }
     align = UL2_TEXT_ALIGN_V_TOP|UL2_TEXT_ALIGN_CENTER;
     strAlign="top-center [8]";
@@ -22,8 +22,11 @@ void TwitterRain::init(){
     glCullFace(GL_BACK);//裏面をカリング
     glEnable(GL_DEPTH_TEST);
     bRotation=false;
-    font.loadFont("Arial.ttf", 10);
-    font.loadFont("Yumin Demibold",32,true,true,0.3f,0,true)||font.loadSubFont("YuMincho");
+
+    font.loadFont("Fonts/Futura.ttc",32,true,true,0.3f,0,true);
+    font.loadSubFont("Gidole-Regular.ttf");
+    font.loadSubFont("FiraCode-Regular.otf");
+    font.loadSubFont("Yumincho");
     font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
     font.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
     font.useProportional(true);
@@ -102,13 +105,21 @@ void TwitterRain::onMouseDown(int x, int y){
     mouseY = y;
 }
 
+void TwitterRain::reset(){
+    tweetNum = 0;
+    tweets = *new vector<Tweet>(DISPLAY_TWEET_NUM);
+    for(int index = 0; index < DISPLAY_TWEET_NUM; index++){
+        tweets.at(index).visible = false;
+    }
+}
+
 void TwitterRain::keyPressed(int key){
     switch (key) {
         case 'r':
             bRotation = !bRotation;
             break;
         case 'R':
-            init();
+            reset();
         default:
             break;
     }

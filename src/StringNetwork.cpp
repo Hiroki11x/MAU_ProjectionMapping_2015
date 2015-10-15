@@ -33,6 +33,7 @@ void StringNetwork::init(){
 }
 
 void StringNetwork::update(){
+
     updateAgents();
     spentFrames++;
     camera.setPosition(-ofGetWidth()/2,-ofGetHeight()/2, -cameraZ);
@@ -45,6 +46,7 @@ void StringNetwork::update(){
 }
 
 void StringNetwork::draw(){
+
     ofDisableDepthTest();
     ofDisableBlendMode();
     ofDisableAlphaBlending();
@@ -55,6 +57,7 @@ void StringNetwork::draw(){
     backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
     ofRect(0,0,ofGetWidth(), ofGetHeight());
     backShader.end();
+   
     
     camera.begin();
     glPushMatrix();

@@ -70,7 +70,7 @@ void TargetMarkerDrawer::restart(){
     frameCount = 0;
     float insideDeg = 0;
     float outsideDeg = 0;
-    position = ofVec2f(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()));
+    position = ofVec2f(ofRandom(100,ofGetWidth() -100),ofRandom(90,ofGetHeight() - 90));
     for(int i = 0; i < 5; i++){
         modeFrames[i] = ofRandom(8, 5 + 30 * ((i + 1) % 2));
     }
@@ -81,7 +81,7 @@ void TargetMarkerDrawer::drawTargetMarker(){
     ofPushMatrix();
     ofPushStyle();
     ofTranslate(position);
-    ofSetColor(0, 255, 255, 150);
+    ofSetColor(0, 255, 255, 100);
     ofSetLineWidth(8);
     ofRotateZ(insideDeg);
     insideDrawer.draw();
@@ -90,11 +90,11 @@ void TargetMarkerDrawer::drawTargetMarker(){
     ofTranslate(position);
     ofRotateZ(outsideDeg);
     ofSetLineWidth(16);
-    ofSetColor(0, 255, 255);
+    ofSetColor(0, 255, 255,150);
     outsideDrawer.draw();
     ofPopMatrix();
     ofSetLineWidth(2);
-    ofSetColor(0, 255, 255,70 + 70 * sin(ofGetElapsedTimeMillis()/30.0));
+    ofSetColor(0, 255, 255,70);
     ofLine(0, position.y, ofGetWidth(), position.y);
     ofLine(position.x, 0, position.x, ofGetHeight());
     ofPopStyle();
