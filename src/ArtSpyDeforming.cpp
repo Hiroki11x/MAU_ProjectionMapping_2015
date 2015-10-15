@@ -36,7 +36,10 @@ void ArtSpyDeforming::draw(){
     backShader.end();
     
     if(drawCircuitMode){
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
         circuitDrawer.drawCircuit();
+        ofDisableBlendMode();
+        ofDisableAlphaBlending();
     }else{
         light.enable();
         glEnable(GL_LIGHTING);

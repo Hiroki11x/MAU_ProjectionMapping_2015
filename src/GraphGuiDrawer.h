@@ -11,9 +11,25 @@
 #include "ofMain.h"
 class GraphGuiDrawer{
 public:
+    enum GraphMode{
+        RECT_BAR,
+        WAVE,
+        CIRCLE
+    };
+    
     void drawGraphGui();
+    void drawRectBarGraph();
+    void drawWaveGraph();
+    void drawCircleGraph();
+    void updateGraphParams();
     
     ofShader graphBack;
     int graphNum;
+    ofVec2f scale;
+    GraphMode mode;
+    float graphParamatar[5];
+    
+    GraphGuiDrawer(ofVec2f scale);
+    GraphGuiDrawer(){};
 };
 #endif

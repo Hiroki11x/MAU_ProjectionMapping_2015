@@ -24,6 +24,7 @@
 #include "SpiralDrawer.h"
 #include "GarallyDrawer.h"
 #include "TargetMarkerDrawer.h"
+#include "GraphGuiDrawer.h"
 
 //#define ADD_TRIANGLE_PER_UPDATE 1
 #define ADD_TRIANGLE_PER_TWEET 50
@@ -52,6 +53,7 @@ public:
     SpiralDrawer spiralDrawer;
     GarallyDrawer garallyDrawer;
     TargetMarkerDrawer markerDrawer;
+    GraphGuiDrawer graphDrawer;
     vector<AgentAnalysis> agents;
     ofShader backShader;
 

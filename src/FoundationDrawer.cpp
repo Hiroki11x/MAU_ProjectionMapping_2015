@@ -72,11 +72,9 @@ void FoundationDrawer::drawFoundation(){
     
     ofNoFill();
     ofPushStyle();
-    
     ofSetColor(0, 255, 255,50);
     for(int h = 0; h < 6; h++){
         ofPushMatrix();
-        
         ofTranslate(0,0, - 4 * h + 10);
         ofCircle(0, 0, 70 - h * 8);
         ofPopMatrix();

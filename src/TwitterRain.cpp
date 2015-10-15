@@ -26,6 +26,7 @@ void TwitterRain::init(){
 }
 
 void TwitterRain::draw(){
+    ofDisableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     backShader.load("","shader.frag");
     backShader.begin();
@@ -75,9 +76,7 @@ void TwitterRain::update(){
     if(!(spentFrames % 7 == 0)) return;
     if(!(tweets.size() < DISPLAY_TWEET_NUM)) return;
     if(!(JsonReceiver::getInstance().updateNum > 0)) return;
-    wstring twi;
-    twi.append(JsonReceiver::getInstance().getRandomTweetInfo().text);
-    tweets.push_back((Tweet){twi,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(8,15),ofRandom(100,255)});
+    tweets.push_back((Tweet){JsonReceiver::getInstance().getRandomTweetInfo().text,ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200)),ofRandom(-30,30),ofRandom(8,15),ofRandom(100,255)});
 }
 
 void TwitterRain::onMouseDown(int x, int y){
