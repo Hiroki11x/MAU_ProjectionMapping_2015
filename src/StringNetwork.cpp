@@ -33,18 +33,32 @@ void StringNetwork::init(){
 }
 
 void StringNetwork::update(){
+
     updateAgents();
     spentFrames++;
     camera.setPosition(-ofGetWidth()/2,-ofGetHeight()/2, -cameraZ);
     camera.lookAt(ofPoint(-ofGetWidth()/2, -ofGetHeight()/2, 0));
     if(!(spentFrames % 10 == 0)) return;
     if(!(agentNum < MAX_AGENTS)) return;
-    if(JsonReceiver::getInstance().getUserNames().size() <= agentNum) return;
+    if(JsonReceiver::getInstance().updateNum <= agentNum) return;
     networkAgents.at(agentNum).validate(JsonReceiver::getInstance().getUserNames().at(agentNum));
     agentNum++;
 }
 
 void StringNetwork::draw(){
+
+    ofDisableDepthTest();
+    ofDisableBlendMode();
+    ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    backShader.load("","shader.frag");
+    backShader.begin();
+    backShader.setUniform1f("u_time", ofGetElapsedTimef());
+    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    ofRect(0,0,ofGetWidth(), ofGetHeight());
+    backShader.end();
+   
+    
     camera.begin();
     glPushMatrix();
     glRotatef(180, 0, 0, 1);

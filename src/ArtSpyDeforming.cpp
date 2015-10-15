@@ -11,25 +11,120 @@ void ArtSpyDeforming::init(){
     ofxAssimpModelLoader modelLoader;
     modelLoader.loadModel("logo.stl");
     mesh = modelLoader.getMesh(0);
+    light.setPointLight();
+    light.setAmbientColor(ofFloatColor(0.2, 0.5, 1.0, 1.0));//環境反射光の色
+    light.setDiffuseColor(ofFloatColor(0.2, 1.0, 0.2));//拡散反射光の色
+    light.setSpecularColor(ofFloatColor(0, 0, 0));//鏡面反射光の色
+    circuitDrawer = *new CircuitDrawer();
+    circuitDrawer.init();
+    foundationDrawer = *new FoundationDrawer();
+    foundationDrawer.init(200);
 }
 
 void ArtSpyDeforming::update(){
-    rotation +=2.0;
+    rotation +=1.4;
+    if(drawCircuitMode) circuitDrawer.updateCircuite();
+    foundationDrawer.update();
 }
 
 void ArtSpyDeforming::draw(){
+    backShader.load("","shader.frag");
+    backShader.begin();
+    backShader.setUniform1f("u_time", ofGetElapsedTimef());
+    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    ofRect(0,0,ofGetWidth(), ofGetHeight());
+    backShader.end();
+    
+    if(drawCircuitMode){
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+        circuitDrawer.drawCircuit();
+        ofDisableBlendMode();
+        ofDisableAlphaBlending();
+    }else{
+        light.enable();
+        glEnable(GL_LIGHTING);
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
+
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, 180, -200);
+        ofRotateZ(180);
+        backShader.load("","foundation.frag");
+        backShader.begin();
+        backShader.setUniform1f("u_time", ofGetElapsedTimef());
+        backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+        backShader.setUniform1f("height", 1000);
+        ofDrawCone(1500, 1000);
+        backShader.end();
+        ofPopMatrix();
+        
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, ofGetHeight() - 100,-200);
+        ofRotateX(120);
+        foundationDrawer.drawFoundation();
+        ofPopMatrix();
+        
+        ofDisableBlendMode();
+        ofDisableAlphaBlending();
+        light.disable();
+        glDisable(GL_LIGHTING);
+    }
+    
+    ofEnableAlphaBlending();
+    ofDisableDepthTest();
+    ofDisableBlendMode();
+    ofDisableAlphaBlending();
+    drawSpyLogo();
+}
+
+void ArtSpyDeforming::drawSpyLogo(){
     ofPushMatrix();
     ofPushStyle();
-    ofSetColor(100, 255, 100);
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
-    ofTranslate(0,350,0);
-    ofRotateX(90);
-    ofRotateZ(rotation);
     light.enable();
     glEnable(GL_LIGHTING);
+    ofSetColor(40, 255, 100, 150);
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
+    ofTranslate(0,200,0);
+    ofRotateX(90);
+    ofRotateZ(rotation);
+    if(!drawCircuitMode){
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+    }
     mesh.draw();
     light.disable();
     glDisable(GL_LIGHTING);
+    if(!drawCircuitMode){
+        ofDisableBlendMode();
+        ofDisableAlphaBlending();
+    }
     ofPopStyle();
     ofPopMatrix();
+}
+
+void ArtSpyDeforming::keyPressed(int key){
+    switch (key) {
+        case 'z':
+            drawCircuitMode = !drawCircuitMode;
+            break;
+        case 'x':
+            circuitDrawer.changeMode(CircuitDrawer::NORMAL);
+            break;
+        case 'c':
+            circuitDrawer.changeMode(CircuitDrawer::HORIZONTAL);
+            break;
+        case 'v':
+            circuitDrawer.changeMode(CircuitDrawer::VERTICAL);
+            break;
+        case 'b':
+            circuitDrawer.changeMode(CircuitDrawer::RIGHT_UP);
+            break;
+        case 'n':
+            circuitDrawer.changeMode(CircuitDrawer::LEFT_UP);
+            break;
+        case 'm':
+            circuitDrawer.changeMode(CircuitDrawer::CROSS);
+            break;
+        default:
+            break;
+    }
 }

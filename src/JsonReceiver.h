@@ -20,24 +20,6 @@ public:
         wstring text;
     };
     
-    /*static vector<UserInfo> getUsersInfo();
-     static vector<wstring> getUserNames();
-     static bool checkIsNewData();
-     static bool checkUpdateJson();
-     static void parseJson();
-     static bool recieve();
-     static void init();
-     static UserInfo getRandomTweetInfo();
-     
-     static int updateNum;
-     static bool fetchImageMode;
-     static bool isNewData;
-     static int64_t cachedTweetId;
-     static vector<UserInfo> usersInfo;
-     static vector<wstring> userNames;
-     static ofxJSONElement jsonElement;*/
-    //JsonReceiver(){};
-    
     vector<UserInfo> getUsersInfo();
     vector<wstring> getUserNames();
     bool checkIsNewData();

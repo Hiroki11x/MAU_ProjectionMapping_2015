@@ -26,7 +26,7 @@ void testScene::setup(){
 
     JsonReceiver::getInstance().init();
     thread.startThread();
-    AgentAnalysis::init(0.5);
+   //AgentAnalysis::init(0.5);
 }
 
 void testScene::exit(){

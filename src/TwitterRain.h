@@ -24,6 +24,7 @@ public:
         float rotateSpeed;
         float downSpeed;
         int alpha;
+        bool visible;
     };
     
     virtual void draw() override;
@@ -31,18 +32,23 @@ public:
     virtual void update() override;
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
+    void reset();
+    
+    int align;
+    int mouseX;
+    int mouseY;
+    int spentFrames;
+    int tweetNum;
+    bool bRotation;
+    bool drawCircuitMode = false;
     
     vector<Tweet> tweets;
     wstring show;
     string strAlign;
     string strDirection;
 
-    bool bRotation;
-    int align;
-    int mouseX;
-    int mouseY;
-    int spentFrames;
     ofLight light;
     ofxTrueTypeFontUL2 font;
+    ofShader backShader;
 };
 #endif
