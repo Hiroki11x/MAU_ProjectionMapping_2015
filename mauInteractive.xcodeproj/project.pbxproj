@@ -122,6 +122,9 @@
 		FA5BFDE51BBAD6620085652C /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDD1BBAD6620085652C /* ofxAssimpModelLoader.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDDF1BBAD6620085652C /* ofxAssimpTexture.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA64A9181BCF3C5800A686E4 /* FoundationDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9161BCF3C5800A686E4 /* FoundationDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA64A91B1BCF691A00A686E4 /* GraphGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
@@ -148,6 +151,8 @@
 		FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */; };
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FACD666E1BC23B8500756856 /* DrawerSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACD666C1BC23B8500756856 /* DrawerSphere.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAD915D71BCE2EEB00716998 /* CircuitDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD915D51BCE2EEB00716998 /* CircuitDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FAD915DD1BCE886A00716998 /* TargetMarkerDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD915DB1BCE886A00716998 /* TargetMarkerDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF11CBE1BBEBEF2008B96E0 /* TrailRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CBF1BBEECDC008B96E0 /* FindTarget.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -720,6 +725,12 @@
 		FA5BFDE11BBAD6620085652C /* ofxAssimpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpUtils.h; sourceTree = "<group>"; };
 		FA5BFDEB1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpModelLoaderExtend.cpp; sourceTree = "<group>"; };
 		FA5BFDEC1BBADF940085652C /* ofxAssimpModelLoaderExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAssimpModelLoaderExtend.h; sourceTree = "<group>"; };
+		FA64A9161BCF3C5800A686E4 /* FoundationDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FoundationDrawer.cpp; sourceTree = "<group>"; };
+		FA64A9171BCF3C5800A686E4 /* FoundationDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundationDrawer.h; sourceTree = "<group>"; };
+		FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphGuiDrawer.cpp; sourceTree = "<group>"; };
+		FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGuiDrawer.h; sourceTree = "<group>"; };
+		FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GarallySceneGuiDrawer.cpp; sourceTree = "<group>"; };
+		FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarallySceneGuiDrawer.h; sourceTree = "<group>"; };
 		FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
 		FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
 		FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconStream.cpp; sourceTree = "<group>"; };
@@ -863,6 +874,10 @@
 		FAC1B0CA1BA51BB50057ED25 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
 		FACD666C1BC23B8500756856 /* DrawerSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawerSphere.cpp; sourceTree = "<group>"; };
 		FACD666D1BC23B8500756856 /* DrawerSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerSphere.h; sourceTree = "<group>"; };
+		FAD915D51BCE2EEB00716998 /* CircuitDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircuitDrawer.cpp; sourceTree = "<group>"; };
+		FAD915D61BCE2EEB00716998 /* CircuitDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircuitDrawer.h; sourceTree = "<group>"; };
+		FAD915DB1BCE886A00716998 /* TargetMarkerDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TargetMarkerDrawer.cpp; sourceTree = "<group>"; };
+		FAD915DC1BCE886A00716998 /* TargetMarkerDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMarkerDrawer.h; sourceTree = "<group>"; };
 		FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshIntro.cpp; sourceTree = "<group>"; };
 		FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshIntro.h; sourceTree = "<group>"; };
 		FAF11CBC1BBEBEF2008B96E0 /* TrailRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrailRenderer.cpp; sourceTree = "<group>"; };
@@ -1780,6 +1795,16 @@
 				FA587DB91BC56FAA003FCCCA /* SpiralDrawer.h */,
 				FA587DED1BC7E3BF003FCCCA /* GarallyDrawer.cpp */,
 				FA587DEE1BC7E3BF003FCCCA /* GarallyDrawer.h */,
+				FAD915D51BCE2EEB00716998 /* CircuitDrawer.cpp */,
+				FAD915D61BCE2EEB00716998 /* CircuitDrawer.h */,
+				FAD915DB1BCE886A00716998 /* TargetMarkerDrawer.cpp */,
+				FAD915DC1BCE886A00716998 /* TargetMarkerDrawer.h */,
+				FA64A9161BCF3C5800A686E4 /* FoundationDrawer.cpp */,
+				FA64A9171BCF3C5800A686E4 /* FoundationDrawer.h */,
+				FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */,
+				FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */,
+				FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */,
+				FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -1787,20 +1812,20 @@
 		FA587D111BC4DD43003FCCCA /* SceneElement */ = {
 			isa = PBXGroup;
 			children = (
-				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
-				FA5BFD221BBA69410085652C /* SpyMesh.h */,
-				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
-				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
-				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,
-				FA587DD01BC61C4E003FCCCA /* TwitterRain.h */,
 				FA587E121BC80251003FCCCA /* ArtSpyDeforming.cpp */,
 				FA587E131BC80251003FCCCA /* ArtSpyDeforming.h */,
+				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,
+				FA587DD01BC61C4E003FCCCA /* TwitterRain.h */,
+				FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */,
+				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
+				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
+				FA5BFD221BBA69410085652C /* SpyMesh.h */,
+				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
+				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 				FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */,
 				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
 				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
 				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
-				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
-				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3018,7 +3043,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA64A9181BCF3C5800A686E4 /* FoundationDrawer.cpp in Sources */,
 				FA26BDA31BC2DDBD007C3B47 /* ofxEasing.cpp in Sources */,
+				FAD915DD1BCE886A00716998 /* TargetMarkerDrawer.cpp in Sources */,
 				FA26BDA41BC2DDBD007C3B47 /* ofxEasingBack.cpp in Sources */,
 				FA26BDBB1BC2DEFF007C3B47 /* ofxTweenUtil.cpp in Sources */,
 				FA26BDA51BC2DDBD007C3B47 /* ofxEasingBounce.cpp in Sources */,
@@ -3055,6 +3082,7 @@
 				FA587DA31BC55C36003FCCCA /* README.md in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */,
+				FA64A91B1BCF691A00A686E4 /* GraphGuiDrawer.cpp in Sources */,
 				FA587D371BC524F1003FCCCA /* AgentAnalysis.cpp in Sources */,
 				FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */,
 				FA26BDB21BC2DEA9007C3B47 /* SwipeMode.cpp in Sources */,
@@ -3109,12 +3137,14 @@
 				C602002DE761F9B52DB4400A /* ObjectFinder.cpp in Sources */,
 				FA587D341BC4EA57003FCCCA /* RandomTriangleDrawer.cpp in Sources */,
 				FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */,
+				FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */,
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
 				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,
 				FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */,
 				FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */,
 				FAAD71551BCCEDC400D721EC /* StringNetwork.cpp in Sources */,
+				FAD915D71BCE2EEB00716998 /* CircuitDrawer.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,
 				FAA0CC201BBA1FF900A0D408 /* testScene.cpp in Sources */,

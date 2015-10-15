@@ -10,16 +10,26 @@
 
 #include "SceneElement.h"
 #include "ofxAssimpModelLoader.h"
+#include "CircuitDrawer.h"
+#include "FoundationDrawer.h"
 
 class ArtSpyDeforming : public SceneElement {
 public:
     virtual void draw() override;
     virtual void init() override;
     virtual void update() override;
+    virtual void keyPressed(int key) override;
+
+    bool drawCircuitMode = false;
+    float rotation;
     
     vector<float> rotates;
     ofVboMesh mesh;
     ofLight light;
-    float rotation;
+    CircuitDrawer circuitDrawer;
+    FoundationDrawer foundationDrawer;
+    ofShader backShader;
+    
+    void drawSpyLogo();
 };
 #endif
