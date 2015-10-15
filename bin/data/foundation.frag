@@ -1,7 +1,8 @@
 uniform vec2 u_resolution; // 画面の解像度(width,height)
 uniform float u_time; // 起動してからの経過時間(秒)
-const int NUM = 20; // oFから受けとる波の配列
-uniform float freq[20];  // 波の数だけくりかえす
+uniform float brightness;
+uniform float height; //高さを指定
+
 /*void main() {
     float red = abs(sin(u_time * 30.0));
     float green = abs(sin(u_time * 40.0));
@@ -11,9 +12,13 @@ uniform float freq[20];  // 波の数だけくりかえす
 
 void main() {
     // 画面の解像度から、0.0~1.0に正規化する
-    vec2 st = gl_FragCoord.xy/u_resolution/6.0;
-    gl_FragColor = vec4(0,0.167 - st.y,0.167 - st.y,1.0);
-   // gl_FragColor = vec4(0,st.y,st.x,1.0);
+    vec2 st = gl_FragCoord.xy/u_resolution;
+    //gl_FragColor = vec4(0,0,0.167 - st.y,1.0);
+    st.x -= 0.5;
+    //st.y += 0.1;
+    
+    
+    gl_FragColor = vec4(0.1,1.0 - pow(abs(st.x), 0.2 - 0.15 * st.y),1.0 - pow(abs(st.x), 0.2 - 0.15 * st.y),1.0) * 0.7;
     
     
 }///グラデーション

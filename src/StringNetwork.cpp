@@ -45,6 +45,10 @@ void StringNetwork::update(){
 }
 
 void StringNetwork::draw(){
+    ofDisableDepthTest();
+    ofDisableBlendMode();
+    ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     backShader.load("","shader.frag");
     backShader.begin();
     backShader.setUniform1f("u_time", ofGetElapsedTimef());

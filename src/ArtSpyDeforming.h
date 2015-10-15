@@ -11,6 +11,7 @@
 #include "SceneElement.h"
 #include "ofxAssimpModelLoader.h"
 #include "CircuitDrawer.h"
+#include "FoundationDrawer.h"
 
 class ArtSpyDeforming : public SceneElement {
 public:
@@ -23,8 +24,11 @@ public:
     ofVboMesh mesh;
     ofLight light;
     CircuitDrawer circuitDrawer;
+    FoundationDrawer foundationDrawer;
     ofShader backShader;
     float rotation;
     bool drawCircuitMode = false;
+    
+    void drawSpyLogo();
 };
 #endif

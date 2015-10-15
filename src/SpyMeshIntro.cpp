@@ -21,6 +21,8 @@ void SpyMeshIntro::update(){
 }
 
 void SpyMeshIntro::draw(){
+    ofDisableDepthTest();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     backShader.load("","shader.frag");
     backShader.begin();
     backShader.setUniform1f("u_time", ofGetElapsedTimef());

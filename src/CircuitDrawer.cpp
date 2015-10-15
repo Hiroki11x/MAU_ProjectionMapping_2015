@@ -92,8 +92,8 @@ void CircuitDrawer::drawCircuit(){
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_POINTS);
         circuit[n].draw();
     }
-    ofSetColor(0,0,0,50 + 50 * sin(ofGetElapsedTimeMillis()/100.0));
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    //ofSetColor(0,0,0,50 + 25 * sin(ofGetElapsedTimeMillis()/200.0));
+    //ofRect(0, 0, ofGetWidth(), ofGetHeight());
     if(addedPoint != CIRCUIT_HEIGHT_NUM * CIRCUIT_WIDTH_NUM){
         ofSetColor(0, 255, 255);
         ofSetLineWidth(1);

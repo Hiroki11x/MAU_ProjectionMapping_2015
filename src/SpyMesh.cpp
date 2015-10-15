@@ -17,6 +17,7 @@ void SpyMesh::update(){
         agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
         agentDebug = false;
         agentNum++;
+        cout << agentNum << "agetn" << endl;
     }
     updateVertices();
     
@@ -50,6 +51,7 @@ void SpyMesh::updateVertices(){
         }
         if(agents.at(n).removeVertices()){
             agents.at(n).targetPodsition = modelDrawer.addVertex();
+            cout << "addVertex" << endl;
         }else{
             agents.erase(agents.begin() + n);
             n--;
@@ -58,7 +60,11 @@ void SpyMesh::updateVertices(){
 }
 
 void SpyMesh::draw(){
-    markerDrawer.drawTargetMarker();
+    ofDisableDepthTest();
+    ofDisableBlendMode();
+    ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //markerDrawer.drawTargetMarker();
     backShader.load("","shader.frag");
     backShader.begin();
     backShader.setUniform1f("u_time", ofGetElapsedTimef());

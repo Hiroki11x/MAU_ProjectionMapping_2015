@@ -17,11 +17,14 @@ void ArtSpyDeforming::init(){
     light.setSpecularColor(ofFloatColor(0, 0, 0));//鏡面反射光の色
     circuitDrawer = *new CircuitDrawer();
     circuitDrawer.init();
+    foundationDrawer = *new FoundationDrawer();
+    foundationDrawer.init(200);
 }
 
 void ArtSpyDeforming::update(){
     rotation +=1.4;
     if(drawCircuitMode) circuitDrawer.updateCircuite();
+    foundationDrawer.update();
 }
 
 void ArtSpyDeforming::draw(){
@@ -32,29 +35,66 @@ void ArtSpyDeforming::draw(){
     ofRect(0,0,ofGetWidth(), ofGetHeight());
     backShader.end();
     
+    if(drawCircuitMode){
+        circuitDrawer.drawCircuit();
+    }else{
+        light.enable();
+        glEnable(GL_LIGHTING);
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
+
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, 180, -200);
+        ofRotateZ(180);
+        backShader.load("","foundation.frag");
+        backShader.begin();
+        backShader.setUniform1f("u_time", ofGetElapsedTimef());
+        backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+        backShader.setUniform1f("height", 1000);
+        ofDrawCone(1500, 1000);
+        backShader.end();
+        ofPopMatrix();
+        
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, ofGetHeight() - 100,-200);
+        ofRotateX(140);
+        foundationDrawer.drawFoundation();
+        ofPopMatrix();
+        
+        ofDisableBlendMode();
+        light.disable();
+        glDisable(GL_LIGHTING);
+    }
+    
     ofEnableAlphaBlending();
     ofDisableDepthTest();
-    if(drawCircuitMode) circuitDrawer.drawCircuit();
     ofDisableBlendMode();
     ofDisableAlphaBlending();
+    drawSpyLogo();
+}
+
+void ArtSpyDeforming::drawSpyLogo(){
     ofPushMatrix();
     ofPushStyle();
-    ofSetColor(40, 255, 40);
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
-    ofTranslate(0,300,0);
-    ofRotateX(90);
-    ofRotateZ(rotation);
-    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
     light.enable();
     glEnable(GL_LIGHTING);
+    ofSetColor(40, 255, 100, 150);
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
+    ofTranslate(0,200,0);
+    ofRotateX(90);
+    ofRotateZ(rotation);
+    if(!drawCircuitMode){
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+    }
     mesh.draw();
     light.disable();
     glDisable(GL_LIGHTING);
+    if(!drawCircuitMode)
+    {
+        ofDisableBlendMode();
+        ofDisableAlphaBlending();
+    }
     ofPopStyle();
     ofPopMatrix();
-    ofPushStyle();
-    ofSetColor(0);
-    ofPopStyle();
 }
 
 void ArtSpyDeforming::keyPressed(int key){
