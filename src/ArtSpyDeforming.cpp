@@ -54,13 +54,15 @@ void ArtSpyDeforming::draw(){
         backShader.end();
         ofPopMatrix();
         
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
         ofPushMatrix();
         ofTranslate(ofGetWidth()/2, ofGetHeight() - 100,-200);
-        ofRotateX(140);
+        ofRotateX(120);
         foundationDrawer.drawFoundation();
         ofPopMatrix();
         
         ofDisableBlendMode();
+        ofDisableAlphaBlending();
         light.disable();
         glDisable(GL_LIGHTING);
     }

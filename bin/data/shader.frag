@@ -11,8 +11,8 @@ uniform float freq[20];  // 波の数だけくりかえす
 
 void main() {
     // 画面の解像度から、0.0~1.0に正規化する
-    vec2 st = gl_FragCoord.xy/u_resolution/6.0;
-    gl_FragColor = vec4(0,0.167 - st.y,0.167 - st.y,1.0);
+    vec2 st = gl_FragCoord.xy/u_resolution/10.0;
+    gl_FragColor = vec4(0,0.1 - st.y,0.1 - st.y,1.0);
    // gl_FragColor = vec4(0,st.y,st.x,1.0);
     
     

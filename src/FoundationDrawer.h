@@ -12,7 +12,7 @@
 #include "ofMain.h"
 
 #define MIDDLE_RATE 1.15
-#define OUTSIDE_RATE 1.55
+#define OUTSIDE_RATE 1.65
 
 class FoundationDrawer{
 public:

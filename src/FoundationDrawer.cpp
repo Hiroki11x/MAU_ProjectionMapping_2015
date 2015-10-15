@@ -70,34 +70,39 @@ void FoundationDrawer::drawFoundation(){
     ofPushMatrix();
     ofPushStyle();
     
-   /* lightShader.load("","shader.frag");
-    lightShader.begin();
-    lightShader.setUniform1f("u_time", ofGetElapsedTimef());
-    lightShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());*/
-    ofSetColor(0, 255, 255,240);
-    ofCircle(0, 0, 50);
-    //lightShader.end();
-    
     ofNoFill();
+    ofPushStyle();
+    
+    ofSetColor(0, 255, 255,50);
+    for(int h = 0; h < 6; h++){
+        ofPushMatrix();
+        
+        ofTranslate(0,0, - 4 * h + 10);
+        ofCircle(0, 0, 70 - h * 8);
+        ofPopMatrix();
+    }
+    ofPopStyle();
+    
     for(int h = 0; h < 2; h++){
         ofTranslate(0,0, - 4 * h);
+        
         ofPushMatrix();
-        ofSetColor(0, 255, 240,160);
-        ofSetLineWidth(3);
+        ofSetColor(0, 255, 240,50);
+        ofSetLineWidth(10);
         ofRotateZ(insideDeg);
         insideCircleMesh.draw();
         ofPopMatrix();
         
         ofPushMatrix();
-        ofSetColor(0, 255, 240,160);
+        ofSetColor(0, 255, 240,50);
         ofSetLineWidth(3);
         ofRotateZ(middleDeg);
         middleCircleMesh.drawWireframe();
         ofPopMatrix();
         
         ofPushMatrix();
-        ofSetColor(0, 255, 240,160);
-        ofSetLineWidth(10);
+        ofSetColor(0, 255, 240,50);
+        ofSetLineWidth(20);
         ofRotateZ(outsideDeg);
         outsideCircleMesh.draw();
         ofPopMatrix();
