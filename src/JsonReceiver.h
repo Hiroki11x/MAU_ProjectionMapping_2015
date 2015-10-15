@@ -27,8 +27,6 @@ public:
 //        ofImage iconURL;
     };
     
-    ofxThreadedImageLoader thread;
-    
     vector<UserInfo> getUsersInfo();
     
     bool checkIsNewData();
@@ -55,6 +53,8 @@ public:
     static wstring convToUCS4(basic_string<T> src);
     
     static JsonReceiver &getInstance();
+    
+    ofxThreadedImageLoader thread;
 private:
     JsonReceiver(){}
     JsonReceiver(const JsonReceiver &other){}

@@ -36,17 +36,17 @@ bool JsonReceiver::checkUpdateJson(){
 }
 
 //---------------------image----------------------
-string JsonReceiver::recieve_icon(){
-    bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");//Nodeで取得したJSON
-    if (parsingSuccessful){
-        if(checkUpdateJson()){
-            return parseJson_icon();
-        }
-    }else{
-        cout << "Failed to parse JSON" << endl;
-    }
-    return "";
-}
+//string JsonReceiver::recieve_icon(){
+//    bool parsingSuccessful = jsonElement.openLocal("../../../MAU_twit/twitter.json");//Nodeで取得したJSON
+//    if (parsingSuccessful){
+//        if(checkUpdateJson()){
+//            return parseJson_icon();
+//        }
+//    }else{
+//        cout << "Failed to parse JSON" << endl;
+//    }
+//    return "";
+//}
 string JsonReceiver::parseJson_icon(){
     return jsonElement["user"]["profile_image_url"].asCString();
 }
@@ -68,15 +68,24 @@ bool JsonReceiver::recieve(){
 
 void JsonReceiver::parseJson(){
     
-//    ofImage img;
-//    if(thread.isThreadRunning()){
-//        if(thread.lock()){
-//            thread.startThread();
-//            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
-//            cout << "IMAGE thread"<<endl;
-//            thread.stopThread();
-//        }
+    ofImage img = *new ofImage();
+//    while(!img.bAllocated()){
+//        
+//        img.saveImage(jsonElement["user"]["profile_image_url"].asCString());
+//        img.ofImage::loadImage("spy.png");
+//        img.allocate(img.width, img.height, OF_IMAGE_COLOR);
+//        img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
 //    }
+    if(thread.isThreadRunning()){
+        if(thread.lock()){
+            thread.startThread();
+            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
+            cout << "IMAGE thread"<<endl;
+            thread.stopThread();
+        }
+    }
+    
+    
     
     usersInfo.push_back((UserInfo){
         convToWString(jsonElement["text"].asCString()),
@@ -86,6 +95,7 @@ void JsonReceiver::parseJson(){
         jsonElement["user"]["statuses_count"].asInt(),
         jsonElement["user"]["followers_count"].asInt(),
         jsonElement["user"]["profile_image_url"].asCString()
+//        img
         });
  
     updateNum++;

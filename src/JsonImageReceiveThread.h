@@ -16,20 +16,22 @@
 class JsonImageRecieveThread : public ofxThreadedImageLoader{
     
 public:
-//    static vector<ofImage> icons;
-//    static vector<ofImage> get_icons();
-//    
-//    void threadedFunction(){
-//        while (isThreadRunning()) {
-//            if(lock()){
-//                icons.push_back(ofImage());
-//                JsonReceiver::getInstance().parseJson_icon();
-//                loadFromURL(icons.back(), JsonReceiver::getInstance().recieve_icon());
-//                unlock();
-//                sleep(500);
-//            }
-//        }
-//    }
+    static vector<ofImage> icons;
+    static vector<ofImage> get_icons();
+    
+    void threadedFunction(){
+        while (isThreadRunning()) {
+            if(lock()){
+                if(JsonReceiver::getInstance().checkUpdateJson()){
+                    icons.push_back(ofImage());
+                    loadFromURL(icons.back(), JsonReceiver::getInstance().parseJson_icon());
+                    unlock();
+                    sleep(500);
+                }
+                
+            }
+        }
+    }
 };
 
 #endif /* defined(__mauInteractive__JsonImageReceiveThread__) */
