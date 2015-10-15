@@ -9,3 +9,7 @@
 #include "JsonImageReceiveThread.h"
 
 //vector<ofImage> JsonImageRecieveThread::icons;
+//
+//vector<ofImage> JsonImageRecieveThread::get_icons(){
+//    return icons;
+//}

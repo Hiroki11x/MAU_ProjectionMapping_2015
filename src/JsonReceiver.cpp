@@ -66,8 +66,18 @@ bool JsonReceiver::recieve(){
 }
 
 
-
 void JsonReceiver::parseJson(){
+    
+//    ofImage img;
+//    if(thread.isThreadRunning()){
+//        if(thread.lock()){
+//            thread.startThread();
+//            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
+//            cout << "IMAGE thread"<<endl;
+//            thread.stopThread();
+//        }
+//    }
+    
     usersInfo.push_back((UserInfo){
         convToWString(jsonElement["text"].asCString()),
         jsonElement["user"]["name"].asCString(),
@@ -75,7 +85,8 @@ void JsonReceiver::parseJson(){
         jsonElement["user"]["friends_count"].asInt(),
         jsonElement["user"]["statuses_count"].asInt(),
         jsonElement["user"]["followers_count"].asInt(),
-        jsonElement["user"]["profile_image_url"].asCString()});
+        jsonElement["user"]["profile_image_url"].asCString()
+        });
  
     updateNum++;
     isNewData = true;

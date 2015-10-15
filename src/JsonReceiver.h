@@ -11,6 +11,7 @@
 
 #include "ofxJSON.h"
 #include "ofMain.h"
+#include "ofxThreadedImageLoader.h"
 
 class JsonReceiver {
 public:
@@ -25,6 +26,8 @@ public:
         string iconURL;
 //        ofImage iconURL;
     };
+    
+    ofxThreadedImageLoader thread;
     
     vector<UserInfo> getUsersInfo();
     
