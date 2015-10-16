@@ -68,7 +68,16 @@ bool JsonReceiver::recieve(){
 
 void JsonReceiver::parseJson(){
     
-    ofImage img = *new ofImage();
+    ofImage img;
+    while (!img.isAllocated()) {
+        if(thread.lock()){
+            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
+        }
+        
+    }
+    
+    
+    
 //    while(!img.bAllocated()){
 //        
 //        img.saveImage(jsonElement["user"]["profile_image_url"].asCString());
@@ -76,14 +85,15 @@ void JsonReceiver::parseJson(){
 //        img.allocate(img.width, img.height, OF_IMAGE_COLOR);
 //        img.loadImage(jsonElement["user"]["profile_image_url"].asCString());
 //    }
-    if(thread.isThreadRunning()){
-        if(thread.lock()){
-            thread.startThread();
-            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
-            cout << "IMAGE thread"<<endl;
-            thread.stopThread();
-        }
-    }
+    
+//    if(thread.isThreadRunning()){
+//        if(thread.lock()){
+//            thread.startThread();
+//            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
+//            cout << "IMAGE thread"<<endl;
+//            thread.stopThread();
+//        }
+//    }
     
     
     
