@@ -33,6 +33,7 @@ private:
     
     GraphLog graphlog;
 public:
+    virtual void reset() override;
     virtual void update() override;
     virtual void draw() override;
     virtual void init() override;

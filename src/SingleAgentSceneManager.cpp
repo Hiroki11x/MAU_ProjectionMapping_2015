@@ -13,6 +13,10 @@ void SingleAgentSceneManager::setup(){
 //    elements.back()->init();
 }
 
+void SingleAgentSceneManager::reset(){
+    elements.at(0)->reset();
+}
+
 void SingleAgentSceneManager::onMouseDown(int x, int y){
     elements.at(0)->onMouseDown(x, y);
 }

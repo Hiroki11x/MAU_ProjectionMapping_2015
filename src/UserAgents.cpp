@@ -12,6 +12,12 @@
 
 #include "UserAgents.h"
 
+void UserAgents::reset(){
+    matrix_generator.init();
+    userAgentArray.clear();
+    connections.clear();
+}
+
 void UserAgents::init(){
     superLogUtil.init();//Logのセットアップ
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
@@ -43,7 +49,7 @@ void UserAgents::update(){
 
     if (userAgentArray.size()>0) {
 //        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
-        cam.setPosition(ofGetWidth()/2, ofGetHeight()/2, 500);
+        cam.setPosition(userAgentArray.back()->position.x+200*ofSignedNoise(ofGetElapsedTimef()/1000,ofRandom(200)),userAgentArray.back()->position.y+200*ofSignedNoise(ofGetElapsedTimef()/1000),500+200*sin(ofGetElapsedTimef()*180));
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
     }
 }
@@ -80,6 +86,7 @@ void UserAgents::draw(){
 
     ofPopMatrix();
     cam.end();
+    ofDrawBitmapString("userAgentArray.size()"+ofToString(userAgentArray.size()), 30,40);
 }
 
 void UserAgents::onMouseDown(int x, int y){
@@ -94,7 +101,9 @@ void UserAgents::keyPressed(int key){
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
     
     string tag = "Default";
-    if(key==OF_KEY_UP){
+    if(key=='1'){
+        reset();
+    }else if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
         tag = "SwipeMode::Up";
     }else if(key==OF_KEY_DOWN){
@@ -102,9 +111,7 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Down";
     }else if(key==OF_KEY_RETURN){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
-        matrix_generator.init();
-        userAgentArray.clear();
-        connections.clear();
+//        reset();
         tag = "SwipeMode::SemiCircle Clear Agent";
     }else if(key==OF_KEY_RIGHT){
         strechyRectSwiper.set_mode(SwipeMode::Right);

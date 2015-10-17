@@ -72,7 +72,9 @@ void testScene::keyPressed(int key){
                 default:
                     break;
             }
+            manager->reset();
             manager->setup();
+            
         }
     }
 }

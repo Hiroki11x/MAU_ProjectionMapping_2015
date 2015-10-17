@@ -20,6 +20,9 @@ public:
     virtual void setup(){
         //InitElements
     };
+    virtual void reset(){
+        elements.at(elementIndex)->reset();
+    };
     virtual void update(){
         elements.at(elementIndex)->update();
     };

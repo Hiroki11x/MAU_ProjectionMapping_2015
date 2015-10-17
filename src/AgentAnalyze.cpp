@@ -11,6 +11,10 @@
 #include "AgentAnalyze.h"
 
 
+void AgentAnalyze::reset(){
+//    user_agent.clear();ここは画像取得もなく重くないのでクリアしない
+}
+
 void AgentAnalyze::init(){
     json_num=0;
     check_is_json_new();
