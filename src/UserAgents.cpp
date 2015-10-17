@@ -52,7 +52,7 @@ void UserAgents::update(){
     if (userAgentArray.size()>0) {
 
         if(isMoveCam){
-            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef(),json_num),userAgentArray.back()->position.y+500*ofSignedNoise(json_num,ofGetElapsedTimef()/10),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
+            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef()/100,json_num),userAgentArray.back()->position.y+500*ofSignedNoise(json_num,ofGetElapsedTimef()/100),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
         }else{
             cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,500*(1+sin(ofGetElapsedTimef()/20)));
         }
@@ -149,9 +149,9 @@ void UserAgents::check_is_json_new(){
 }
 
 
-ofVec3f UserAgents::select_position(){
+ofVec4f UserAgents::select_position(){
     
-    ofVec3f position;
+    ofVec4f position;
     
     int size = matrix_generator.get_position_num();//生成した座標の数
     int index = ofRandom(size-1);//その座標でどこを使うか選ぶ
@@ -164,24 +164,25 @@ ofVec3f UserAgents::select_position(){
     
     matrix_generator.set_is_used_true(index);//使うところは使う(true)に変更
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
-    position.z = index;
+    position.w = index;
     return position;
 
 }
 
 void UserAgents::addAgent(int add_num){
+    ofVec4f pos4f;
     ofVec3f pos3f;
-    ofVec2f pos2f;
     for(int i=0;i<add_num;i++){
         
         ////---------Legacy-----------
         userAgentArray.push_back(new UserAgent());
         
-        pos3f = select_position();
-        userAgentArray.back()->set_generater_index(pos3f.z);
-        pos2f.x = pos3f.x;
-        pos2f.y = pos3f.y;
-        userAgentArray.back()->set_position(pos2f);
+        pos4f = select_position();
+        userAgentArray.back()->set_generater_index(pos4f.w);
+        pos3f.x = pos4f.x;
+        pos3f.y = pos4f.y;
+        pos3f.z = pos4f.z;
+        userAgentArray.back()->set_position(pos3f);
         userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);

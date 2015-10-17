@@ -36,7 +36,7 @@ void UserAgent::calc_line_length(){
     line_length = size * 40;
 }
 
-void UserAgent::set_position(ofVec2f _pos){
+void UserAgent::set_position(ofVec3f _pos){
     position = _pos;
 }
 
@@ -61,12 +61,11 @@ void UserAgent::update(){
 }
 void UserAgent::draw(){
 //    int angle;
-    
     ofFill();
 //    ofSetColor(color);
 //    ofCircle(position, size * multiple_of_size/2);
     ofSetColor(255);
-    icon.draw(position.x-15,position.y-15, 30,30);
+    icon.draw(position.x-15,position.y-15,position.z, 30,30);
     ofNoFill();
     
 //    ofBeginShape();//回転する内部の円
@@ -95,6 +94,7 @@ void UserAgent::draw(){
     ofSetColor(color,255);
     
     glPushMatrix();
+    glTranslated(0, 0, position.z);
     glRotatef(180, 1,0,0);
     FontManager::mfont.drawString(username, position.x+size*2.5,-(position.y+8));
     FontManager::mfont.drawString(id, position.x+size*2.5,-(position.y-2));
