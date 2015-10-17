@@ -67,5 +67,7 @@ private:
     void check_agent_size(int delete_adder);
     
     ofCamera cam;
+    
+    bool isMoveCam;
 };
 #endif

@@ -16,6 +16,7 @@ void UserAgents::reset(){
     matrix_generator.init();
     userAgentArray.clear();
     connections.clear();
+    isMoveCam = false;
 }
 
 void UserAgents::init(){
@@ -34,6 +35,8 @@ void UserAgents::init(){
     
     setup_user_agent();//UserAgentをセット
     
+    isMoveCam = false;
+    
     superLogUtil.set_log("init","call useragnts init()");
     
 }
@@ -48,8 +51,13 @@ void UserAgents::update(){
     
 
     if (userAgentArray.size()>0) {
-//        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
-        cam.setPosition(userAgentArray.back()->position.x+200*ofSignedNoise(ofGetElapsedTimef()/1000,ofRandom(200)),userAgentArray.back()->position.y+200*ofSignedNoise(ofGetElapsedTimef()/1000),500+200*sin(ofGetElapsedTimef()*180));
+
+        if(isMoveCam){
+            cam.setPosition(userAgentArray.back()->position.x+200*ofSignedNoise(ofGetElapsedTimef()*10),userAgentArray.back()->position.y+200*ofSignedNoise(ofGetElapsedTimef()/10),500+200*sin(ofGetElapsedTimef()*180));
+        }else{
+            cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
+        }
+        
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
     }
 }
@@ -101,8 +109,8 @@ void UserAgents::keyPressed(int key){
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
     
     string tag = "Default";
-    if(key=='1'){
-        reset();
+    if(key==OF_KEY_RIGHT_COMMAND){
+        isMoveCam = !isMoveCam;
     }else if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
         tag = "SwipeMode::Up";

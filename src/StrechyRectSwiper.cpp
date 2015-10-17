@@ -41,12 +41,12 @@ void StrechyRectSwiper::draw(){
     
     switch (mode) {
         case SwipeMode::Down:
-            ofRect(0,start_y-40, ofGetWidth(),20+start_y/5);
-            ofRect(0,start_y-90, ofGetWidth(),20);
+            ofRect(-ofGetWidth(),start_y-40, ofGetWidth()*2,20+start_y/5);
+            ofRect(-ofGetWidth(),start_y-90, ofGetWidth()*2,20);
             break;
         case SwipeMode::Up:
-            ofRect(0,ofGetHeight() - start_y, ofGetWidth(),20+start_y/5);
-            ofRect(0,ofGetHeight() - start_y +50, ofGetWidth(),20);
+            ofRect(-ofGetWidth(),ofGetHeight() - start_y, ofGetWidth()*2,20+start_y/5);
+            ofRect(-ofGetWidth(),ofGetHeight() - start_y +50, ofGetWidth()*2,20);
             return ;
         case SwipeMode::SemiCircle: //SemiCirculePathを用いる
             semipath[0].draw(start_y*1.6);
@@ -54,12 +54,12 @@ void StrechyRectSwiper::draw(){
             semipath[2].draw(start_y*1.2f);
             break;
         case SwipeMode::Right:
-            ofRect(start_y*1.2-70, 0, 20, ofGetHeight());
-            ofRect(start_y*1.2-20, 0, 20+start_y/8, ofGetHeight());
+            ofRect(start_y*1.2-70, -ofGetHeight(), 20, ofGetHeight()*2);
+            ofRect(start_y*1.2-20, -ofGetHeight(), 20+start_y/8, ofGetHeight()*2);
             break;
         case SwipeMode::Left:
-            ofRect(ofGetWidth()-50-start_y*1.2, 0, 20, ofGetHeight());
-            ofRect(ofGetWidth()-start_y*1.2, 0, 20+start_y/8, ofGetHeight());
+            ofRect(ofGetWidth()-50-start_y*1.2, -ofGetHeight(), 20, ofGetHeight()*2);
+            ofRect(ofGetWidth()-start_y*1.2, -ofGetHeight(), 20+start_y/8, ofGetHeight()*2);
             break;
         default:
             break;

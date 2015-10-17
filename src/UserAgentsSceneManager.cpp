@@ -19,7 +19,7 @@ void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番�
     }
 }
 
-bool UserAgentsSceneManager::nextElement(){
+bool UserAgentsSceneManager::nextElement(){//スペースでの繊維用
     elements[elementIndex]->end();
     elementIndex++;
     if(elementIndex >= elements.size()){
