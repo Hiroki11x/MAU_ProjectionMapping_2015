@@ -16,7 +16,8 @@ void ShiseidoLifeClock::switch_mode(){//使わない
 
 void ShiseidoLifeClock::init(){
     start_time = ofGetElapsedTimef();
-    mesh.setMode(OF_PRIMITIVE_LINES);
+    mesh.clear();
+    mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
     vec.clear();
     for(int i = 0;i< 200 ;i++){
         vec.push_back(ofVec2f());
@@ -77,26 +78,38 @@ void ShiseidoLifeClock::draw_mesh(int num){
     update(num);
     ofNoFill();
     ofSetColor(155,100);
-    mesh.clearColors();
     mesh.clearVertices();
-    int index1,index3;
+    mesh.clearColors();
+
+    int index1,index2,index3;
     ofPushMatrix();
     ofTranslate(3*ofGetWidth()/5, ofGetHeight()/2);
     for(int i = 0;i<vec.size();i++){
         index1 = pow(ofSignedNoise(i,ofGetFrameNum()/10000),2)*vec.size();
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/10000),2)*vec.size();
-        mesh.addColor(ofFloatColor(0.4,0.4,0.4));
-        mesh.addVertex(vec.at(index1)*2);
-        mesh.addVertex(vec.at(index3));
-        ofCircle(vec.at(index1)*2,3);
-        ofCircle(vec.at(index3),3);
+        
+        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
+        mesh.addVertex(vec.at(index1)*0.7);
+        
+        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
+        mesh.addVertex(vec.at(i)*1.5);
+        
+        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
+        mesh.addVertex(vec.at(i)*1.3);
+        
+        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
+        mesh.addVertex(vec.at(index3)*1.1);
+        
+        ofCircle(vec.at(i)*1.5,3);
+        ofCircle(vec.at(index1)*0.7,3);
+        ofCircle(vec.at(index3)*1.3,3);
+        ofCircle(vec.at(index3)*1.1,3);
     }
     mesh.draw();
-
     ofPopMatrix();
 }
 
-void ShiseidoLifeClock::draw_bezier_web(int num){
+void ShiseidoLifeClock::draw_bezier_web(int num){//白黒
     update(num);//数とかを更新
     ofSetLineWidth(0.05);
     ofNoFill();
@@ -121,7 +134,7 @@ void ShiseidoLifeClock::draw_bezier_web(int num){
 }
 
 
-void ShiseidoLifeClock::draw_bezier_map(int num){
+void ShiseidoLifeClock::draw_bezier_map(int num){//一番それっぽいやつ
     
     update(num);//数とかを更新
     ofSetLineWidth(0.05);
@@ -192,32 +205,6 @@ void ShiseidoLifeClock::draw_bezier_circle(int num){
     ofSetLineWidth(0.1);
     ofPushMatrix();
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    
-    for(int i =0;i<ofGetElapsedTimef()*10;i+=1){
-        angle = i;
-        
-        inner_vec = ofVec2f(
-                            cos(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
-                            sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI)
-                            );
-        inner_vec *= 50;
-        
-        basis_vec = ofVec2f(
-                            cos(angle/180.0*PI),
-                            sin(angle/180.0*PI)
-                            );
-        basis_vec *= 300;
-        
-        hue = ofMap(i, 0, 360, 0, 255);
-        ofSetColor(ofColor::fromHsb(hue, 170, 200));
-        ofNoFill();
-        
-        ofBezier(0, 0,
-                 basis_vec.x/2+inner_vec.x*2,basis_vec.y/2+inner_vec.y*2,
-                 inner_vec.y*2, inner_vec.x*2,
-                 basis_vec.x, basis_vec.y);
-        ofFill();
-        ofCircle(basis_vec.x*1.01, basis_vec.y*1.01, 1);
-    }
+
     ofPopMatrix();
 }
