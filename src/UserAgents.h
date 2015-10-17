@@ -23,7 +23,6 @@
 #include "StrechyRectSwiper.h"
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
-//#include "GraphLog.h"
 #include "ExplodeAnimation.h"
 #include "JsonReceiver.h"
 #include "JsonImageReceiveThread.h"
@@ -43,7 +42,6 @@ private:
     StrechyRectSwiper strechyRectSwiper;
     AlphaSwiper alphaSwiper;
     ofxSuperLogUtil superLogUtil;
-//    GraphLog graphLog;
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;

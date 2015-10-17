@@ -28,8 +28,6 @@ void UserAgents::init(){
     
     setup_user_agent();//UserAgentをセット
     
-//    graphLog.setup();
-//    graphLog.set_height_limit(ofGetWidth()/4);
     superLogUtil.set_log("init","call useragnts init()");
     
 }
@@ -42,7 +40,7 @@ void UserAgents::update(){
 //        userAgentArray.at(i)->update();//回転アニメーションとか
 //    }
     
-//    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
+
     if (userAgentArray.size()>0) {
 //        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
         cam.setPosition(ofGetWidth()/2, ofGetHeight()/2, 500);
@@ -79,7 +77,7 @@ void UserAgents::draw(){
 //        explodeanimations.at(i).draw();
 //    }
     
-//    graphLog.draw();
+
     ofPopMatrix();
     cam.end();
 }
@@ -91,7 +89,6 @@ void UserAgents::onMouseDown(int x, int y){
 }
 
 void UserAgents::keyPressed(int key){
-//    graphLog.keyPressed(key);
     
     userAgentsSize = userAgentArray.size();
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
@@ -108,13 +105,16 @@ void UserAgents::keyPressed(int key){
         matrix_generator.init();
         userAgentArray.clear();
         connections.clear();
-        tag = "SwipeMode::SemiCircle";
+        tag = "SwipeMode::SemiCircle Clear Agent";
     }else if(key==OF_KEY_RIGHT){
         strechyRectSwiper.set_mode(SwipeMode::Right);
         tag = "SwipeMode::Right";
     }else if(key==OF_KEY_LEFT){
         strechyRectSwiper.set_mode(SwipeMode::Left);
         tag = "SwipeMode::Left";
+    }else if(key==OF_KEY_SHIFT){
+        strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
+        tag = "SwipeMode::SemiCircle";
     }
     strechyRectSwiper.init();
     superLogUtil.set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
@@ -135,7 +135,6 @@ void UserAgents::check_is_json_new(){
 }
 
 
-//TODO positionが足りなくなったらの対応してない
 ofVec3f UserAgents::select_position(){
     
     ofVec3f position;
@@ -153,8 +152,7 @@ ofVec3f UserAgents::select_position(){
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
     position.z = index;
     return position;
-    
-    //この時のIndexも渡したい
+
 }
 
 void UserAgents::addAgent(int add_num){
