@@ -9,7 +9,7 @@
 #define UserAgents_h
 
 #define COLOR_MAX 255
-#define GENE_X_NUM 8
+#define GENE_X_NUM 6
 #define GENE_Y_NUM 12
 
 #define USER_CIRCLE_SIZE 10
@@ -66,5 +66,7 @@ private:
     int json_num;
     
     void check_agent_size(int delete_adder);
+    
+    ofEasyCam cam;
 };
 #endif

@@ -43,6 +43,10 @@ void UserAgents::update(){
 //    }
     
 //    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
+    if (userAgentArray.size()>0) {
+        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
+        cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
+    }
 }
 
 void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvectorから消していく
@@ -56,6 +60,9 @@ void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvector�
 }
 
 void UserAgents::draw(){
+    
+    cam.begin();
+    ofPushMatrix();
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
     back_animation.fade_cross_background(0, 0, 100);//十字の背景
@@ -72,6 +79,8 @@ void UserAgents::draw(){
 //    }
     
 //    graphLog.draw();
+    ofPopMatrix();
+    cam.end();
 }
 
 void UserAgents::onMouseDown(int x, int y){

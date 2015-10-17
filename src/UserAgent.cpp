@@ -91,7 +91,7 @@ void UserAgent::draw(){
     
 //    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
 //    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));
-    
+
     ofSetColor(color,255);
     FontManager::mfont.drawString(username, position.x+size*2.5,position.y-size+3);
     FontManager::mfont.drawString(id, position.x+size*2.5,position.y+3);
