@@ -68,16 +68,14 @@ bool JsonReceiver::recieve(){
 
 void JsonReceiver::parseJson(){
     
-    ofImage img;
-    while (!img.isAllocated()) {
-        if(thread.lock()){
-            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
-        }
-        
-    }
-    
-    
-    
+//    ofImage img;
+//    while (!img.isAllocated()) {
+//        if(thread.lock()){
+//            thread.loadFromURL(img, jsonElement["user"]["profile_image_url"].asCString());
+//        }
+//        
+//    }
+   
 //    while(!img.bAllocated()){
 //        
 //        img.saveImage(jsonElement["user"]["profile_image_url"].asCString());
@@ -94,8 +92,6 @@ void JsonReceiver::parseJson(){
 //            thread.stopThread();
 //        }
 //    }
-    
-    
     
     usersInfo.push_back((UserInfo){
         convToWString(jsonElement["text"].asCString()),

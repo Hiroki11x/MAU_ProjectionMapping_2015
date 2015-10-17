@@ -172,7 +172,7 @@ void UserAgents::addAgent(int add_num){
                                                      );
 //        createExplodeAnimation(pos2f);
         json_num++;//json_numはここで
-        superLogUtil.set_log("addAgent", ofToString(json_num));
+        superLogUtil.set_log("addAgent", "No: "+ofToString(json_num));
     }
 }
 

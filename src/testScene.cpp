@@ -27,7 +27,7 @@ void testScene::setup(){
     mode=SceneMode::UserAgent;
 
     JsonReceiver::getInstance().init();
-    thread.startThread(true, false);
+    thread.startThread();
 //    image_thread.startThread(false, false);
 }
 
