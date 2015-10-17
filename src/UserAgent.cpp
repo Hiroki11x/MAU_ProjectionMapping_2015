@@ -60,14 +60,13 @@ void UserAgent::update(){
     multiple_of_size = ofRandom(MIN_CIRCLE_MAGNIFICATION,MAX_CIRCLE_MAGNIFICATION);
 }
 void UserAgent::draw(){
-    int angle;
+//    int angle;
     
     ofFill();
-    ofSetColor(color);
-    ofCircle(position, size * multiple_of_size/2);
+//    ofSetColor(color);
+//    ofCircle(position, size * multiple_of_size/2);
     ofSetColor(255);
     icon.draw(position.x-15,position.y-15, 30,30);
-    ofSetColor(color);
     ofNoFill();
     
 //    ofBeginShape();//回転する内部の円
