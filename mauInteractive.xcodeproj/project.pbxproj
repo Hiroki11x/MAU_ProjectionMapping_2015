@@ -75,6 +75,7 @@
 		FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDBF1BC2DF42007C3B47 /* AlphaSwiper.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BDC41BC2DF59007C3B47 /* FadeBackgroundUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDC21BC2DF59007C3B47 /* FadeBackgroundUtil.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BDC71BC2DF70007C3B47 /* SemiCirclePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BDC51BC2DF70007C3B47 /* SemiCirclePath.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA4F4F391BD29B1E001D4E4A /* EffectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4F4F371BD29B1E001D4E4A /* EffectScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA587D291BC4E15C003FCCCA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA587D1D1BC4E15C003FCCCA /* Makefile */; settings = {ASSET_TAGS = (); }; };
 		FA587D2C1BC4E15C003FCCCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FA587D251BC4E15C003FCCCA /* README.md */; settings = {ASSET_TAGS = (); }; };
 		FA587D2D1BC4E15C003FCCCA /* ofxRollingCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA587D271BC4E15C003FCCCA /* ofxRollingCam.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -536,6 +537,8 @@
 		FA4B49A91BB5111D00537247 /* ofxJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxJSON.h; sourceTree = "<group>"; };
 		FA4B49AA1BB5111D00537247 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		FA4B49AB1BB5111D00537247 /* ofxJSONElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
+		FA4F4F371BD29B1E001D4E4A /* EffectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectScene.cpp; sourceTree = "<group>"; };
+		FA4F4F381BD29B1E001D4E4A /* EffectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectScene.h; sourceTree = "<group>"; };
 		FA587D171BC4E15C003FCCCA /* emptyExampleDebug.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = emptyExampleDebug.app; sourceTree = "<group>"; };
 		FA587D181BC4E15C003FCCCA /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
 		FA587D191BC4E15C003FCCCA /* emptyExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = emptyExample.xcodeproj; sourceTree = "<group>"; };
@@ -1831,6 +1834,8 @@
 				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
 				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
 				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
+				FA4F4F371BD29B1E001D4E4A /* EffectScene.cpp */,
+				FA4F4F381BD29B1E001D4E4A /* EffectScene.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3105,6 +3110,7 @@
 				FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */,
 				FA587D9D1BC55C36003FCCCA /* shapes.cc in Sources */,
 				FACD666E1BC23B8500756856 /* DrawerSphere.cpp in Sources */,
+				FA4F4F391BD29B1E001D4E4A /* EffectScene.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FA5BFD341BBA7A4E0085652C /* LinePoints.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,

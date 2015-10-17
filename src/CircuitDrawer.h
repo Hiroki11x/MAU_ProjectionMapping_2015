@@ -11,9 +11,9 @@
 
 #include "ofMain.h"
 
-#define CIRCUIT_POINT_INTERVAL 90
-#define CIRCUIT_WIDTH_NUM 12
-#define CIRCUIT_HEIGHT_NUM 12
+#define CIRCUIT_POINT_INTERVAL 45
+#define CIRCUIT_WIDTH_NUM 24
+#define CIRCUIT_HEIGHT_NUM 24
 
 class CircuitDrawer {
 public:
@@ -45,17 +45,17 @@ public:
     void reset();
     bool setNextPoint(Direction nextDirection, int n);
     
-    ofVboMesh circuit[4];
-    ofVec3f targetPoint[4];
-    ofVec3f lineStartPoint[4];
+    ofVboMesh circuit[10];
+    ofVec3f targetPoint[10];
+    ofVec3f lineStartPoint[10];
     ofVec3f points[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
     Mode mode = NORMAL;
     
-    int nextIndex[4];
+    int nextIndex[10];
     int addedPoint;
     int waitFrames;
     bool usedPoint[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
-    bool arrivedNextPoint[4];
-    float positionCounter[4]; //0~1
+    bool arrivedNextPoint[10];
+    float positionCounter[10]; //0~1
 };
 #endif
