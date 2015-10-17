@@ -37,3 +37,9 @@ void MatrixGenerator::set_is_used_true(int index){
 void MatrixGenerator::set_is_used_false(int index){
     is_used[index] = false;
 }
+
+void MatrixGenerator::init(){
+    for(int i =0;i<is_used.size();i++){
+        is_used.at(i)= false;
+    }
+}

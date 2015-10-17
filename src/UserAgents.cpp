@@ -38,9 +38,9 @@ void UserAgents::update(){
 //    JsonReceiver::getInstance().recieve();
     check_is_json_new();
     
-    for(int i = 0; i < userAgentArray.size(); i++){
-        userAgentArray.at(i)->update();//回転アニメーションとか
-    }
+//    for(int i = 0; i < userAgentArray.size(); i++){
+//        userAgentArray.at(i)->update();//回転アニメーションとか
+//    }
     
 //    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
 }
@@ -66,10 +66,10 @@ void UserAgents::draw(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->draw();
     }
-    
-    for(int i=0; i<explodeanimations.size();i++){
-        explodeanimations.at(i).draw();
-    }
+//    
+//    for(int i=0; i<explodeanimations.size();i++){
+//        explodeanimations.at(i).draw();
+//    }
     
 //    graphLog.draw();
 }
@@ -95,6 +95,9 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Down";
     }else if(key==OF_KEY_RETURN){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
+        matrix_generator.init();
+        userAgentArray.clear();
+        connections.clear();
         tag = "SwipeMode::SemiCircle";
     }else if(key==OF_KEY_RIGHT){
         strechyRectSwiper.set_mode(SwipeMode::Right);
@@ -106,7 +109,7 @@ void UserAgents::keyPressed(int key){
     strechyRectSwiper.init();
     superLogUtil.set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
     
-    check_agent_size(10);
+    check_agent_size(10);//10個agent消す
 }
 
 void UserAgents::end(){}

@@ -24,6 +24,8 @@ private:
     vector<bool> is_used;
 public:
     MatrixGenerator(){};
+    
+    void init();
 
     void generate_position(int x_num, int y_num);//8*12のポジションを生成
     vector<ofVec2f *> get_position();//p
