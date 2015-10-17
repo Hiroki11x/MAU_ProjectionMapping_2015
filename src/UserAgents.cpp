@@ -31,8 +31,10 @@ void UserAgents::init(){
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
-    
     setup_user_agent();//UserAgentをセット
+    
+    isMoveCam = false;
+    isBackGround = false;
     
     superLogUtil.set_log("init","call useragnts init()");
     
@@ -48,8 +50,13 @@ void UserAgents::update(){
     
 
     if (userAgentArray.size()>0) {
-//        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
-        cam.setPosition(userAgentArray.back()->position.x+200*ofSignedNoise(ofGetElapsedTimef()/1000,ofRandom(200)),userAgentArray.back()->position.y+200*ofSignedNoise(ofGetElapsedTimef()/1000),500+200*sin(ofGetElapsedTimef()*180));
+
+        if(isMoveCam){
+            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef()/100,json_num),userAgentArray.back()->position.y+500*ofSignedNoise(json_num,ofGetElapsedTimef()/100),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
+        }else{
+            cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,500*(1+sin(ofGetElapsedTimef()/20)));
+        }
+        
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
     }
 }
@@ -67,10 +74,10 @@ void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvector�
 void UserAgents::draw(){
     
     cam.begin();
-    ofPushMatrix();
+
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
-    back_animation.fade_cross_background(0, 0, 100);//十字の背景
+    if(isBackGround)back_animation.fade_cross_background(0, 0, 100);
     
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
@@ -82,9 +89,7 @@ void UserAgents::draw(){
 //    for(int i=0; i<explodeanimations.size();i++){
 //        explodeanimations.at(i).draw();
 //    }
-    
 
-    ofPopMatrix();
     cam.end();
     ofDrawBitmapString("userAgentArray.size()"+ofToString(userAgentArray.size()), 30,40);
 }
@@ -101,8 +106,10 @@ void UserAgents::keyPressed(int key){
     addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
     
     string tag = "Default";
-    if(key=='1'){
-        reset();
+    if(key==OF_KEY_RIGHT_COMMAND){
+        isMoveCam = !isMoveCam;
+    }if(key==OF_KEY_LEFT_COMMAND){
+        isBackGround = !isBackGround;
     }else if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
         tag = "SwipeMode::Up";
@@ -142,9 +149,9 @@ void UserAgents::check_is_json_new(){
 }
 
 
-ofVec3f UserAgents::select_position(){
+ofVec4f UserAgents::select_position(){
     
-    ofVec3f position;
+    ofVec4f position;
     
     int size = matrix_generator.get_position_num();//生成した座標の数
     int index = ofRandom(size-1);//その座標でどこを使うか選ぶ
@@ -157,24 +164,25 @@ ofVec3f UserAgents::select_position(){
     
     matrix_generator.set_is_used_true(index);//使うところは使う(true)に変更
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
-    position.z = index;
+    position.w = index;
     return position;
 
 }
 
 void UserAgents::addAgent(int add_num){
+    ofVec4f pos4f;
     ofVec3f pos3f;
-    ofVec2f pos2f;
     for(int i=0;i<add_num;i++){
         
         ////---------Legacy-----------
         userAgentArray.push_back(new UserAgent());
         
-        pos3f = select_position();
-        userAgentArray.back()->set_generater_index(pos3f.z);
-        pos2f.x = pos3f.x;
-        pos2f.y = pos3f.y;
-        userAgentArray.back()->set_position(pos2f);
+        pos4f = select_position();
+        userAgentArray.back()->set_generater_index(pos4f.w);
+        pos3f.x = pos4f.x;
+        pos3f.y = pos4f.y;
+        pos3f.z = pos4f.z;
+        userAgentArray.back()->set_position(pos3f);
         userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);

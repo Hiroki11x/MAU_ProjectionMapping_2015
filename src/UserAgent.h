@@ -42,13 +42,13 @@ private:
     
     ofColor color;
 public:
-    ofVec2f position;
+    ofVec3f position;
     UserAgent(){};
     
 //    void set_user_id(string id);
 //    void set_user_name(string name);
     
-    void set_position(ofVec2f _pos);
+    void set_position(ofVec3f _pos);
     void set_size(float _size);
     void set_color(ofColor _color);
     void calc_line_length();

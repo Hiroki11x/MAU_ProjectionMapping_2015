@@ -19,12 +19,18 @@ public:
     void draw(int num);
     void update(int num);
     void switch_mode();
+    ofEasyCam cam;
 private:
     int mode = 1;
     ofPath path;
     float max_angle;
-    vector<ofVec2f> vec;
+    vector<ofVec3f> vec;
+    ofMesh mesh;
     void draw_bezier_map(int num);
+    void draw_bezier_web(int num);
+    void draw_mesh(int num);
+    void draw_default_circle();
+    void draw_bezier_circle(int num);
 };
 
 #endif /* defined(__mauInteractive__ShiseidoLifeClock__) */

@@ -60,12 +60,15 @@ private:
     
     void check_is_json_new();
     void addAgent(int add_num);
-    ofVec3f select_position();
+    ofVec4f select_position();
     
     int json_num;
     
     void check_agent_size(int delete_adder);
     
     ofCamera cam;
+    
+    bool isMoveCam;
+    bool isBackGround;
 };
 #endif
