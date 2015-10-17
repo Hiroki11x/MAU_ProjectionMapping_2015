@@ -69,5 +69,6 @@ private:
     ofCamera cam;
     
     bool isMoveCam;
+    bool isBackGround;
 };
 #endif

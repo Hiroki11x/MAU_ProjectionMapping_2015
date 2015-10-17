@@ -16,7 +16,6 @@ void UserAgents::reset(){
     matrix_generator.init();
     userAgentArray.clear();
     connections.clear();
-    isMoveCam = false;
 }
 
 void UserAgents::init(){
@@ -32,10 +31,10 @@ void UserAgents::init(){
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
-    
     setup_user_agent();//UserAgentをセット
     
     isMoveCam = false;
+    isBackGround = false;
     
     superLogUtil.set_log("init","call useragnts init()");
     
@@ -53,9 +52,9 @@ void UserAgents::update(){
     if (userAgentArray.size()>0) {
 
         if(isMoveCam){
-            cam.setPosition(userAgentArray.back()->position.x+200*ofSignedNoise(ofGetElapsedTimef()*10),userAgentArray.back()->position.y+200*ofSignedNoise(ofGetElapsedTimef()/10),500+200*sin(ofGetElapsedTimef()*180));
+            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef(),json_num),userAgentArray.back()->position.y+500*ofSignedNoise(json_num,ofGetElapsedTimef()/10),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
         }else{
-            cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
+            cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,500*(1+sin(ofGetElapsedTimef()/20)));
         }
         
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
@@ -75,10 +74,10 @@ void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvector�
 void UserAgents::draw(){
     
     cam.begin();
-    ofPushMatrix();
+
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
-    back_animation.fade_cross_background(0, 0, 100);//十字の背景
+    if(isBackGround)back_animation.fade_cross_background(0, 0, 100);
     
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
@@ -90,9 +89,7 @@ void UserAgents::draw(){
 //    for(int i=0; i<explodeanimations.size();i++){
 //        explodeanimations.at(i).draw();
 //    }
-    
 
-    ofPopMatrix();
     cam.end();
     ofDrawBitmapString("userAgentArray.size()"+ofToString(userAgentArray.size()), 30,40);
 }
@@ -111,6 +108,8 @@ void UserAgents::keyPressed(int key){
     string tag = "Default";
     if(key==OF_KEY_RIGHT_COMMAND){
         isMoveCam = !isMoveCam;
+    }if(key==OF_KEY_LEFT_COMMAND){
+        isBackGround = !isBackGround;
     }else if(key==OF_KEY_UP){
         strechyRectSwiper.set_mode(SwipeMode::Up);
         tag = "SwipeMode::Up";

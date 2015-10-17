@@ -12,10 +12,10 @@
 #include <stdio.h>
 #include "ofMain.h"
 
-#define GRID_WIDTH 128
-#define GRID_HEIGHT 64
+#define GRID_WIDTH 220
+#define GRID_HEIGHT 70
 
-#define POSITION_OFFSET 20
+#define POSITION_OFFSET 100
 #define POS_DANDAM_OFFSET 15
 
 class MatrixGenerator{

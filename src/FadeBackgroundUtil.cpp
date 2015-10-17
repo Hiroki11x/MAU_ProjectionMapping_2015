@@ -10,7 +10,7 @@
 
 void FadeBackgroundUtil::fade_cross_background(float x, float y, float interval){
     float pos_x,pos_y;
-    max_closs_length = interval/8;
+    max_closs_length = interval/10;
     float margin = 30;
     ofTranslate(x, y);
     update_alpha();
@@ -18,8 +18,8 @@ void FadeBackgroundUtil::fade_cross_background(float x, float y, float interval)
     ofSetColor(255,alpha);
     int x_num = ofGetWidth()/interval;
     int y_num = ofGetHeight()/interval;
-    for(int i = -x_num ; i<=x_num ; i++ ){
-        for(int j = -x_num ; j<=y_num ; j++ ){
+    for(int i = 0 ; i<=x_num ; i++ ){
+        for(int j = 0 ; j<=y_num ; j++ ){
             pos_x = interval*i +margin;
             pos_y = interval*j +margin;
             ofLine(pos_x-closs_length, pos_y, pos_x+closs_length, pos_y);
