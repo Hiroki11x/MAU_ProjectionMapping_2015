@@ -8,6 +8,10 @@
 
 #include "SingleAgentAnalyze.h"
 
+void SingleAgentAnalyze::reset(){
+    user_agent.clear();
+}
+
 
 void SingleAgentAnalyze::init(){
     json_num=0;
@@ -42,7 +46,7 @@ void SingleAgentAnalyze::draw(){
             user_agent.at(agent_size-1-i).draw(100,y+100);
         }
     }
-    shiseido.draw(user_agent.size());
+    shiseido.draw(json_num);
     
 }
 

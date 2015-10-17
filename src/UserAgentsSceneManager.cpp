@@ -25,6 +25,7 @@ bool UserAgentsSceneManager::nextElement(){
     if(elementIndex >= elements.size()){
         elementIndex = 0;
     }
+    elements.at(elementIndex)->reset();
     return true;
 }
 
@@ -32,12 +33,15 @@ void UserAgentsSceneManager::keyPressed(int key){
     switch (key) {
         case '1':
             elementIndex = 0;//UserAgent
+            elements.at(elementIndex)->reset();
             return;
         case '2':
             elementIndex = 1;//AgentAnalyza
+            elements.at(elementIndex)->reset();
             return;
         case '3':
             elementIndex = 2;//SingleAnalyze
+            elements.at(elementIndex)->reset();
             return;
     }
     elements.at(elementIndex)->keyPressed(key);

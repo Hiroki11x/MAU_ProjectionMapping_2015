@@ -15,6 +15,8 @@
 
 class AgentAnalyzeSceneManager : public SceneManager {
 public:
+    
+    virtual void reset() override;
     virtual void setup() override;
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;

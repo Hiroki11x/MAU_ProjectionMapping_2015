@@ -17,6 +17,7 @@
 #include "ofMain.h"
 #include "AgentCircle.h"
 #include "JsonReceiver.h"
+#include "GraphLog.h"
 
 class AgentAnalyze : public SceneElement {
     
@@ -29,7 +30,10 @@ private:
     vector<AgentCircle> user_agent;
     int max_row;
     int max_column;
+    
+    GraphLog graphlog;
 public:
+    virtual void reset() override;
     virtual void update() override;
     virtual void draw() override;
     virtual void init() override;

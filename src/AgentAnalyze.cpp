@@ -11,6 +11,10 @@
 #include "AgentAnalyze.h"
 
 
+void AgentAnalyze::reset(){
+//    user_agent.clear();ここは画像取得もなく重くないのでクリアしない
+}
+
 void AgentAnalyze::init(){
     json_num=0;
     check_is_json_new();
@@ -20,6 +24,9 @@ void AgentAnalyze::init(){
     max_row = ofGetHeight()/50 -2;
     max_column = ofGetWidth()/170;
     MAX_AGENT = (max_row+2)*max_column;
+    
+    graphlog.setup();
+    graphlog.set_height_limit(ofGetWidth()/4);
 }
 
 void AgentAnalyze::draw(){
@@ -41,6 +48,7 @@ void AgentAnalyze::draw(){
             user_agent.at(i).draw_line(x,y);
         }
     }
+    graphlog.draw();
 }
 
 
@@ -55,7 +63,7 @@ void AgentAnalyze::onMouseDown(int x, int y){
 }
 
 void AgentAnalyze::keyPressed(int key){
-    
+    graphlog.keyPressed(key);
 }
 
 void AgentAnalyze::end(){}
@@ -82,5 +90,6 @@ void AgentAnalyze::addAgent(int add_num){
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count);
         json_num++;//json_numはここで
+        graphlog.update(ofSignedNoise(json_num,ofRandom(100),ofGetElapsedTimef()));
     }
 }

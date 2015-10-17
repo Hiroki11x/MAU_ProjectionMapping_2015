@@ -48,7 +48,7 @@ void testScene::draw(){
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
     
-    ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), 10,10);
+    ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), 30,30);
 }
 
 //--------------------------------------------------------------
@@ -72,7 +72,9 @@ void testScene::keyPressed(int key){
                 default:
                     break;
             }
+            manager->reset();
             manager->setup();
+            
         }
     }
 }

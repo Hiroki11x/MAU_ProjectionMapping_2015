@@ -9,7 +9,7 @@
 #define UserAgents_h
 
 #define COLOR_MAX 255
-#define GENE_X_NUM 8
+#define GENE_X_NUM 6
 #define GENE_Y_NUM 12
 
 #define USER_CIRCLE_SIZE 10
@@ -23,13 +23,13 @@
 #include "StrechyRectSwiper.h"
 #include "AlphaSwiper.h"
 #include "ofxSuperLogUtil.h"
-//#include "GraphLog.h"
 #include "ExplodeAnimation.h"
 #include "JsonReceiver.h"
 #include "JsonImageReceiveThread.h"
 
 class UserAgents : public SceneElement {
 public:
+    virtual void reset() override;
     virtual void update() override;
     virtual void draw() override;
     virtual void init() override;
@@ -43,7 +43,6 @@ private:
     StrechyRectSwiper strechyRectSwiper;
     AlphaSwiper alphaSwiper;
     ofxSuperLogUtil superLogUtil;
-//    GraphLog graphLog;
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;
@@ -66,5 +65,7 @@ private:
     int json_num;
     
     void check_agent_size(int delete_adder);
+    
+    ofCamera cam;
 };
 #endif

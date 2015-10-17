@@ -12,6 +12,9 @@ void AgentAnalyzeSceneManager::setup(){
 //    elements.push_back(new AgentAnalyze());
 //    elements.back()->init();
 }
+void AgentAnalyzeSceneManager::reset(){
+    elements.at(0)->reset();
+}
 
 void AgentAnalyzeSceneManager::onMouseDown(int x, int y){
     elements.at(0)->onMouseDown(x, y);
