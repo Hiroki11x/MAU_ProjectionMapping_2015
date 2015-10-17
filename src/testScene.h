@@ -11,16 +11,14 @@
 #include "ofMain.h"
 #include "SceneManager.h"
 #include "mode.h"
-#include "IntroductionManager.h"
-#include "SpyMeshSceneManager.h"
 #include "UserAgentsSceneManager.h"
 #include "AgentAnalyzeSceneManager.h"
-
 #include "ofxSyphon.h"
-
 #include "SceneElement.h"
-
 #include "FontManager.h"
+
+#include "JsonRecieveThread.h"
+#include "JsonImageReceiveThread.h"
 
 class testScene : public ofBaseApp{
     
@@ -28,6 +26,7 @@ public:
     void setup();
     void update();
     void draw();
+    void exit();
     
     void keyPressed(int key);
     void keyReleased(int key);
@@ -47,6 +46,9 @@ public:
     ofxSyphonServer mainOutputSyphonServer;
     ofxSyphonServer individualTextureSyphonServer;
     ofxSyphonClient mClient;
+    
+    JsonRecieveThread thread;
+    JsonImageRecieveThread image_thread;
 
 };
 

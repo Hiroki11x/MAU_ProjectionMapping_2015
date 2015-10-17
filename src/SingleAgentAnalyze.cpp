@@ -48,7 +48,7 @@ void SingleAgentAnalyze::draw(){
 
 
 void SingleAgentAnalyze::update(){
-    JsonReceiver::recieve();
+//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
 }
 
@@ -69,8 +69,8 @@ void SingleAgentAnalyze::end(){}
 
 void SingleAgentAnalyze::check_is_json_new(){
     int add_num;
-    if(json_num<JsonReceiver::usersInfo.size()){
-        add_num = JsonReceiver::usersInfo.size() - json_num;
+    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
+        add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
         addAgent(add_num);
     }
 }
@@ -83,13 +83,13 @@ void SingleAgentAnalyze::addAgent(int add_num){
         user_agent.push_back(SingleAgent());
         user_agent.back().init();
         user_agent.back().get_info_from_twitter(
-                                                JsonReceiver::usersInfo.at(json_num).userName,
-                                                JsonReceiver::usersInfo.at(json_num).twitterId,
-                                                JsonReceiver::usersInfo.at(json_num).text,
-                                                JsonReceiver::usersInfo.at(json_num).friends_count,
-                                                JsonReceiver::usersInfo.at(json_num).statuses_count,
-                                                JsonReceiver::usersInfo.at(json_num).followers_count,
-                                                JsonReceiver::usersInfo.at(json_num).icon);
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).text,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL);
         
         json_num++;//json_numはここで
     }

@@ -9,8 +9,8 @@
 #include "AgentAnalyzeSceneManager.h"
 
 void AgentAnalyzeSceneManager::setup(){
-    elements.push_back(new AgentAnalyze());
-    elements.back()->init();
+//    elements.push_back(new AgentAnalyze());
+//    elements.back()->init();
 }
 
 void AgentAnalyzeSceneManager::onMouseDown(int x, int y){

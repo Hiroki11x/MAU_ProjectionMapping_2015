@@ -34,7 +34,7 @@ private:
     ofImage icon;
     string id;
     string username;
-    string text;//つぶやいた内容(これだけ["user"]内ではない)
+    wstring text;//つぶやいた内容(これだけ["user"]内ではない)
     int friends_count;//フォローしてるアカウント数
     int statuses_count;//つぶやいてる数
     int followers_count;
@@ -57,7 +57,7 @@ public:
     void draw();
     void init();
     
-    void get_info_from_twitter(string name,string id, string text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
+    void get_info_from_twitter(string name,string id, wstring text,int friends_count,int statuses_count,int followers_count, ofImage image);//twitterからの取得情報を書く
     
     void set_generater_index(int index);
     int get_generater_index();

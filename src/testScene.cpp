@@ -9,7 +9,6 @@
 #include "testScene.h"
 
 void testScene::setup(){
-    
     FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
     FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",5);
     
@@ -27,7 +26,14 @@ void testScene::setup(){
     manager->setup();
     mode=SceneMode::UserAgent;
 
-    
+    JsonReceiver::getInstance().init();
+    thread.startThread();
+//    image_thread.startThread(false, false);
+}
+
+void testScene::exit(){
+    //JsonReceiver::stopRecieveThread();
+    thread.stopThread();
 }
 
 //--------------------------------------------------------------
@@ -41,6 +47,8 @@ void testScene::draw(){
 //    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
+    
+    ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), 10,10);
 }
 
 //--------------------------------------------------------------
@@ -60,14 +68,6 @@ void testScene::keyPressed(int key){
                 case SceneMode::AgentAnalyze:
                     manager = new AgentAnalyzeSceneManager();
                     mode = SceneMode::Introduction;
-                    break;
-                case SceneMode::Introduction:
-                    manager = new SpyMeshSceneManager();
-                    mode = SceneMode::SpyMesh;
-                    break;
-                case SceneMode::SpyMesh:
-                    manager = new IntroductionManager();
-                    mode = SceneMode::UserAgent;
                     break;
                 default:
                     break;

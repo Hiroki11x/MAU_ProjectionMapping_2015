@@ -17,7 +17,6 @@ void AgentAnalyze::init(){
     for(int i = 0; i<user_agent.size();i++){
         user_agent.at(i).init();
     }
-    
     max_row = ofGetHeight()/50 -2;
     max_column = ofGetWidth()/170;
     MAX_AGENT = (max_row+2)*max_column;
@@ -26,10 +25,7 @@ void AgentAnalyze::init(){
 void AgentAnalyze::draw(){
     
     int agent_size = user_agent.size();
-    
-    
     ofSetColor(255);
-    
     if(MAX_AGENT < agent_size ){
         user_agent.erase(user_agent.begin());
     }
@@ -49,7 +45,7 @@ void AgentAnalyze::draw(){
 
 
 void AgentAnalyze::update(){
-    JsonReceiver::recieve();
+//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
 }
 
@@ -66,12 +62,11 @@ void AgentAnalyze::end(){}
 
 void AgentAnalyze::check_is_json_new(){
     int add_num;
-    if(json_num<JsonReceiver::usersInfo.size()){
-        add_num = JsonReceiver::usersInfo.size() - json_num;
+    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
+        add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
         addAgent(add_num);
     }
 }
-
 
 
 void AgentAnalyze::addAgent(int add_num){
@@ -80,13 +75,12 @@ void AgentAnalyze::addAgent(int add_num){
         user_agent.push_back(AgentCircle());
         user_agent.back().init();
         user_agent.back().get_info_from_twitter(
-                                                   JsonReceiver::usersInfo.at(json_num).userName,
-                                                   JsonReceiver::usersInfo.at(json_num).twitterId,
-                                                   JsonReceiver::usersInfo.at(json_num).text,
-                                                   JsonReceiver::usersInfo.at(json_num).friends_count,
-                                                   JsonReceiver::usersInfo.at(json_num).statuses_count,
-                                                   JsonReceiver::usersInfo.at(json_num).followers_count);
-
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).text,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count);
         json_num++;//json_numはここで
     }
 }
