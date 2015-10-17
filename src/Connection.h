@@ -16,15 +16,15 @@
 
 class Connection {
 private:
-    ofVec2f startPoint;
-    ofVec2f connectionVector;//方向ベクトル
+    ofVec3f startPoint;
+    ofVec3f connectionVector;//方向ベクトル
     ofColor color;
     float drawSpeed;
     float position;
     bool connected;
     
 public:
-    Connection(ofVec2f startPoint, ofVec2f endPoint,ofColor c, float duration = 5.0){
+    Connection(ofVec3f startPoint, ofVec3f endPoint,ofColor c, float duration = 5.0){
         this->startPoint = startPoint;
         this->connectionVector = endPoint - startPoint;
         //this->color = c;
