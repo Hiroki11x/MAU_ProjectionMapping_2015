@@ -44,7 +44,8 @@ void UserAgents::update(){
     
 //    graphLog.update(ofSignedNoise(userAgentsSize,ofRandom(100),ofGetElapsedTimef()));
     if (userAgentArray.size()>0) {
-        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
+//        cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,400);
+        cam.setPosition(ofGetWidth()/2, ofGetHeight()/2, 500);
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
     }
 }

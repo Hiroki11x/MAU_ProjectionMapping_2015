@@ -71,6 +71,8 @@
 		4EB7A3CF1BCE8E1400A86BF2 /* BaseImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3CD1BCE8E1400A86BF2 /* BaseImage.cpp */; };
 		4EB7A3D41BCE919000A86BF2 /* ofxThreadedImageLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3D21BCE919000A86BF2 /* ofxThreadedImageLoader.cpp */; };
 		4EB7A3D71BCE978A00A86BF2 /* JsonImageReceiveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3D51BCE978A00A86BF2 /* JsonImageReceiveThread.cpp */; };
+		4EB7A40E1BD2045400A86BF2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A4081BD2045400A86BF2 /* README.md */; };
+		4EB7A40F1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A40A1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp */; };
 		4EC0478E1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */; };
 		4EC047921BCB6FD100D069EB /* SingleAgentAnalyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */; };
 		4EC047961BCB716900D069EB /* SingleAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047941BCB716900D069EB /* SingleAgent.cpp */; };
@@ -363,6 +365,12 @@
 		4EB7A3D31BCE919000A86BF2 /* ofxThreadedImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxThreadedImageLoader.h; sourceTree = "<group>"; };
 		4EB7A3D51BCE978A00A86BF2 /* JsonImageReceiveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonImageReceiveThread.cpp; sourceTree = "<group>"; };
 		4EB7A3D61BCE978A00A86BF2 /* JsonImageReceiveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonImageReceiveThread.h; sourceTree = "<group>"; };
+		4EB7A4051BD2045400A86BF2 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		4EB7A4061BD2045400A86BF2 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		4EB7A4071BD2045400A86BF2 /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
+		4EB7A4081BD2045400A86BF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4EB7A40A1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
+		4EB7A40B1BD2045400A86BF2 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
 		4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentSceneManager.cpp; sourceTree = "<group>"; };
 		4EC0478D1BCB6EAF00D069EB /* SingleAgentSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleAgentSceneManager.h; sourceTree = "<group>"; };
 		4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentAnalyze.cpp; sourceTree = "<group>"; };
@@ -1272,6 +1280,28 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		4EB7A3FF1BD2045400A86BF2 /* ofxTrueTypeFontUC */ = {
+			isa = PBXGroup;
+			children = (
+				4EB7A4051BD2045400A86BF2 /* install.xml */,
+				4EB7A4061BD2045400A86BF2 /* License.txt */,
+				4EB7A4071BD2045400A86BF2 /* ofxaddons_thumbnail.png */,
+				4EB7A4081BD2045400A86BF2 /* README.md */,
+				4EB7A4091BD2045400A86BF2 /* src */,
+			);
+			name = ofxTrueTypeFontUC;
+			path = ../../../addons/ofxTrueTypeFontUC;
+			sourceTree = "<group>";
+		};
+		4EB7A4091BD2045400A86BF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4EB7A40A1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp */,
+				4EB7A40B1BD2045400A86BF2 /* ofxTrueTypeFontUC.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		4EC0478B1BCB6E7E00D069EB /* SingleAgentAnalyze */ = {
 			isa = PBXGroup;
 			children = (
@@ -1705,6 +1735,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				4EB7A3FF1BD2045400A86BF2 /* ofxTrueTypeFontUC */,
 				4EB7A3D01BCE919000A86BF2 /* ofxThreadedImageLoader */,
 				4EE77D611BC904950070C805 /* ofxTrueTypeFontUL2 */,
 				4E7633161BC258C2002F2530 /* ofxPostGlitch */,
@@ -2194,6 +2225,7 @@
 				4E5ED6CC1BC12958004F1AF6 /* ofxEasingQuart.cpp in Sources */,
 				4EE77DA81BC905280070C805 /* AgentCircle.cpp in Sources */,
 				4E7633751BC258C2002F2530 /* ofxPostGlitch.cpp in Sources */,
+				4EB7A40E1BD2045400A86BF2 /* README.md in Sources */,
 				4E76325F1BC1758E002F2530 /* AlphaSwiper.cpp in Sources */,
 				4E5ED6CD1BC12958004F1AF6 /* ofxEasingQuint.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
@@ -2210,6 +2242,7 @@
 				4EE77DA21BC904950070C805 /* ofxTrueTypeFontUL2.cpp in Sources */,
 				4E88A24D1BBE11AF001E8306 /* testScene.cpp in Sources */,
 				4EE77D1D1BC62B840070C805 /* ParticleConnection.cpp in Sources */,
+				4EB7A40F1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp in Sources */,
 				4E76329B1BC2147B002F2530 /* ofxSuperLogUtil.cpp in Sources */,
 				4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */,
 				4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */,

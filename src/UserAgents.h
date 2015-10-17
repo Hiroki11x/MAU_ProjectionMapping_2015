@@ -67,6 +67,6 @@ private:
     
     void check_agent_size(int delete_adder);
     
-    ofEasyCam cam;
+    ofCamera cam;
 };
 #endif

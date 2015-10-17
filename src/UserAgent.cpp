@@ -91,13 +91,17 @@ void UserAgent::draw(){
     
 //    ofLine(position+ofVec2f(0,size*2), position+ofVec2f(line_length,size*2));
 //    ofLine(position+ofVec2f(0,-size*2), position+ofVec2f(line_length,-size*2));
-
+ 
     ofSetColor(color,255);
-    FontManager::mfont.drawString(username, position.x+size*2.5,position.y-size+3);
-    FontManager::mfont.drawString(id, position.x+size*2.5,position.y+3);
-    FontManager::msmallfont.drawString("Follower: "+ofToString(followers_count), position.x+size*2.5,position.y+10);
-    FontManager::msmallfont.drawString("Friends: "+ofToString(friends_count), position.x+size*2.5,position.y+16);
-    FontManager::msmallfont.drawString("Statue: "+ofToString(statuses_count), position.x+size*2.5+50,position.y+10);
+    
+    glPushMatrix();
+    glRotatef(180, 1,0,0);
+    FontManager::mfont.drawString(username, position.x+size*2.5,-(position.y+8));
+    FontManager::mfont.drawString(id, position.x+size*2.5,-(position.y-2));
+    FontManager::msmallfont.drawString("Follower: "+ofToString(followers_count), position.x+size*2.5,-(position.y-10));
+    FontManager::msmallfont.drawString("Friends: "+ofToString(friends_count), position.x+size*2.5,-(position.y-16));
+    FontManager::msmallfont.drawString("Statue: "+ofToString(statuses_count), position.x+size*2.5+50,-(position.y-10));
+    glPopMatrix();
 
 }
 

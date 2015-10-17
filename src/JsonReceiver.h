@@ -11,7 +11,7 @@
 
 #include "ofxJSON.h"
 #include "ofMain.h"
-#include "ofxThreadedImageLoader.h"
+//#include "ofxThreadedImageLoader.h"
 
 class JsonReceiver {
 public:
@@ -54,7 +54,7 @@ public:
     
     static JsonReceiver &getInstance();
     
-    ofxThreadedImageLoader thread;
+//    ofxThreadedImageLoader thread;
 private:
     JsonReceiver(){}
     JsonReceiver(const JsonReceiver &other){}
