@@ -29,7 +29,6 @@ private:
     int json_num;
     
     vector<SingleAgent> user_agent;
-    
     ShiseidoLifeClock shiseido;
     
 public:

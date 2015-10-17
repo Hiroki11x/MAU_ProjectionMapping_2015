@@ -25,6 +25,8 @@ private:
     float max_angle;
     vector<ofVec2f> vec;
     void draw_bezier_map(int num);
+    void draw_bezier_web(int num);
+    void draw_mesh(int num);
 };
 
 #endif /* defined(__mauInteractive__ShiseidoLifeClock__) */

@@ -43,7 +43,7 @@ void SingleAgentAnalyze::draw(){
     if(agent_size>0){
         for(int i = 0; i < ((4<agent_size)?4:agent_size) ; i++){
             y = 200 * (i%max_row -1) +200;
-            user_agent.at(agent_size-1-i).draw(100,y+100);
+            user_agent.at(agent_size-1-i).draw(100,y+150);
         }
     }
     shiseido.draw(json_num);
@@ -64,7 +64,7 @@ void SingleAgentAnalyze::onMouseDown(int x, int y){
 void SingleAgentAnalyze::keyPressed(int key){
     if(key == 'p'){
         mode = !mode;
-    }else if(key =='q'){
+    }else if(key ==OF_KEY_RETURN){
         shiseido.switch_mode();
     }
 }
