@@ -22,12 +22,15 @@ void ArtSpyDeforming::init(){
 }
 
 void ArtSpyDeforming::update(){
+
     rotation +=1.4;
     if(drawCircuitMode) circuitDrawer.updateCircuite();
     foundationDrawer.update();
 }
 
 void ArtSpyDeforming::draw(){
+    
+    
     backShader.load("","shader.frag");
     backShader.begin();
     backShader.setUniform1f("u_time", ofGetElapsedTimef());
@@ -35,8 +38,9 @@ void ArtSpyDeforming::draw(){
     ofRect(0,0,ofGetWidth(), ofGetHeight());
     backShader.end();
     
+    
     if(drawCircuitMode){
-        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
         circuitDrawer.drawCircuit();
         ofDisableBlendMode();
         ofDisableAlphaBlending();
@@ -68,13 +72,14 @@ void ArtSpyDeforming::draw(){
         ofDisableAlphaBlending();
         light.disable();
         glDisable(GL_LIGHTING);
+        drawSpyLogo();
     }
     
     ofEnableAlphaBlending();
     ofDisableDepthTest();
     ofDisableBlendMode();
     ofDisableAlphaBlending();
-    drawSpyLogo();
+ 
 }
 
 void ArtSpyDeforming::drawSpyLogo(){

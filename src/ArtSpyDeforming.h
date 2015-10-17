@@ -12,6 +12,7 @@
 #include "ofxAssimpModelLoader.h"
 #include "CircuitDrawer.h"
 #include "FoundationDrawer.h"
+#include "ofxRollingCam.h"
 
 class ArtSpyDeforming : public SceneElement {
 public:

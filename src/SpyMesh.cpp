@@ -11,13 +11,11 @@ void SpyMesh::update(){
     
     float * val = ofSoundGetSpectrum(1);
     modelSize = val[0] * 1;
-    graphDrawer.updateGraphParams();
-    markerDrawer.update();
+    //graphDrawer.updateGraphParams();
     if(JsonReceiver::getInstance().checkIsNewData()){
         agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
         agentDebug = false;
         agentNum++;
-        cout << agentNum << "agetn" << endl;
     }
     updateVertices();
     
@@ -64,8 +62,7 @@ void SpyMesh::draw(){
     ofDisableBlendMode();
     ofDisableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    graphDrawer.drawGraphGui();
-    markerDrawer.drawTargetMarker();
+    //graphDrawer.drawGraphGui();
     backShader.load("","shader.frag");
     backShader.begin();
     backShader.setUniform1f("u_time", ofGetElapsedTimef());
@@ -115,7 +112,6 @@ void SpyMesh::draw(){
     modelDrawer.drawPercentage();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,0,0);
-    
 }
 
 void SpyMesh::drawEmitter(){
@@ -149,7 +145,6 @@ void SpyMesh::init(){
     spiralDrawer.init(2000.0);
     garallyDrawer = *new GarallyDrawer();
     garallyDrawer.init();
-    markerDrawer.init(60);
     graphDrawer = *new GraphGuiDrawer();
 }
 

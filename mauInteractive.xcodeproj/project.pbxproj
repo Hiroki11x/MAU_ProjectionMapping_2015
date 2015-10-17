@@ -151,6 +151,7 @@
 		FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAAE95081BA58E9200C71B41 /* UserAgentManager.cpp */; };
 		FAC1B0711BA51AE80057ED25 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FACD666E1BC23B8500756856 /* DrawerSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACD666C1BC23B8500756856 /* DrawerSphere.cpp */; settings = {ASSET_TAGS = (); }; };
+		FACDC8A91BD0919A00D2BD35 /* SpyMeshSceneGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACDC8A71BD0919A00D2BD35 /* SpyMeshSceneGui.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAD915D71BCE2EEB00716998 /* CircuitDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD915D51BCE2EEB00716998 /* CircuitDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAD915DD1BCE886A00716998 /* TargetMarkerDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD915DB1BCE886A00716998 /* TargetMarkerDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FAF11CB71BBE6460008B96E0 /* SpyMeshIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF11CB51BBE6460008B96E0 /* SpyMeshIntro.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -874,6 +875,8 @@
 		FAC1B0CA1BA51BB50057ED25 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
 		FACD666C1BC23B8500756856 /* DrawerSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawerSphere.cpp; sourceTree = "<group>"; };
 		FACD666D1BC23B8500756856 /* DrawerSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerSphere.h; sourceTree = "<group>"; };
+		FACDC8A71BD0919A00D2BD35 /* SpyMeshSceneGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpyMeshSceneGui.cpp; sourceTree = "<group>"; };
+		FACDC8A81BD0919A00D2BD35 /* SpyMeshSceneGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpyMeshSceneGui.h; sourceTree = "<group>"; };
 		FAD915D51BCE2EEB00716998 /* CircuitDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircuitDrawer.cpp; sourceTree = "<group>"; };
 		FAD915D61BCE2EEB00716998 /* CircuitDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircuitDrawer.h; sourceTree = "<group>"; };
 		FAD915DB1BCE886A00716998 /* TargetMarkerDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TargetMarkerDrawer.cpp; sourceTree = "<group>"; };
@@ -1805,6 +1808,8 @@
 				FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */,
 				FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */,
 				FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */,
+				FACDC8A71BD0919A00D2BD35 /* SpyMeshSceneGui.cpp */,
+				FACDC8A81BD0919A00D2BD35 /* SpyMeshSceneGui.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -3139,6 +3144,7 @@
 				FAAE950A1BA58E9200C71B41 /* Connection.cpp in Sources */,
 				FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */,
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
+				FACDC8A91BD0919A00D2BD35 /* SpyMeshSceneGui.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
 				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,
 				FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */,

@@ -65,7 +65,7 @@ void CircuitDrawer::updateCircuite(){
             }
             addedPoint++;
         }else{
-            positionCounter[n] += ofRandom(0, 0.5);
+            positionCounter[n] += ofRandom(0, 1.0);
             if(positionCounter[n] > 1.0){
                 arrivedNextPoint[n] = true;
             }
@@ -73,7 +73,7 @@ void CircuitDrawer::updateCircuite(){
     }
     if(addedPoint == CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM) {
         waitFrames++;
-        if(waitFrames > 100) reset();
+        if(waitFrames > 30) reset();
     }
 }
 
@@ -83,10 +83,10 @@ void CircuitDrawer::drawCircuit(){
     ofSetLineWidth(3);
     glPointSize(15);
     for(int n = 0; n < 4; n++){
-        ofSetColor(0, 255, 255, 150);
+        ofSetColor(100, 255, 255, 100);
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
         circuit[n].draw();
-        ofSetColor(0, 255, 255, 150);
+        ofSetColor(100, 255, 255, 100);
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_POINTS);
         circuit[n].draw();
     }

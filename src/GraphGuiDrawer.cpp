@@ -31,7 +31,7 @@ void GraphGuiDrawer::drawRectBarGraph(){
     
     for(int i = 0; i < graphNum; i++){
         ofSetColor(100, 180, 150);
-        ofDrawBitmapString("elem" + ofToString(i + 1),5, 27 + 27 * i );
+        ofDrawBitmapString(ofToString(i + 1) + ofToString(graphParamatar[i]),5, 27 + 27 * i );
         ofSetColor(0, 100, 100);
         ofRect(50,16 + 27 * i,
                graphParamatar[i], 12);

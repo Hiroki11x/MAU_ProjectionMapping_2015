@@ -23,7 +23,6 @@
 #include "AgentAnalysis.h"
 #include "SpiralDrawer.h"
 #include "GarallyDrawer.h"
-#include "TargetMarkerDrawer.h"
 #include "GraphGuiDrawer.h"
 
 #define ADD_TRIANGLE_PER_TWEET 50
@@ -51,7 +50,6 @@ public:
     ofxRollingCam rollCam;
     SpiralDrawer spiralDrawer;
     GarallyDrawer garallyDrawer;
-    TargetMarkerDrawer markerDrawer;
     GraphGuiDrawer graphDrawer;
     ofShader backShader;
     vector<AgentAnalysis> agents;
