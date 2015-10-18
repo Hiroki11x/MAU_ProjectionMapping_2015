@@ -24,6 +24,7 @@ void AgentAnalysis::init(float scale){
 void AgentAnalysis::drawAgent(){
     ofPushMatrix();
     ofPushStyle();
+    if(mesh.vertices.size() == 0) return;
     ofLine(targetPodsition,(position + mesh.vertices.back()).rotated(ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed));

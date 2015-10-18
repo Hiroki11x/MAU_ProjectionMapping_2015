@@ -31,6 +31,10 @@ void SpyMesh::update(){
     
     if(useRollCam){
         rollCam.update();
+        if(spentFrames % 40 == 0){
+            rollCam.setRandomScale(1.0, 2.0);
+            rollCam.setRandomPos(360);
+        }
     }else{
         camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
         camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
@@ -122,6 +126,7 @@ void SpyMesh::draw(){
     
     ofPushStyle();
     ofSetColor(50, 255, 100);
+    ofDisableDepthTest();
     modelDrawer.drawPercentage();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,0,0);
@@ -257,14 +262,14 @@ void SpyMesh::keyPressed(int key){
             useRollCam = !useRollCam;
             break;
         case 'u':
-            rollCam.setRandomScale(1.5, 2.0);
+            rollCam.setRandomScale(1.0, 2.0);
             rollCam.setRandomPos(360);
             break;
         case 'i':
             rollCam.setRandomPos(360);
             break;
         case 'o':
-            rollCam.setRandomScale(1.5, 2.0);
+            rollCam.setRandomScale(1.0, 2.0);
             break;
         case 'g':
             rollCam.setPos(0, 0, 0);

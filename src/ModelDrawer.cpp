@@ -111,9 +111,10 @@ void ModelDrawer::drawModel(float scale, bool fill){
 };
 
 void ModelDrawer::drawPercentage(){
-    /*ofNoFill();
-    ofRect(50, 50, 400, 20);*/
     ofFill();
+    ofSetColor(80,120,80,100);
+    ofRect(40, 40, 944, 40);
+    ofSetColor(50,255,50,200);
     ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
 }
 
