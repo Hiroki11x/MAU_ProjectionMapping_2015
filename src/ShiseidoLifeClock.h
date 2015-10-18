@@ -11,20 +11,27 @@
 
 #include "ofMain.h"
 #include "JsonReceiver.h"
+#include "FontManager.h"
+#include "SingleUserManager.h"
 
 class ShiseidoLifeClock{
 public:
     static float start_time;
+    
+    void reset();
     void init();
     void draw(int num);
     void update(int num);
     void switch_mode();
     ofEasyCam cam;
 private:
+
+    static int json_num;
     int mode = 1;
     ofPath path;
     float max_angle;
-    vector<ofVec3f> vec;
+    vector<ofVec2f> vec;
+    vector<string> userNames;
     ofMesh mesh;
     void draw_bezier_map(int num);
     void draw_bezier_web(int num);

@@ -8,12 +8,15 @@
 
 #include "SingleAgent.h"
 
-
 void SingleAgent::init(){
     ofSetCircleResolution(32);
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
     set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));    
+}
+
+string SingleAgent::get_user_name(){
+    return this->username;
 }
 
 void SingleAgent::get_info_from_twitter(string name,string id, wstring text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -73,6 +76,21 @@ void SingleAgent::draw(float x, float y){
         }
     }
     
+    ofPopMatrix();
+}
+
+void SingleAgent::draw_line(float x, float y){
+    ofPushMatrix();
+    ofTranslate(x, y);
+    ofFill();
+    ofSetColor(0,255,0,ofRandom(0,170));
+    ofRect(0,-10,150,10);
+    ofSetColor(255);
+    FontManager::mfont.drawString(username, 0,0);
+    FontManager::mfont.drawString(id, 0,10);
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 0,20);
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 0,30);
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 0,40);
     ofPopMatrix();
 }
 

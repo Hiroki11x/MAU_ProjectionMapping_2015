@@ -28,8 +28,6 @@ void UserAgent::get_info_from_twitter(string name,string id, wstring text,int fr
     this->statuses_count = statuses_count;
     this->followers_count = followers_count;
     icon = image;
-    
-    
 }
 
 void UserAgent::calc_line_length(){

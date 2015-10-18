@@ -39,8 +39,8 @@ void GraphLog::draw(){
         ofNoFill();
         float extend = (float)ofGetWidth()/(valHistory.size()-1);//ここを大きくすればするほど間隔が大きくなって早くなる
         
-        ofSetLineWidth(0.001);
-        ofSetColor(0,200,0,100);//ログの線の色
+        ofSetLineWidth(0.007);
+        ofSetColor(0,200,0,150);//ログの線の色
         ofBeginShape();
         for (unsigned int i = 0; i < valHistory.size(); i++){
             if( i == 0 ){//左端の点

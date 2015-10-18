@@ -21,8 +21,8 @@
 class ofxSuperLogUtil{
 private:
 public:
-    void init();
-    void set_log(string tag, string arg);
+    static void init();
+    static void set_log(string tag, string arg);
 };
 
 #endif /* defined(__mauInteractive__ofxSuperLogUtil__) */

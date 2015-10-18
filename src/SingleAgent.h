@@ -15,7 +15,6 @@
 #include "ofMain.h"
 #include "FontManager.h"
 
-
 class SingleAgent{
     
 private:
@@ -34,6 +33,7 @@ private:
     ofColor color;
     
 public:
+    string get_user_name();
     ofVec2f position;
     SingleAgent(){};
     void set_position(ofVec2f _pos);
@@ -42,6 +42,7 @@ public:
     
     void update();
     
+    void draw_line(float x, float y);
     void draw(float x, float y);
     void init();
     
