@@ -10,6 +10,7 @@
 
 void SingleAgentAnalyze::reset(){
     user_agent.clear();
+    shiseido.reset();
 }
 
 

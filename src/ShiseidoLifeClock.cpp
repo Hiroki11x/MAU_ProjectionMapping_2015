@@ -9,26 +9,33 @@
 #include "ShiseidoLifeClock.h"
 
 float ShiseidoLifeClock::start_time;
+int ShiseidoLifeClock::json_num;
+
+void ShiseidoLifeClock::reset(){
+    userNames.clear();
+}
 
 void ShiseidoLifeClock::switch_mode(){//使わない
     mode = (mode+1)%5;
+    userNames.clear();
 }
 
 void ShiseidoLifeClock::init(){
     start_time = ofGetElapsedTimef();
+    json_num =0;
     mesh.clear();
     mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
     vec.clear();
     for(int i = 0;i< 200 ;i++){
         vec.push_back(ofVec3f());
-        vec.back() = ofVec3f(
+        vec.back() = ofVec2f(
                              cos(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
-                             sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
-                             0
+                             sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI)
                              );
         
     }
 }
+
 
 
 void ShiseidoLifeClock::update(int num){
@@ -39,18 +46,26 @@ void ShiseidoLifeClock::update(int num){
     
     if (num>vec.size()) {//numの方が多かったらvecをpush_back
         while (num>vec.size()) {
-            vec.push_back(ofVec3f());
+            vec.push_back(ofVec2f());
         }
     }
     
     for(int i = 0;i< vec.size() ;i++){
-        vec.at(i) = ofVec3f(
+        vec.at(i) = ofVec2f(
                             cos(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI),
-                            sin(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI),
-                            ofSignedNoise(ofGetElapsedTimef()/100.0,i)/2.0f
+                            sin(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI)
                             );
         vec.at(i)*= 300;
     }
+    
+    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){//jsonが増えてたら受け取っておく
+        int add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num -1;
+        for(int i = 0; i < add_num;i++){
+            userNames.push_back(JsonReceiver::getInstance().getUsersInfo().at(ShiseidoLifeClock::json_num).userName);
+            ShiseidoLifeClock::json_num++;
+        }
+    }
+    
 }
 
 void ShiseidoLifeClock::draw(int num){
@@ -79,16 +94,14 @@ void ShiseidoLifeClock::draw(int num){
 void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ
     update(num);
     ofNoFill();
-    ofSetColor(155,100);
     mesh.clearVertices();
     mesh.clearColors();
 
     
-    
     int index1,index2,index3;
     ofPushMatrix();
     ofTranslate(3*ofGetWidth()/5, ofGetHeight()/2);
-    cam.begin();
+//    cam.begin();
     for(int i = 0;i<vec.size();i++){
         index1 = pow(ofSignedNoise(i,ofGetFrameNum()/1000),2)*vec.size();
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/1000),2)*vec.size();
@@ -97,24 +110,27 @@ void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ
         mesh.addVertex(vec.at(index1)*0.7);
         
         mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
-        mesh.addVertex(vec.at(index3)*1.1);
+        mesh.addVertex(vec.at(index3)*1.25);
         
-//        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
-//        mesh.addVertex(vec.at(i)*1.45);
         
         mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
-        mesh.addVertex(vec.at(i)*1.3);
+        mesh.addVertex(vec.at(i)*1.5);
         
-        
-//        ofCircle(vec.at(i)*1.45,3);
+        ofSetColor(170,120);
         ofCircle(vec.at(index1)*0.7,3);
-        ofCircle(vec.at(index3)*1.3,3);
-        ofCircle(vec.at(index3)*1.1,3);
+        ofCircle(vec.at(index3)*1.5,3);
+        ofCircle(vec.at(index3)*1.25,3);
+        
+        if(i<userNames.size()){
+            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),170);
+            FontManager::mfont.drawString(userNames.at(i), vec.at(index3).x*1.5,vec.at(index3).y*1.5);
+        }
     }
+    
     mesh.draw();
-    cam.end();
-    cam.setPosition(0,0,500*(1+sin(ofGetElapsedTimef()/10)));
-    cam.lookAt(mesh.getVertices().at(index1));
+//    cam.end();
+//    cam.setPosition(ofVec3f(0,0,200*(1.5+sin(ofGetElapsedTimef()))));
+//    cam.lookAt(mesh.getVertices().at(index1));
     ofPopMatrix();
 
 }
@@ -162,7 +178,7 @@ void ShiseidoLifeClock::draw_bezier_map(int num){//一番それっぽいやつ
                  vec.at(index3).x/4,vec.at(index3).y/4,
                  vec.at(index3).x,vec.at(index3).y);
         
-        ofCircle(vec.at(index3)*1.01,2);
+        ofCircle(vec.at(index3)*1.01,3);
     }
     ofPopMatrix();
 }
