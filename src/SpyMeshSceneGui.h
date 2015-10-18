@@ -28,7 +28,6 @@ public:
     void init();
     void drawGui(vector<AgentAnalysis> agents);
     void updateGui();
-    
  
     ofxAssimpModelLoader DNAmodel;
     ofxTrueTypeFontUL2 * font;
@@ -44,6 +43,17 @@ public:
     float middleDeg;
     float outsideDeg;
     
+    bool drawDNAmode = false;
+    float dnaWindowHeight;
+    
+    bool drawTargetLineMode = false;
+    bool targetMoving;
+    float targetWaitFrame;
+    float targetCircleSize;
+    ofVec2f position;
+    ofVec2f nextPosition;
+    ofVec2f difPosition;
+    
     int befAgentNum;
     vector<newAgentWave> newAgentWaves;
     
@@ -53,6 +63,8 @@ private:
     void drawAnalyzer();
     void drawFoundation();
     void initFoundation();
+    void drawDNA();
+    void drawTargetLine();
     int entryNum();
 };
 #endif

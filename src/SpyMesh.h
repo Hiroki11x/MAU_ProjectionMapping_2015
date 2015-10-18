@@ -62,7 +62,7 @@ public:
     int agentNum;
     float modelSize;
     float lineEmitPointDistance;
-    bool useRollCam = false;
+    bool useRollCam = true;
     bool modelDrawMode = true;
     bool coloerMeshDrawMode = false;
     bool randomTrianlgeDrawMode = false;

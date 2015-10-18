@@ -75,7 +75,7 @@ void SpyMesh::draw(){
     }
     
     gui.drawGui(agents);
-    
+
     ofPushMatrix();
     ofPushStyle();
     ofEnableAlphaBlending();
@@ -257,24 +257,30 @@ void SpyMesh::keyPressed(int key){
             trailMode = !trailMode;
             ofSetBackgroundAuto(!trailMode);
             break;
-        //CamSettings
         case 'y':
-            useRollCam = !useRollCam;
+            gui.drawDNAmode = !gui.drawDNAmode;
             break;
         case 'u':
+            gui.drawTargetLineMode = !gui.drawTargetLineMode;
+            break;
+            //CamSettings
+        case 'Y':
+            useRollCam = !useRollCam;
+            break;
+        case 'U':
             rollCam.setRandomScale(1.0, 2.0);
             rollCam.setRandomPos(360);
             break;
-        case 'i':
+        case 'I':
             rollCam.setRandomPos(360);
             break;
-        case 'o':
+        case 'O':
             rollCam.setRandomScale(1.0, 2.0);
             break;
-        case 'g':
+        case 'G':
             rollCam.setPos(0, 0, 0);
             break;
-        case 'h':
+        case 'H':
             rollCam.setScale(1.2);
             break;
         case 'P':
