@@ -11,9 +11,9 @@
 
 #include "SceneElement.h"
 #include "ofMain.h"
-#include "SingleAgent.h"
 #include "JsonReceiver.h"
 #include "ShiseidoLifeClock.h"
+#include "SingleUserManager.h"
 
 class SingleAgentAnalyze : public SceneElement {
     
@@ -30,8 +30,7 @@ private:
     ShiseidoLifeClock shiseido;
     
 public:
-    static vector<SingleAgent *> user_agent;
-    
+
     virtual void reset() override;
     virtual void update() override;
     virtual void draw() override;

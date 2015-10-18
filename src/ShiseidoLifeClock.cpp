@@ -111,10 +111,10 @@ void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ
         ofCircle(vec.at(index3)*1.5,3);
         ofCircle(vec.at(index3)*1.25,3);
         
-//        if(i<SingleAgentAnalyze::user_agent.size()){
-//            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),170);
-//            FontManager::mfont.drawString(SingleAgentAnalyze::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.5,vec.at(index3).y*1.5);
-//        }
+        if(i<SingleUserManager::user_agent.size()){
+            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),170);
+            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.5,vec.at(index3).y*1.5);
+        }
     }
     
     mesh.draw();

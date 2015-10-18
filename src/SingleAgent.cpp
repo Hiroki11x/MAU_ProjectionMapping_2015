@@ -8,7 +8,6 @@
 
 #include "SingleAgent.h"
 
-
 void SingleAgent::init(){
     ofSetCircleResolution(32);
     registertime = ofGetSystemTime();

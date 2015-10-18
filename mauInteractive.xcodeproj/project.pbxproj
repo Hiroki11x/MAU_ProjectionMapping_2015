@@ -40,6 +40,7 @@
 		4E5ED6DB1BC12A19004F1AF6 /* SwipeMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6D91BC12A19004F1AF6 /* SwipeMode.cpp */; };
 		4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6DD1BC12A76004F1AF6 /* StrechyRectSwiper.cpp */; };
 		4E5ED6E31BC12AD0004F1AF6 /* SemiCirclePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6E11BC12AD0004F1AF6 /* SemiCirclePath.cpp */; };
+		4E62473A1BD3815400D45AC0 /* SingleUserManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E6247381BD3815400D45AC0 /* SingleUserManager.cpp */; };
 		4E735F081BCE36BF00DA9F85 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E735F061BCE36BF00DA9F85 /* JsonRecieveThread.cpp */; };
 		4E76325F1BC1758E002F2530 /* AlphaSwiper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E76325D1BC1758E002F2530 /* AlphaSwiper.cpp */; };
 		4E76329B1BC2147B002F2530 /* ofxSuperLogUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E7632991BC2147B002F2530 /* ofxSuperLogUtil.cpp */; };
@@ -269,6 +270,8 @@
 		4E5ED6DE1BC12A76004F1AF6 /* StrechyRectSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrechyRectSwiper.h; sourceTree = "<group>"; };
 		4E5ED6E11BC12AD0004F1AF6 /* SemiCirclePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SemiCirclePath.cpp; sourceTree = "<group>"; };
 		4E5ED6E21BC12AD0004F1AF6 /* SemiCirclePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemiCirclePath.h; sourceTree = "<group>"; };
+		4E6247381BD3815400D45AC0 /* SingleUserManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleUserManager.cpp; sourceTree = "<group>"; };
+		4E6247391BD3815400D45AC0 /* SingleUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleUserManager.h; sourceTree = "<group>"; };
 		4E735F061BCE36BF00DA9F85 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
 		4E735F071BCE36BF00DA9F85 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
 		4E76325D1BC1758E002F2530 /* AlphaSwiper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlphaSwiper.cpp; sourceTree = "<group>"; };
@@ -1327,6 +1330,8 @@
 			children = (
 				4EC047941BCB716900D069EB /* SingleAgent.cpp */,
 				4EC047951BCB716900D069EB /* SingleAgent.h */,
+				4E6247381BD3815400D45AC0 /* SingleUserManager.cpp */,
+				4E6247391BD3815400D45AC0 /* SingleUserManager.h */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -2243,6 +2248,7 @@
 				4E88A24D1BBE11AF001E8306 /* testScene.cpp in Sources */,
 				4EE77D1D1BC62B840070C805 /* ParticleConnection.cpp in Sources */,
 				4EB7A40F1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp in Sources */,
+				4E62473A1BD3815400D45AC0 /* SingleUserManager.cpp in Sources */,
 				4E76329B1BC2147B002F2530 /* ofxSuperLogUtil.cpp in Sources */,
 				4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */,
 				4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */,
