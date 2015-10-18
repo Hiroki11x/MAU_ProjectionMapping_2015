@@ -9,12 +9,32 @@
 #define SpyMeshSceneGui_h
 
 #include "ofMain.h"
+#include "ofxTrueTypeFontUL2.h"
+#include "AgentAnalysis.h"
 class SpyMeshSceneGui {
 public:
+    typedef struct{
+        float size;
+        float index;
+        int shapeType;
+        float rotation;
+    } newAgentWave;
+    
     void init();
-    void drawGui();
+    void drawGui(vector<AgentAnalysis> agents);
     void updateGui();
+ 
+    ofxTrueTypeFontUL2 * font;
+    ofxTrueTypeFontUL2 * nameFont;
     
+    int befAgentNum;
+    vector<newAgentWave> newAgentWaves;
     
+private:
+    void drawBackLine();
+    void drawEntry(vector<AgentAnalysis> agents);
+    int entryNum();
+    
+    class EntryEntity;
 };
 #endif

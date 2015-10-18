@@ -8,10 +8,9 @@
 #include "SpyMesh.h"
 
 void SpyMesh::update(){
-    
+    gui.updateGui();
     float * val = ofSoundGetSpectrum(1);
     modelSize = val[0] * 1;
-    //graphDrawer.updateGraphParams();
     if(JsonReceiver::getInstance().checkIsNewData()){
         agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
         agentDebug = false;
@@ -42,14 +41,13 @@ void SpyMesh::update(){
 }
 
 void SpyMesh::updateVertices(){
-    
+    if(spentFrames % 3 != 0) return;
     for(int n = 0; n < agents.size(); n++){
-        for(float f = 0; f < 1; f+=ADD_TRIANGLE_PER_AGENT_TRIANGLE){
+        for(float f = 0; f < 1; f+= agents.at(n).eraseSpeed){
             agents.at(n).removeVertices();
         }
         if(agents.at(n).removeVertices()){
             agents.at(n).targetPodsition = modelDrawer.addVertex();
-            cout << "addVertex" << endl;
         }else{
             agents.erase(agents.begin() + n);
             n--;
@@ -62,18 +60,41 @@ void SpyMesh::draw(){
     ofDisableBlendMode();
     ofDisableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    //graphDrawer.drawGraphGui();
-    backShader.load("","shader.frag");
-    backShader.begin();
-    backShader.setUniform1f("u_time", ofGetElapsedTimef());
-    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-    ofRect(0,0,ofGetWidth(), ofGetHeight());
-    backShader.end();
-   
+    ofEnableAlphaBlending();
+    if(!trailMode){
+        backShader.load("","shader.frag");
+        backShader.begin();
+        backShader.setUniform1f("u_time", ofGetElapsedTimef());
+        backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+        ofRect(0,0,ofGetWidth(), ofGetHeight());
+        backShader.end();
+    }
+    
+    gui.drawGui(agents);
+    
     ofPushMatrix();
     ofPushStyle();
     ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+    if(trailMode){
+        ofDisableDepthTest();
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        ofEnableAlphaBlending();
+        //ofDisableBlendMode();
+        //ofDisableAlphaBlending();
+        //ofEnableBlendMode(OF_BLENDMODE_DISABLED);
+        ofSetColor(0, 0, 0, 30);
+        ofRect(0,0, ofGetWidth(), ofGetHeight());
+        //ofRect(0,0, 100, 100);
+        ofFill();
+       // forTrailSquare.draw();
+        /*ofDisableBlendMode();
+        ofDisableAlphaBlending();*/
+    }else{
+        ofEnableDepthTest();
+    }
+    
     if(useRollCam){
         rollCam.begin();
     }else{
@@ -82,7 +103,6 @@ void SpyMesh::draw(){
     }
     
     ofSetColor(50, 255, 50 , 150);
-    
     
     ofSetLineWidth(0.3);
     if(modelDrawMode) {
@@ -136,6 +156,7 @@ void SpyMesh::init(){
     SoundManager::play();
     initModelDrawer();
     initLineEmitPoints();
+    initForTrail();
     light.setup();
     rollCam.setup();
     rollCam.setCamSpeed(0.1);
@@ -145,7 +166,8 @@ void SpyMesh::init(){
     spiralDrawer.init(2000.0);
     garallyDrawer = *new GarallyDrawer();
     garallyDrawer.init();
-    graphDrawer = *new GraphGuiDrawer();
+    gui = *new SpyMeshSceneGui();
+    gui.init();
 }
 
 void SpyMesh::initLineEmitPoints(){
@@ -171,6 +193,14 @@ void SpyMesh::initModelDrawer(){
     sphere = *new DrawerSphere(0.15);
 }
 
+void SpyMesh::initForTrail(){
+    forTrailSquare.addVertex(ofPoint(0,0,0));
+    forTrailSquare.addVertex(ofPoint(ofGetWidth(),0,0));
+    forTrailSquare.addVertex(ofPoint(ofGetWidth(),ofGetHeight(),0));
+    forTrailSquare.addVertex(ofPoint(0,ofGetHeight(),0));
+    forTrailSquare.setMode(OF_PRIMITIVE_LINE_LOOP);
+}
+
 void SpyMesh::onMouseDown(int x, int y){
     mouseX = x;
     mouseY = y;
@@ -178,6 +208,10 @@ void SpyMesh::onMouseDown(int x, int y){
 
 void SpyMesh::reset(){
     modelDrawer.reset();
+}
+
+void SpyMesh::stop(){
+    ofSetBackgroundAuto(true);
 }
 
 void SpyMesh::keyPressed(int key){
@@ -230,6 +264,10 @@ void SpyMesh::keyPressed(int key){
         case 'j':
             modelDrawer.changeRandomExpandMesh();
             break;
+        case 'p':
+            trailMode = !trailMode;
+            ofSetBackgroundAuto(!trailMode);
+            break;
         //CamSettings
         case 'y':
             useRollCam = !useRollCam;
@@ -250,7 +288,7 @@ void SpyMesh::keyPressed(int key){
         case 'h':
             rollCam.setScale(1.2);
             break;
-        case 'p':
+        case 'P':
             agentDebug = true;
             break;
         case 'R':

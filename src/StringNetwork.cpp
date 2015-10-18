@@ -95,12 +95,13 @@ void StringNetwork::draw(){
         int lineNum = 0;
         for(int j = i; j < agentNum && lineNum < agentNum/10.0; j++){
             if(networkAgents.at(i).NorP.at(j) < 0) {
-                ofSetColor(50, 255, 50, 250);
+                ofSetColor(50, 255, 50, 150);
             }else{
-                ofSetColor(100, 255, 255, 250);
+                ofSetColor(100, 255, 255, 150);
             }
-            ofSetLineWidth(400.0
-                           /(networkAgents.at(i).position - networkAgents.at(j).position).length());
+           /* ofSetLineWidth(400.0
+                           /(networkAgents.at(i).position - networkAgents.at(j).position).length());*/
+            ofSetLineWidth(0.3);
             ofLine(networkAgents.at(i).position, networkAgents.at(j).position);
             lineNum++;
         }

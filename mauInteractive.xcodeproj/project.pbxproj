@@ -1771,6 +1771,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		FA4F4F431BD360FE001D4E4A /* guiDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				FACDC8A71BD0919A00D2BD35 /* SpyMeshSceneGui.cpp */,
+				FACDC8A81BD0919A00D2BD35 /* SpyMeshSceneGui.h */,
+				FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */,
+				FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */,
+			);
+			name = guiDrawer;
+			sourceTree = "<group>";
+		};
 		FA587D0A1BC4DCDE003FCCCA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1809,10 +1820,6 @@
 				FA64A9171BCF3C5800A686E4 /* FoundationDrawer.h */,
 				FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */,
 				FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */,
-				FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */,
-				FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */,
-				FACDC8A71BD0919A00D2BD35 /* SpyMeshSceneGui.cpp */,
-				FACDC8A81BD0919A00D2BD35 /* SpyMeshSceneGui.h */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -1820,6 +1827,7 @@
 		FA587D111BC4DD43003FCCCA /* SceneElement */ = {
 			isa = PBXGroup;
 			children = (
+				FA4F4F431BD360FE001D4E4A /* guiDrawer */,
 				FA587E121BC80251003FCCCA /* ArtSpyDeforming.cpp */,
 				FA587E131BC80251003FCCCA /* ArtSpyDeforming.h */,
 				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,

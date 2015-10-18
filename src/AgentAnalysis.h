@@ -21,8 +21,9 @@ public:
     ofMesh mesh;
     ofVec3f targetPodsition;
     ofVec3f position;
-    ofxTrueTypeFontUL2* font;
+    //ofxTrueTypeFontUL2* font;
     wstring userName;
+    float eraseSpeed;
 
     void drawAgent();
     void drawLine();

@@ -31,8 +31,6 @@ void ArtSpyDeforming::update(){
 void ArtSpyDeforming::draw(){
     
     
-
-    
     if(drawCircuitMode){
         ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
         circuitDrawer.drawCircuit();
