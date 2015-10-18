@@ -14,19 +14,14 @@
 
 class NetworkAgent {
 public:
-    
+    int moveFrame;
     ofVec3f position;
     ofVec3f nextPosition;
     ofVec3f befPosition;
-    int moveFrame;
     vector<float> NorP;
     wstring name;
     
-    float noiseElementX,noiseElementY;
-    
-    void moveToNextPosition();
     void validate(wstring agentName);
-    
     NetworkAgent();
 };
 #endif

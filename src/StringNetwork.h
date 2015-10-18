@@ -23,17 +23,6 @@ public:
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
     
-    ofxTrueTypeFontUL2 font;
-    ofEasyCam camera;
-    ofLight light;
-    vector<NetworkAgent> networkAgents;
-    ofShader backShader;
-    ofVec3f cameraPosition;
-    ofVec3f befCameraPosition;
-    ofVec3f nextCameraPosition;
-    ofVec3f cameraLookPoint;
-    ofVec3f befCameraLookPoint;
-    ofVec3f nextCameraLookPoint;
     int cameraRotateFrames;
     int rotateFrame;
     int waitFrame;
@@ -42,7 +31,17 @@ public:
     int spentFrames;
     float expandingArea;
     float cameraZ;
-   
+    ofxTrueTypeFontUL2 font;
+    ofEasyCam camera;
+    ofShader backShader;
+    ofVec3f cameraPosition;
+    ofVec3f befCameraPosition;
+    ofVec3f nextCameraPosition;
+    ofVec3f cameraLookPoint;
+    ofVec3f befCameraLookPoint;
+    ofVec3f nextCameraLookPoint;
+    vector<NetworkAgent> networkAgents;
+    
     void updateAgents();
 };
 #endif

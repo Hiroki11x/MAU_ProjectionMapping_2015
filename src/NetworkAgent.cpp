@@ -6,18 +6,11 @@
 //
 //
 #include "NetworkAgent.h"
-
-void NetworkAgent::moveToNextPosition(){
-    position = nextPosition;
-}
-
 void NetworkAgent::validate(wstring agentName){
     name = agentName;
 }
 
 NetworkAgent::NetworkAgent(){
-    noiseElementX = 0;
-    noiseElementY = 0;
     position = ofVec3f(ofRandom(-200,200),ofRandom(-200,200),ofRandom(-200,200));
     nextPosition = ofVec3f(ofRandom(-200,200),ofRandom(-200,200),ofRandom(-200,200));
     befPosition = ofVec3f(position.x,position.y,position.z);

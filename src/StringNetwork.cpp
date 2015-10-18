@@ -35,34 +35,11 @@ void StringNetwork::init(){
 void StringNetwork::update(){
     updateAgents();
     spentFrames++;
-    /*cameraRotateFrames++;
-    if(cameraRotateFrames < waitFrame){
-        if(cameraRotateFrames < rotateFrame){
-            cameraPosition += (nextCameraPosition - befCameraPosition) / float(rotateFrame);
-            cameraLookPoint += (nextCameraLookPoint - befCameraLookPoint) / float(rotateFrame);
-            camera.setPosition(cameraPosition);
-            camera.lookAt(cameraLookPoint);
-        }
-    }else{
-        cameraRotateFrames = 0;
-        befCameraPosition = cameraPosition;
-        nextCameraPosition = ofVec3f(ofRandom(-expandingArea, expandingArea), ofRandom(-expandingArea, expandingArea),ofRandom(-expandingArea, expandingArea));
-        befCameraLookPoint = cameraLookPoint;
-        nextCameraLookPoint = ofPoint(ofRandom(-(expandingArea - 200),expandingArea - 200), ofRandom(-(expandingArea - 200), expandingArea - 200),ofRandom(-(expandingArea - 200),expandingArea - 200));
-        waitFrame = ofRandom(50,100);
-        rotateFrame = ofRandom(10,50);
-    }*/
-
-  /*  camera.setPosition(-ofGetWidth()/2,-ofGetHeight()/2, -cameraZ);
-    camera.lookAt(ofPoint(-ofGetWidth()/2, -ofGetHeight()/2, 0));*/
-   // camera.setPosition(0,0, -cameraZ);
-   // camera.lookAt(ofPoint(0,0, 0));
     if(!(spentFrames % 10 == 0)) return;
     if(!(agentNum < MAX_AGENTS)) return;
     if(JsonReceiver::getInstance().updateNum <= agentNum) return;
     networkAgents.at(agentNum).validate(JsonReceiver::getInstance().getUserNames().at(agentNum));
     agentNum++;
-    
 }
 
 void StringNetwork::draw(){
@@ -85,12 +62,6 @@ void StringNetwork::draw(){
     ofEnableDepthTest();
     ofEnableAlphaBlending();
     ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
-   /* light.setPosition(ofGetWidth()/2, ofGetHeight()/2, cameraZ);
-    light.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2, 0));*/
-    /*light.setPosition(0, 0, cameraZ);
-    light.lookAt(ofPoint(0, 0, 0));
-    light.enable();
-    glEnable(GL_LIGHTING);*/
     for(int i = 0; i < agentNum; i++){
         int lineNum = 0;
         for(int j = i; j < agentNum && lineNum < agentNum/10.0; j++){
@@ -99,8 +70,6 @@ void StringNetwork::draw(){
             }else{
                 ofSetColor(100, 255, 255, 150);
             }
-           /* ofSetLineWidth(400.0
-                           /(networkAgents.at(i).position - networkAgents.at(j).position).length());*/
             ofSetLineWidth(0.3);
             ofLine(networkAgents.at(i).position, networkAgents.at(j).position);
             lineNum++;
@@ -112,11 +81,8 @@ void StringNetwork::draw(){
         glTranslatef(networkAgents.at(i).position.x, networkAgents.at(i).position.y, networkAgents.at(i).position.z);
         glRotatef(i * 10, 1, 0.1, -0.3);
         font.drawString(networkAgents.at(i).name,0,0,0);
-       // networkAgents.at(i).moveToNextPosition();
         glPopMatrix();
     }
-    light.disable();
-    glDisable(GL_LIGHTING);
     camera.end();
     ofDisableAlphaBlending();
     ofDisableBlendMode();
@@ -125,38 +91,16 @@ void StringNetwork::draw(){
 }
 
 void StringNetwork::updateAgents(){
-    
     for(int i = 0; i< agentNum; i++){
-        if((networkAgents.at(i).nextPosition - networkAgents.at(i).position).length() < 20 || abs(networkAgents.at(i).position.x) > expandingArea ||abs(networkAgents.at(i).position.y) > expandingArea || abs(networkAgents.at(i).position.z) > expandingArea){
-            cout << "inti" << i << endl;
+        if((networkAgents.at(i).nextPosition - networkAgents.at(i).position).length() < 20
+           || abs(networkAgents.at(i).position.x) > expandingArea ||abs(networkAgents.at(i).position.y) > expandingArea || abs(networkAgents.at(i).position.z) > expandingArea){
             networkAgents.at(i).position = ofVec3f(networkAgents.at(i).nextPosition.x,networkAgents.at(i).nextPosition.y,networkAgents.at(i).nextPosition.z);
             networkAgents.at(i).nextPosition = ofVec3f(ofRandom(-expandingArea,expandingArea),ofRandom(-expandingArea,expandingArea),ofRandom(-expandingArea,expandingArea));
             networkAgents.at(i).befPosition = networkAgents.at(i).position;
             networkAgents.at(i).moveFrame = ofRandom(60,300);
         }else{
-          //  cout << spentFrames << ":add:" << i << "diff@" << networkAgents.at(i).difPosition <<endl;
             networkAgents.at(i).position +=  ofVec3f(networkAgents.at(i).nextPosition - networkAgents.at(i).befPosition) / float(networkAgents.at(i).moveFrame);
         }
-       /* networkAgents.at(i).nextPosition = networkAgents.at(i).position;
-        for(int j = 0; j < agentNum; j++){
-            networkAgents.at(i).nextPosition += 0.0020 * networkAgents.at(i).NorP.at(j) * (networkAgents.at(j).position - networkAgents.at(i).position);
-        }*/
-        /*if(networkAgents.at(i).position.x > ofGetWidth() + expandingArea
-           || networkAgents.at(i).position.x < -expandingArea
-           || networkAgents.at(i).position.y > ofGetHeight() + expandingArea
-           || networkAgents.at(i).position.y < -expandingArea){
-            networkAgents.at(i).nextPosition += 0.02 * (ofVec2f(ofGetWidth()/2,ofGetHeight()/2) - networkAgents.at(i).position);
-        }else{
-            networkAgents.at(i).nextPosition += 0.002 * (ofVec2f(ofGetWidth()/2,ofGetHeight()/2) - networkAgents.at(i).position);
-        }*/
-       /*  if(networkAgents.at(i).position.x > expandingArea
-         || networkAgents.at(i).position.x < -expandingArea
-         || networkAgents.at(i).position.y > expandingArea
-         || networkAgents.at(i).position.y < -expandingArea){
-         networkAgents.at(i).nextPosition += 0.02 * (ofVec3f(0,0,0) - networkAgents.at(i).position);
-         }else{
-         networkAgents.at(i).nextPosition += 0.002 * (ofVec3f(0,0,0) - networkAgents.at(i).position);
-         }*/
     }
 }
 
