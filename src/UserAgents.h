@@ -42,7 +42,6 @@ private:
     FadeBackgroundUtil back_animation;
     StrechyRectSwiper strechyRectSwiper;
     AlphaSwiper alphaSwiper;
-    ofxSuperLogUtil superLogUtil;
     MatrixGenerator matrix_generator;
     
     vector<Connection *> connections;
@@ -51,7 +50,7 @@ private:
     int connectionSize;
     
     vector<ExplodeAnimation> explodeanimations;
-    void createExplodeAnimation(ofVec2f pos);
+    void createExplodeAnimation(ofVec3f pos);
     
     void addConnection(int startIndex,int endIndex,float duration);
     int  getUserAgentSize();

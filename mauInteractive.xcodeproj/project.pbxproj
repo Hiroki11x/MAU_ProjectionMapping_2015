@@ -985,6 +985,24 @@
 			name = SemiCirclePath;
 			sourceTree = "<group>";
 		};
+		4E62473B1BD385D900D45AC0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4E6247381BD3815400D45AC0 /* SingleUserManager.cpp */,
+				4E6247391BD3815400D45AC0 /* SingleUserManager.h */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		4E62473C1BD385FB00D45AC0 /* BaseAgent */ = {
+			isa = PBXGroup;
+			children = (
+				4EC047941BCB716900D069EB /* SingleAgent.cpp */,
+				4EC047951BCB716900D069EB /* SingleAgent.h */,
+			);
+			name = BaseAgent;
+			sourceTree = "<group>";
+		};
 		4E76325C1BC17572002F2530 /* AlphaSwiper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1108,7 @@
 				4ECB40871BC50EBE004EB9AF /* Json */,
 				4E88A2561BBE1223001E8306 /* AnimationUtils */,
 				4E88A2551BBE11E5001E8306 /* MainApp */,
+				4E62473C1BD385FB00D45AC0 /* BaseAgent */,
 				4E88A2541BBE11CD001E8306 /* Scene */,
 			);
 			path = src;
@@ -1119,7 +1138,6 @@
 		4E88A2561BBE1223001E8306 /* AnimationUtils */ = {
 			isa = PBXGroup;
 			children = (
-				4EACBCBF1BCBEA3900D0AAC7 /* ShiseidoLifeClock */,
 				4EE77D161BC62AD50070C805 /* ExplodeAnimation */,
 				4E7633121BC256DB002F2530 /* PostGlitch */,
 				4E12E4801BBEF40A001D9BA2 /* Delaunay */,
@@ -1328,10 +1346,8 @@
 		4EC047931BCB715700D069EB /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				4EC047941BCB716900D069EB /* SingleAgent.cpp */,
-				4EC047951BCB716900D069EB /* SingleAgent.h */,
-				4E6247381BD3815400D45AC0 /* SingleUserManager.cpp */,
-				4E6247391BD3815400D45AC0 /* SingleUserManager.h */,
+				4EACBCBF1BCBEA3900D0AAC7 /* ShiseidoLifeClock */,
+				4E62473B1BD385D900D45AC0 /* Base */,
 			);
 			name = Class;
 			sourceTree = "<group>";

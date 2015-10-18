@@ -19,10 +19,10 @@ void UserAgents::reset(){
 }
 
 void UserAgents::init(){
-    superLogUtil.init();//Logのセットアップ
+    ofxSuperLogUtil::init();//Logのセットアップ
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
     json_num = 0;
-    superLogUtil.set_log("init", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
+    ofxSuperLogUtil::set_log("init", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
     
     back_animation.set_fade_duration(2000);
     
@@ -36,7 +36,7 @@ void UserAgents::init(){
     isMoveCam = false;
     isBackGround = false;
     
-    superLogUtil.set_log("init","call useragnts init()");
+    ofxSuperLogUtil::set_log("init","call useragnts init()");
     
 }
 
@@ -47,7 +47,6 @@ void UserAgents::update(){
 //    for(int i = 0; i < userAgentArray.size(); i++){
 //        userAgentArray.at(i)->update();//回転アニメーションとか
 //    }
-    
 
     if (userAgentArray.size()>0) {
 
@@ -85,10 +84,10 @@ void UserAgents::draw(){
     for(int i = 0; i < userAgentArray.size(); i++){
         userAgentArray.at(i)->draw();
     }
-//    
-//    for(int i=0; i<explodeanimations.size();i++){
-//        explodeanimations.at(i).draw();
-//    }
+    
+    for(int i=0; i<explodeanimations.size();i++){
+        explodeanimations.at(i).draw();
+    }
 
     cam.end();
     ofDrawBitmapString("userAgentArray.size()"+ofToString(userAgentArray.size()), 30,40);
@@ -131,7 +130,7 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::SemiCircle";
     }
     strechyRectSwiper.init();
-    superLogUtil.set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
+    ofxSuperLogUtil::set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
     
     check_agent_size(10);//10個agent消す
 }
@@ -144,7 +143,7 @@ void UserAgents::check_is_json_new(){
         add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
         check_agent_size(add_num);
         addAgent(add_num);
-        superLogUtil.set_log("check_is_json_new", ofToString(add_num));
+        ofxSuperLogUtil::set_log("check_is_json_new", ofToString(add_num));
     }
 }
 
@@ -196,13 +195,15 @@ void UserAgents::addAgent(int add_num){
 //                                                     JsonImageRecieveThread::get_icons().at(json_num)
                                                      JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL
                                                      );
-//        createExplodeAnimation(pos2f);
+//        createExplodeAnimation(pos3f);
         json_num++;//json_numはここで
-        superLogUtil.set_log("addAgent", "No: "+ofToString(json_num));
+        ofxSuperLogUtil::set_log("addAgent", "No: "+ofToString(json_num));
     }
+    userAgentsSize = userAgentArray.size();
+    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
 }
 
-void UserAgents::createExplodeAnimation(ofVec2f pos){
+void UserAgents::createExplodeAnimation(ofVec3f pos){
     //こういう呼び出しをしてあげれば良い
     explodeanimations.clear();
     explodeanimations.push_back(ExplodeAnimation());
@@ -237,5 +238,5 @@ void UserAgents::setup_user_agent(){//座標をセット
         addAgent(1);
     }
     //ここは最初のところ
-    superLogUtil.set_log("setup_user_agent", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
+    ofxSuperLogUtil::set_log("setup_user_agent", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
 }

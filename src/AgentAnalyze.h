@@ -15,9 +15,10 @@
 
 #include "SceneElement.h"
 #include "ofMain.h"
-#include "AgentCircle.h"
 #include "JsonReceiver.h"
 #include "GraphLog.h"
+#include "SingleUserManager.h"
+#include "ofxSuperLogUtil.h"
 
 class AgentAnalyze : public SceneElement {
     
@@ -26,8 +27,7 @@ private:
     void addAgent(int add_num);
     
     int json_num;
-    
-    vector<AgentCircle> user_agent;
+
     int max_row;
     int max_column;
     

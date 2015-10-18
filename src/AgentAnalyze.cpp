@@ -18,8 +18,8 @@ void AgentAnalyze::reset(){
 void AgentAnalyze::init(){
     json_num=0;
     check_is_json_new();
-    for(int i = 0; i<user_agent.size();i++){
-        user_agent.at(i).init();
+    for(int i = 0; i<SingleUserManager::user_agent.size();i++){
+        SingleUserManager::user_agent.at(i)->init();
     }
     max_row = ofGetHeight()/50 -2;
     max_column = ofGetWidth()/170;
@@ -31,10 +31,10 @@ void AgentAnalyze::init(){
 
 void AgentAnalyze::draw(){
     
-    int agent_size = user_agent.size();
+    int agent_size = SingleUserManager::user_agent.size();
     ofSetColor(255);
     if(MAX_AGENT < agent_size ){
-        user_agent.erase(user_agent.begin());
+        SingleUserManager::user_agent.erase(SingleUserManager::user_agent.begin());
     }
     
     float x;
@@ -45,7 +45,7 @@ void AgentAnalyze::draw(){
         }else{
             x = (i/max_row)*170 +20;
             y = 60 * (i%max_row -1) +20;
-            user_agent.at(i).draw_line(x,y);
+            SingleUserManager::user_agent.at(i)->draw_line(x,y);
         }
     }
     graphlog.draw();
@@ -53,7 +53,6 @@ void AgentAnalyze::draw(){
 
 
 void AgentAnalyze::update(){
-//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
 }
 
@@ -73,6 +72,7 @@ void AgentAnalyze::check_is_json_new(){
     if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
         add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
         addAgent(add_num);
+        ofxSuperLogUtil::set_log("add agent","add "+ofToString(add_num)+" agents");
     }
 }
 
@@ -80,15 +80,17 @@ void AgentAnalyze::check_is_json_new(){
 void AgentAnalyze::addAgent(int add_num){
     ofVec2f pos;
     for(int i=0;i<add_num;i++){
-        user_agent.push_back(AgentCircle());
-        user_agent.back().init();
-        user_agent.back().get_info_from_twitter(
+        SingleUserManager::user_agent.push_back(new SingleAgent());
+        SingleUserManager::user_agent.back()->init();
+        SingleUserManager::user_agent.back()->get_info_from_twitter(
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).text,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
-                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count);
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
+                                                JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL);
+        ofxSuperLogUtil::set_log("Agent added",ofToString(JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId)+" join");
         json_num++;//json_numはここで
         graphlog.update(ofSignedNoise(json_num,ofRandom(100),ofGetElapsedTimef()));
     }

@@ -14,6 +14,7 @@
 #include "JsonReceiver.h"
 #include "ShiseidoLifeClock.h"
 #include "SingleUserManager.h"
+#include "ofxSuperLogUtil.h"
 
 class SingleAgentAnalyze : public SceneElement {
     

@@ -9,7 +9,7 @@
 #include "SingleAgentAnalyze.h"
 
 void SingleAgentAnalyze::reset(){
-    SingleUserManager::user_agent.clear();
+//    SingleUserManager::user_agent.clear();
     shiseido.reset();
 }
 
@@ -67,6 +67,7 @@ void SingleAgentAnalyze::keyPressed(int key){
         mode = !mode;
     }else if(key ==OF_KEY_RETURN){
         shiseido.switch_mode();
+        ofxSuperLogUtil::set_log("switch mode","visualization changed");
     }
 }
 
@@ -77,6 +78,7 @@ void SingleAgentAnalyze::check_is_json_new(){
     if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
         add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
         addAgent(add_num);
+        ofxSuperLogUtil::set_log("add agent","add "+ofToString(add_num)+" agents");
     }
 }
 
@@ -95,7 +97,7 @@ void SingleAgentAnalyze::addAgent(int add_num){
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL);
-        
+        ofxSuperLogUtil::set_log("Agent added",ofToString(JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId)+" join");
         json_num++;//json_numはここで
     }
 }
