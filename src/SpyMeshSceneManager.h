@@ -17,7 +17,7 @@
 #include "ArtSpyDeforming.h"
 #include "IconStream.h"
 #include "StringNetwork.h"
-
+#include "GlidShoot.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:

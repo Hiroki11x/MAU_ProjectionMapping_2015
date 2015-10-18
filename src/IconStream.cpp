@@ -41,7 +41,7 @@ void IconStream::update(){
             loadIcon();
             break;
         case MakeCircle:
-            if(spentFrames < 600) break;
+            if(spentFrames < 200) break;
             nextPhase();
             spentFrames = 0;
             for(int i = 0; i< MAX_ICON * ICON_SIZE * ICON_SIZE; i++){
@@ -50,7 +50,7 @@ void IconStream::update(){
             break;
         case Convergence:
             cameraPosition = cameraPosition + 0.01 * (lastPosition - cameraPosition);
-            if(!(spentFrames > 350)) break;
+            if(!(spentFrames > 200)) break;
             nextPhase();
             lastParticlePosition = ofVec3f(0,ofGetHeight()/2 - 300,-6000);
             spentFrames = 0;

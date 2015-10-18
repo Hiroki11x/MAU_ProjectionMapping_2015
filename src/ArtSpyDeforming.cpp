@@ -142,7 +142,7 @@ void ArtSpyDeforming::keyPressed(int key){
             drawCircuitMode = true;
             break;
         case 'l':
-            apperLogo = true;
+            apperLogo = !apperLogo;
         default:
             break;
     }

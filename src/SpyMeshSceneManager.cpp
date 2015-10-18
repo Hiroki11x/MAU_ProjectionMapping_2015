@@ -15,6 +15,7 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new SpyMesh());
     elements.push_back(new IconStream());
     elements.push_back(new StringNetwork());
+    elements.push_back(new GlidShoot());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -78,6 +79,10 @@ void SpyMeshSceneManager::keyPressed(int key){
             elementIndex = 5;
             return;
         case '7':
+            elements[elementIndex]->stop();
+            elementIndex = 6;
+            return;
+        case '8':
             elements[elementIndex]->stop();
             splitView = !splitView;
             return;

@@ -50,6 +50,8 @@
 		FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9521BB53C3000DF0A41 /* Loading.cpp */; };
 		FA0BA97C1BB54C1700DF0A41 /* ofxSuperLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9741BB54B0B00DF0A41 /* ofxSuperLog.cpp */; };
 		FA0BA97D1BB54C1D00DF0A41 /* ofxSuperLogDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9761BB54B0B00DF0A41 /* ofxSuperLogDisplay.cpp */; };
+		FA1E65701BD4092A00B826BD /* GlidShoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1E656E1BD4092A00B826BD /* GlidShoot.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA1E657C1BD409EA00B826BD /* WaveFractal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1E657A1BD409EA00B826BD /* WaveFractal.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BD531BC294C8007C3B47 /* JsonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BD561BC29D8F007C3B47 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4B49AA1BB5111D00537247 /* ofxJSONElement.cpp */; };
 		FA26BD571BC29DAF007C3B47 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4B49A61BB5111D00537247 /* jsoncpp.cpp */; };
@@ -434,6 +436,10 @@
 		FA0BA9751BB54B0B00DF0A41 /* ofxSuperLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSuperLog.h; sourceTree = "<group>"; };
 		FA0BA9761BB54B0B00DF0A41 /* ofxSuperLogDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSuperLogDisplay.cpp; sourceTree = "<group>"; };
 		FA0BA9771BB54B0B00DF0A41 /* ofxSuperLogDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSuperLogDisplay.h; sourceTree = "<group>"; };
+		FA1E656E1BD4092A00B826BD /* GlidShoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlidShoot.cpp; sourceTree = "<group>"; };
+		FA1E656F1BD4092A00B826BD /* GlidShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlidShoot.h; sourceTree = "<group>"; };
+		FA1E657A1BD409EA00B826BD /* WaveFractal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveFractal.cpp; sourceTree = "<group>"; };
+		FA1E657B1BD409EA00B826BD /* WaveFractal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFractal.h; sourceTree = "<group>"; };
 		FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonReceiver.cpp; sourceTree = "<group>"; };
 		FA26BD521BC294C8007C3B47 /* JsonReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonReceiver.h; sourceTree = "<group>"; };
 		FA26BD5D1BC2DBF4007C3B47 /* .cproject */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = .cproject; sourceTree = "<group>"; };
@@ -1840,10 +1846,14 @@
 				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 				FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */,
 				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
-				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
-				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
+				FA1E656E1BD4092A00B826BD /* GlidShoot.cpp */,
+				FA1E656F1BD4092A00B826BD /* GlidShoot.h */,
+				FA1E657A1BD409EA00B826BD /* WaveFractal.cpp */,
+				FA1E657B1BD409EA00B826BD /* WaveFractal.h */,
 				FA4F4F371BD29B1E001D4E4A /* EffectScene.cpp */,
 				FA4F4F381BD29B1E001D4E4A /* EffectScene.h */,
+				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
+				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3113,6 +3123,7 @@
 				FA587DA01BC55C36003FCCCA /* sweep.cc in Sources */,
 				FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
+				FA1E657C1BD409EA00B826BD /* WaveFractal.cpp in Sources */,
 				FA5BFDE31BBAD6620085652C /* ofxAssimpAnimation.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				FA5BFDED1BBADF940085652C /* ofxAssimpModelLoaderExtend.cpp in Sources */,
@@ -3160,6 +3171,7 @@
 				FAA0CC101BBA184600A0D408 /* SceneManager.cpp in Sources */,
 				FACDC8A91BD0919A00D2BD35 /* SpyMeshSceneGui.cpp in Sources */,
 				FAA0CC131BBA185B00A0D408 /* SceneElement.cpp in Sources */,
+				FA1E65701BD4092A00B826BD /* GlidShoot.cpp in Sources */,
 				FA587DBA1BC56FAA003FCCCA /* SpiralDrawer.cpp in Sources */,
 				FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */,
 				FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */,
