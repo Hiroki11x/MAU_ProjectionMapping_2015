@@ -96,24 +96,23 @@ void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ
         index1 = pow(ofSignedNoise(i,ofGetFrameNum()/1000),2)*vec.size();
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/1000),2)*vec.size();
         
-        mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.6));
+        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.5));
+        mesh.addVertex(vec.at(index3)*1.2);
+        
+        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.5));
+        mesh.addVertex(vec.at(i)*1.4);
+        
+        mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.5));
         mesh.addVertex(vec.at(index1)*0.7);
-        
-        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
-        mesh.addVertex(vec.at(index3)*1.25);
-        
-        
-        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.4));
-        mesh.addVertex(vec.at(i)*1.5);
         
         ofSetColor(170,120);
         ofCircle(vec.at(index1)*0.7,3);
-        ofCircle(vec.at(index3)*1.5,3);
-        ofCircle(vec.at(index3)*1.25,3);
+        ofCircle(vec.at(index3)*1.4,3);
+        ofCircle(vec.at(index3)*1.2,3);
         
         if(i<SingleUserManager::user_agent.size()){
             ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),170);
-            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.5,vec.at(index3).y*1.5);
+            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.4,vec.at(index3).y*1.4);
         }
     }
     

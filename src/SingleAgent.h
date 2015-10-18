@@ -34,6 +34,8 @@ private:
     
 public:
     string get_user_name();
+    string get_user_id();
+    
     ofVec2f position;
     SingleAgent(){};
     void set_position(ofVec2f _pos);
