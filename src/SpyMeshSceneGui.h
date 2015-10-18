@@ -15,6 +15,7 @@
 
 #define MIDDLE_RATE 1.15
 #define OUTSIDE_RATE 1.65
+#define MAX_WAVE 5
 
 class SpyMeshSceneGui {
 public:
@@ -57,14 +58,31 @@ public:
     int befAgentNum;
     vector<newAgentWave> newAgentWaves;
     
+    
+    bool drawWaveMode = false;
+    bool creatingNewWave = false;
+    int waveWindowHeight = 20;
+    int waveNum = 0;
+    void updateWave();
+    void addWave();
+    void eraseWave();
+    typedef struct{
+        ofVboMesh waveMesh;
+        int nextInterval;
+        int intervalCounter;
+    } Wave;
+    vector<Wave> waves;
+
+    
 private:
     void drawBackLine();
     void drawEntry(vector<AgentAnalysis> agents);
     void drawAnalyzer();
     void drawFoundation();
-    void initFoundation();
+    void drawWave();
     void drawDNA();
     void drawTargetLine();
+    void initFoundation();
     int entryNum();
 };
 #endif

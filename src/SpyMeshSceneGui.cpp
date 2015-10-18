@@ -28,16 +28,18 @@ void SpyMeshSceneGui::init(){
     initFoundation();
     DNAmodel.loadModel("DNA2.obj");
     DNAmodel.setScale(0.9, 0.9, 0.9);
+    waves = vector<Wave>(MAX_WAVE);
 }
 
 void SpyMeshSceneGui::drawGui(vector<AgentAnalysis> agents){
     ofPushMatrix();
     ofPushStyle();
-    if(drawTargetLineMode) drawTargetLine();
     drawBackLine();
     drawEntry(agents);
-    if(drawDNAmode) drawDNA();
     drawFoundation();
+    if(drawWaveMode) drawWave();
+    if(drawTargetLineMode) drawTargetLine();
+    if(drawDNAmode) drawDNA();
     ofPopMatrix();
     ofPopStyle();
 }
@@ -60,6 +62,21 @@ void SpyMeshSceneGui::updateGui(){
     }else{
         dnaWindowHeight = 20;
     }
+    if(drawWaveMode){
+        if(waveWindowHeight < 20 + 100 * waveNum){
+            waveWindowHeight += 50;
+        }
+        if(waveWindowHeight > 40 + 100 * waveNum){
+            waveWindowHeight -= 50;
+        }
+        if(waveWindowHeight >= 20 + 100 * waveNum - 5 && waveWindowHeight <= 20 + 100 * waveNum + 5){
+            waveWindowHeight = 20 + 100 * waveNum;
+        }
+       // waveWindowHeight = 20 + 100 * waveNum;
+    }else{
+        waveWindowHeight = 40;
+    }
+    
     if((nextPosition - position).length() < 10){
         if(targetWaitFrame > 100){
             nextPosition = ofVec2f(ofRandom(300, ofGetWidth() - 300),
@@ -75,8 +92,71 @@ void SpyMeshSceneGui::updateGui(){
     }else{
         position += difPosition;
     }
+    
+    updateWave();
 }
 
+void SpyMeshSceneGui::updateWave(){
+    for(int i = 0; i < waveNum; i++){
+        waves.at(i).intervalCounter++;
+        if(waves.at(i).intervalCounter > waves.at(i).nextInterval){
+            waves.at(i).waveMesh.addVertex(ofVec2f(0,ofRandom(-40,40)));
+            waves.at(i).intervalCounter = 0;
+            waves.at(i).nextInterval = ofRandom(10);
+            cout << "Added Point" << waves.at(i).waveMesh.vertices.at(waves.at(i).waveMesh.vertices.size() -1) << "NEct" << waves.at(i).nextInterval << endl;
+        }
+        float dif = ofRandom(1.5);
+        for(int n = 0; n < waves.at(i).waveMesh.vertices.size(); n++){
+            waves.at(i).waveMesh.vertices.at(n).x += dif;
+            if(waves.at(i).waveMesh.vertices.at(n).x > 180){
+                waves.at(i).waveMesh.vertices.erase(waves.at(i).waveMesh.vertices.begin() + n);
+                n--;
+                cout << "dec Point" << endl;
+            }
+        }
+    }
+}
+
+void SpyMeshSceneGui::drawWave(){
+    ofPushMatrix();
+    ofTranslate(784, 100);
+    ofSetColor(80,120,80,100);
+    ofFill();
+    ofRect(0, 0, 200 , waveWindowHeight);
+    ofTranslate(10, 10);
+    for(int i = 0 ; i < waveNum; i++){
+        ofPushMatrix();
+        
+        ofTranslate(0, i * 100);
+        ofSetColor(100,180,100,100);
+        ofFill();
+        ofRect(0, 5, 180,90);
+        ofNoFill();
+        
+        ofTranslate(0,50);
+        if(waveWindowHeight < 20 + 100 * (i + 1)){
+            ofPopMatrix();
+            break;
+        }
+        ofSetColor(255);
+        waves.at(i).waveMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+        waves.at(i).waveMesh.draw();
+        glPointSize(4);
+        waves.at(i).waveMesh.setMode(OF_PRIMITIVE_POINTS);
+        waves.at(i).waveMesh.draw();
+        
+        ofPopMatrix();
+    }
+    ofPopMatrix();
+}
+
+void SpyMeshSceneGui::addWave(){
+    if(waveNum < 5) waveNum++;
+}
+
+void SpyMeshSceneGui::eraseWave(){
+     if(waveNum >= 1) waveNum--;
+}
 
 void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
     ofPushMatrix();

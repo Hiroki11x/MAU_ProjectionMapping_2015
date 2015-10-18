@@ -263,6 +263,15 @@ void SpyMesh::keyPressed(int key){
         case 'u':
             gui.drawTargetLineMode = !gui.drawTargetLineMode;
             break;
+        case 'i':
+            gui.addWave();
+            break;
+        case 'o':
+            gui.eraseWave();
+            break;
+        case 'g':
+            gui.drawWaveMode = !gui.drawWaveMode;
+            break;
             //CamSettings
         case 'Y':
             useRollCam = !useRollCam;
