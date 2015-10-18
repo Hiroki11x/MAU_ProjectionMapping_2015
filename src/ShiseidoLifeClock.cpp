@@ -16,7 +16,7 @@ void ShiseidoLifeClock::reset(){
 }
 
 int ShiseidoLifeClock::switch_mode(){//使わない
-    mode = (mode+1)%5;
+    mode = (mode+1)%3+1;
     userNames.clear();
     return mode;
 }
@@ -37,16 +37,12 @@ void ShiseidoLifeClock::init(){
 
 void ShiseidoLifeClock::update(int num){
     max_angle = (ofGetElapsedTimef()-start_time)*10;
-    if(max_angle>=360){
-        init();
-    }
-    
+    if(max_angle>=360)init();
     if (num>vec.size()) {//numの方が多かったらvecをpush_back
         while (num>vec.size()) {
             vec.push_back(ofVec2f());
         }
     }
-    
     for(int i = 0;i< vec.size() ;i++){
         vec.at(i) = ofVec2f(cos(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI),
                             sin(ofSignedNoise(ofGetFrameNum()/3000.0,i)*2*PI));
@@ -93,23 +89,23 @@ void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ(Json同期)
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/1000),2)*vec.size();
         
         mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.5));
-        mesh.addVertex(vec.at(index3)*1.2);
+        mesh.addVertex(vec.at(index3)*1.1);
         
         mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.5));
-        mesh.addVertex(vec.at(i)*1.4);
+        mesh.addVertex(vec.at(i)*1.3);
         
         mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.5));
         mesh.addVertex(vec.at(index1)*0.7);
         
         ofSetColor(170,120);
         ofCircle(vec.at(index1)*0.7,3);
-        ofCircle(vec.at(index3)*1.4,3);
-        ofCircle(vec.at(i)*1.2,3);
-        
+        ofCircle(vec.at(index3)*1.3,3);
+        ofCircle(vec.at(i)*1.1,3);
+        ofLine(ofVec2f(cos(i),sin(i))*1.34*300,ofVec2f(cos(i),sin(i))*1.38*300);
         if(i<SingleUserManager::user_agent.size()){
             ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),210);
-            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_id(), vec.at(i).x*1.2,vec.at(i).y*1.2);
-            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.4,vec.at(index3).y*1.4);
+            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_id(), vec.at(i).x*1.1,vec.at(i).y*1.1);
+            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.3,vec.at(index3).y*1.3);
         }
     }
     
@@ -161,15 +157,19 @@ void ShiseidoLifeClock::draw_bezier_map(int num){//一番それっぽいやつ(J
                  vec.at(index1).x/4,vec.at(index1).y/4,
                  vec.at(index3).x/4,vec.at(index3).y/4,
                  vec.at(index3).x*1.3,vec.at(index3).y*1.3);
-        ofCircle(vec.at(index3)*1.3,3);
         if(i<SingleUserManager::user_agent.size()){
-            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_id(), vec.at(index3).x*1.3,vec.at(index3).y*1.3);
+            glPushMatrix();
+            glRotatef(ofVec2f(1,0).angle(vec.at(index3)), 0, 0, 1);
+            FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_id(), vec.at(index3).length()*1.3,0);
+            glPopMatrix();
         }
+        ofLine(ofVec2f(cos(i),sin(i))*1.3*300,ofVec2f(cos(i),sin(i))*1.34*300);
+        ofLine(ofVec2f(cos(i*0.5),sin(i*0.5))*1.3*150,ofVec2f(cos(i*0.5),sin(i*0.5))*1.34*150);
     }
     ofPopMatrix();
 }
 
-void ShiseidoLifeClock::draw_default_circle(int num){//波みたいなやつの半円
+void ShiseidoLifeClock::draw_default_circle(int num){//波みたいなやつの半円(Json同期)
     ofVec2f basis_vec;//大きい全体のベクトル
     ofVec2f inner_vec;//Bezier用の中間点ベクトル
     float angle;
@@ -188,7 +188,7 @@ void ShiseidoLifeClock::draw_default_circle(int num){//波みたいなやつの�
         basis_vec = ofVec2f(cos(angle/180.0*PI),
                             sin(angle/180.0*PI));
         basis_vec *= 300;
-        hue = ofMap(i, 0, 180, 0, 255);
+        hue = ofMap(i, 0, 90, 0, 255);
         ofSetColor(ofColor::fromHsb(hue, 170, 200),170);
         ofNoFill();
         
