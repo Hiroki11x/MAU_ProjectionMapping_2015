@@ -20,6 +20,7 @@ public:
     virtual void init() override;
     virtual void update() override;
     virtual void keyPressed(int key) override;
+    virtual void stop() override;
 
     bool drawCircuitMode = false;
     float rotation;

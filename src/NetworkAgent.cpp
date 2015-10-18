@@ -18,6 +18,8 @@ void NetworkAgent::validate(wstring agentName){
 NetworkAgent::NetworkAgent(){
     noiseElementX = 0;
     noiseElementY = 0;
-    position = ofVec2f(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()));
-    nextPosition = position;
+    position = ofVec3f(ofRandom(-200,200),ofRandom(-200,200),ofRandom(-200,200));
+    nextPosition = ofVec3f(ofRandom(-200,200),ofRandom(-200,200),ofRandom(-200,200));
+    befPosition = ofVec3f(position.x,position.y,position.z);
+    moveFrame = ofRandom(60,300);
 }

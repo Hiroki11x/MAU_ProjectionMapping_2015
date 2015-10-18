@@ -54,24 +54,31 @@ void SpyMeshSceneManager::keyPressed(int key){
     
     switch (key) {
         case '1':
+            elements[elementIndex]->stop();
             elementIndex = 0;
             return;
         case '2':
+            elements[elementIndex]->stop();
             elementIndex = 1;
             return;
         case '3':
+            elements[elementIndex]->stop();
             elementIndex = 2;
             return;
         case '4':
+            elements[elementIndex]->stop();
             elementIndex = 3;
             return;
         case '5':
+            elements[elementIndex]->stop();
             elementIndex = 4;
             return;
         case '6':
+            elements[elementIndex]->stop();
             elementIndex = 5;
             return;
         case '7':
+            elements[elementIndex]->stop();
             splitView = !splitView;
             return;
     }

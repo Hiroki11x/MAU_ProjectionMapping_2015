@@ -15,9 +15,10 @@
 class NetworkAgent {
 public:
     
-    ofVec2f position;
-    ofVec2f nextPosition;
-    
+    ofVec3f position;
+    ofVec3f nextPosition;
+    ofVec3f befPosition;
+    int moveFrame;
     vector<float> NorP;
     wstring name;
     

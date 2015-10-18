@@ -43,6 +43,9 @@ public:
     void setRandomPoint(int n);
     void changeMode(Mode nextMode);
     void reset();
+    void drawBoxCircuit();
+    void initBoxCircuit();
+    void endBoxCircuit();
     bool setNextPoint(Direction nextDirection, int n);
     
     ofVboMesh circuit[10];
@@ -57,5 +60,6 @@ public:
     bool usedPoint[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
     bool arrivedNextPoint[10];
     float positionCounter[10]; //0~1
+    bool boxMode = false;
 };
 #endif

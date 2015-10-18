@@ -30,11 +30,11 @@ void GraphGuiDrawer::drawGraphGui(){
 void GraphGuiDrawer::drawRectBarGraph(){
     
     for(int i = 0; i < graphNum; i++){
-        ofSetColor(100, 180, 150);
-        ofDrawBitmapString(ofToString(i + 1) + ofToString(graphParamatar[i]),5, 27 + 27 * i );
+        ofSetColor(200, 255, 255);
+        ofDrawBitmapString(ofToString(i + 1) + ofToString(graphParamatar[i]),12, 14 + 20.4 * i );
         ofSetColor(0, 100, 100);
-        ofRect(50,16 + 27 * i,
-               graphParamatar[i], 12);
+        ofRect(10,3.4 + 19.4 * i,
+               graphParamatar[i], 16);
     }
 }
 
@@ -43,19 +43,20 @@ void GraphGuiDrawer::drawWaveGraph(){}
 void GraphGuiDrawer::drawCircleGraph(){}
 
 void GraphGuiDrawer::updateGraphParams(){
+    
     for(int i = 0; i < 5; i++){
         graphParamatar[i] += ofRandom(-10.0, 10.0);
         if(graphParamatar[i] < 0){
             graphParamatar[i] = 0;
-        }else if (graphParamatar[i] > 240){
-            graphParamatar[i] = 240;
+        }else if (graphParamatar[i] > 280){
+            graphParamatar[i] = 280;
         }
     }
 }
 
 GraphGuiDrawer::GraphGuiDrawer(){
     this-> scale = ofVec2f(300, 100);
-    graphNum = 3;
+    graphNum = 5;
     for(int i = 0; i < 5; i++){
         graphParamatar[i] += ofRandom(0,100);
     }

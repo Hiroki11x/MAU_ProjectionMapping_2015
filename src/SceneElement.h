@@ -16,6 +16,7 @@ public:
     virtual void update(){};
     virtual void draw(){};
     virtual void init(){};
+    virtual void stop(){};
     virtual void end(){};
     virtual void onMouseDown(int x,int y){};
     virtual void keyPressed(int key){};

@@ -41,6 +41,7 @@ void SpyMeshIntro::update(){
     gui.update();
     if(spentFrames % 60 != 0) return;
     emitPoint = lineEmitPoints[int(ofRandom(0,4))];
+    fpsPoint = ofVec2f(ofRandom(100, ofGetWidth() - 100), ofRandom(70, ofGetHeight() -70));
 }
 
 void SpyMeshIntro::draw(){
@@ -135,7 +136,6 @@ void SpyMeshIntro::reset(){
 }
 
 void SpyMeshIntro::onMouseDown(int x, int y){
-    fpsPoint = ofVec2f(x,y);
 }
 
 void SpyMeshIntro::keyPressed(int key){
