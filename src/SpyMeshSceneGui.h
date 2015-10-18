@@ -19,6 +19,13 @@
 
 class SpyMeshSceneGui {
 public:
+    void init();
+    void drawGui(vector<AgentAnalysis> agents);
+    void updateGui();
+ 
+    //----------------------------------------------------------
+    //AgentEntry
+    //----------------------------------------------------------
     typedef struct{
         float size;
         float index;
@@ -26,27 +33,21 @@ public:
         float rotation;
     } newAgentWave;
     
-    void init();
-    void drawGui(vector<AgentAnalysis> agents);
-    void updateGui();
- 
-    ofxAssimpModelLoader DNAmodel;
+    int befAgentNum;
+    vector<newAgentWave> newAgentWaves;
     ofxTrueTypeFontUL2 * font;
     ofxTrueTypeFontUL2 * nameFont;
-    ofVboMesh insideCircleMesh;
-    ofVboMesh middleCircleMesh;
-    ofVboMesh outsideCircleMesh;
     
-    float insideSpeed = -5.0;
-    float middleSpeed = 8.0;
-    float outsideSpeed = 1.0;
-    float insideDeg;
-    float middleDeg;
-    float outsideDeg;
-    
+    //----------------------------------------------------------
+    //DNA
+    //----------------------------------------------------------
     bool drawDNAmode = false;
     float dnaWindowHeight;
-    
+    ofxAssimpModelLoader DNAmodel;
+
+    //----------------------------------------------------------
+    //TargetLine
+    //----------------------------------------------------------
     bool drawTargetLineMode = false;
     bool targetMoving;
     float targetWaitFrame;
@@ -55,25 +56,37 @@ public:
     ofVec2f nextPosition;
     ofVec2f difPosition;
     
-    int befAgentNum;
-    vector<newAgentWave> newAgentWaves;
-    
-    
-    bool drawWaveMode = false;
-    bool creatingNewWave = false;
-    int waveWindowHeight = 20;
-    int waveNum = 0;
-    void updateWave();
-    void addWave();
-    void eraseWave();
+    //----------------------------------------------------------
+    //Wave
+    //----------------------------------------------------------
     typedef struct{
         ofVboMesh waveMesh;
         int nextInterval;
         int intervalCounter;
     } Wave;
+    int waveWindowHeight = 20;
+    int waveNum = 0;
+    bool drawWaveMode = false;
+    bool creatingNewWave = false;
+    void updateWave();
+    void addWave();
+    void eraseWave();
     vector<Wave> waves;
-
     
+
+    //----------------------------------------------------------
+    //Found
+    //----------------------------------------------------------
+    float insideSpeed = -5.0;
+    float middleSpeed = 8.0;
+    float outsideSpeed = 1.0;
+    float insideDeg;
+    float middleDeg;
+    float outsideDeg;
+    ofVboMesh insideCircleMesh;
+    ofVboMesh middleCircleMesh;
+    ofVboMesh outsideCircleMesh;
+
 private:
     void drawBackLine();
     void drawEntry(vector<AgentAnalysis> agents);
@@ -83,6 +96,5 @@ private:
     void drawDNA();
     void drawTargetLine();
     void initFoundation();
-    int entryNum();
 };
 #endif

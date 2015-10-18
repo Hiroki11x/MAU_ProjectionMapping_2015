@@ -56,7 +56,7 @@ void ArtSpyDeforming::draw(){
         backShader.setUniform1f("u_time", ofGetElapsedTimef());
         backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
         backShader.setUniform1f("height", 1000);
-        ofDrawCone(1500, 1000);
+        if(apperLogo)ofDrawCone(1500, 1000);
         backShader.end();
         ofPopMatrix();
         
@@ -71,7 +71,7 @@ void ArtSpyDeforming::draw(){
         ofDisableAlphaBlending();
         light.disable();
         glDisable(GL_LIGHTING);
-        drawSpyLogo();
+        if(apperLogo) drawSpyLogo();
     }
     
     ofEnableAlphaBlending();
@@ -141,6 +141,8 @@ void ArtSpyDeforming::keyPressed(int key){
             circuitDrawer.endBoxCircuit();
             drawCircuitMode = true;
             break;
+        case 'l':
+            apperLogo = true;
         default:
             break;
     }

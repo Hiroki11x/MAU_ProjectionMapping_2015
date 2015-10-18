@@ -27,7 +27,7 @@ void SpyMeshSceneGui::init(){
     befAgentNum = 0;
     initFoundation();
     DNAmodel.loadModel("DNA2.obj");
-    DNAmodel.setScale(0.9, 0.9, 0.9);
+    DNAmodel.setScale(0.95, 0.95, 0.95);
     waves = vector<Wave>(MAX_WAVE);
 }
 
@@ -45,9 +45,9 @@ void SpyMeshSceneGui::drawGui(vector<AgentAnalysis> agents){
 }
 
 void SpyMeshSceneGui::updateGui(){
-    insideDeg += insideSpeed;
-    middleDeg += middleSpeed;
-    outsideDeg += outsideSpeed;
+    //----------------------------------------------------------
+    //AgentEntry
+    //----------------------------------------------------------
     for(int i = 0; i < newAgentWaves.size(); i++){
         newAgentWaves.at(i).size += ofRandom(1.0, 10.0);
         if(newAgentWaves.at(i).size > 1500){
@@ -55,28 +55,26 @@ void SpyMeshSceneGui::updateGui(){
             i--;
         }
     }
+
+    //----------------------------------------------------------
+    //DNA
+    //----------------------------------------------------------
     if(drawDNAmode){
-        if(dnaWindowHeight < 500){
-            dnaWindowHeight += 50;
-        }
+        if(dnaWindowHeight < 500) dnaWindowHeight += 50;
     }else{
         dnaWindowHeight = 20;
     }
-    if(drawWaveMode){
-        if(waveWindowHeight < 20 + 100 * waveNum){
-            waveWindowHeight += 50;
-        }
-        if(waveWindowHeight > 40 + 100 * waveNum){
-            waveWindowHeight -= 50;
-        }
-        if(waveWindowHeight >= 20 + 100 * waveNum - 5 && waveWindowHeight <= 20 + 100 * waveNum + 5){
-            waveWindowHeight = 20 + 100 * waveNum;
-        }
-       // waveWindowHeight = 20 + 100 * waveNum;
-    }else{
-        waveWindowHeight = 40;
-    }
     
+    //----------------------------------------------------------
+    //Found
+    //----------------------------------------------------------
+    insideDeg += insideSpeed;
+    middleDeg += middleSpeed;
+    outsideDeg += outsideSpeed;
+    
+    //----------------------------------------------------------
+    //TargetLine
+    //----------------------------------------------------------
     if((nextPosition - position).length() < 10){
         if(targetWaitFrame > 100){
             nextPosition = ofVec2f(ofRandom(300, ofGetWidth() - 300),
@@ -93,7 +91,133 @@ void SpyMeshSceneGui::updateGui(){
         position += difPosition;
     }
     
+    //----------------------------------------------------------
+    //Wave
+    //----------------------------------------------------------
+    if(drawWaveMode){
+        if(waveWindowHeight < 20 + 100 * waveNum){
+            waveWindowHeight += 50;
+        }
+        if(waveWindowHeight > 40 + 100 * waveNum){
+            waveWindowHeight -= 50;
+        }
+        if(waveWindowHeight >= 20 + 100 * waveNum - 5 && waveWindowHeight <= 20 + 100 * waveNum + 5){
+            waveWindowHeight = 20 + 100 * waveNum;
+        }
+    }else{
+        waveWindowHeight = 40;
+    }
     updateWave();
+}
+
+void SpyMeshSceneGui::drawBackLine(){
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(2, 0x000F);
+    ofSetColor(10, 255, 255, 60);
+    for(int w = 0; w < ofGetWidth(); w+= 90){
+        ofLine(w , 0, w, ofGetHeight());
+    }
+    for(int h = 0; h < ofGetHeight(); h += 90){
+        ofLine(0, h , ofGetWidth(), h);
+    }
+    glDisable(GL_LINE_STIPPLE);
+}
+
+//----------------------------------------------------------
+//AgentEntry
+//----------------------------------------------------------
+void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
+    drawAnalyzer();
+   
+    ofPushMatrix();
+    
+    ofTranslate(0, 50);
+    
+    ofSetColor(80,120,80,100);
+    ofRect(40, 90 , 220 , 40 + 30 * agents.size());
+    ofNoFill();
+    ofSetColor(200, 255, 200,80);
+    ofRect(50, 100 , 200 , 20 + 30 * agents.size());
+    
+    ofPushStyle();
+    ofPushMatrix();
+    
+    ofTranslate(50, 100 + 10);
+    ofFill();
+    
+    for(int i = 0; i < agents.size(); i++){
+        
+        ofPushMatrix();
+        
+        if(i >= befAgentNum){
+            newAgentWaves.push_back((newAgentWave){0,i,(int)ofRandom(0.9),ofRandom(90.0)});
+        }
+        ofTranslate(0, 30 * i);
+        ofSetColor(80, 230, 80, 150);
+        ofRect(5, 5, 190.0 * (float)agents.at(i).mesh.vertices.size() / 3000.0, 20);
+        ofSetColor(210, 255, 210,220);
+        nameFont->drawString(agents.at(i).userName, 10, 20);
+        
+        ofPopMatrix();
+    }
+    
+    ofNoFill();
+    ofSetColor(100, 255, 100,100);
+    for(int i = 0; i < newAgentWaves.size(); i++){
+        
+        ofPushMatrix();
+        
+        ofTranslate(-newAgentWaves.at(i).size / 10.0, 30 * newAgentWaves.at(i).index - newAgentWaves.at(i).size / 2.0);
+        switch (newAgentWaves.at(i).shapeType) {
+            case 0:
+                ofRect(0, 0, newAgentWaves.at(i).size * 3.0, newAgentWaves.at(i).size);
+                break;
+            case 1:
+                ofEllipse(0, 0, newAgentWaves.at(i).size * 3.0 , newAgentWaves.at(i).size);
+                break;
+            case 2:
+                ofTriangle(0, 0, newAgentWaves.at(i).size * 3.0, -newAgentWaves.at(i).size, newAgentWaves.at(i).size * 3.0, newAgentWaves.at(i).size);
+            default:
+                break;
+        }
+        
+        ofPopMatrix();
+    }
+    ofPopMatrix();
+    ofPopStyle();
+    ofFill();
+    befAgentNum = agents.size();
+    
+    ofPopMatrix();
+}
+
+void SpyMeshSceneGui::drawAnalyzer(){
+    ofSetColor(255, 255, 255, 100);
+    ofLine(40, 115, 220, 115);
+    ofLine(220, 115, 260, 115);
+    ofSetColor(100, 255, 100, 150);
+    font->drawString("Analyst", 100, 120);
+}
+
+//----------------------------------------------------------
+//DNA
+//----------------------------------------------------------
+void SpyMeshSceneGui::drawDNA(){
+    ofPushMatrix();
+    ofPushStyle();
+    ofTranslate(834, 100);
+    ofSetColor(80,120,80,100);
+    ofFill();
+    ofRect(0, 0, 150 , dnaWindowHeight);
+    ofSetColor(50,255,50,200);
+    ofNoFill();
+    ofRect(10, 10, 130 , dnaWindowHeight - 20);
+    ofTranslate(75, 260);
+    ofRotateY(ofGetElapsedTimeMillis()/10.0);
+    ofSetColor(200,255,200,200);
+    if(dnaWindowHeight >= 500) DNAmodel.drawWireframe();
+    ofPopMatrix();
+    ofPopStyle();
 }
 
 void SpyMeshSceneGui::updateWave(){
@@ -117,6 +241,25 @@ void SpyMeshSceneGui::updateWave(){
     }
 }
 
+//----------------------------------------------------------
+//TargetLine
+//----------------------------------------------------------
+void SpyMeshSceneGui::drawTargetLine(){
+    ofPushStyle();
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1 , 0x000F);
+    ofSetColor(255,255,255,150);
+    ofNoFill();
+    if(!targetMoving) ofCircle(position, targetCircleSize);
+    ofLine(0, position.y, ofGetWidth(), position.y);
+    ofLine(position.x , 0 , position.x , ofGetHeight());
+    glDisable(GL_LINE_STIPPLE);
+    ofPopStyle();
+}
+
+//----------------------------------------------------------
+//Wave
+//----------------------------------------------------------
 void SpyMeshSceneGui::drawWave(){
     ofPushMatrix();
     ofTranslate(784, 100);
@@ -158,94 +301,9 @@ void SpyMeshSceneGui::eraseWave(){
      if(waveNum >= 1) waveNum--;
 }
 
-void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
-    ofPushMatrix();
-    drawAnalyzer();
-    ofTranslate(0, 50);
-    
-    ofSetColor(80,120,80,100);
-    ofRect(40, 90 , 220 , 40 + 30 * agents.size());
-    ofNoFill();
-    ofSetColor(200, 255, 200,80);
-    ofRect(50, 100 , 200 , 20 + 30 * agents.size());
-    ofPushStyle();
-    ofPushMatrix();
-    ofTranslate(50, 100 + 10);
-    ofFill();
-    for(int i = 0; i < agents.size(); i++){
-        ofPushMatrix();
-        if(i >= befAgentNum){
-            newAgentWaves.push_back((newAgentWave){0,i,(int)ofRandom(0.9),ofRandom(90.0)});
-        }
-        ofTranslate(0, 30 * i);
-        ofSetColor(80, 230, 80, 150);
-        ofRect(5, 5, 190.0 * (float)agents.at(i).mesh.vertices.size() / 3000.0, 20);
-        ofSetColor(210, 255, 210,220);
-        nameFont->drawString(agents.at(i).userName, 10, 20);
-        ofPopMatrix();
-    }
-    ofNoFill();
-    ofSetColor(100, 255, 100,100);
-    for(int i = 0; i < newAgentWaves.size(); i++){
-        ofPushMatrix();
-        ofTranslate(-newAgentWaves.at(i).size / 10.0, 30 * newAgentWaves.at(i).index - newAgentWaves.at(i).size / 2.0);
-       // ofRotateZ(newAgentWaves.at(i).rotation);
-        switch (newAgentWaves.at(i).shapeType) {
-            case 0:
-                ofRect(0, 0, newAgentWaves.at(i).size * 3.0, newAgentWaves.at(i).size);
-                break;
-            case 1:
-                ofEllipse(0, 0, newAgentWaves.at(i).size * 3.0 , newAgentWaves.at(i).size);
-                break;
-            case 2:
-                ofTriangle(0, 0, newAgentWaves.at(i).size * 3.0, -newAgentWaves.at(i).size, newAgentWaves.at(i).size * 3.0, newAgentWaves.at(i).size);
-            default:
-                break;
-        }
-        ofPopMatrix();
-    }
-    ofPopMatrix();
-    ofPopStyle();
-    ofFill();
-    befAgentNum = agents.size();
-    
-    ofPopMatrix();
-}
-
-void SpyMeshSceneGui::drawAnalyzer(){
-    ofSetColor(255, 255, 255, 100);
-    ofLine(40, 115, 220, 115);
-    ofLine(220, 115, 260, 115);
-    ofSetColor(100, 255, 100, 150);
-    font->drawString("Analyst", 100, 120);
-}
-
-void SpyMeshSceneGui::drawBackLine(){
-    glEnable(GL_LINE_STIPPLE);
-    glLineStipple(2, 0x000F);
-    ofSetColor(10, 255, 255, 60);
-    for(int w = 0; w < ofGetWidth(); w+= 90){
-        ofLine(w , 0, w, ofGetHeight());
-    }
-    for(int h = 0; h < ofGetHeight(); h += 90){
-        ofLine(0, h , ofGetWidth(), h);
-    }
-    glDisable(GL_LINE_STIPPLE);
-}
-
-void SpyMeshSceneGui::drawTargetLine(){
-    ofPushStyle();
-    glEnable(GL_LINE_STIPPLE);
-    glLineStipple(1 , 0x000F);
-    ofSetColor(255,255,255,150);
-    ofNoFill();
-    if(!targetMoving) ofCircle(position, targetCircleSize);
-    ofLine(0, position.y, ofGetWidth(), position.y);
-    ofLine(position.x , 0 , position.x , ofGetHeight());
-    glDisable(GL_LINE_STIPPLE);
-    ofPopStyle();
-}
-
+//----------------------------------------------------------
+//Found
+//----------------------------------------------------------
 void SpyMeshSceneGui::drawFoundation(){
     ofDisableDepthTest();
     ofPushMatrix();
@@ -281,26 +339,7 @@ void SpyMeshSceneGui::drawFoundation(){
     }
     ofPopStyle();
     ofPopMatrix();
-
-}
-
-void SpyMeshSceneGui::drawDNA(){
-    ofPushMatrix();
-    ofPushStyle();
-    ofTranslate(834, 100);
-    ofSetColor(80,120,80,100);
-    ofFill();
-    ofRect(0, 0, 150 , dnaWindowHeight);
-    ofSetColor(50,255,50,200);
-    ofNoFill();
-    ofRect(10, 10, 130 , dnaWindowHeight - 20);
-    ofTranslate(75, 250);
-    ofRotateY(ofGetElapsedTimeMillis()/10.0);
-    //ofEnableDepthTest();
-    ofSetColor(200,255,200,200);
-    if(dnaWindowHeight >= 500) DNAmodel.draw(ofPolyRenderMode::OF_MESH_FILL);
-    ofPopMatrix();
-    ofPopStyle();
+    
 }
 
 void SpyMeshSceneGui::initFoundation(){
