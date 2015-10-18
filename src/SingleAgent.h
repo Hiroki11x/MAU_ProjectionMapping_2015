@@ -35,6 +35,7 @@ private:
 public:
     string get_user_name();
     string get_user_id();
+    wstring get_user_text();
     
     ofVec2f position;
     SingleAgent(){};

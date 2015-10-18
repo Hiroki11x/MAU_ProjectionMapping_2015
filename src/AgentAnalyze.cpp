@@ -43,9 +43,9 @@ void AgentAnalyze::draw(){
         if(i == agent_size-1){
 //            user_agent.at(i).draw_circle();
         }else{
-            x = (i/max_row)*170 +20;
-            y = 60 * (i%max_row -1) +20;
-            SingleUserManager::user_agent.at(i)->draw_line(x,y);
+            x = (i/max_row)*170 ;
+            y = 60 * (i%max_row -1);
+            SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100);
         }
     }
     graphlog.draw();

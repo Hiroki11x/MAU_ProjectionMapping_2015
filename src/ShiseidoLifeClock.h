@@ -22,7 +22,7 @@ public:
     void init();
     void draw(int num);
     void update(int num);
-    void switch_mode();
+    int switch_mode();
     ofEasyCam cam;
 private:
 
@@ -36,7 +36,7 @@ private:
     void draw_bezier_map(int num);
     void draw_bezier_web(int num);
     void draw_mesh(int num);
-    void draw_default_circle();
+    void draw_default_circle(int num);
     void draw_bezier_circle(int num);
 };
 
