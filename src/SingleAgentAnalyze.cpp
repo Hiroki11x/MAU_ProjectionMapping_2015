@@ -8,6 +8,8 @@
 
 #include "SingleAgentAnalyze.h"
 
+vector<SingleAgent *> SingleAgentAnalyze::user_agent;
+
 void SingleAgentAnalyze::reset(){
     user_agent.clear();
     shiseido.reset();
@@ -18,7 +20,7 @@ void SingleAgentAnalyze::init(){
     json_num=0;
     check_is_json_new();
     for(int i = 0; i<user_agent.size();i++){
-        user_agent.at(i).init();
+        user_agent.at(i)->init();
     }
     shiseido.init();
     max_row = ofGetHeight()/50 -2;
@@ -44,7 +46,7 @@ void SingleAgentAnalyze::draw(){
     if(agent_size>0){
         for(int i = 0; i < ((4<agent_size)?4:agent_size) ; i++){
             y = 200 * (i%max_row -1) +200;
-            user_agent.at(agent_size-1-i).draw(100,y+150);
+            user_agent.at(agent_size-1-i)->draw(100,y+150);
         }
     }
     shiseido.draw(json_num);
@@ -85,9 +87,9 @@ void SingleAgentAnalyze::check_is_json_new(){
 void SingleAgentAnalyze::addAgent(int add_num){
     ofVec2f pos;
     for(int i=0;i<add_num;i++){
-        user_agent.push_back(SingleAgent());
-        user_agent.back().init();
-        user_agent.back().get_info_from_twitter(
+        user_agent.push_back(new SingleAgent());
+        user_agent.back()->init();
+        user_agent.back()->get_info_from_twitter(
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
                                                 JsonReceiver::getInstance().getUsersInfo().at(json_num).text,

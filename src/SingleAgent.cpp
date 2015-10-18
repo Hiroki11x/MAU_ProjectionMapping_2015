@@ -16,6 +16,10 @@ void SingleAgent::init(){
     set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));    
 }
 
+string SingleAgent::get_user_name(){
+    return this->username;
+}
+
 void SingleAgent::get_info_from_twitter(string name,string id, wstring text,int friends_count,int statuses_count,int followers_count, ofImage image){
     //twitterからの取得情報を書く
     username = name;

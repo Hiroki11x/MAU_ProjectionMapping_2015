@@ -12,11 +12,13 @@
 #include "ofMain.h"
 #include "JsonReceiver.h"
 #include "FontManager.h"
+//#include "SingleAgentAnalyze.h"
 
 class ShiseidoLifeClock{
 public:
     static float start_time;
     
+//    void set_agents_pointer(vector<SingleAgent *> pointer);
     void reset();
     void init();
     void draw(int num);
@@ -24,6 +26,7 @@ public:
     void switch_mode();
     ofEasyCam cam;
 private:
+//    vector<SingleAgent *> single_agent;
     static int json_num;
     int mode = 1;
     ofPath path;

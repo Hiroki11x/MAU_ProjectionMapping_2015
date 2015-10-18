@@ -34,6 +34,7 @@ private:
     ofColor color;
     
 public:
+    string get_user_name();
     ofVec2f position;
     SingleAgent(){};
     void set_position(ofVec2f _pos);

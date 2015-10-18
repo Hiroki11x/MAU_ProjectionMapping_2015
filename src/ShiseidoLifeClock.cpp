@@ -27,7 +27,7 @@ void ShiseidoLifeClock::init(){
     mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
     vec.clear();
     for(int i = 0;i< 200 ;i++){
-        vec.push_back(ofVec3f());
+        vec.push_back(ofVec2f());
         vec.back() = ofVec2f(
                              cos(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
                              sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI)
@@ -35,7 +35,6 @@ void ShiseidoLifeClock::init(){
         
     }
 }
-
 
 
 void ShiseidoLifeClock::update(int num){
@@ -57,15 +56,6 @@ void ShiseidoLifeClock::update(int num){
                             );
         vec.at(i)*= 300;
     }
-    
-    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){//jsonが増えてたら受け取っておく
-        int add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num -1;
-        for(int i = 0; i < add_num;i++){
-            userNames.push_back(JsonReceiver::getInstance().getUsersInfo().at(ShiseidoLifeClock::json_num).userName);
-            ShiseidoLifeClock::json_num++;
-        }
-    }
-    
 }
 
 void ShiseidoLifeClock::draw(int num){
@@ -121,10 +111,10 @@ void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ
         ofCircle(vec.at(index3)*1.5,3);
         ofCircle(vec.at(index3)*1.25,3);
         
-        if(i<userNames.size()){
-            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),170);
-            FontManager::mfont.drawString(userNames.at(i), vec.at(index3).x*1.5,vec.at(index3).y*1.5);
-        }
+//        if(i<SingleAgentAnalyze::user_agent.size()){
+//            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),170);
+//            FontManager::mfont.drawString(SingleAgentAnalyze::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.5,vec.at(index3).y*1.5);
+//        }
     }
     
     mesh.draw();

@@ -27,11 +27,11 @@ private:
     void addAgent(int add_num);
     
     int json_num;
-    
-    vector<SingleAgent> user_agent;
     ShiseidoLifeClock shiseido;
     
 public:
+    static vector<SingleAgent *> user_agent;
+    
     virtual void reset() override;
     virtual void update() override;
     virtual void draw() override;
