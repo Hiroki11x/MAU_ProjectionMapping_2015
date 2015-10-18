@@ -81,16 +81,9 @@ void SpyMesh::draw(){
         ofDisableDepthTest();
         ofEnableBlendMode(OF_BLENDMODE_ADD);
         ofEnableAlphaBlending();
-        //ofDisableBlendMode();
-        //ofDisableAlphaBlending();
-        //ofEnableBlendMode(OF_BLENDMODE_DISABLED);
-        ofSetColor(0, 0, 0, 30);
-        ofRect(0,0, ofGetWidth(), ofGetHeight());
-        //ofRect(0,0, 100, 100);
+        ofSetColor(0, 0, 0, 10);
         ofFill();
-       // forTrailSquare.draw();
-        /*ofDisableBlendMode();
-        ofDisableAlphaBlending();*/
+        ofRect(0,0, ofGetWidth(), ofGetHeight());
     }else{
         ofEnableDepthTest();
     }
@@ -156,7 +149,6 @@ void SpyMesh::init(){
     SoundManager::play();
     initModelDrawer();
     initLineEmitPoints();
-    initForTrail();
     light.setup();
     rollCam.setup();
     rollCam.setCamSpeed(0.1);
@@ -191,14 +183,6 @@ void SpyMesh::initModelDrawer(){
         rtDrawer.setVertices(model.getMesh(i).vertices, 1.1);
     }
     sphere = *new DrawerSphere(0.15);
-}
-
-void SpyMesh::initForTrail(){
-    forTrailSquare.addVertex(ofPoint(0,0,0));
-    forTrailSquare.addVertex(ofPoint(ofGetWidth(),0,0));
-    forTrailSquare.addVertex(ofPoint(ofGetWidth(),ofGetHeight(),0));
-    forTrailSquare.addVertex(ofPoint(0,ofGetHeight(),0));
-    forTrailSquare.setMode(OF_PRIMITIVE_LINE_LOOP);
 }
 
 void SpyMesh::onMouseDown(int x, int y){

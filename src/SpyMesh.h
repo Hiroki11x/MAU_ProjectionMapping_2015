@@ -55,7 +55,6 @@ public:
     ofShader backShader;
     vector<AgentAnalysis> agents;
     SpyMeshSceneGui gui;
-    ofVboMesh forTrailSquare;
 
     int mouseX,mouseY;
     int spentFrames;
@@ -74,7 +73,6 @@ public:
     
     void initLineEmitPoints();
     void initModelDrawer();
-    void initForTrail();
     void drawEmitter();
     void updateVertices();
     void reset();
