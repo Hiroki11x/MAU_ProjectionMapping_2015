@@ -12,6 +12,7 @@
 #include "ofxAssimpModelLoader.h"
 #include "CircuitDrawer.h"
 #include "FoundationDrawer.h"
+#include "ofxRollingCam.h"
 
 class ArtSpyDeforming : public SceneElement {
 public:
@@ -19,6 +20,7 @@ public:
     virtual void init() override;
     virtual void update() override;
     virtual void keyPressed(int key) override;
+    virtual void stop() override;
 
     bool drawCircuitMode = false;
     float rotation;

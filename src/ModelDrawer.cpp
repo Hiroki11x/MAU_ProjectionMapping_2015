@@ -15,10 +15,6 @@ ofVec3f ModelDrawer::addVertex(){
         mesh.addVertex(vertices[int(indices[i * 3 + 1])]);
         mesh.addVertex(vertices[int(indices[i * 3 + 2])]);
         
-        mesh.addIndex(i * 3);
-        mesh.addIndex(i * 3 + 1);
-        mesh.addIndex(i * 3 + 2);
-        
         addedIndicesSize+=3;
         
         return vertices[int(indices[i * 3])];
@@ -102,7 +98,6 @@ void ModelDrawer::drawColoredMesh(){
 }
 
 void ModelDrawer::drawModel(float scale, bool fill){
-    ofEnableDepthTest();
     ofPushStyle();
     ofSetLineWidth(1.0);
     glPointSize(1);
@@ -116,10 +111,11 @@ void ModelDrawer::drawModel(float scale, bool fill){
 };
 
 void ModelDrawer::drawPercentage(){
-    /*ofNoFill();
-    ofRect(50, 50, 400, 20);*/
     ofFill();
-    ofRect(50, 50, 400 * (float(addedIndicesSize) / float(indicesSize)), 20);
+    ofSetColor(80,120,80,100);
+    ofRect(40, 40, 944, 40);
+    ofSetColor(50,255,50,200);
+    ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
 }
 
 void ModelDrawer::setPrimitiveMode(ofPrimitiveMode primitiveMode){

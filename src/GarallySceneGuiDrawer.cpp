@@ -88,7 +88,7 @@ void GarallySceneGuiDrawer::drawClock(){
         ofPushMatrix();
         ofTranslate(0, i * 90);
         ofSetColor(100,255,255,180);
-        ofDrawBitmapString("Data" + ofToString(i + 1), -20, -33);
+        ofDrawBitmapString(ofToString(i + 1) + ofToString(clockDeg[i]), -30, -33);
         ofSetLineWidth(2);
         ofSetColor(0,200,200,150);
         ofCircle(0, 0, 25);

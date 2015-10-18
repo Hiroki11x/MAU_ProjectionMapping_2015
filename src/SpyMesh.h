@@ -23,17 +23,18 @@
 #include "AgentAnalysis.h"
 #include "SpiralDrawer.h"
 #include "GarallyDrawer.h"
-#include "TargetMarkerDrawer.h"
 #include "GraphGuiDrawer.h"
+#include "SpyMeshSceneGui.h"
 
 #define ADD_TRIANGLE_PER_TWEET 50
-#define ADD_TRIANGLE_PER_AGENT_TRIANGLE 0.05
+#define ADD_TRIANGLE_PER_AGENT_TRIANGLE 0.2
 
 class SpyMesh : public SceneElement {
 public:
     
     virtual void draw() override;
     virtual void init() override;
+    virtual void stop() override;
     virtual void update() override;
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
@@ -51,10 +52,9 @@ public:
     ofxRollingCam rollCam;
     SpiralDrawer spiralDrawer;
     GarallyDrawer garallyDrawer;
-    TargetMarkerDrawer markerDrawer;
-    GraphGuiDrawer graphDrawer;
     ofShader backShader;
     vector<AgentAnalysis> agents;
+    SpyMeshSceneGui gui;
 
     int mouseX,mouseY;
     int spentFrames;
@@ -62,13 +62,14 @@ public:
     int agentNum;
     float modelSize;
     float lineEmitPointDistance;
-    bool useRollCam = false;
+    bool useRollCam = true;
     bool modelDrawMode = true;
     bool coloerMeshDrawMode = false;
     bool randomTrianlgeDrawMode = false;
     bool garallyDrawMode = false;
     bool randomExpandMeshDrawMode = false;
     bool agentDebug = false;
+    bool trailMode = false;
     
     void initLineEmitPoints();
     void initModelDrawer();

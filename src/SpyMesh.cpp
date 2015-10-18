@@ -8,16 +8,13 @@
 #include "SpyMesh.h"
 
 void SpyMesh::update(){
-    
+    gui.updateGui();
     float * val = ofSoundGetSpectrum(1);
     modelSize = val[0] * 1;
-    graphDrawer.updateGraphParams();
-    markerDrawer.update();
     if(JsonReceiver::getInstance().checkIsNewData()){
         agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
         agentDebug = false;
         agentNum++;
-        cout << agentNum << "agetn" << endl;
     }
     updateVertices();
     
@@ -34,6 +31,10 @@ void SpyMesh::update(){
     
     if(useRollCam){
         rollCam.update();
+        if(spentFrames % 40 == 0){
+            rollCam.setRandomScale(1.0, 2.0);
+            rollCam.setRandomPos(360);
+        }
     }else{
         camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
         camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
@@ -44,14 +45,13 @@ void SpyMesh::update(){
 }
 
 void SpyMesh::updateVertices(){
-    
+    if(spentFrames % 3 != 0) return;
     for(int n = 0; n < agents.size(); n++){
-        for(float f = 0; f < 1; f+=ADD_TRIANGLE_PER_AGENT_TRIANGLE){
+        for(float f = 0; f < 1; f+= agents.at(n).eraseSpeed){
             agents.at(n).removeVertices();
         }
         if(agents.at(n).removeVertices()){
             agents.at(n).targetPodsition = modelDrawer.addVertex();
-            cout << "addVertex" << endl;
         }else{
             agents.erase(agents.begin() + n);
             n--;
@@ -64,19 +64,34 @@ void SpyMesh::draw(){
     ofDisableBlendMode();
     ofDisableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    graphDrawer.drawGraphGui();
-    markerDrawer.drawTargetMarker();
-    backShader.load("","shader.frag");
-    backShader.begin();
-    backShader.setUniform1f("u_time", ofGetElapsedTimef());
-    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-    ofRect(0,0,ofGetWidth(), ofGetHeight());
-    backShader.end();
-   
+    ofEnableAlphaBlending();
+    if(!trailMode){
+        backShader.load("","shader.frag");
+        backShader.begin();
+        backShader.setUniform1f("u_time", ofGetElapsedTimef());
+        backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+        ofRect(0,0,ofGetWidth(), ofGetHeight());
+        backShader.end();
+    }
+    
+    gui.drawGui(agents);
+
     ofPushMatrix();
     ofPushStyle();
     ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+    if(trailMode){
+        ofDisableDepthTest();
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        ofEnableAlphaBlending();
+        ofSetColor(0, 0, 0, 10);
+        ofFill();
+        ofRect(0,0, ofGetWidth(), ofGetHeight());
+    }else{
+        ofEnableDepthTest();
+    }
+    
     if(useRollCam){
         rollCam.begin();
     }else{
@@ -85,7 +100,6 @@ void SpyMesh::draw(){
     }
     
     ofSetColor(50, 255, 50 , 150);
-    
     
     ofSetLineWidth(0.3);
     if(modelDrawMode) {
@@ -112,10 +126,10 @@ void SpyMesh::draw(){
     
     ofPushStyle();
     ofSetColor(50, 255, 100);
+    ofDisableDepthTest();
     modelDrawer.drawPercentage();
     ofPopStyle();
     ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,0,0);
-    
 }
 
 void SpyMesh::drawEmitter(){
@@ -149,8 +163,8 @@ void SpyMesh::init(){
     spiralDrawer.init(2000.0);
     garallyDrawer = *new GarallyDrawer();
     garallyDrawer.init();
-    markerDrawer.init(60);
-    graphDrawer = *new GraphGuiDrawer();
+    gui = *new SpyMeshSceneGui();
+    gui.init();
 }
 
 void SpyMesh::initLineEmitPoints(){
@@ -183,6 +197,10 @@ void SpyMesh::onMouseDown(int x, int y){
 
 void SpyMesh::reset(){
     modelDrawer.reset();
+}
+
+void SpyMesh::stop(){
+    ofSetBackgroundAuto(true);
 }
 
 void SpyMesh::keyPressed(int key){
@@ -235,27 +253,46 @@ void SpyMesh::keyPressed(int key){
         case 'j':
             modelDrawer.changeRandomExpandMesh();
             break;
-        //CamSettings
+        case 'p':
+            trailMode = !trailMode;
+            ofSetBackgroundAuto(!trailMode);
+            break;
         case 'y':
-            useRollCam = !useRollCam;
+            gui.drawDNAmode = !gui.drawDNAmode;
             break;
         case 'u':
-            rollCam.setRandomScale(1.5, 2.0);
-            rollCam.setRandomPos(360);
+            gui.drawTargetLineMode = !gui.drawTargetLineMode;
             break;
         case 'i':
-            rollCam.setRandomPos(360);
+            gui.addWave();
             break;
         case 'o':
-            rollCam.setRandomScale(1.5, 2.0);
+            gui.eraseWave();
             break;
         case 'g':
+            gui.drawWaveMode = !gui.drawWaveMode;
+            break;
+            //CamSettings
+        case 'Y':
+            useRollCam = !useRollCam;
+            break;
+        case 'U':
+            rollCam.setRandomScale(1.0, 2.0);
+            rollCam.setRandomPos(360);
+            break;
+        case 'I':
+            rollCam.setRandomPos(360);
+            break;
+        case 'O':
+            rollCam.setRandomScale(1.0, 2.0);
+            break;
+        case 'G':
             rollCam.setPos(0, 0, 0);
             break;
-        case 'h':
+        case 'H':
             rollCam.setScale(1.2);
             break;
-        case 'p':
+        case 'P':
             agentDebug = true;
             break;
         case 'R':

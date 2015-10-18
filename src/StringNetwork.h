@@ -13,7 +13,7 @@
 #include "NetworkAgent.h"
 #include "JsonReceiver.h"
 
-#define MAX_AGENTS 40
+#define MAX_AGENTS 50
 
 class StringNetwork :public SceneElement {
 public:
@@ -24,11 +24,19 @@ public:
     virtual void keyPressed(int key) override;
     
     ofxTrueTypeFontUL2 font;
-    ofCamera camera;
+    ofEasyCam camera;
     ofLight light;
     vector<NetworkAgent> networkAgents;
     ofShader backShader;
-    
+    ofVec3f cameraPosition;
+    ofVec3f befCameraPosition;
+    ofVec3f nextCameraPosition;
+    ofVec3f cameraLookPoint;
+    ofVec3f befCameraLookPoint;
+    ofVec3f nextCameraLookPoint;
+    int cameraRotateFrames;
+    int rotateFrame;
+    int waitFrame;
     int agentNum;
     int fontSize;
     int spentFrames;

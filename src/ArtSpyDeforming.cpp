@@ -22,25 +22,28 @@ void ArtSpyDeforming::init(){
 }
 
 void ArtSpyDeforming::update(){
+
     rotation +=1.4;
     if(drawCircuitMode) circuitDrawer.updateCircuite();
     foundationDrawer.update();
 }
 
 void ArtSpyDeforming::draw(){
-    backShader.load("","shader.frag");
-    backShader.begin();
-    backShader.setUniform1f("u_time", ofGetElapsedTimef());
-    backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
-    ofRect(0,0,ofGetWidth(), ofGetHeight());
-    backShader.end();
+    
     
     if(drawCircuitMode){
-        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
         circuitDrawer.drawCircuit();
         ofDisableBlendMode();
         ofDisableAlphaBlending();
     }else{
+        backShader.load("","shader.frag");
+        backShader.begin();
+        backShader.setUniform1f("u_time", ofGetElapsedTimef());
+        backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+        ofRect(0,0,ofGetWidth(), ofGetHeight());
+        backShader.end();
+        
         light.enable();
         glEnable(GL_LIGHTING);
         ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
@@ -68,13 +71,14 @@ void ArtSpyDeforming::draw(){
         ofDisableAlphaBlending();
         light.disable();
         glDisable(GL_LIGHTING);
+        drawSpyLogo();
     }
     
     ofEnableAlphaBlending();
     ofDisableDepthTest();
     ofDisableBlendMode();
     ofDisableAlphaBlending();
-    drawSpyLogo();
+ 
 }
 
 void ArtSpyDeforming::drawSpyLogo(){
@@ -101,10 +105,15 @@ void ArtSpyDeforming::drawSpyLogo(){
     ofPopMatrix();
 }
 
+void ArtSpyDeforming::stop(){
+    circuitDrawer.endBoxCircuit();
+}
+
 void ArtSpyDeforming::keyPressed(int key){
     switch (key) {
         case 'z':
             drawCircuitMode = !drawCircuitMode;
+            circuitDrawer.endBoxCircuit();
             break;
         case 'x':
             circuitDrawer.changeMode(CircuitDrawer::NORMAL);
@@ -123,6 +132,14 @@ void ArtSpyDeforming::keyPressed(int key){
             break;
         case 'm':
             circuitDrawer.changeMode(CircuitDrawer::CROSS);
+            break;
+        case 'a':
+            circuitDrawer.initBoxCircuit();
+            drawCircuitMode = true;
+            break;
+        case 's':
+            circuitDrawer.endBoxCircuit();
+            drawCircuitMode = true;
             break;
         default:
             break;

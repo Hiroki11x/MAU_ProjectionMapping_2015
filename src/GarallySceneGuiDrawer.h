@@ -22,10 +22,10 @@ public:
     void drawClock();
     
     int frameCounter;
-    bool drawCenterCircleMode = true;
-    bool drawGraphMode = true;
-    bool drawTargetMarkerMode = true;
-    bool drawClockMode = true;
+    bool drawCenterCircleMode = false;
+    bool drawGraphMode = false;
+    bool drawTargetMarkerMode = false;
+    bool drawClockMode = false;
     float centerDeg;
     float clockDeg[3];
     

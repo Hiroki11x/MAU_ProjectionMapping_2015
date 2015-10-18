@@ -20,21 +20,21 @@ void CircuitDrawer::reset(){
     for(int i = 0; i < CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM; i++){
         usedPoint[i] = false;
     }
-    for(int n = 0; n < 4; n++){
+    for(int n = 0; n < 10; n++){
         circuit[n].useColors = false;
         circuit[n].clear();
         setRandomPoint(n);
         circuit[n].addVertex(targetPoint[n]);
         arrivedNextPoint[n] = true;
         positionCounter[n] = 0;
-        addedPoint = 4;
+        addedPoint = 10;
     }
     waitFrames = 0;
 }
 
 void CircuitDrawer::updateCircuite(){
     
-    for(int n = 0; n < 4; n++){
+    for(int n = 0; n < 10; n++){
         if(arrivedNextPoint[n] && addedPoint < CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM){
             //最初と最後以外はニコ入れる
             if(addedPoint != 1 && addedPoint != CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM) circuit[n].addVertex(targetPoint[n]);
@@ -65,7 +65,7 @@ void CircuitDrawer::updateCircuite(){
             }
             addedPoint++;
         }else{
-            positionCounter[n] += ofRandom(0, 0.5);
+            positionCounter[n] += ofRandom(0.3, 1.0);
             if(positionCounter[n] > 1.0){
                 arrivedNextPoint[n] = true;
             }
@@ -73,20 +73,24 @@ void CircuitDrawer::updateCircuite(){
     }
     if(addedPoint == CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM) {
         waitFrames++;
-        if(waitFrames > 100) reset();
+        if(waitFrames > 30) reset();
     }
 }
 
 void CircuitDrawer::drawCircuit(){
+    if(boxMode){
+        drawBoxCircuit();
+        return;
+    }
     ofPushMatrix();
     ofPushStyle();
     ofSetLineWidth(3);
     glPointSize(15);
-    for(int n = 0; n < 4; n++){
-        ofSetColor(0, 255, 255, 150);
+    for(int n = 0; n < 10; n++){
+        ofSetColor(100, 255, 255, 100);
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
         circuit[n].draw();
-        ofSetColor(0, 255, 255, 150);
+        ofSetColor(100, 255, 255, 100);
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_POINTS);
         circuit[n].draw();
     }
@@ -99,6 +103,44 @@ void CircuitDrawer::drawCircuit(){
     }
     ofPopStyle();
     ofPopMatrix();
+}
+
+void CircuitDrawer::drawBoxCircuit(){
+    ofPushMatrix();
+    ofPushStyle();
+    ofSetBackgroundAuto(false);
+    ofSetLineWidth(3);
+    ofEnableAlphaBlending();
+    glPointSize(45);
+    ofSetColor(0,0,0,20);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    for(int n = 0; n < 10; n++){
+        ofSetColor(100, 255, 255, 100);
+        circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
+        circuit[n].draw();
+        ofSetColor(100, 255, 255, 100);
+        ofRect(circuit[n].vertices.at(circuit[n].vertices.size() - 1),45,45);
+        circuit[n].draw();
+    }
+    if(addedPoint != CIRCUIT_HEIGHT_NUM * CIRCUIT_WIDTH_NUM){
+        ofSetColor(0, 255, 255);
+        ofSetLineWidth(1);
+        for(int n = 0; n <4; n++){
+            ofLine(lineStartPoint[n], lineStartPoint[n] + positionCounter[n] *(targetPoint[n] - lineStartPoint[n]));
+        }
+    }
+    ofPopStyle();
+    ofPopMatrix();
+}
+
+void CircuitDrawer::initBoxCircuit(){
+    boxMode = true;
+    ofSetBackgroundAuto(false);
+}
+
+void CircuitDrawer::endBoxCircuit(){
+    boxMode = false;
+    ofSetBackgroundAuto(true);
 }
 
 bool CircuitDrawer::setNextPoint(Direction nextDirection, int n){

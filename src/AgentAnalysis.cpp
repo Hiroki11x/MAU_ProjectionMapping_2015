@@ -24,9 +24,7 @@ void AgentAnalysis::init(float scale){
 void AgentAnalysis::drawAgent(){
     ofPushMatrix();
     ofPushStyle();
-    ofEnableDepthTest();
-    ofEnableAlphaBlending();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    if(mesh.vertices.size() == 0) return;
     ofLine(targetPodsition,(position + mesh.vertices.back()).rotated(ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed));
@@ -35,7 +33,7 @@ void AgentAnalysis::drawAgent(){
     glTranslatef(position.x,
                  position.y,
                  position.z);
-    font->drawString(userName,0,0);
+   // font->drawString(userName,0,0);
     glPopMatrix();
     ofRotateX(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofRotateY(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
@@ -58,16 +56,17 @@ bool AgentAnalysis::removeVertices(){
 }
 
 AgentAnalysis::AgentAnalysis(ofVec3f pos, wstring name){
-    font = new ofxTrueTypeFontUL2();
+  //  font = new ofxTrueTypeFontUL2();
     position = pos;
     mesh.addVertices(vertices);
     rotateSpeed = ofRandom(2.0, 10.0);
-    font->loadFont("Arial.ttf", 10);
+ /*   font->loadFont("Arial.ttf", 10);
     font->loadSubFont("YuMincho");
     font->loadSubFont(OF_TTF_SERIF,1.2,-0.02);
     font->loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
     font->useProportional(true);
     font->useVrt2Layout(true);
-    font->setLineHeight(font->getFontSize()*1.5);
+    font->setLineHeight(font->getFontSize()*1.5);*/
     userName = name;
+    eraseSpeed = ofRandom(0.03,0.1);
 }
