@@ -34,8 +34,9 @@ private:
     int max_column;
     
     GraphLog graphlog;
-    
     bool mode = false;
+    
+    ofCamera cam;
 public:
     virtual void reset() override;
     virtual void update() override;

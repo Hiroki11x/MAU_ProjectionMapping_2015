@@ -52,7 +52,7 @@ void SingleAgent::set_color(ofColor _color){
 void SingleAgent::update(){
 }
 
-void SingleAgent::draw(float x, float y){
+void SingleAgent::draw(float x, float y){//画像の色解析４枚のやつ
 
     ofPushMatrix();
     ofTranslate(x, y);
@@ -87,7 +87,7 @@ void SingleAgent::draw(float x, float y){
     ofPopMatrix();
 }
 
-void SingleAgent::draw_line(float x, float y){
+void SingleAgent::draw_line(float x, float y){//2D文字だけ
     ofPushMatrix();
     ofTranslate(x, y);
     ofFill();
@@ -102,18 +102,23 @@ void SingleAgent::draw_line(float x, float y){
     ofPopMatrix();
 }
 
-void SingleAgent::draw_line(float x, float y,float z){
+void SingleAgent::draw_line(float x, float y,float z){//3D文字だけ
     ofPushMatrix();
     ofTranslate(x, y, z);
     ofFill();
     ofSetColor(0,255,0,ofRandom(0,170));
-    ofRect(0,-10,150,10);
+    ofRect(0,0,150,10);
     ofSetColor(255);
+    
+    glPushMatrix();
+    glRotatef(180, 1,0,0);
+//    glTranslated(x, y, z);
     FontManager::mfont.drawString(username, 0,0);
     FontManager::mfont.drawString(id, 0,10);
     FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 0,20);
     FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 0,30);
     FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 0,40);
+    glPushMatrix();
     ofPopMatrix();
 }
 

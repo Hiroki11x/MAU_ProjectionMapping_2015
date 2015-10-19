@@ -46,7 +46,7 @@ public:
     void update();
     
     void draw_line(float x, float y);
-    void draw_line(float x, float y,float z)
+    void draw_line(float x, float y,float z);
     void draw(float x, float y);
     void init();
     

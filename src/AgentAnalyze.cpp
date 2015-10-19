@@ -38,24 +38,32 @@ void AgentAnalyze::draw(){
 }
 
 void AgentAnalyze::draw_3D(){
+    
     int agent_size = SingleUserManager::user_agent.size();
     ofSetColor(255);
     if(MAX_AGENT < agent_size ){
         SingleUserManager::user_agent.erase(SingleUserManager::user_agent.begin());
     }
+    if(agent_size>0){
+        cam.lookAt(SingleUserManager::user_agent.back()->position);
+        cam.setPosition(ofGetWidth()/2+100*ofSignedNoise(ofGetElapsedTimef()/100,1), ofGetHeight()/2+100*ofSignedNoise(1,ofGetElapsedTimef()/100), 500*(1+sin(ofGetElapsedTimef()/100)));
+    }
     
     float x;
     float y;
+    
+    cam.begin();
     for(int i = 0; i< agent_size ;i++){
         if(i == agent_size-1){
             //            user_agent.at(i).draw_circle();
         }else{
             x = (i/max_row)*170 ;
             y = 60 * (i%max_row -1);
-            SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100,100*ofSignedNoise(ofGetElapsedTimef()/100));
+            SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100,100*ofSignedNoise(ofGetElapsedTimef()/100,i));
         }
     }
     graphlog.draw();
+    cam.end();
 }
 
 void AgentAnalyze::draw_2D(){
