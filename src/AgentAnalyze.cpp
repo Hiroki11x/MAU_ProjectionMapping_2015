@@ -44,11 +44,7 @@ void AgentAnalyze::draw_3D(){
     if(MAX_AGENT < agent_size ){
         SingleUserManager::user_agent.erase(SingleUserManager::user_agent.begin());
     }
-    if(agent_size>0){
-        cam.lookAt(SingleUserManager::user_agent.back()->position);
-        cam.setPosition(ofGetWidth()/2+100*ofSignedNoise(ofGetElapsedTimef()/100,1), ofGetHeight()/2+100*ofSignedNoise(1,ofGetElapsedTimef()/100), 500*(1+sin(ofGetElapsedTimef()/100)));
-    }
-    
+
     float x;
     float y;
     
@@ -61,6 +57,8 @@ void AgentAnalyze::draw_3D(){
             y = 60 * (i%max_row -1);
             SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100,100*ofSignedNoise(ofGetElapsedTimef()/100,i));
         }
+        cam.setPosition(x+60,y+100, 500*(1.5+ofSignedNoise(ofGetElapsedTimef()/10)));
+        cam.lookAt(ofVec3f(x+60,y+100,0));
     }
     graphlog.draw();
     cam.end();

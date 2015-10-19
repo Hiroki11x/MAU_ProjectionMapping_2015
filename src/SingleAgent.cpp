@@ -91,7 +91,11 @@ void SingleAgent::draw_line(float x, float y){//2D文字だけ
     ofPushMatrix();
     ofTranslate(x, y);
     ofFill();
-    ofSetColor(0,255,0,ofRandom(0,170));
+    if(id.length()<8){
+        ofSetColor(255,0,0,ofRandom(0,170));
+    }else{
+        ofSetColor(0,255,0,ofRandom(0,170));
+    }
     ofRect(0,-10,150,10);
     ofSetColor(255);
     FontManager::mfont.drawString(username, 0,0);
@@ -106,7 +110,12 @@ void SingleAgent::draw_line(float x, float y,float z){//3D文字だけ
     ofPushMatrix();
     ofTranslate(x, y, z);
     ofFill();
-    ofSetColor(0,255,0,ofRandom(0,170));
+    if(id.length()<8){
+        ofSetColor(255,0,0,ofRandom(0,170));
+    }else{
+        ofSetColor(0,255,0,ofRandom(0,170));
+    }
+    
     ofRect(0,0,150,10);
     ofSetColor(255);
     
