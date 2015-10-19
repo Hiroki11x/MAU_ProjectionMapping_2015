@@ -25,6 +25,8 @@ class AgentAnalyze : public SceneElement {
 private:
     void check_is_json_new();
     void addAgent(int add_num);
+    void draw_2D();
+    void draw_3D();
     
     int json_num;
 
@@ -32,6 +34,9 @@ private:
     int max_column;
     
     GraphLog graphlog;
+    bool mode = false;
+    
+    ofCamera cam;
 public:
     virtual void reset() override;
     virtual void update() override;

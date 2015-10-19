@@ -30,7 +30,41 @@ void AgentAnalyze::init(){
 }
 
 void AgentAnalyze::draw(){
+    if(mode){
+        draw_2D();
+    }else{
+        draw_3D();
+    }
+}
+
+void AgentAnalyze::draw_3D(){
     
+    int agent_size = SingleUserManager::user_agent.size();
+    ofSetColor(255);
+    if(MAX_AGENT < agent_size ){
+        SingleUserManager::user_agent.erase(SingleUserManager::user_agent.begin());
+    }
+
+    float x;
+    float y;
+    
+    cam.begin();
+    for(int i = 0; i< agent_size ;i++){
+        if(i == agent_size-1){
+            //            user_agent.at(i).draw_circle();
+        }else{
+            x = (i/max_row)*170 ;
+            y = 60 * (i%max_row -1);
+            SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100,100*ofSignedNoise(ofGetElapsedTimef()/100,i));
+        }
+        cam.setPosition(x+60,y+100, 500*(1.5+ofSignedNoise(ofGetElapsedTimef()/10)));
+        cam.lookAt(ofVec3f(x+60,y+100,0));
+    }
+    graphlog.draw();
+    cam.end();
+}
+
+void AgentAnalyze::draw_2D(){
     int agent_size = SingleUserManager::user_agent.size();
     ofSetColor(255);
     if(MAX_AGENT < agent_size ){
@@ -41,11 +75,11 @@ void AgentAnalyze::draw(){
     float y;
     for(int i = 0; i< agent_size ;i++){
         if(i == agent_size-1){
-//            user_agent.at(i).draw_circle();
+            //            user_agent.at(i).draw_circle();
         }else{
-            x = (i/max_row)*170 +20;
-            y = 60 * (i%max_row -1) +20;
-            SingleUserManager::user_agent.at(i)->draw_line(x,y);
+            x = (i/max_row)*170 ;
+            y = 60 * (i%max_row -1);
+            SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100);
         }
     }
     graphlog.draw();
@@ -61,8 +95,11 @@ void AgentAnalyze::onMouseDown(int x, int y){
 
 }
 
-void AgentAnalyze::keyPressed(int key){
+void AgentAnalyze::keyPressed(int key){//Enterで2D,3Dを切り替え
     graphlog.keyPressed(key);
+    if(key==OF_KEY_RETURN){
+        mode = !mode;
+    }
 }
 
 void AgentAnalyze::end(){}
