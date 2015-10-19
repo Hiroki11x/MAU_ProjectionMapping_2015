@@ -18,6 +18,7 @@
 #include "IconStream.h"
 #include "StringNetwork.h"
 #include "GlidShoot.h"
+#include "WaveFractal.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:
