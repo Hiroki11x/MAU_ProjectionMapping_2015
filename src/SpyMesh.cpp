@@ -99,21 +99,28 @@ void SpyMesh::draw(){
         ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     }
     
-    ofSetColor(50, 255, 50 , 150);
-    
+
     ofSetLineWidth(0.3);
     if(modelDrawMode) {
+        ofSetColor(spyModelColor);
         modelDrawer.drawModel(modelSize);
+        ofSetColor(emitterColor);
         drawEmitter();
     }
-    if(coloerMeshDrawMode) modelDrawer.drawColoredMesh();
+    if(coloerMeshDrawMode) modelDrawer.drawColoredMesh();  //SetColorInClass
     if(randomTrianlgeDrawMode) {
-        rtDrawer.drawTriangleMesh();
+        rtDrawer.drawTriangleMesh();  //SetColorInClass
+        ofSetColor(spiralModelColor);
         spiralDrawer.drawSpiral(modelSize);
     }
-    if(garallyDrawMode) garallyDrawer.drawGarally();
-    if(randomExpandMeshDrawMode) modelDrawer.drawRandomExpandMesh(modelSize);
     
+    if(garallyDrawMode){
+        ofSetColor(garallyModelColor);
+        garallyDrawer.drawGarally();
+    }
+
+    ofSetColor(randomExpandMeshColor);
+    if(randomExpandMeshDrawMode) modelDrawer.drawRandomExpandMesh(modelSize);
 
     ofPopMatrix();
     ofPopStyle();
@@ -123,20 +130,15 @@ void SpyMesh::draw(){
     }else{
         camera.end();
     }
-    
     ofPushStyle();
-    ofSetColor(50, 255, 100);
     ofDisableDepthTest();
-    modelDrawer.drawPercentage();
+    modelDrawer.drawPercentage(); //SetColorInClass
     ofPopStyle();
-    ofDrawBitmapString(ofToString(spentFrames) + " FPS:"+ofToString(ofGetFrameRate()) ,0,0);
 }
 
 void SpyMesh::drawEmitter(){
 
     ofPushStyle();
-    ofSetColor(50, 255, 50,150);
-    
     for(int i = 0; i < agents.size(); i++){
         ofPushMatrix();
         agents.at(i).drawAgent();
@@ -188,6 +190,105 @@ void SpyMesh::initModelDrawer(){
         rtDrawer.setVertices(model.getMesh(i).vertices, 1.1);
     }
     sphere = *new DrawerSphere(0.15);
+}
+
+void SpyMesh::changeColorSet(){
+    colorSetIndex = (colorSetIndex + 1) % 3;
+    switch (colorSetIndex) {
+        case 0: //BlueBase
+            spyModelColor = ofColor(50, 255, 200 , 150);
+            emitterColor = ofColor(50, 255, 200,150);
+            spiralModelColor = ofColor(0,153,204,150);
+            garallyModelColor = ofColor(204, 255, 255, 150);
+            randomExpandMeshColor = ofColor(50, 255, 200 , 150);
+            //-----------------------------------------------------
+            //GUI
+            //-----------------------------------------------------
+            gui.agentNameColor = ofColor(220, 220, 255, 255);
+            gui.agentBarColor = ofColor(255,0,102,200);
+            gui.agentEntryFrameColor = ofColor(204,255,255,50);
+            gui.agentEntryBackColor = ofColor(10,10,18,200);
+            gui.agentEntryNewWaveColor = ofColor(100, 100, 200,100);
+            gui.agentAnalistLineColor = ofColor(255,0,102, 100);
+            gui.agentAnalistColor = ofColor(220, 220, 255, 255);
+            gui.dnaFrameColor = ofColor(204,255,255,50);
+            gui.dnaBackColor = ofColor(10,10,18,200);
+            gui.dnaModelColor = ofColor(200,255,200,200);
+            gui.waveFrameColor = ofColor(204,255,255,50);
+            gui.waveBackColor = ofColor(10,10,18,200);
+            gui.waveColor = ofColor(51,255,102);
+            gui.foundInsideColor = ofColor(70, 170, 255,50);
+            gui.foundMiddleColor = ofColor(200, 245, 240,50);
+            gui.foundOutsideColor = ofColor(100, 200, 200,50);
+            modelDrawer.parsentFrameColor = ofColor(51,153,204,100);
+            modelDrawer.parsentColor = ofColor(204,255,255,200);
+            rtDrawer.rtColor = ofColor(153,204,255, 200);
+            rtDrawer.rtTransColor = ofColor(153,204,255, 50);
+            break;
+        case 1: //GreenBase
+            spyModelColor = ofColor(50, 255, 50, 150);
+            emitterColor = ofColor(50, 255, 50,150);
+            spiralModelColor = ofColor(50, 255, 50,150);
+            garallyModelColor = ofColor(204, 255, 255, 150);
+            randomExpandMeshColor = ofColor(50, 255, 60, 150);
+            //-----------------------------------------------------
+            //GUI
+            //-----------------------------------------------------
+            gui.agentNameColor = ofColor(210, 255, 210,220);
+            gui.agentBarColor = ofColor(51,102,255);
+            gui.agentEntryFrameColor = ofColor(80,120,80,100);
+            gui.agentEntryBackColor = ofColor(10,18,10,200);
+            gui.agentEntryNewWaveColor = ofColor(100, 255, 100,100);
+            gui.agentAnalistLineColor = ofColor(255, 255, 255, 100);
+            gui.agentAnalistColor = ofColor(51,102,255, 150);
+            gui.dnaFrameColor = ofColor(80,120,80,100);
+            gui.dnaBackColor = ofColor(10,18,10,200);
+            gui.dnaModelColor = ofColor(200,255,200,200);
+            gui.waveFrameColor = ofColor(80,120,80,100);
+            gui.waveBackColor = ofColor(10,18,10,200);
+            gui.waveColor = ofColor(255,0,102,200);
+            gui.foundInsideColor = ofColor(70, 255, 70,50);
+            gui.foundMiddleColor = ofColor(60, 245, 60,50);
+            gui.foundOutsideColor = ofColor(100, 255, 100,50);
+            modelDrawer.parsentFrameColor = ofColor(80,120,80,100);
+            modelDrawer.parsentColor = ofColor(50,255,50,200);
+            rtDrawer.rtColor = ofColor(50, 200, 50, 200);
+            rtDrawer.rtTransColor = ofColor(50, 255, 50, 50);
+            break;
+        case 2: //RedBase
+            spyModelColor = ofColor(255, 50, 255, 150);
+            emitterColor = ofColor(255, 50, 100,150);
+            spiralModelColor = ofColor(255, 100, 255,150);
+            garallyModelColor = ofColor(204, 255, 255, 150);
+            randomExpandMeshColor = ofColor(200, 50, 200, 150);
+            //-----------------------------------------------------
+            //GUI
+            //-----------------------------------------------------
+            gui.agentNameColor = ofColor(210, 255, 210,220);
+            gui.agentBarColor = ofColor(51,255,55);
+            gui.agentEntryFrameColor = ofColor(120,80,80,100);
+            gui.agentEntryBackColor = ofColor(10,18,10,200);
+            gui.agentEntryNewWaveColor = ofColor(255, 100, 100,100);
+            gui.agentAnalistLineColor = ofColor(255, 255, 255, 100);
+            gui.agentAnalistColor = ofColor(200, 50, 255, 150);
+            gui.dnaFrameColor = ofColor(120,80,80,100);
+            gui.dnaBackColor = ofColor(18,10,10,200);
+            gui.dnaModelColor = ofColor(255,200,200,200);
+            gui.waveFrameColor = ofColor(120,80,80,100);
+            gui.waveBackColor = ofColor(18,10,10,200);
+            gui.waveColor = ofColor(51,102,255);
+            gui.foundInsideColor = ofColor(255, 70, 70,50);
+            gui.foundMiddleColor = ofColor(255, 60, 60,50);
+            gui.foundOutsideColor = ofColor(255, 100, 100,50);
+            modelDrawer.parsentFrameColor = ofColor(120,80,80,100);
+            modelDrawer.parsentColor = ofColor(255,50, 50,200);
+            rtDrawer.rtColor = ofColor(200, 50, 50, 200);
+            rtDrawer.rtTransColor = ofColor(255, 50, 50, 50);
+            break;
+        default:
+            break;
+    }
+
 }
 
 void SpyMesh::onMouseDown(int x, int y){
@@ -297,6 +398,8 @@ void SpyMesh::keyPressed(int key){
             break;
         case 'R':
             reset();
+        case 'C':
+            changeColorSet();
         default:
             break;
     }

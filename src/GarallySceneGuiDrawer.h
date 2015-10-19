@@ -33,5 +33,6 @@ public:
     ofVboMesh centerCircle;
     GraphGuiDrawer graph;
     TargetMarkerDrawer marker;
+    ofTrueTypeFont font;
 };
 #endif

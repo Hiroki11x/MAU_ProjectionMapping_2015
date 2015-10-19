@@ -14,6 +14,7 @@ void GarallySceneGuiDrawer::init(){
     graph = *new GraphGuiDrawer();
     marker = *new TargetMarkerDrawer();
     marker.init(50);
+    font.loadFont("Fonts/Gidole-Regular.ttf", 10);
 }
 
 void GarallySceneGuiDrawer::update(){
@@ -88,7 +89,7 @@ void GarallySceneGuiDrawer::drawClock(){
         ofPushMatrix();
         ofTranslate(0, i * 90);
         ofSetColor(100,255,255,180);
-        ofDrawBitmapString(ofToString(i + 1) + ofToString(clockDeg[i]), -30, -33);
+        font.drawString(ofToString(i + 1) + ofToString(clockDeg[i]), -30, -33);
         ofSetLineWidth(2);
         ofSetColor(0,200,200,150);
         ofCircle(0, 0, 25);

@@ -28,7 +28,7 @@ void AgentAnalysis::drawAgent(){
     ofLine(targetPodsition,(position + mesh.vertices.back()).rotated(ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed));
-    ofSetColor(100, 255, 100,150);
+    //ofSetColor(100, 255, 100,150);
     glPushMatrix();
     glTranslatef(position.x,
                  position.y,
@@ -39,7 +39,7 @@ void AgentAnalysis::drawAgent(){
     ofRotateY(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofRotateZ(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofTranslate(position);
-    ofSetColor(150,255,100,150);
+    //ofSetColor(150,255,100,150);
     mesh.draw(OF_MESH_WIREFRAME);
     ofPopStyle();
     ofPopMatrix();

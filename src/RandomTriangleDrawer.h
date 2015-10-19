@@ -18,6 +18,8 @@ public:
     ofMesh mesh;
     ofMesh coloredMesh;
     vector<ofVec3f> vertices;
+    ofColor rtColor = ofColor(153,204,255, 200);//ofSetColor(50, 200, 50, 200);
+    ofColor rtTransColor = ofColor(153,204,255, 50); //ofSetColor(50, 255, 50, 50);
 
     void changeMesh(int num, int cNum);
     void drawTriangleMesh();

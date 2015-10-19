@@ -55,11 +55,17 @@ public:
     ofShader backShader;
     vector<AgentAnalysis> agents;
     SpyMeshSceneGui gui;
+    ofColor spyModelColor = ofColor(50, 255, 200 , 150); //50, 255, 50 , 150
+    ofColor emitterColor = ofColor(50, 255, 200,150);
+    ofColor spiralModelColor = ofColor(0,153,204,150); //50, 255, 200 , 150
+    ofColor garallyModelColor = ofColor(204, 255, 255, 150);
+    ofColor randomExpandMeshColor = ofColor(50, 255, 200 , 150);
 
     int mouseX,mouseY;
     int spentFrames;
     int wainingFrames;
     int agentNum;
+    int colorSetIndex = 0;
     float modelSize;
     float lineEmitPointDistance;
     bool useRollCam = true;
@@ -75,6 +81,7 @@ public:
     void initModelDrawer();
     void drawEmitter();
     void updateVertices();
+    void changeColorSet();
     void reset();
 };
 #endif

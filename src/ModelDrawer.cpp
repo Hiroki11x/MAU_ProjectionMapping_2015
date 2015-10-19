@@ -111,10 +111,11 @@ void ModelDrawer::drawModel(float scale, bool fill){
 };
 
 void ModelDrawer::drawPercentage(){
-    ofFill();
-    ofSetColor(80,120,80,100);
+    ofNoFill();
+    ofSetColor(parsentFrameColor);
     ofRect(40, 40, 944, 40);
-    ofSetColor(50,255,50,200);
+    ofFill();
+    ofSetColor(parsentColor);
     ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
 }
 
@@ -148,7 +149,7 @@ void ModelDrawer::updateColoredMesh(float size){
                 coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i] * size);
                 coloredPartMesh.setVertex(3 * i + 1, coloredMeshesVec[3 * i + 1] * size);
                 coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size);
-                coloredPartMesh.addColor(ofColor(ofRandom(255),255,ofRandom(255),ofRandom(255)));
+                coloredPartMesh.addColor(ofColor(ofRandom(255),ofRandom(255),255,ofRandom(255)));
             }
             break;
             

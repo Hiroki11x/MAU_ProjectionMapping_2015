@@ -23,10 +23,10 @@ void RandomTriangleDrawer::drawTriangleMesh(){
 
     ofPushStyle();
     glPointSize(10.0);
-    ofSetColor(50, 200, 50, 200);
+    ofSetColor(rtColor);
     mesh.draw(OF_MESH_POINTS);
     mesh.draw(OF_MESH_WIREFRAME);
-    ofSetColor(50, 255, 50, 50);
+    ofSetColor(rtTransColor);
     coloredMesh.draw(OF_MESH_POINTS);
     coloredMesh.draw(OF_MESH_FILL);
     ofPopStyle();

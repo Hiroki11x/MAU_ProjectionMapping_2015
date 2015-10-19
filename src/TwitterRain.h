@@ -24,6 +24,7 @@ public:
         float rotateSpeed;
         float downSpeed;
         int alpha;
+        ofColor c;
         bool visible;
     };
     

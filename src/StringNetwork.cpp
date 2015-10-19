@@ -21,9 +21,13 @@ void StringNetwork::init(){
     expandingArea = 500;
     cameraZ = 600;
     fontSize = 10;
-    font.loadFont("Arial.ttf", fontSize);
+   /* font.loadFont("Arial.ttf", fontSize);
     font.loadSubFont("YuMincho");
-    font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
+    font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);*/
+    font.loadFont("Fonts/Gidole-Regular.ttf",10,true,true,0.3f,0,true);
+    font.loadSubFont("Fonts/KozGoPro-Light.otf");
+    font.loadSubFont("Fonts/Futura.ttc");
+    font.loadSubFont("Fonts/FiraCode-Regular.otf");
     font.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
     font.useProportional(true);
     font.useVrt2Layout(true);
@@ -86,6 +90,7 @@ void StringNetwork::draw(){
     camera.end();
     ofDisableAlphaBlending();
     ofDisableBlendMode();
+    ofDisableDepthTest();
     ofPopStyle();
     glPopMatrix();
 }

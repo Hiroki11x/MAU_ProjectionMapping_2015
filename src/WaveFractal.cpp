@@ -7,7 +7,6 @@
 //
 #include "WaveFractal.h"
 
-
 void WaveFractal::init(){
     cam.setPosition(0, 0, 600);
     cam.lookAt(ofPoint(0,0,0));
@@ -56,7 +55,6 @@ WaveFractal::Wave::Wave(int gen){
     frameCounter = 0;
     nextWaveFrames = ofRandom(60,100);
     generation = gen;
-    cout << gen << endl;
 }
 
 void WaveFractal::Wave::drawWavePoint(){
@@ -68,7 +66,6 @@ void WaveFractal::Wave::drawWavePoint(){
     ofRotateX(90);
     ofCircle(0, 0, radius - 10);
     ofPopMatrix();*/
-    
     ofRotateY(deg);
     ofTranslate(radius, 0);
     ofSetColor(50, 255, 255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION), 255 * (1.0 - (float)generation/(float)MAX_GENERATION));
@@ -80,7 +77,6 @@ void WaveFractal::Wave::drawWavePoint(){
         children.at(i).drawWavePoint();
         ofPopMatrix();
     }
-    
 }
 
 void WaveFractal::Wave::updateWave(){

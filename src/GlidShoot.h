@@ -32,6 +32,7 @@ public:
         int restDrawFrames;
         int drawFrames;
         bool drawGlid;
+        ofColor c;
     } Glid;
     
     vector<Glid> glids;

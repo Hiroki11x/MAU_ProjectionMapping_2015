@@ -13,6 +13,7 @@ void CircuitDrawer::init(){
         points[i] = ofVec3f((i  % CIRCUIT_WIDTH_NUM) * CIRCUIT_POINT_INTERVAL - 10,
                             (i / CIRCUIT_HEIGHT_NUM) * CIRCUIT_POINT_INTERVAL - 116,0);
     }
+    
     reset();
 }
 
@@ -28,7 +29,11 @@ void CircuitDrawer::reset(){
         arrivedNextPoint[n] = true;
         positionCounter[n] = 0;
         addedPoint = 10;
+        
+        lineColors[n].setHsb(ofRandom(120, 240), 255, 255);
     }
+
+    
     waitFrames = 0;
 }
 
@@ -65,7 +70,11 @@ void CircuitDrawer::updateCircuite(){
             }
             addedPoint++;
         }else{
-            positionCounter[n] += ofRandom(0.3, 1.0);
+            if(!boxMode){
+                positionCounter[n] += ofRandom(0.3, 1.0);
+            }else{
+                positionCounter[n] += ofRandom(0.1, 0.2);
+            }
             if(positionCounter[n] > 1.0){
                 arrivedNextPoint[n] = true;
             }
@@ -87,10 +96,13 @@ void CircuitDrawer::drawCircuit(){
     ofSetLineWidth(3);
     glPointSize(15);
     for(int n = 0; n < 10; n++){
-        ofSetColor(100, 255, 255, 100);
+        if(randomColor){
+            ofSetColor(lineColors[n] ,100);
+        }else{
+            ofSetColor(100, 255, 255, 100);
+        }
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
         circuit[n].draw();
-        ofSetColor(100, 255, 255, 100);
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_POINTS);
         circuit[n].draw();
     }
@@ -98,6 +110,11 @@ void CircuitDrawer::drawCircuit(){
         ofSetColor(0, 255, 255);
         ofSetLineWidth(1);
         for(int n = 0; n <4; n++){
+            if(randomColor){
+                ofSetColor(lineColors[n] ,100);
+            }else{
+                ofSetColor(100, 255, 255, 100);
+            }
             ofLine(lineStartPoint[n], lineStartPoint[n] + positionCounter[n] *(targetPoint[n] - lineStartPoint[n]));
         }
     }
@@ -115,17 +132,25 @@ void CircuitDrawer::drawBoxCircuit(){
     ofSetColor(0,0,0,20);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     for(int n = 0; n < 10; n++){
-        ofSetColor(100, 255, 255, 100);
-        circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
+        if(randomColor){
+            ofSetColor(lineColors[n] ,100);
+        }else{
+            ofSetColor(100, 255, 255, 100);
+        }
+        /*circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
         circuit[n].draw();
-        ofSetColor(100, 255, 255, 100);
-        ofRect(circuit[n].vertices.at(circuit[n].vertices.size() - 1),45,45);
-        circuit[n].draw();
+        ofRect(circuit[n].vertices.at(circuit[n].vertices.size() - 1),45,45);*/
+        ofCircle(lineStartPoint[n] + positionCounter[n] *(targetPoint[n] - lineStartPoint[n]), 15);
     }
     if(addedPoint != CIRCUIT_HEIGHT_NUM * CIRCUIT_WIDTH_NUM){
-        ofSetColor(0, 255, 255);
+        //ofSetColor(0, 255, 255);
         ofSetLineWidth(1);
-        for(int n = 0; n <4; n++){
+        for(int n = 0; n <10; n++){
+            if(randomColor){
+                ofSetColor(lineColors[n] ,100);
+            }else{
+                ofSetColor(100, 255, 255, 100);
+            }
             ofLine(lineStartPoint[n], lineStartPoint[n] + positionCounter[n] *(targetPoint[n] - lineStartPoint[n]));
         }
     }
@@ -250,6 +275,7 @@ void CircuitDrawer::setRandomPoint(int n){
     targetPoint[n] = points[nextIndex[n]];
     lineStartPoint[n] = targetPoint[n];
     usedPoint[nextIndex[n]] = true;
+    lineColors[n].setHsb(ofRandom(120, 240), 255, 255);
 }
 
 void CircuitDrawer::changeMode(Mode nextMode){

@@ -143,6 +143,9 @@ void IconStream::draw(){
     glPopMatrix();
     camera.end();
     ofDisableBlendMode();
+    ofDisableDepthTest();
+
+    ofDisableAlphaBlending();
 }
 
 void IconStream::drawDoor(float deg){

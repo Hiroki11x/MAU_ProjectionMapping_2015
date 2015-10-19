@@ -14,7 +14,8 @@ void TwitterRain::init(){
         tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
         tweets.at(index).rotateSpeed = ofRandom(-30,30);
         tweets.at(index).downSpeed = ofRandom(8,15);
-        tweets.at(index).alpha = ofRandom(190,255);
+        tweets.at(index).alpha = ofRandom(160,255);
+        tweets.at(index).c = ofColor(ofRandom(0, 100), ofRandom(180, 255), ofRandom(180, 255));
     }
     align = UL2_TEXT_ALIGN_V_TOP|UL2_TEXT_ALIGN_CENTER;
     strAlign="top-center [8]";
@@ -23,11 +24,11 @@ void TwitterRain::init(){
     glEnable(GL_DEPTH_TEST);
     bRotation=false;
 
-    font.loadFont("Fonts/Futura.ttc",32,true,true,0.3f,0,true);
-    font.loadSubFont("Gidole-Regular.ttf");
-    font.loadSubFont("FiraCode-Regular.otf");
-    font.loadSubFont("Yumincho");
-    font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
+    font.loadFont("Fonts/Gidole-Regular.ttf",32,true,true,0.3f,0,true);
+    font.loadSubFont("Fonts/KozGoPro-Light.otf");
+    font.loadSubFont("Fonts/Futura.ttc");
+    font.loadSubFont("Fonts/FiraCode-Regular.otf");
+    //font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
     font.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
     font.useProportional(true);
     font.useVrt2Layout(true);
@@ -58,12 +59,16 @@ void TwitterRain::draw(){
             if(!tweets.at(i).visible) continue;
             glPushMatrix();
             if(bRotation){
-                ofSetColor(25,255,25,tweets.at(i).alpha);
+                //ofSetColor(25,255,25,tweets.at(i).alpha);
+                //ofSetColor(102,255,255,tweets.at(i).alpha);
+                ofSetColor(tweets.at(i).c,tweets.at(i).alpha);
                 glTranslatef(tweets.at(i).position.x, tweets.at(i).position.y, tweets.at(i).position.z);
                 glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed, 0, 1, 0);
                 font.drawString(tweets.at(i).tweetInfo,0,0);
             }else{
-                ofSetColor(25,255,25,tweets.at(i).alpha);
+                //ofSetColor(25,255,25,tweets.at(i).alpha);
+                //ofSetColor(51,255,255,tweets.at(i).alpha);
+                ofSetColor(tweets.at(i).c,tweets.at(i).alpha);
                 font.drawString(tweets.at(i).tweetInfo, tweets.at(i).position.x, tweets.at(i).position.y);
             }
             glPopMatrix();

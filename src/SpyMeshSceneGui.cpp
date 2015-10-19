@@ -9,18 +9,18 @@
 
 void SpyMeshSceneGui::init(){
     font = new ofxTrueTypeFontUL2();
-    font->loadFont("Arial.ttf", 20);
-    font->loadSubFont("YuMincho");
-    font->loadSubFont(OF_TTF_SERIF,1.2,-0.02);
-    font->loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
+    font->loadFont("Fonts/Gidole-Regular.ttf",20,true,true,0.3f,0,true);
+    font->loadSubFont("Fonts/KozGoPro-Light.otf");
+    font->loadSubFont("Fonts/Futura.ttc");
+    font->loadSubFont("Fonts/FiraCode-Regular.otf");
     font->useProportional(true);
     font->useVrt2Layout(true);
     font->setLineHeight(font->getFontSize()*1.5);
     nameFont = new ofxTrueTypeFontUL2();
-    nameFont->loadFont("Arial.ttf", 10);
-    nameFont->loadSubFont("YuMincho");
-    nameFont->loadSubFont(OF_TTF_SERIF,1.2,-0.02);
-    nameFont->loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
+    nameFont->loadFont("Fonts/Gidole-Regular.ttf",12,true,true,0.3f,0,true);
+    nameFont->loadSubFont("Fonts/KozGoPro-Light.otf");
+    nameFont->loadSubFont("Fonts/Futura.ttc");
+    nameFont->loadSubFont("Fonts/FiraCode-Regular.otf");
     nameFont->useProportional(true);
     nameFont->useVrt2Layout(true);
     nameFont->setLineHeight(nameFont->getFontSize()*1.5);
@@ -133,10 +133,9 @@ void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
     
     ofTranslate(0, 50);
     
-    ofSetColor(80,120,80,100);
+    ofSetColor(agentEntryFrameColor);
     ofRect(40, 90 , 220 , 40 + 30 * agents.size());
-    ofNoFill();
-    ofSetColor(200, 255, 200,80);
+    ofSetColor(agentEntryBackColor);
     ofRect(50, 100 , 200 , 20 + 30 * agents.size());
     
     ofPushStyle();
@@ -153,16 +152,16 @@ void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
             newAgentWaves.push_back((newAgentWave){0,i,(int)ofRandom(0.9),ofRandom(90.0)});
         }
         ofTranslate(0, 30 * i);
-        ofSetColor(80, 230, 80, 150);
+        ofSetColor(agentBarColor);
         ofRect(5, 5, 190.0 * (float)agents.at(i).mesh.vertices.size() / 3000.0, 20);
-        ofSetColor(210, 255, 210,220);
+        ofSetColor(agentNameColor);
         nameFont->drawString(agents.at(i).userName, 10, 20);
         
         ofPopMatrix();
     }
     
     ofNoFill();
-    ofSetColor(100, 255, 100,100);
+    ofSetColor(agentEntryNewWaveColor);
     for(int i = 0; i < newAgentWaves.size(); i++){
         
         ofPushMatrix();
@@ -192,10 +191,10 @@ void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
 }
 
 void SpyMeshSceneGui::drawAnalyzer(){
-    ofSetColor(255, 255, 255, 100);
+    ofSetColor(agentAnalistLineColor);
     ofLine(40, 115, 220, 115);
     ofLine(220, 115, 260, 115);
-    ofSetColor(100, 255, 100, 150);
+    ofSetColor(agentAnalistColor);
     font->drawString("Analyst", 100, 120);
 }
 
@@ -206,20 +205,38 @@ void SpyMeshSceneGui::drawDNA(){
     ofPushMatrix();
     ofPushStyle();
     ofTranslate(834, 100);
-    ofSetColor(80,120,80,100);
+    ofSetColor(dnaFrameColor);
     ofFill();
     ofRect(0, 0, 150 , dnaWindowHeight);
-    ofSetColor(50,255,50,200);
-    ofNoFill();
+    ofSetColor(dnaBackColor);
     ofRect(10, 10, 130 , dnaWindowHeight - 20);
     ofTranslate(75, 260);
     ofRotateY(ofGetElapsedTimeMillis()/10.0);
-    ofSetColor(200,255,200,200);
+    ofSetColor(dnaModelColor);
     if(dnaWindowHeight >= 500) DNAmodel.drawWireframe();
     ofPopMatrix();
     ofPopStyle();
 }
 
+//----------------------------------------------------------
+//TargetLine
+//----------------------------------------------------------
+void SpyMeshSceneGui::drawTargetLine(){
+    ofPushStyle();
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1 , 0x000F);
+    ofSetColor(targetColor);
+    ofNoFill();
+    if(!targetMoving) ofCircle(position, targetCircleSize);
+    ofLine(0, position.y, ofGetWidth(), position.y);
+    ofLine(position.x , 0 , position.x , ofGetHeight());
+    glDisable(GL_LINE_STIPPLE);
+    ofPopStyle();
+}
+
+//----------------------------------------------------------
+//Wave
+//----------------------------------------------------------
 void SpyMeshSceneGui::updateWave(){
     for(int i = 0; i < waveNum; i++){
         waves.at(i).intervalCounter++;
@@ -241,29 +258,10 @@ void SpyMeshSceneGui::updateWave(){
     }
 }
 
-//----------------------------------------------------------
-//TargetLine
-//----------------------------------------------------------
-void SpyMeshSceneGui::drawTargetLine(){
-    ofPushStyle();
-    glEnable(GL_LINE_STIPPLE);
-    glLineStipple(1 , 0x000F);
-    ofSetColor(255,255,255,150);
-    ofNoFill();
-    if(!targetMoving) ofCircle(position, targetCircleSize);
-    ofLine(0, position.y, ofGetWidth(), position.y);
-    ofLine(position.x , 0 , position.x , ofGetHeight());
-    glDisable(GL_LINE_STIPPLE);
-    ofPopStyle();
-}
-
-//----------------------------------------------------------
-//Wave
-//----------------------------------------------------------
 void SpyMeshSceneGui::drawWave(){
     ofPushMatrix();
     ofTranslate(784, 100);
-    ofSetColor(80,120,80,100);
+    ofSetColor(waveFrameColor);
     ofFill();
     ofRect(0, 0, 200 , waveWindowHeight);
     ofTranslate(10, 10);
@@ -271,7 +269,7 @@ void SpyMeshSceneGui::drawWave(){
         ofPushMatrix();
         
         ofTranslate(0, i * 100);
-        ofSetColor(100,180,100,100);
+        ofSetColor(waveBackColor);
         ofFill();
         ofRect(0, 5, 180,90);
         ofNoFill();
@@ -281,7 +279,7 @@ void SpyMeshSceneGui::drawWave(){
             ofPopMatrix();
             break;
         }
-        ofSetColor(255);
+        ofSetColor(waveColor);
         waves.at(i).waveMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
         waves.at(i).waveMesh.draw();
         glPointSize(4);
@@ -298,7 +296,7 @@ void SpyMeshSceneGui::addWave(){
 }
 
 void SpyMeshSceneGui::eraseWave(){
-     if(waveNum >= 1) waveNum--;
+     if(waveNum > 1) waveNum--;
 }
 
 //----------------------------------------------------------
@@ -317,21 +315,22 @@ void SpyMeshSceneGui::drawFoundation(){
         ofTranslate(0,0, - 4 * h);
         
         ofPushMatrix();
-        ofSetColor(70, 255, 70,50);
+        ofSetColor(foundInsideColor);
         ofSetLineWidth(10);
         ofRotateZ(insideDeg);
         insideCircleMesh.draw();
         ofPopMatrix();
         
         ofPushMatrix();
-        ofSetColor(60, 245, 60,50);
+        
+        ofSetColor(foundMiddleColor);
         ofSetLineWidth(3);
         ofRotateZ(middleDeg);
         middleCircleMesh.drawWireframe();
         ofPopMatrix();
         
         ofPushMatrix();
-        ofSetColor(100, 255, 100,50);
+        ofSetColor(foundOutsideColor);
         ofSetLineWidth(20);
         ofRotateZ(outsideDeg);
         outsideCircleMesh.draw();

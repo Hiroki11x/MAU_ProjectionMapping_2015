@@ -32,6 +32,7 @@ public:
     ofVec2f scale;
     GraphMode mode;
     ofxTrueTypeFontUL2* font;
+    ofxTrueTypeFontUL2* littleFont;
     
     GraphGuiDrawer();
 };
