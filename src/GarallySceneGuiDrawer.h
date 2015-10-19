@@ -22,10 +22,10 @@ public:
     void drawClock();
     
     int frameCounter;
-    bool drawCenterCircleMode = false;
-    bool drawGraphMode = false;
-    bool drawTargetMarkerMode = false;
-    bool drawClockMode = false;
+    bool drawCenterCircleMode = true;
+    bool drawGraphMode = true;
+    bool drawTargetMarkerMode = true;
+    bool drawClockMode = true;
     float centerDeg;
     float clockDeg[3];
     
@@ -34,5 +34,18 @@ public:
     GraphGuiDrawer graph;
     TargetMarkerDrawer marker;
     ofTrueTypeFont font;
+    ofColor frameMeshColor = ofColor(0,200,200, 180);
+    ofColor backCrossColor = ofColor(10, 255, 255, 60);
+    ofColor centerCircleColor = ofColor(153,255,255,150);
+    ofColor clockBackColor = ofColor(0,255,200,100);
+    ofColor clockFrameColor = ofColor(0,255,200,100);
+    ofColor clockDegColor = ofColor(50,255,255,180);
+    ofColor clockCircleColor = ofColor(153,255,255,150);
+    ofColor clockLineColor = ofColor(25,255,255,180);
+    ofColor targetColor = ofColor(0,255,255);
+    ofColor graphBackColor = ofColor(10,18,10,50);
+    ofColor graphStringColor = ofColor(10,255,200,100);
+    ofColor graphBarColor = ofColor(10,255,255,150);
+    
 };
 #endif

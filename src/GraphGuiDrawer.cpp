@@ -7,14 +7,14 @@
 //
 #include "GraphGuiDrawer.h"
 
-void GraphGuiDrawer::drawGraphGui(){
+void GraphGuiDrawer::drawGraphGui(ofColor backC,ofColor stringC,ofColor bColor){
     ofDisableDepthTest();
-    ofSetColor(0,30,30);
+    ofSetColor(backC);
     ofRect(0, 0, scale.x, scale.y);
 
     switch (mode) {
         case RECT_BAR:
-            drawRectBarGraph();
+            drawRectBarGraph(stringC,bColor);
             break;
         case WAVE:
             drawWaveGraph();
@@ -27,7 +27,7 @@ void GraphGuiDrawer::drawGraphGui(){
     }
 }
 
-void GraphGuiDrawer::drawRectBarGraph(){
+void GraphGuiDrawer::drawRectBarGraph(ofColor stringC,ofColor bColor){
     
     for(int i = 0; i < graphNum; i++){
         ofSetColor(200, 255, 255);
@@ -62,7 +62,7 @@ GraphGuiDrawer::GraphGuiDrawer(){
     }
     mode = RECT_BAR;
     font = new ofxTrueTypeFontUL2();
-    font->loadFont("Fonts/Gidole-Regular.ttf",32,true,true,0.3f,0,true);
+    font->loadFont("Fonts/Gidole-Regular.ttf",45,true,true,0.3f,0,true);
     littleFont = new ofxTrueTypeFontUL2();
     littleFont->loadFont("Fonts/Gidole-Regular.ttf",10,true,true,0.3f,0,true);
     /*font->loadSubFont("Fonts/Gidole-Regular.ttf");

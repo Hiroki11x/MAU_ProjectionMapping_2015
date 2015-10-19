@@ -57,7 +57,7 @@ void SpyMeshIntro::draw(){
 
     gui.drawGui();
     if(drawFPSAndSPFMode){
-        ofSetColor(120, 240, 240, 170);
+        ofSetColor(fpsColor);
         gui.graph.font->drawString(ofToString(spentFrames) + ":" + ofToString(ofGetFrameRate()), fpsPoint.x, fpsPoint.y);
     }
     light.enable();
@@ -69,7 +69,7 @@ void SpyMeshIntro::draw(){
     
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofSetLineWidth(0.3);
-    ofSetColor(255, 255, 255 , 150);
+    ofSetColor(garallyColor);
     ofRotateX(90);
     if(garallyStripMode == 1){
         glEnable(GL_LINE_STIPPLE);
@@ -84,7 +84,7 @@ void SpyMeshIntro::draw(){
         garallyModelDrawer.drawModel(0);
         glDisable(GL_LINE_STIPPLE);
     }
-    ofSetColor(0, 255, 255, 150);
+    ofSetColor(lineColor);
     ofLine(emitPoint, targetPoint);
     
     light.disable();

@@ -21,9 +21,6 @@ void StringNetwork::init(){
     expandingArea = 500;
     cameraZ = 600;
     fontSize = 10;
-   /* font.loadFont("Arial.ttf", fontSize);
-    font.loadSubFont("YuMincho");
-    font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);*/
     font.loadFont("Fonts/Gidole-Regular.ttf",10,true,true,0.3f,0,true);
     font.loadSubFont("Fonts/KozGoPro-Light.otf");
     font.loadSubFont("Fonts/Futura.ttc");
@@ -34,6 +31,19 @@ void StringNetwork::init(){
     font.setLineHeight(font.getFontSize()*1.5);
     agentNum = 0;
     spentFrames = 0;
+    /*for(int x = -1000; x < 1000; x += 100){
+        for(int y = -1000; y < 1000; y += 100){
+            for(int z = -1000; z < 1000; z+=100){
+                backGroundCrosses.addVertex(ofVec3f(x -5,y,z));
+                backGroundCrosses.addVertex(ofVec3f(x +5,y,z));
+                backGroundCrosses.addVertex(ofVec3f(x,y -5,z));
+                backGroundCrosses.addVertex(ofVec3f(x,y +5,z));
+                backGroundCrosses.addVertex(ofVec3f(x,y,z -5));
+                backGroundCrosses.addVertex(ofVec3f(x,y,z +5));
+            }
+        }
+    }*/
+    //backGroundCrosses.setMode(OF_PRIMITIVE_LINES);
 }
 
 void StringNetwork::update(){
@@ -60,6 +70,7 @@ void StringNetwork::draw(){
     backShader.end();
    
     camera.begin();
+    //backGroundCrosses.draw();
     glPushMatrix();
     glRotatef(180, 0, 0, 1);
     ofPushStyle();

@@ -40,6 +40,7 @@ public:
     ofVec3f cameraLookPoint;
     ofVec3f befCameraLookPoint;
     ofVec3f nextCameraLookPoint;
+    //ofVboMesh backGroundCrosses;
     vector<NetworkAgent> networkAgents;
     
     void updateAgents();

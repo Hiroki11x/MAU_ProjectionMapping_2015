@@ -19,8 +19,8 @@ public:
         CIRCLE
     };
     
-    void drawGraphGui();
-    void drawRectBarGraph();
+    void drawGraphGui(ofColor backC,ofColor stringC,ofColor bColor);
+    void drawRectBarGraph(ofColor stringC,ofColor bColor);
     void drawWaveGraph();
     void drawCircleGraph();
     void updateGraphParams();

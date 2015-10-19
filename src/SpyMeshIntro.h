@@ -51,6 +51,9 @@ public:
     ofLight light;
     ofShader backShader;
     GarallySceneGuiDrawer gui;
+    ofColor fpsColor = ofColor(100,255,255);
+    ofColor garallyColor = ofColor(255, 255, 255 , 150);
+    ofColor lineColor = ofColor(0, 255, 255, 150);
 
     void initLineEmitPoints();
     void initModelDrawer();
