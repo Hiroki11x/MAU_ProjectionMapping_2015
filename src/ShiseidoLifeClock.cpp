@@ -57,10 +57,10 @@ void ShiseidoLifeClock::draw(int num){
             draw_bezier_web(num);
             break;
         case 1:
-            draw_bezier_map(num);
+            draw_bezier_map(num);//一番それっぽいやつ
             break;
         case 2:
-            draw_mesh(num);
+            draw_mesh(num);//Meshのやつ
             break;
         case 3:
             draw_default_circle(num);//波みたいなやつの半円
@@ -73,7 +73,7 @@ void ShiseidoLifeClock::draw(int num){
     }
 }
 
-void ShiseidoLifeClock::draw_mesh(int num){//Meshのとこ(Json同期)
+void ShiseidoLifeClock::draw_mesh(int num){//[2]Meshのとこ(Json同期)
     update(num);
     ofNoFill();
     mesh.clearVertices();
@@ -142,7 +142,7 @@ void ShiseidoLifeClock::draw_bezier_web(int num){//白黒大きくなるやつ
 }
 
 
-void ShiseidoLifeClock::draw_bezier_map(int num){//一番それっぽいやつ(Json同期)
+void ShiseidoLifeClock::draw_bezier_map(int num){//[1]一番それっぽいやつ(Json同期)
     update(num);//数とかを更新
     ofSetLineWidth(0.05);
     ofNoFill();
@@ -169,7 +169,7 @@ void ShiseidoLifeClock::draw_bezier_map(int num){//一番それっぽいやつ(J
     ofPopMatrix();
 }
 
-void ShiseidoLifeClock::draw_default_circle(int num){//波みたいなやつの半円(Json同期)
+void ShiseidoLifeClock::draw_default_circle(int num){//[3]波みたいなやつの半円(Json同期)
     ofVec2f basis_vec;//大きい全体のベクトル
     ofVec2f inner_vec;//Bezier用の中間点ベクトル
     float angle;
