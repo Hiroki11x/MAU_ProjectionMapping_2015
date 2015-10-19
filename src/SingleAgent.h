@@ -32,6 +32,7 @@ private:
     float registertime;
     ofColor color;
     
+    ofPath path,path2;
 public:
     string get_user_name();
     string get_user_id();

@@ -9,7 +9,16 @@
 #include "SingleAgent.h"
 
 void SingleAgent::init(){
+    path.setCircleResolution(50);
+    path.setFilled(true);
+    path.setStrokeWidth(0.01);
+    path.setHexColor(0x00ff0055);
+    path2.setCircleResolution(50);
+    path2.setFilled(true);
+    path2.setStrokeWidth(0.01);
+    path2.setHexColor(0xff440055);
     ofSetCircleResolution(32);
+    path.setMode(ofPath::POLYLINES);
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
     set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));    
@@ -83,7 +92,28 @@ void SingleAgent::draw(float x, float y){//画像の色解析４枚のやつ
             ofCircle(250+i, j-50, 6*valueB/255.0);
         }
     }
-    
+    float x_start;
+    float args;
+    for(int i =0;i<3;i++){
+        x_start = i*42+80;
+        if(i==0){
+            args = followers_count/20.0f;
+        }else if(i == 1){
+            args = friends_count/20.0;
+        }else{
+            args = statuses_count/100.0f;
+        }
+        path.clear();
+        path2.clear();
+        path.moveTo(x_start,-30);
+        path.arc(x_start, -30, 15, 15, 0, args);
+        path.lineTo(x_start,-30);
+        path2.moveTo(x_start,-30);
+        path2.arc(x_start, -30, 15, 15,args , 360);
+        path2.lineTo(x_start,-30);
+        path.draw();
+        path2.draw();
+    }
     ofPopMatrix();
 }
 

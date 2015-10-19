@@ -35,6 +35,8 @@ void AgentAnalyze::draw(){
     }else{
         draw_3D();
     }
+    ofDrawBitmapString("Agents Max Size: "+ofToString(MAX_AGENT), 30,40);
+    ofDrawBitmapString("Agents Size: "+ofToString(json_num), 30,50);
 }
 
 void AgentAnalyze::draw_3D(){
@@ -57,7 +59,7 @@ void AgentAnalyze::draw_3D(){
             y = 60 * (i%max_row -1);
             SingleUserManager::user_agent.at(i)->draw_line(x+60,y+100,100*ofSignedNoise(ofGetElapsedTimef()/100,i));
         }
-        cam.setPosition(x+60,y+100, 500*(1.5+ofSignedNoise(ofGetElapsedTimef()/10)));
+        cam.setPosition(x+60,y+100, 300*(1+ofSignedNoise(ofGetElapsedTimef()/10)));
         cam.lookAt(ofVec3f(x+60,y+100,0));
     }
     graphlog.draw();
@@ -90,9 +92,7 @@ void AgentAnalyze::update(){
     check_is_json_new();
 }
 
-
 void AgentAnalyze::onMouseDown(int x, int y){
-
 }
 
 void AgentAnalyze::keyPressed(int key){//Enterで2D,3Dを切り替え
@@ -112,7 +112,6 @@ void AgentAnalyze::check_is_json_new(){
         ofxSuperLogUtil::set_log("add agent","add "+ofToString(add_num)+" agents");
     }
 }
-
 
 void AgentAnalyze::addAgent(int add_num){
     ofVec2f pos;
