@@ -50,6 +50,7 @@ public:
     int iconNum;
     int spentFrames;
     bool remakeFlag;
+    bool putDammyData;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
     float noiseElement;
     
@@ -63,5 +64,6 @@ public:
     void remake(int w, int h, int x, int y);
     void nextPhase();
     void loadSpyIcon();
+    void loadDammyIcon();
 };
 #endif

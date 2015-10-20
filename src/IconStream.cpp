@@ -208,6 +208,7 @@ void IconStream::updatePoint(){
 }
 
 void IconStream::loadIcon(){
+    if(putDammyData) loadDammyIcon();
     if(!JsonReceiver::getInstance().checkIsNewData()) return;
     if(!newIcon.loadImage(JsonReceiver::getInstance().getUsersInfo().at(JsonReceiver::getInstance().updateNum - 1).iconURL)) return;
     
@@ -219,6 +220,22 @@ void IconStream::loadIcon(){
         }
     }
     iconNum++;
+    if(!(iconNum >= MAX_ICON)) return;
+    mode = MakeCircle;
+    spentFrames = 0;
+}
+
+void IconStream::loadDammyIcon(){
+    newIcon = JsonReceiver::getInstance().getDammyImageData().at(ofRandom(5));
+    newIcon.resize(ICON_SIZE, ICON_SIZE);
+    for(int x = 0; x < newIcon.width; x++){
+        for(int y = 0; y < newIcon.height; y++){
+            iconPoints.at(iconNum).addVertex(ofPoint(5 * x , 5 * y + 160 * (iconNum / 5), 0));
+            iconPoints.at(iconNum).addColor(newIcon.getColor(x, y));
+        }
+    }
+    iconNum++;
+    putDammyData = false;
     if(!(iconNum >= MAX_ICON)) return;
     mode = MakeCircle;
     spentFrames = 0;
@@ -284,6 +301,9 @@ void IconStream::nextPhase(){
 void IconStream::onMouseDown(int x, int y){}
 
 void IconStream::keyPressed(int key){
+    if(key == 'P'){
+        putDammyData = true;
+    }
     if(key != 'R') return;
     init();
 }

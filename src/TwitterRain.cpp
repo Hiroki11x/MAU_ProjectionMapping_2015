@@ -59,15 +59,11 @@ void TwitterRain::draw(){
             if(!tweets.at(i).visible) continue;
             glPushMatrix();
             if(bRotation){
-                //ofSetColor(25,255,25,tweets.at(i).alpha);
-                //ofSetColor(102,255,255,tweets.at(i).alpha);
                 ofSetColor(tweets.at(i).c,tweets.at(i).alpha);
                 glTranslatef(tweets.at(i).position.x, tweets.at(i).position.y, tweets.at(i).position.z);
                 glRotatef(ofGetElapsedTimef()*tweets.at(i).rotateSpeed, 0, 1, 0);
                 font.drawString(tweets.at(i).tweetInfo,0,0);
             }else{
-                //ofSetColor(25,255,25,tweets.at(i).alpha);
-                //ofSetColor(51,255,255,tweets.at(i).alpha);
                 ofSetColor(tweets.at(i).c,tweets.at(i).alpha);
                 font.drawString(tweets.at(i).tweetInfo, tweets.at(i).position.x, tweets.at(i).position.y);
             }
@@ -91,6 +87,7 @@ void TwitterRain::update(){
     spentFrames++;
     if(!(spentFrames % 7 == 0)) return;
     if(!(tweetNum < DISPLAY_TWEET_NUM)) return;
+    if(putDammyText) putDammyData();
     if(!(JsonReceiver::getInstance().updateNum > 0)) return;
     int index = 0;
     for(int i = 0; i < DISPLAY_TWEET_NUM; i++){
@@ -100,6 +97,21 @@ void TwitterRain::update(){
         }
     }
     tweets.at(index).tweetInfo = JsonReceiver::getInstance().getRandomTweetInfo().text;
+    tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
+    tweets.at(index).visible = true;
+    tweetNum++;
+}
+
+void TwitterRain::putDammyData(){
+    putDammyText = false;
+    int index = 0;
+    for(int i = 0; i < DISPLAY_TWEET_NUM; i++){
+        if(!tweets.at(i).visible){
+            index = i;
+            break;
+        }
+    }
+    tweets.at(index).tweetInfo = JsonReceiver::getInstance().getDammyTextData().at(ofRandom(4));
     tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
     tweets.at(index).visible = true;
     tweetNum++;
@@ -125,6 +137,10 @@ void TwitterRain::keyPressed(int key){
             break;
         case 'R':
             reset();
+            break;
+        case 'P':
+            putDammyText = true;
+            break;
         default:
             break;
     }

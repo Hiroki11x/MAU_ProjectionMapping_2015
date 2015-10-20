@@ -51,6 +51,15 @@ void StringNetwork::update(){
     spentFrames++;
     if(!(spentFrames % 10 == 0)) return;
     if(!(agentNum < MAX_AGENTS)) return;
+    //-------------------------------------------------
+    //Dammy
+    //-------------------------------------------------
+    if(putDammyData){
+        networkAgents.at(agentNum).validate(JsonReceiver::getInstance().getDammyUserNameData().at(ofRandom(4)));
+        agentNum++;
+        putDammyData = false;
+    }
+    //-------------------------------------------------
     if(JsonReceiver::getInstance().updateNum <= agentNum) return;
     networkAgents.at(agentNum).validate(JsonReceiver::getInstance().getUserNames().at(agentNum));
     agentNum++;
@@ -151,6 +160,10 @@ void StringNetwork::keyPressed(int key){
             break;
         case 'R':
             init();
+            break;
+        case 'P':
+            putDammyData = true;
+            break;
         default:
             break;
     }

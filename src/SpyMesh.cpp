@@ -13,9 +13,16 @@ void SpyMesh::update(){
     modelSize = val[0] * 1;
     if(JsonReceiver::getInstance().checkIsNewData()){
         agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))], JsonReceiver::getInstance().getUserNames().at(JsonReceiver::getInstance().updateNum - 1)));
-        agentDebug = false;
         agentNum++;
     }
+    //----------------------------------------------------------------------
+    //Dammy
+    if(agentDebug){
+        agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))],
+                                            JsonReceiver::getInstance().getDammyUserNameData().at(ofRandom(4))));
+        agentDebug = false;
+    }
+    //-----------------------------------------------------------------------
     updateVertices();
     
     if(coloerMeshDrawMode){

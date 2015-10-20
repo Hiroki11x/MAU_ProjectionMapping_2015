@@ -29,6 +29,7 @@ public:
     int agentNum;
     int fontSize;
     int spentFrames;
+    bool putDammyData;
     float expandingArea;
     float cameraZ;
     ofxTrueTypeFontUL2 font;

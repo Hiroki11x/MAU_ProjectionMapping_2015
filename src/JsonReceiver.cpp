@@ -72,6 +72,7 @@ void JsonReceiver::init(){
         cout << "Failed to parse JSON" << endl;
     }
     updateNum = 0;
+    initDammyData();
 }
 
 JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
@@ -79,6 +80,34 @@ JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
     return getUsersInfo().at(ofRandom(0, updateNum - 0.1));
 }
 
+void JsonReceiver::initDammyData(){
+    dammyNameData.push_back(convToWString("長沼ヒロキ"));
+    dammyNameData.push_back(convToWString("サクラぎ"));
+    dammyNameData.push_back(convToWString("ダミーデータ"));
+    dammyNameData.push_back(convToWString("サクライ"));
+    
+    dammyTextData.push_back(convToWString("dammy text"));
+    dammyTextData.push_back(convToWString("dammy text"));
+    dammyTextData.push_back(convToWString("dammy text"));
+    dammyTextData.push_back(convToWString("dammy text"));
+    
+    
+    for(int i = 0; i < 5; i++){
+        ofImage dimg;
+        dimg.loadImage("dammy" + ofToString(i) + ".png");
+        dammyImageData.push_back(dimg);
+    }
+}
+
+vector<wstring> JsonReceiver::getDammyUserNameData(){
+    return dammyNameData;
+}
+vector<ofImage> JsonReceiver::getDammyImageData(){
+    return dammyImageData;
+}
+vector<wstring> JsonReceiver::getDammyTextData(){
+    return dammyTextData;
+}
 
 wstring JsonReceiver::convToWString(string src) {
     
