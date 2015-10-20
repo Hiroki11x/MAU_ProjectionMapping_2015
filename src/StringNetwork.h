@@ -41,10 +41,11 @@ public:
     ofVec3f cameraLookPoint;
     ofVec3f befCameraLookPoint;
     ofVec3f nextCameraLookPoint;
-    //ofVboMesh backGroundCrosses;
     vector<NetworkAgent> networkAgents;
-    
     void updateAgents();
+    
+    ofColor nameColor = ofColor(50, 255, 255 ,210);
+    ofColor circleColor = ofColor(100,150,150,50);
 };
 #endif
 

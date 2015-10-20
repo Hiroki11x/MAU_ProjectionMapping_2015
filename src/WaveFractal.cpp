@@ -107,7 +107,6 @@ void WaveFractal::Wave::updateWave(){
             }
         }
     }
-
 }
 
 void WaveFractal::stop(){

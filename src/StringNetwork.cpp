@@ -31,19 +31,6 @@ void StringNetwork::init(){
     font.setLineHeight(font.getFontSize()*1.5);
     agentNum = 0;
     spentFrames = 0;
-    /*for(int x = -1000; x < 1000; x += 100){
-        for(int y = -1000; y < 1000; y += 100){
-            for(int z = -1000; z < 1000; z+=100){
-                backGroundCrosses.addVertex(ofVec3f(x -5,y,z));
-                backGroundCrosses.addVertex(ofVec3f(x +5,y,z));
-                backGroundCrosses.addVertex(ofVec3f(x,y -5,z));
-                backGroundCrosses.addVertex(ofVec3f(x,y +5,z));
-                backGroundCrosses.addVertex(ofVec3f(x,y,z -5));
-                backGroundCrosses.addVertex(ofVec3f(x,y,z +5));
-            }
-        }
-    }*/
-    //backGroundCrosses.setMode(OF_PRIMITIVE_LINES);
 }
 
 void StringNetwork::update(){
@@ -79,7 +66,6 @@ void StringNetwork::draw(){
     backShader.end();
    
     camera.begin();
-    //backGroundCrosses.draw();
     glPushMatrix();
     glRotatef(180, 0, 0, 1);
     ofPushStyle();
@@ -99,11 +85,15 @@ void StringNetwork::draw(){
             lineNum++;
         }
     }
-    ofSetColor(50, 255, 255 ,210);
     for(int i = 0; i < agentNum; i++){
         glPushMatrix();
         glTranslatef(networkAgents.at(i).position.x, networkAgents.at(i).position.y, networkAgents.at(i).position.z);
         glRotatef(i * 10, 1, 0.1, -0.3);
+        ofNoFill();
+        ofSetColor(circleColor);
+        ofCircle(0, 0, 20);
+        ofFill();
+        ofSetColor(nameColor);
         font.drawString(networkAgents.at(i).name,0,0,0);
         glPopMatrix();
     }
