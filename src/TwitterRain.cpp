@@ -28,7 +28,6 @@ void TwitterRain::init(){
     font.loadSubFont("Fonts/KozGoPro-Light.otf");
     font.loadSubFont("Fonts/Futura.ttc");
     font.loadSubFont("Fonts/FiraCode-Regular.otf");
-    //font.loadSubFont(OF_TTF_SERIF,1.2,-0.02);
     font.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");
     font.useProportional(true);
     font.useVrt2Layout(true);

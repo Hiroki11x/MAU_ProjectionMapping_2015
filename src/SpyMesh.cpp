@@ -367,6 +367,7 @@ void SpyMesh::keyPressed(int key){
             break;
         case 'y':
             gui.drawDNAmode = !gui.drawDNAmode;
+            if(gui.drawDNAmode) gui.drawWaveMode = false;
             break;
         case 'u':
             gui.drawTargetLineMode = !gui.drawTargetLineMode;
@@ -379,6 +380,7 @@ void SpyMesh::keyPressed(int key){
             break;
         case 'g':
             gui.drawWaveMode = !gui.drawWaveMode;
+            if(gui.drawWaveMode) gui.drawDNAmode = false;
             break;
             //CamSettings
         case 'Y':

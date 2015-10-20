@@ -40,8 +40,18 @@ void SpyMeshIntro::update(){
     spentFrames+=1;
     gui.update();
     if(spentFrames % 60 != 0) return;
+    updateNetworkLine();
     emitPoint = lineEmitPoints[int(ofRandom(0,4))];
     fpsPoint = ofVec2f(ofRandom(100, ofGetWidth() - 100), ofRandom(70, ofGetHeight() -70));
+}
+
+void SpyMeshIntro::updateNetworkLine(){
+    networkLine.clear();
+    int pointNum = ofRandom(10, 20);
+    for(int i = 0; i < pointNum; i++){
+        networkLine.addVertex(garallyModelDrawer.vertices[int(ofRandom(garallyModelDrawer.indicesSize))]);
+    }
+    networkLine.setMode(OF_PRIMITIVE_LINE_LOOP);
 }
 
 void SpyMeshIntro::draw(){
@@ -84,6 +94,18 @@ void SpyMeshIntro::draw(){
         garallyModelDrawer.drawModel(0);
         glDisable(GL_LINE_STIPPLE);
     }
+    if(drawNetworkLineMode){
+        ofSetColor(networkLineColor);
+        ofSetLineWidth(3);
+        glEnable(GL_LINE_STIPPLE);
+        glLineStipple(2, netLinePattern++);
+        if(netLinePattern == 0xFFFF){
+            netLinePattern = 0x0000;
+        }
+        networkLine.draw();
+        glDisable(GL_LINE_STIPPLE);
+    }
+    ofSetLineWidth(1);
     ofSetColor(lineColor);
     ofLine(emitPoint, targetPoint);
     
@@ -157,6 +179,9 @@ void SpyMeshIntro::keyPressed(int key){
             break;
         case 't':
             garallyStripMode = (garallyStripMode + 1) % 3;
+            break;
+        case 'r':
+            drawNetworkLineMode = !drawNetworkLineMode;
             break;
         case 'R':
             reset();

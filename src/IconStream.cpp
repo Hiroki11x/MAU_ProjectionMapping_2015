@@ -278,8 +278,8 @@ void IconStream::remake(int w, int h, int x, int y){
 }
 
 void IconStream::loadSpyIcon(){
-    if(!JsonReceiver::getInstance().checkIsNewData()) return;
-    if(!newIcon.loadImage(JsonReceiver::getInstance().getUsersInfo().at(JsonReceiver::getInstance().updateNum - 1).iconURL)) return;
+    /*if(!JsonReceiver::getInstance().checkIsNewData()) return;
+    if(!newIcon.loadImage(JsonReceiver::getInstance().getUsersInfo().at(JsonReceiver::getInstance().updateNum - 1).iconURL)) return;*/
     newIcon.loadImage("spy.png");
     newIcon.resize(ICON_SIZE * 4, ICON_SIZE * 4);
     for(int w = 0; w < SPY_ICON_SIZE; w++){
