@@ -30,8 +30,8 @@ public:
     int rotateFrame;
     int waitFrame;
     int garallyStripMode = 0;
-    bool drawFPSAndSPFMode = true;
-    bool drawNetworkLineMode = true;
+    bool drawFPSAndSPFMode = false;
+    bool drawNetworkLineMode = false;
     float lineEmitPointDistance;
     
     TrailRenderer trails;

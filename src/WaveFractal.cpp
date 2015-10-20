@@ -61,14 +61,23 @@ void WaveFractal::Wave::drawWavePoint(){
     
     ofTranslate(0,centerPosition.y,0);
     
-   /* ofSetColor(0, 40, 40, 70 * (1.0 - (float)generation/(float)MAX_CHILDREN));
-    ofPushMatrix();
-    ofRotateX(90);
-    ofCircle(0, 0, radius - 10);
-    ofPopMatrix();*/
+    
+    //if(frameCounter > nextWaveFrames){
+        ofNoFill();
+        ofSetColor(50, 255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION), 255,
+                   110 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION));
+        ofPushMatrix();
+        ofRotateX(90);
+        ofCircle(0, 0, frameCounter * 10);
+        ofPopMatrix();
+        ofFill();
+    //}
+    
     ofRotateY(deg);
     ofTranslate(radius, 0);
-    ofSetColor(50, 255, 255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION), 255 * (1.0 - (float)generation/(float)MAX_GENERATION));
+    ofSetColor(50, 255,
+               255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION),
+               255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION));
     ofDrawSphere(0, 0, 5);
     ofRotateZ(90);
     if(!generatedNextWave) return;
@@ -91,9 +100,9 @@ void WaveFractal::Wave::updateWave(){
         frameCounter++;
         if(frameCounter > nextWaveFrames){
             generatedNextWave = true;
+            //int childnum = 3;
             int childnum = ofRandom(1,MAX_CHILDREN + 1);
             for(int i = 0; i < childnum; i++){
-                
                 children.push_back(*new Wave(generation + 1));
             }
         }
@@ -111,7 +120,6 @@ void WaveFractal::keyPressed(int key){
         case 'R':
             reset();
             break;
-            
         default:
             break;
     }
