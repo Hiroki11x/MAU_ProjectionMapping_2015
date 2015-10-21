@@ -128,6 +128,7 @@
 		FA64A9181BCF3C5800A686E4 /* FoundationDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9161BCF3C5800A686E4 /* FoundationDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA64A91B1BCF691A00A686E4 /* GraphGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA68C5311BD7450300D409CE /* GlassBreak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA68C52F1BD7450300D409CE /* GlassBreak.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
@@ -741,6 +742,8 @@
 		FA64A91A1BCF691A00A686E4 /* GraphGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGuiDrawer.h; sourceTree = "<group>"; };
 		FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GarallySceneGuiDrawer.cpp; sourceTree = "<group>"; };
 		FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarallySceneGuiDrawer.h; sourceTree = "<group>"; };
+		FA68C52F1BD7450300D409CE /* GlassBreak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlassBreak.cpp; sourceTree = "<group>"; };
+		FA68C5301BD7450300D409CE /* GlassBreak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlassBreak.h; sourceTree = "<group>"; };
 		FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
 		FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
 		FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconStream.cpp; sourceTree = "<group>"; };
@@ -1854,6 +1857,8 @@
 				FA4F4F381BD29B1E001D4E4A /* EffectScene.h */,
 				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
 				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
+				FA68C52F1BD7450300D409CE /* GlassBreak.cpp */,
+				FA68C5301BD7450300D409CE /* GlassBreak.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3105,6 +3110,7 @@
 				FA5BFD331BBA7A4E0085652C /* DelaunayUtil.cpp in Sources */,
 				FA0BA97D1BB54C1D00DF0A41 /* ofxSuperLogDisplay.cpp in Sources */,
 				FA0BA97C1BB54C1700DF0A41 /* ofxSuperLog.cpp in Sources */,
+				FA68C5311BD7450300D409CE /* GlassBreak.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				FA92A3A31BC3A6AB00F1F797 /* ofxSyphonClient.mm in Sources */,
 				FA587DA31BC55C36003FCCCA /* README.md in Sources */,

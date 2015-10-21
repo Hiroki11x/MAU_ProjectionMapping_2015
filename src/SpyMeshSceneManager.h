@@ -19,6 +19,7 @@
 #include "StringNetwork.h"
 #include "GlidShoot.h"
 #include "WaveFractal.h"
+#include "GlassBreak.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:

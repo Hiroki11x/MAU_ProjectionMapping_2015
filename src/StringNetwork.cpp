@@ -71,7 +71,7 @@ void StringNetwork::draw(){
     ofPushStyle();
     ofEnableDepthTest();
     ofEnableAlphaBlending();
-    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+    ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
     for(int i = 0; i < agentNum; i++){
         int lineNum = 0;
         for(int j = i; j < agentNum && lineNum < agentNum/10.0; j++){
@@ -91,10 +91,13 @@ void StringNetwork::draw(){
         glRotatef(i * 10, 1, 0.1, -0.3);
         ofNoFill();
         ofSetColor(circleColor);
-        ofCircle(0, 0, 20);
+        ofSetLineWidth(5);
+        ofCircle(0, 0, 50);
         ofFill();
         ofSetColor(nameColor);
         font.drawString(networkAgents.at(i).name,0,0,0);
+        ofSetColor(circleColor);
+        font.drawString(ofToString(networkAgents.at(i).position.x) + "\n" + ofToString(networkAgents.at(i).position.y) + "\n" + ofToString(networkAgents.at(i).position.z), 0, 20);
         glPopMatrix();
     }
     camera.end();
@@ -140,13 +143,13 @@ void StringNetwork::keyPressed(int key){
             break;
         case 'm':
             fontSize++;
-            font.loadFont("Arial.ttf", fontSize);
-            font.loadFont("Yumin Demibold",fontSize,true,true,0.3f,0,true)||font.loadSubFont("YuMincho");
+            font.loadFont("Fonts/Gidole-Regular.ttf",fontSize,true,true,0.3f,0,true);
+            font.loadSubFont("Fonts/KozGoPro-Light.otf");
             break;
         case 'n':
             fontSize--;
-            font.loadFont("Arial.ttf", fontSize);
-            font.loadFont("Yumin Demibold",fontSize,true,true,0.3f,0,true)||font.loadSubFont("YuMincho");
+            font.loadFont("Fonts/Gidole-Regular.ttf",fontSize,true,true,0.3f,0,true);
+            font.loadSubFont("Fonts/KozGoPro-Light.otf");
             break;
         case 'R':
             init();

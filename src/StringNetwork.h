@@ -45,7 +45,7 @@ public:
     void updateAgents();
     
     ofColor nameColor = ofColor(50, 255, 255 ,210);
-    ofColor circleColor = ofColor(100,150,150,50);
+    ofColor circleColor = ofColor(100,200,200,50);
 };
 #endif
 
