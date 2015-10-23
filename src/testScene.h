@@ -18,7 +18,6 @@
 #include "FontManager.h"
 
 #include "JsonRecieveThread.h"
-#include "JsonImageReceiveThread.h"
 
 class testScene : public ofBaseApp{
     
@@ -48,7 +47,6 @@ public:
     ofxSyphonClient mClient;
     
     JsonRecieveThread thread;
-    JsonImageRecieveThread image_thread;
 
 };
 

@@ -9,9 +9,9 @@
 #include "testScene.h"
 
 void testScene::setup(){
-    FontManager::mbigfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",15);
-    FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",10);
-    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",5);
+    FontManager::mbigfont.loadFont("03スマートフォントUI.otf",15);
+    FontManager::mfont.loadFont("03スマートフォントUI.otf",10);
+    FontManager::msmallfont.loadFont("03スマートフォントUI.otf",5);
     
     ofBackground(0);
     ofSetFrameRate(60);
@@ -29,11 +29,9 @@ void testScene::setup(){
 
     JsonReceiver::getInstance().init();
     thread.startThread();
-//    image_thread.startThread(false, false);
 }
 
 void testScene::exit(){
-    //JsonReceiver::stopRecieveThread();
     thread.stopThread();
 }
 

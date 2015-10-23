@@ -14,6 +14,8 @@ void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番�
     elements.push_back(new UserAgents());
     elements.push_back(new AgentAnalyze());
     elements.push_back(new SingleAgentAnalyze());
+    elements.push_back(new LoadingVideo());
+    elements.push_back(new InitialVideo());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -41,6 +43,14 @@ void UserAgentsSceneManager::keyPressed(int key){
             return;
         case '3':
             elementIndex = 2;//SingleAnalyze
+            //elements.at(elementIndex)->reset();
+            return;
+        case '4':
+            elementIndex = 3;//SingleAnalyze
+            //elements.at(elementIndex)->reset();
+            return;
+        case '5':
+            elementIndex = 4;//SingleAnalyze
             //elements.at(elementIndex)->reset();
             return;
     }

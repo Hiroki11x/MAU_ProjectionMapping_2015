@@ -28,7 +28,7 @@ void ShiseidoLifeClock::init(){
     mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
     ofSetLineWidth(2);
     vec.clear();
-    for(int i = 0;i< 200 ;i++){
+    for(int i = 0;i< 10 ;i++){
         vec.push_back(ofVec2f());
         vec.back() = ofVec2f(cos(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI),
                              sin(ofSignedNoise(ofGetFrameNum()/1000.0,i,i)*2*PI));

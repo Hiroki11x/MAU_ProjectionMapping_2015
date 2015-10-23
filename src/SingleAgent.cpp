@@ -119,7 +119,7 @@ void SingleAgent::draw(float x, float y){//画像の色解析４枚のやつ
         ofSetColor(0);
         ofCircle(x_start, -37, 8);
         ofSetColor(0,255,0,255);
-        ofDrawBitmapString(ofToString(random_char[(int)args%7]), x_start-4,-31);
+        ofDrawBitmapString(ofToString(random_char[(int)args%7]), x_start-4,-33);
     }
     ofPopMatrix();
 }
