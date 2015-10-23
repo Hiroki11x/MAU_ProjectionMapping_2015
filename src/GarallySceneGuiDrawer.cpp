@@ -69,7 +69,8 @@ void GarallySceneGuiDrawer::drawGui(){
         ofPopStyle();
     }
     if(drawGraphMode){
-        ofTranslate(80, 580);
+        //ofTranslate(80, 580);
+        ofTranslate(80, ofGetHeight() - 200);
         graph.drawGraphGui(graphBackColor, graphStringColor, graphBarColor);
     }
     ofPopStyle();
@@ -79,7 +80,8 @@ void GarallySceneGuiDrawer::drawGui(){
 void GarallySceneGuiDrawer::drawClock(){
     ofPushMatrix();
     ofPushStyle();
-    ofTranslate(830,70);
+    //ofTranslate(830,70);
+    ofTranslate(ofGetWidth() - 200,70);
     ofSetColor(clockBackColor);
     ofNoFill();
     ofSetLineWidth(5);
@@ -122,18 +124,28 @@ void GarallySceneGuiDrawer::initCenterCircle(){
 
 void GarallySceneGuiDrawer::initFrame(){
     //leftSide
+    /*frameMesh.addVertex(ofVec3f(70,34,0));
+    frameMesh.addVertex(ofVec3f(70,234,0));
+    frameMesh.addVertex(ofVec3f(70,234,0));
+    frameMesh.addVertex(ofVec3f(45,334,0));
+    frameMesh.addVertex(ofVec3f(45,334,0));
+    frameMesh.addVertex(ofVec3f(45,434,0));
+    frameMesh.addVertex(ofVec3f(45,434,0));
+    frameMesh.addVertex(ofVec3f(70,534,0));
+    frameMesh.addVertex(ofVec3f(70,534,0));
+    frameMesh.addVertex(ofVec3f(70,734,0));*/
     frameMesh.addVertex(ofVec3f(70,34,0));
-    frameMesh.addVertex(ofVec3f(70,234,0));
-    frameMesh.addVertex(ofVec3f(70,234,0));
-    frameMesh.addVertex(ofVec3f(45,334,0));
-    frameMesh.addVertex(ofVec3f(45,334,0));
+    frameMesh.addVertex(ofVec3f(70,334,0));
+    frameMesh.addVertex(ofVec3f(70,334,0));
     frameMesh.addVertex(ofVec3f(45,434,0));
     frameMesh.addVertex(ofVec3f(45,434,0));
-    frameMesh.addVertex(ofVec3f(70,534,0));
-    frameMesh.addVertex(ofVec3f(70,534,0));
-    frameMesh.addVertex(ofVec3f(70,734,0));
+    frameMesh.addVertex(ofVec3f(45,534,0));
+    frameMesh.addVertex(ofVec3f(45,534,0));
+    frameMesh.addVertex(ofVec3f(70,634,0));
+    frameMesh.addVertex(ofVec3f(70,634,0));
+    frameMesh.addVertex(ofVec3f(70,ofGetHeight() - 50,0));
     //bottom
-    frameMesh.addVertex(ofVec3f(70,734,0));
+   /* frameMesh.addVertex(ofVec3f(70,734,0));
     frameMesh.addVertex(ofVec3f(191,734,0));
     frameMesh.addVertex(ofVec3f(191,734,0));
     frameMesh.addVertex(ofVec3f(312,704,0));
@@ -142,9 +154,20 @@ void GarallySceneGuiDrawer::initFrame(){
     frameMesh.addVertex(ofVec3f(712,704,0));
     frameMesh.addVertex(ofVec3f(833,734,0));
     frameMesh.addVertex(ofVec3f(833,734,0));
-    frameMesh.addVertex(ofVec3f(954,734,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,734,0));*/
+    
+     frameMesh.addVertex(ofVec3f(70,ofGetHeight() - 50,0));
+     frameMesh.addVertex(ofVec3f(391,ofGetHeight() - 50,0));
+     frameMesh.addVertex(ofVec3f(391,ofGetHeight() - 50,0));
+     frameMesh.addVertex(ofVec3f(512,ofGetHeight() - 80,0));
+     frameMesh.addVertex(ofVec3f(512,ofGetHeight() - 80,0));
+     frameMesh.addVertex(ofVec3f(912,ofGetHeight() - 80,0));
+     frameMesh.addVertex(ofVec3f(912,ofGetHeight() - 80,0));
+     frameMesh.addVertex(ofVec3f(1033,ofGetHeight() - 50,0));
+     frameMesh.addVertex(ofVec3f(1033,ofGetHeight() - 50,0));
+     frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,ofGetHeight() - 50,0));
     //rightSide
-    frameMesh.addVertex(ofVec3f(954,734,0));
+    /*frameMesh.addVertex(ofVec3f(954,734,0));
     frameMesh.addVertex(ofVec3f(954,534,0));
     frameMesh.addVertex(ofVec3f(954,534,0));
     frameMesh.addVertex(ofVec3f(989,434,0));
@@ -153,17 +176,27 @@ void GarallySceneGuiDrawer::initFrame(){
     frameMesh.addVertex(ofVec3f(989,334,0));
     frameMesh.addVertex(ofVec3f(954,234,0));
     frameMesh.addVertex(ofVec3f(954,234,0));
-    frameMesh.addVertex(ofVec3f(954,34,0));
+    frameMesh.addVertex(ofVec3f(954,34,0));*/
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,ofGetHeight() - 50,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,634,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,634,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 35,534,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 35,534,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 35,434,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 35,434,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,334,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,334,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,34,0));
     //top
-    frameMesh.addVertex(ofVec3f(954,34,0));
-    frameMesh.addVertex(ofVec3f(833,34,0));
-    frameMesh.addVertex(ofVec3f(833,34,0));
-    frameMesh.addVertex(ofVec3f(712,64,0));
-    frameMesh.addVertex(ofVec3f(712,64,0));
-    frameMesh.addVertex(ofVec3f(312,64,0));
-    frameMesh.addVertex(ofVec3f(312,64,0));
-    frameMesh.addVertex(ofVec3f(191,34,0));
-    frameMesh.addVertex(ofVec3f(191,34,0));
+    frameMesh.addVertex(ofVec3f(ofGetWidth() - 70,34,0));
+    frameMesh.addVertex(ofVec3f(1033,34,0));
+    frameMesh.addVertex(ofVec3f(1033,34,0));
+    frameMesh.addVertex(ofVec3f(912,64,0));
+    frameMesh.addVertex(ofVec3f(912,64,0));
+    frameMesh.addVertex(ofVec3f(512,64,0));
+    frameMesh.addVertex(ofVec3f(512,64,0));
+    frameMesh.addVertex(ofVec3f(391,34,0));
+    frameMesh.addVertex(ofVec3f(391,34,0));
     frameMesh.addVertex(ofVec3f(70,34,0));
   
     frameMesh.setMode(OF_PRIMITIVE_LINES);

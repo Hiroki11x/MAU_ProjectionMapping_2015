@@ -14,26 +14,27 @@ void LineFractal::init(){
 }
 
 void LineFractal::reset(){
-    firstLine = *new LineFractalComp();
-    firstLine.generation = 0;
-    firstLine.lineNum = ofRandom(5,10);
-    firstLine.maxDeg = ofRandom(60,180);
-    firstLine.lineLength = ofRandom(50,100);
-    firstLine.firstStartLinePoint = ofRandom(50,100);
-    firstLine.firstEndLinePoint = firstLine.firstStartLinePoint + firstLine.lineLength;
-    firstLine.c = ofColor::fromHsb(ofRandom(0,255), 255, 255);
+    firstLine = new LineFractalComp();
+    firstLine->generation = 0;
+    firstLine->lineNum = ofRandom(5,10);
+    firstLine->maxDeg = ofRandom(60,180);
+    firstLine->lineLength = ofRandom(50,100);
+    firstLine->firstStartLinePoint = ofRandom(50,100);
+    firstLine->firstEndLinePoint = firstLine->firstStartLinePoint + firstLine->lineLength;
+    firstLine->c = ofColor::fromHsb(ofRandom(0,255), 255, 255);
     
 }
 void LineFractal::update(){
     
 
-    firstLine.updateLineFrac();
+    firstLine->updateLineFrac();
     
 }
 void LineFractal::draw(){
     ofPushMatrix();
+    ofSetLineWidth(3);
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    firstLine.drawLineFrac();
+    firstLine->drawLineFrac();
     ofPopMatrix();
 }
 void LineFractal::onMouseDown(int x, int y){}
@@ -58,9 +59,9 @@ void LineFractal::LineFractalComp::updateLineFrac(){
         if(deg > maxDeg){
             expanding = false;
             if(!generatedChild){
-                children.push_back(*new LineFractalComp(*this));
-                children.push_back(*new LineFractalComp(*this));
-                children.push_back(*new LineFractalComp(*this));
+                children.push_back(new LineFractalComp(*this));
+                children.push_back(new LineFractalComp(*this));
+                children.push_back(new LineFractalComp(*this));
                 generatedChild = true;
             }
         }
@@ -71,7 +72,7 @@ void LineFractal::LineFractalComp::updateLineFrac(){
         }
     }
     for(int i = 0; i < children.size(); i++){
-        children.at(i).updateLineFrac();
+        children.at(i)->updateLineFrac();
     }
 }
 
@@ -84,7 +85,7 @@ void LineFractal::LineFractalComp::drawLineFrac(){
     }
     for(int i = 0; i < children.size(); i++){
         ofPushMatrix();
-        children.at(i).drawLineFrac();
+        children.at(i)->drawLineFrac();
         ofPopMatrix();
     }
 }

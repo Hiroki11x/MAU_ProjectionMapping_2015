@@ -64,8 +64,10 @@ void WaveFractal::Wave::drawWavePoint(){
     
     //if(frameCounter > nextWaveFrames){
         ofNoFill();
-        ofSetColor(50, 255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION), 255,
-                   110 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION));
+        /*ofSetColor(50, 255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION), 255,
+                   110 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION));*/
+    ofSetColor(50, 255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION), 255,
+               255);
         ofPushMatrix();
         ofRotateX(90);
         ofCircle(0, 0, frameCounter * 10);
@@ -75,9 +77,12 @@ void WaveFractal::Wave::drawWavePoint(){
     
     ofRotateY(deg);
     ofTranslate(radius, 0);
+   /* ofSetColor(50, 255,
+               255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION),
+               255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION));*/
     ofSetColor(50, 255,
                255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION),
-               255 * (1.0 - 0.5 * (float)generation/(float)MAX_GENERATION));
+               255 );
     ofDrawSphere(0, 0, 5);
     ofRotateZ(90);
     if(!generatedNextWave) return;

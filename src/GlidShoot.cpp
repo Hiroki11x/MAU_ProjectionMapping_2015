@@ -126,6 +126,42 @@ void GlidShoot::keyPressed(int key){
             glids.at(H_GRID * (V_GRID - 1) + 11).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 11).restDrawFrames;
             glids.at(H_GRID * (V_GRID - 1) + 11).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
             break;
+        case 'a':
+            glids.at(H_GRID * (V_GRID - 1) + 12).drawGlid = true;
+            glids.at(H_GRID * (V_GRID - 1) + 12).restDrawFrames = ofRandom(MAX_DRAW_FRAME);
+            glids.at(H_GRID * (V_GRID - 1) + 12).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 12).restDrawFrames;
+            glids.at(H_GRID * (V_GRID - 1) + 12).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
+            break;
+        case 's':
+            glids.at(H_GRID * (V_GRID - 1) + 13).drawGlid = true;
+            glids.at(H_GRID * (V_GRID - 1) + 13).restDrawFrames = ofRandom(MAX_DRAW_FRAME);
+            glids.at(H_GRID * (V_GRID - 1) + 13).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 13).restDrawFrames;
+            glids.at(H_GRID * (V_GRID - 1) + 13).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
+            break;
+       /* case 'd':
+            glids.at(H_GRID * (V_GRID - 1) + 14).drawGlid = true;
+            glids.at(H_GRID * (V_GRID - 1) + 14).restDrawFrames = ofRandom(MAX_DRAW_FRAME);
+            glids.at(H_GRID * (V_GRID - 1) + 14).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 14).restDrawFrames;
+            glids.at(H_GRID * (V_GRID - 1) + 14).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
+            break;
+        case 'f':
+            glids.at(H_GRID * (V_GRID - 1) + 15).drawGlid = true;
+            glids.at(H_GRID * (V_GRID - 1) + 15).restDrawFrames = ofRandom(MAX_DRAW_FRAME);
+            glids.at(H_GRID * (V_GRID - 1) + 15).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 15).restDrawFrames;
+            glids.at(H_GRID * (V_GRID - 1) + 15).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
+            break;
+        case 'g':
+            glids.at(H_GRID * (V_GRID - 1) + 16).drawGlid = true;
+            glids.at(H_GRID * (V_GRID - 1) + 16).restDrawFrames = ofRandom(MAX_DRAW_FRAME);
+            glids.at(H_GRID * (V_GRID - 1) + 16).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 16).restDrawFrames;
+            glids.at(H_GRID * (V_GRID - 1) + 16).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
+            break;
+        case 'h':
+            glids.at(H_GRID * (V_GRID - 1) + 17).drawGlid = true;
+            glids.at(H_GRID * (V_GRID - 1) + 17).restDrawFrames = ofRandom(MAX_DRAW_FRAME);
+            glids.at(H_GRID * (V_GRID - 1) + 17).drawFrames = glids.at(H_GRID * (V_GRID - 1) + 17).restDrawFrames;
+            glids.at(H_GRID * (V_GRID - 1) + 17).c = ofColor::fromHsb(ofRandom(120, 190), 255, 255);
+            break;*/
         default:
             break;
     }

@@ -97,9 +97,10 @@ void CircuitDrawer::drawCircuit(){
     glPointSize(15);
     for(int n = 0; n < 10; n++){
         if(randomColor){
-            ofSetColor(lineColors[n] ,100);
+            ofSetColor(lineColors[n] ,255);
         }else{
-            ofSetColor(100, 255, 255, 100);
+            ofSetColor(100, 255, 255, 255);
+            //ofSetColor(100, 255, 255, 100);
         }
         circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
         circuit[n].draw();
@@ -111,9 +112,10 @@ void CircuitDrawer::drawCircuit(){
         ofSetLineWidth(1);
         for(int n = 0; n <4; n++){
             if(randomColor){
-                ofSetColor(lineColors[n] ,100);
+                ofSetColor(lineColors[n] ,255);
             }else{
-                ofSetColor(100, 255, 255, 100);
+                //ofSetColor(100, 255, 255, 255);
+                ofSetColor(100, 255, 255, 255);
             }
             ofLine(lineStartPoint[n], lineStartPoint[n] + positionCounter[n] *(targetPoint[n] - lineStartPoint[n]));
         }
@@ -133,9 +135,11 @@ void CircuitDrawer::drawBoxCircuit(){
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     for(int n = 0; n < 10; n++){
         if(randomColor){
-            ofSetColor(lineColors[n] ,100);
+            //ofSetColor(lineColors[n] ,100);
+            ofSetColor(lineColors[n] ,255);
         }else{
-            ofSetColor(100, 255, 255, 100);
+            //ofSetColor(100, 255, 255, 100);
+            ofSetColor(100, 255, 255, 255);
         }
         /*circuit[n].setMode(ofPrimitiveMode::OF_PRIMITIVE_LINES);
         circuit[n].draw();
@@ -147,9 +151,12 @@ void CircuitDrawer::drawBoxCircuit(){
         ofSetLineWidth(1);
         for(int n = 0; n <10; n++){
             if(randomColor){
-                ofSetColor(lineColors[n] ,100);
+                //ofSetColor(lineColors[n] ,100);
+                ofSetColor(lineColors[n] ,255);
             }else{
+                //ofSetColor(100, 255, 255, 100);
                 ofSetColor(100, 255, 255, 100);
+                
             }
             ofLine(lineStartPoint[n], lineStartPoint[n] + positionCounter[n] *(targetPoint[n] - lineStartPoint[n]));
         }

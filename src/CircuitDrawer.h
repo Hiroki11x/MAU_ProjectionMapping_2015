@@ -11,9 +11,10 @@
 
 #include "ofMain.h"
 
-#define CIRCUIT_POINT_INTERVAL 45
-#define CIRCUIT_WIDTH_NUM 24
-#define CIRCUIT_HEIGHT_NUM 24
+//#define CIRCUIT_POINT_INTERVAL 45
+#define CIRCUIT_POINT_INTERVAL 100
+#define CIRCUIT_WIDTH_NUM 18
+#define CIRCUIT_HEIGHT_NUM 18
 
 class CircuitDrawer {
 public:

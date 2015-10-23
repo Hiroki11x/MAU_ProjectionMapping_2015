@@ -11,7 +11,7 @@ void TwitterRain::init(){
     tweetNum = 0;
     tweets = *new vector<Tweet>(DISPLAY_TWEET_NUM);
     for(int index = 0; index < DISPLAY_TWEET_NUM; index++){
-        tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
+        tweets.at(index).position = ofVec3f(ofRandom(-200,1424),-100,ofRandom(-200, 200));
         tweets.at(index).rotateSpeed = ofRandom(-30,30);
         tweets.at(index).downSpeed = ofRandom(8,15);
         tweets.at(index).alpha = ofRandom(160,255);
@@ -24,7 +24,7 @@ void TwitterRain::init(){
     glEnable(GL_DEPTH_TEST);
     bRotation=false;
 
-    font.loadFont("Fonts/Gidole-Regular.ttf",32,true,true,0.3f,0,true);
+    font.loadFont("Fonts/Gidole-Regular.ttf",35,true,true,0.3f,0,true);
     font.loadSubFont("Fonts/KozGoPro-Light.otf");
     font.loadSubFont("Fonts/Futura.ttc");
     font.loadSubFont("Fonts/FiraCode-Regular.otf");
@@ -96,7 +96,7 @@ void TwitterRain::update(){
         }
     }
     tweets.at(index).tweetInfo = JsonReceiver::getInstance().getRandomTweetInfo().text;
-    tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
+    tweets.at(index).position = ofVec3f(ofRandom(-200,1424),-100,ofRandom(-200, 200));
     tweets.at(index).visible = true;
     tweetNum++;
 }
@@ -111,7 +111,7 @@ void TwitterRain::putDammyData(){
         }
     }
     tweets.at(index).tweetInfo = JsonReceiver::getInstance().getDammyTextData().at(ofRandom(4));
-    tweets.at(index).position = ofVec3f(ofRandom(-200,1024),-100,ofRandom(-200, 200));
+    tweets.at(index).position = ofVec3f(ofRandom(-200,1424),-100,ofRandom(-200, 200));
     tweets.at(index).visible = true;
     tweetNum++;
 }
@@ -127,6 +127,14 @@ void TwitterRain::reset(){
     for(int index = 0; index < DISPLAY_TWEET_NUM; index++){
         tweets.at(index).visible = false;
     }
+    for(int index = 0; index < DISPLAY_TWEET_NUM; index++){
+        tweets.at(index).position = ofVec3f(ofRandom(-200,1424),-100,ofRandom(-200, 200));
+        tweets.at(index).rotateSpeed = ofRandom(-30,30);
+        tweets.at(index).downSpeed = ofRandom(8,15);
+        tweets.at(index).alpha = ofRandom(160,255);
+        tweets.at(index).c = ofColor(ofRandom(0, 100), ofRandom(180, 255), ofRandom(180, 255));
+    }
+    putDammyText = false;
 }
 
 void TwitterRain::keyPressed(int key){

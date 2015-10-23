@@ -113,10 +113,11 @@ void ModelDrawer::drawModel(float scale, bool fill){
 void ModelDrawer::drawPercentage(){
     ofNoFill();
     ofSetColor(parsentFrameColor);
-    ofRect(40, 40, 944, 40);
+    ofRect(40, 40, ofGetWidth() - 80, 40);
     ofFill();
     ofSetColor(parsentColor);
-    ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
+   // ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
+    ofRect(50, 50, (ofGetWidth() - 90) * (float(addedIndicesSize) / float(indicesSize)), 20);
 }
 
 void ModelDrawer::setPrimitiveMode(ofPrimitiveMode primitiveMode){

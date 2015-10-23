@@ -72,6 +72,7 @@ void SpyMesh::draw(){
     ofDisableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofEnableAlphaBlending();
+    ofSetLineWidth(3);
     if(!trailMode){
         backShader.load("","shader.frag");
         backShader.begin();

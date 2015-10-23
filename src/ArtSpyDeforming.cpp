@@ -49,7 +49,8 @@ void ArtSpyDeforming::draw(){
         ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
 
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, 180, -200);
+        //ofTranslate(ofGetWidth()/2, 180, -200);
+        ofTranslate(ofGetWidth()/2, 280, -200);
         ofRotateZ(180);
         backShader.load("","foundation.frag");
         backShader.begin();
@@ -60,10 +61,11 @@ void ArtSpyDeforming::draw(){
         backShader.end();
         ofPopMatrix();
         
-        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+        //ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, ofGetHeight() - 100,-200);
+        ofTranslate(ofGetWidth()/2, ofGetHeight() - 200,-200);
         ofRotateX(120);
+        ofSetColor(40, 255, 100, 255);
         foundationDrawer.drawFoundation();
         ofPopMatrix();
         
@@ -87,7 +89,8 @@ void ArtSpyDeforming::drawSpyLogo(){
     light.enable();
     glEnable(GL_LIGHTING);
     ofSetColor(40, 255, 100, 150);
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
+   // ofSetColor(40, 255, 100, 255);
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -100);
     ofTranslate(0,200,0);
     ofRotateX(90);
     ofRotateZ(rotation);

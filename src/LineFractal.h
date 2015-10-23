@@ -10,7 +10,7 @@
 
 #include "ofMain.h"
 #include "SceneElement.h"
-#define MAX_GENE 7
+#define MAX_GENE 4
 
 class LineFractal : public SceneElement {
 public:
@@ -34,7 +34,7 @@ public:
         float lineLength;
         float firstStartLinePoint;
         float firstEndLinePoint;
-        vector<LineFractalComp> children;
+        vector<LineFractalComp *> children;
         
         void drawLineFrac();
         void updateLineFrac();
@@ -43,6 +43,6 @@ public:
         LineFractalComp(LineFractalComp const &parent);
     };
     
-    LineFractalComp firstLine;
+    LineFractalComp * firstLine;
 };
 #endif

@@ -43,9 +43,12 @@ void GlassBreak::update(){
 void GlassBreak::draw(){
     cam.begin();
     ofDisableDepthTest();
+    ofDisableAlphaBlending();
+    ofDisableBlendMode();
     switch (mode) {
         case DrawGlass:
             ofBackground(255);
+            ofSetLineWidth(3);
             drawingMesh.draw(OF_MESH_WIREFRAME);
             break;
         case DrawedGlass:
@@ -54,9 +57,10 @@ void GlassBreak::draw(){
             drawingMesh.draw(OF_MESH_FILL);
             ofEnableBlendMode(OF_BLENDMODE_ADD);
             ofSetColor(255, 255, 255, 255 - spentFrames);
-            ofRect(-600, -600, 1200,1200);
+            ofRect(-800, -800, 1600,1600);
             ofDisableBlendMode();
             ofDisableAlphaBlending();
+            ofSetLineWidth(3);
             drawingMesh.draw(OF_MESH_WIREFRAME);
             break;
         case Break:
@@ -74,7 +78,7 @@ void GlassBreak::reset(){
     glassMesh.clear();
     drawingMesh.clear();
     for(int i = 0; i < glassModel.getMesh(0).indices.size(); i++){
-        glassMesh.addVertex(glassModel.getMesh(0).vertices.at(glassModel.getMesh(0).indices.at(i)) * 35);
+        glassMesh.addVertex(glassModel.getMesh(0).vertices.at(glassModel.getMesh(0).indices.at(i)) * 46);
         glassMesh.addColor(ofColor::fromHsb(ofRandom(255), ofRandom(100,255), 255, ofRandom(100,255)));
     }
     for(int i = 0; i < glassTriangleNum; i++){
@@ -103,4 +107,6 @@ void GlassBreak::keyPressed(int key){
     }
 }
 
-void GlassBreak::stop(){}
+void GlassBreak::stop(){
+    ofBackground(0);
+}

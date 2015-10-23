@@ -14,9 +14,9 @@
 
 #define SIDE_MARGIN 32
 #define TOP_MARGIN 24
-#define GRID_SIZE 80
-#define H_GRID 12
-#define V_GRID 9
+#define GRID_SIZE 95
+#define H_GRID 14
+#define V_GRID 10
 #define MAX_DRAW_FRAME 15
 
 class GlidShoot : public SceneElement {

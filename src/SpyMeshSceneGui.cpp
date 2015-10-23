@@ -9,7 +9,7 @@
 
 void SpyMeshSceneGui::init(){
     font = new ofxTrueTypeFontUL2();
-    font->loadFont("Fonts/Gidole-Regular.ttf",20,true,true,0.3f,0,true);
+    font->loadFont("Fonts/Gidole-Regular.ttf",23,true,true,0.3f,0,true);
     font->loadSubFont("Fonts/KozGoPro-Light.otf");
     font->loadSubFont("Fonts/Futura.ttc");
     font->loadSubFont("Fonts/FiraCode-Regular.otf");
@@ -17,7 +17,7 @@ void SpyMeshSceneGui::init(){
     font->useVrt2Layout(true);
     font->setLineHeight(font->getFontSize()*1.5);
     nameFont = new ofxTrueTypeFontUL2();
-    nameFont->loadFont("Fonts/Gidole-Regular.ttf",12,true,true,0.3f,0,true);
+    nameFont->loadFont("Fonts/Gidole-Regular.ttf",14,true,true,0.3f,0,true);
     nameFont->loadSubFont("Fonts/KozGoPro-Light.otf");
     nameFont->loadSubFont("Fonts/Futura.ttc");
     nameFont->loadSubFont("Fonts/FiraCode-Regular.otf");
@@ -134,9 +134,11 @@ void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
     ofTranslate(0, 50);
     
     ofSetColor(agentEntryFrameColor);
-    ofRect(40, 90 , 220 , 40 + 30 * agents.size());
+   // ofRect(40, 90 , 220 , 40 + 30 * agents.size());
+     ofRect(40, 90 , 240 , 40 + 40 * agents.size());
     ofSetColor(agentEntryBackColor);
-    ofRect(50, 100 , 200 , 20 + 30 * agents.size());
+   // ofRect(50, 100 , 200 , 20 + 30 * agents.size());
+       ofRect(50, 100 , 220 , 20 + 40 * agents.size());
     
     ofPushStyle();
     ofPushMatrix();
@@ -151,11 +153,13 @@ void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
         if(i >= befAgentNum){
             newAgentWaves.push_back((newAgentWave){0,i,(int)ofRandom(0.9),ofRandom(90.0)});
         }
-        ofTranslate(0, 30 * i);
+        //ofTranslate(0, 30 * i);
+        ofTranslate(0, 40 * i);
         ofSetColor(agentBarColor);
-        ofRect(5, 5, 190.0 * (float)agents.at(i).mesh.vertices.size() / 3000.0, 20);
+        //ofRect(5, 5, 190.0 * (float)agents.at(i).mesh.vertices.size() / 3000.0, 20);
+        ofRect(5, 5, 200.0 * (float)agents.at(i).mesh.vertices.size() / 3000.0, 30);
         ofSetColor(agentNameColor);
-        nameFont->drawString(agents.at(i).userName, 10, 20);
+        nameFont->drawString(agents.at(i).userName, 10, 25);
         
         ofPopMatrix();
     }
@@ -193,9 +197,9 @@ void SpyMeshSceneGui::drawEntry(vector<AgentAnalysis> agents){
 void SpyMeshSceneGui::drawAnalyzer(){
     ofSetColor(agentAnalistLineColor);
     ofLine(40, 115, 220, 115);
-    ofLine(220, 115, 260, 115);
+    ofLine(220, 115, 290, 115);
     ofSetColor(agentAnalistColor);
-    font->drawString("Analyst", 100, 120);
+    font->drawString("Analyst", 90, 120);
 }
 
 //----------------------------------------------------------
@@ -204,7 +208,7 @@ void SpyMeshSceneGui::drawAnalyzer(){
 void SpyMeshSceneGui::drawDNA(){
     ofPushMatrix();
     ofPushStyle();
-    ofTranslate(834, 100);
+    ofTranslate(ofGetWidth() - 190, 100);
     ofSetColor(dnaFrameColor);
     ofFill();
     ofRect(0, 0, 150 , dnaWindowHeight);
@@ -260,7 +264,7 @@ void SpyMeshSceneGui::updateWave(){
 
 void SpyMeshSceneGui::drawWave(){
     ofPushMatrix();
-    ofTranslate(784, 100);
+    ofTranslate(ofGetWidth() - 240, 100);
     ofSetColor(waveFrameColor);
     ofFill();
     ofRect(0, 0, 200 , waveWindowHeight);

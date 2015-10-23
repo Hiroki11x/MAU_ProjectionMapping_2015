@@ -72,6 +72,7 @@ void StringNetwork::draw(){
     ofEnableDepthTest();
     ofEnableAlphaBlending();
     ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
+    ofSetLineWidth(3);
     for(int i = 0; i < agentNum; i++){
         int lineNum = 0;
         for(int j = i; j < agentNum && lineNum < agentNum/10.0; j++){
