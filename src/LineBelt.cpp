@@ -9,6 +9,20 @@
 #include "LineBelt.h"
 
 
+void LineBelt::add_line_num(int add){//新たに追加していくやつ
+    line_num+=add;
+    for(int i = 0;i<add;i++){
+        color.push_back(ofColor::fromHsb(ofRandom(255), 190, 190));
+        position.push_back(ofRandom(ofGetWidth()));
+    }
+}
+
+void LineBelt::reset_belt(){
+    color.clear();
+    position.clear();
+    setup_belt(20);
+}
+
 void LineBelt::set_mode(){
     mode = !mode;
 }
@@ -29,7 +43,7 @@ void LineBelt::generate_position(){
 
 void LineBelt::generate_color(){
     for(int i = 0;i<line_num;i++){
-        color.push_back(ofColor::fromHsb(ofRandom(255), 190, 190));
+        color.push_back(ofColor::fromHsb(ofRandom(255), 190, 255));
     }
 }
 
@@ -40,8 +54,6 @@ void LineBelt::set_line_length(float line_length){
 
 
 void LineBelt::setup_belt(int num){
-    
-    
     set_line_num(num);
     set_line_length(200);
     set_center_y(ofGetHeight()/2);
@@ -50,29 +62,17 @@ void LineBelt::setup_belt(int num){
 }
 
 void LineBelt::update_belt(){
-    
-//    JsonReceiver::recieve();
-//    
-//    if(JsonReceiver::usersInfo.size()>position.size()){
-//        for(int i = 0;i<JsonReceiver::usersInfo.size()-position.size();i++){
-//            color.push_back(ofColor::fromHsb(ofRandom(255), 190, 190));
-//            position.push_back(ofRandom(ofGetWidth()));
-//        }
-//        
-//    }
-    
     for(int i = 0;i<line_num;i++){
-        float addition_x = ofRandom(-100,100);
+        float addition_x = ofRandom(-3,3);
         if(!(position.at(i)+addition_x >ofGetWidth()) && !(position.at(i)+addition_x <0)){
-            if(mode==false){//元はこれ
+            if(!mode){//元はこれ
                 position.at(i)+=addition_x;
             }else{
-                //                addition_x = ofRandom(-0.1,0.1);
-                //                position.at(i)+=addition_x;
-                //                position.at(i)= position.at(i%20)+addition_x;
             }
         }
     }
+    mouse_x++;
+    if(mouse_x>ofGetWidth())mouse_x=0;
 }
 
 void LineBelt::mouseMoved(int x, int y){
@@ -80,33 +80,21 @@ void LineBelt::mouseMoved(int x, int y){
 }
 
 void LineBelt::draw_belt(){
+    int index = SingleUserManager::user_agent.size();
+    ofFill();
     for(int i = 0;i<line_num;i++){
         ofSetColor(color.at(i));
-        if(this->mouse_x == (int)position.at(i)){//mouseXとおなじX座標の線があれば
+        if(this->mouse_x == (int)position.at(i) && index!=0){//mouseXとおなじX座標の線があれば
+            FontManager::mbigfont.drawString("pos index: "+ofToString(i),position.at(i)-10,pos_center_y-line_length-18-100);
+            FontManager::mbigfont.drawString(SingleUserManager::user_agent.at(i%index)->get_user_name(),position.at(i)-10,pos_center_y-line_length-100);
+            FontManager::mbigfont.drawString(SingleUserManager::user_agent.at(i%index)->get_user_id(),position.at(i)-10,pos_center_y-line_length-100+18);
+            FontManager::mbigfont.drawString("friends: "+ofToString(SingleUserManager::user_agent.at(i%index)->get_user_friends()),position.at(i)-10,pos_center_y-line_length-100+36);
+            FontManager::mbigfont.drawString("statuses: "+ofToString(SingleUserManager::user_agent.at(i%index)->get_user_statuses()),position.at(i)-10,pos_center_y-line_length-100+54);
+            FontManager::mbigfont.drawString(SingleUserManager::user_agent.at(i%index)->get_user_text(),position.at(i)-10,pos_center_y-line_length+72-100);
             ofRect(position.at(i)-5, pos_center_y-line_length, 10, line_length*2);
-            FontManager::mfont.drawString("pos index: "+ofToString(i),position.at(i)-10,pos_center_y-line_length-10);
         }else{
             ofLine(position.at(i), pos_center_y-line_length/2, position.at(i), pos_center_y+line_length/2);
         }
     }
-    
-    /*
-     string text;//つぶやいた内容(これだけ["user"]内ではない)
-     string userName;
-     string userId;//screen_name @アカウント名
-     int friends_count;//フォローしてるアカウント数
-     int statuses_count;//つぶやいてる数
-     int followers_count;
-     */
-    
     ofSetColor(255);
-//    for(int i = 0; i < JsonReceiver::usersInfo.size(); i++){
-//        JsonReceiver::usersInfo.at(i).icon.draw(position.at(i), pos_center_y-line_length, 20, 20);
-//        font.drawString(ofToString(JsonReceiver::usersInfo.at(i).followers_count),position.at(i), pos_center_y-line_length-10);
-//        font.drawString(ofToString(JsonReceiver::usersInfo.at(i).statuses_count),position.at(i), pos_center_y-line_length-20);
-//        font.drawString(ofToString(JsonReceiver::usersInfo.at(i).friends_count),position.at(i), pos_center_y-line_length-30);
-//        font.drawString(JsonReceiver::usersInfo.at(i).userId,position.at(i), pos_center_y-line_length-40);
-//        font.drawString(JsonReceiver::usersInfo.at(i).userName,position.at(i), pos_center_y-line_length-50);
-//        font.drawString(JsonReceiver::usersInfo.at(i).text,position.at(i), pos_center_y-line_length-60);
-//    }
 }

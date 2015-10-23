@@ -19,6 +19,7 @@
 #include "GraphLog.h"
 #include "SingleUserManager.h"
 #include "ofxSuperLogUtil.h"
+#include "LineBelt.h"
 
 class AgentAnalyze : public SceneElement {
     
@@ -27,12 +28,14 @@ private:
     void addAgent(int add_num);
     void draw_2D();
     void draw_3D();
+    void draw_belt();
 
     int max_row;
     int max_column;
     
     GraphLog graphlog;
-    bool mode = false;
+    int mode = 0;
+    LineBelt linebelt;
     
     ofCamera cam;
 public:

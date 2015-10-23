@@ -35,6 +35,7 @@ void UserAgents::init(){
     
     isMoveCam = false;
     isBackGround = false;
+    isBackAuto = false;
     
     ofxSuperLogUtil::set_log("init","call useragnts init()");
     
@@ -75,7 +76,7 @@ void UserAgents::draw(){
 
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
-    if(isBackGround)back_animation.fade_cross_background(0, 0, 100);
+    if(isBackGround)back_animation.fade_cross_background(0, 0, 150);
     
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
@@ -89,13 +90,10 @@ void UserAgents::draw(){
     }
 
     cam.end();
-    ofDrawBitmapString("userAgentArray.size()"+ofToString(userAgentArray.size()), 30,40);
+    ofDrawBitmapString("userAgentArray.size: "+ofToString(userAgentArray.size()), 30,40);
 }
 
 void UserAgents::onMouseDown(int x, int y){
-//    userAgentsSize = userAgentArray.size();
-//    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
-//    strechyRectSwiper.init();
 }
 
 void UserAgents::keyPressed(int key){
@@ -116,7 +114,6 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Down";
     }else if(key==OF_KEY_RETURN){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
-//        reset();
         tag = "SwipeMode::SemiCircle Clear Agent";
     }else if(key==OF_KEY_RIGHT){
         strechyRectSwiper.set_mode(SwipeMode::Right);
@@ -132,8 +129,12 @@ void UserAgents::keyPressed(int key){
     }
     strechyRectSwiper.init();
     ofxSuperLogUtil::set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
-    
     check_agent_size(10);//10個agent消す
+    
+    if(key ==OF_KEY_RIGHT_ALT){
+        isBackAuto = !isBackAuto;
+        ofSetBackgroundAuto(isBackAuto);
+    }
 }
 
 void UserAgents::end(){}
@@ -183,7 +184,7 @@ void UserAgents::addAgent(int add_num){
         pos3f.y = pos4f.y;
         pos3f.z = pos4f.z;
         userAgentArray.back()->set_position(pos3f);
-        userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
+        userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), 255, 255));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
         userAgentArray.back()->get_info_from_twitter(

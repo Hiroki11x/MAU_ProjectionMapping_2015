@@ -12,6 +12,7 @@
 #include "JsonReceiver.h"
 #include "ofMain.h"
 #include "FontManager.h"
+#include "SingleUserManager.h"
 
 class LineBelt{
 private:
@@ -31,7 +32,9 @@ private:
     void set_line_length(float line_length);
 public:
     LineBelt(){};
+    void reset_belt();
     void set_mode();
+    void add_line_num(int add);
     void setup_belt(int num);
     void update_belt();
     void draw_belt();

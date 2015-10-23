@@ -69,5 +69,6 @@ private:
     
     bool isMoveCam;
     bool isBackGround;
+    bool isBackAuto;
 };
 #endif

@@ -13,6 +13,7 @@ void testScene::setup(){
     FontManager::mfont.loadFont("03スマートフォントUI.otf",10);
     FontManager::msmallfont.loadFont("03スマートフォントUI.otf",5);
     
+    ofSetVerticalSync(true);
     ofBackground(0);
     ofSetFrameRate(60);
     ofEnableSmoothing();
@@ -43,7 +44,6 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
-//    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
     

@@ -27,16 +27,32 @@ void AgentAnalyze::init(){
     
     graphlog.setup();
     graphlog.set_height_limit(ofGetWidth()/4);
+    
+    linebelt.setup_belt(10);
 }
 
 void AgentAnalyze::draw(){
-    if(mode){
+    if(mode==0){
         draw_2D();
-    }else{
+    }else if(mode ==1){
         draw_3D();
+    }else if(mode ==2){
+        draw_belt();
     }
     ofDrawBitmapString("Agents Max Size: "+ofToString(MAX_AGENT), 30,40);
     ofDrawBitmapString("Agents Size: "+ofToString(SingleUserManager::json_num), 30,50);
+}
+
+void AgentAnalyze::draw_belt(){
+    int agent_size = SingleUserManager::user_agent.size();
+    ofSetColor(255);
+    if(MAX_AGENT < agent_size ){
+        SingleUserManager::user_agent.erase(SingleUserManager::user_agent.begin());
+        ofxSuperLogUtil::set_log("delete agent","delete");
+    }
+    linebelt.update_belt();
+    linebelt.draw_belt();
+    graphlog.draw();
 }
 
 void AgentAnalyze::draw_3D(){
@@ -63,7 +79,6 @@ void AgentAnalyze::draw_3D(){
         cam.setPosition(x+60,y+100, 300*(1+ofSignedNoise(ofGetElapsedTimef()/10)));
         cam.lookAt(ofVec3f(x+60,y+200,0));
     }
-    graphlog.draw();
     cam.end();
 }
 
@@ -99,9 +114,12 @@ void AgentAnalyze::onMouseDown(int x, int y){
 void AgentAnalyze::keyPressed(int key){//Enterで2D,3Dを切り替え
     graphlog.keyPressed(key);
     if(key==OF_KEY_RETURN){
-        mode = !mode;
+        mode = (mode+1)%3;
     }else if(key == OF_KEY_TAB){
         reset();
+        linebelt.reset_belt();
+    }else if(key==OF_KEY_RIGHT_COMMAND){
+        linebelt.set_mode();
     }
 }
 
@@ -113,6 +131,7 @@ void AgentAnalyze::check_is_json_new(){
         add_num = JsonReceiver::getInstance().getUsersInfo().size() - SingleUserManager::json_num;
         addAgent(add_num);
         ofxSuperLogUtil::set_log("add agent","add "+ofToString(add_num)+" agents");
+        linebelt.add_line_num(add_num*5);
     }
 }
 

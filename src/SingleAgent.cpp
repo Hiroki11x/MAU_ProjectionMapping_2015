@@ -35,6 +35,18 @@ wstring SingleAgent::get_user_text(){
     return this->text;
 }
 
+int SingleAgent::get_user_follower(){
+    return this->followers_count;
+}
+
+int SingleAgent::get_user_statuses(){
+    return this->statuses_count;
+}
+
+int SingleAgent::get_user_friends(){
+    return this->friends_count;
+}
+
 void SingleAgent::get_info_from_twitter(string name,string id, wstring text,int friends_count,int statuses_count,int followers_count, ofImage image){
     //twitterからの取得情報を書く
     username = name;
