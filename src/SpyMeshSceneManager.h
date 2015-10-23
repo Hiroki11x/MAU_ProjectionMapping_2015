@@ -20,6 +20,7 @@
 #include "GlidShoot.h"
 #include "WaveFractal.h"
 #include "GlassBreak.h"
+#include "LineFractal.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:

@@ -18,6 +18,7 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new GlidShoot());
     elements.push_back(new WaveFractal());
     elements.push_back(new GlassBreak());
+    elements.push_back(new LineFractal());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -93,6 +94,10 @@ void SpyMeshSceneManager::keyPressed(int key){
             elementIndex = 8;
             return;
         case '0':
+            elements[elementIndex]->stop();
+            elementIndex = 9;
+            return;
+        case '-':
             elements[elementIndex]->stop();
             splitView = !splitView;
             return;

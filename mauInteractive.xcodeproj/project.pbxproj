@@ -129,6 +129,7 @@
 		FA64A91B1BCF691A00A686E4 /* GraphGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A9191BCF691A00A686E4 /* GraphGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA64A91F1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA64A91D1BCFD2C900A686E4 /* GarallySceneGuiDrawer.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA68C5311BD7450300D409CE /* GlassBreak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA68C52F1BD7450300D409CE /* GlassBreak.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA68C53D1BD7660E00D409CE /* LineFractal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA68C53B1BD7660E00D409CE /* LineFractal.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CCDE1BC8B6AF003C32F1 /* JsonRecieveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA92A39D1BC3A6AB00F1F797 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = FA92A3821BC3A6AB00F1F797 /* Makefile */; settings = {ASSET_TAGS = (); }; };
@@ -744,6 +745,8 @@
 		FA64A91E1BCFD2C900A686E4 /* GarallySceneGuiDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarallySceneGuiDrawer.h; sourceTree = "<group>"; };
 		FA68C52F1BD7450300D409CE /* GlassBreak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlassBreak.cpp; sourceTree = "<group>"; };
 		FA68C5301BD7450300D409CE /* GlassBreak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlassBreak.h; sourceTree = "<group>"; };
+		FA68C53B1BD7660E00D409CE /* LineFractal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineFractal.cpp; sourceTree = "<group>"; };
+		FA68C53C1BD7660E00D409CE /* LineFractal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineFractal.h; sourceTree = "<group>"; };
 		FA74CCDC1BC8B6AF003C32F1 /* JsonRecieveThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRecieveThread.cpp; sourceTree = "<group>"; };
 		FA74CCDD1BC8B6AF003C32F1 /* JsonRecieveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRecieveThread.h; sourceTree = "<group>"; };
 		FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconStream.cpp; sourceTree = "<group>"; };
@@ -1853,12 +1856,14 @@
 				FA1E656F1BD4092A00B826BD /* GlidShoot.h */,
 				FA1E657A1BD409EA00B826BD /* WaveFractal.cpp */,
 				FA1E657B1BD409EA00B826BD /* WaveFractal.h */,
+				FA68C52F1BD7450300D409CE /* GlassBreak.cpp */,
+				FA68C5301BD7450300D409CE /* GlassBreak.h */,
 				FA4F4F371BD29B1E001D4E4A /* EffectScene.cpp */,
 				FA4F4F381BD29B1E001D4E4A /* EffectScene.h */,
 				FAAD71471BCCBE7200D721EC /* SampleElement.cpp */,
 				FAAD71481BCCBE7200D721EC /* SampleElement.h */,
-				FA68C52F1BD7450300D409CE /* GlassBreak.cpp */,
-				FA68C5301BD7450300D409CE /* GlassBreak.h */,
+				FA68C53B1BD7660E00D409CE /* LineFractal.cpp */,
+				FA68C53C1BD7660E00D409CE /* LineFractal.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3118,6 +3123,7 @@
 				FA26BDC11BC2DF42007C3B47 /* AlphaSwiper.cpp in Sources */,
 				FA64A91B1BCF691A00A686E4 /* GraphGuiDrawer.cpp in Sources */,
 				FA587D371BC524F1003FCCCA /* AgentAnalysis.cpp in Sources */,
+				FA68C53D1BD7660E00D409CE /* LineFractal.cpp in Sources */,
 				FAA0CC071BBA11F900A0D408 /* IntroductionManager.cpp in Sources */,
 				FA26BDB21BC2DEA9007C3B47 /* SwipeMode.cpp in Sources */,
 				FA26BDB81BC2DEE7007C3B47 /* StrechyRectSwiper.cpp in Sources */,
