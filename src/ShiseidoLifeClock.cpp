@@ -88,22 +88,22 @@ void ShiseidoLifeClock::draw_mesh(int num){//[2]Meshのとこ(Json同期)
         index1 = pow(ofSignedNoise(i,ofGetFrameNum()/1000),2)*vec.size();
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/1000),2)*vec.size();
         
-        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.5));
+        mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.6));
         mesh.addVertex(vec.at(index3)*1.1);
         
-        mesh.addColor(ofFloatColor(0.4,0.4,0.4,0.5));
+        mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.6));
         mesh.addVertex(vec.at(i)*1.3);
         
-        mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.5));
+        mesh.addColor(ofFloatColor(0.6,0.6,0.6,0.6));
         mesh.addVertex(vec.at(index1)*0.7);
         
-        ofSetColor(170,120);
+        ofSetColor(170,180);
         ofCircle(vec.at(index1)*0.7,3);
         ofCircle(vec.at(index3)*1.3,3);
         ofCircle(vec.at(i)*1.1,3);
         ofLine(ofVec2f(cos(i),sin(i))*1.34*300,ofVec2f(cos(i),sin(i))*1.38*300);
         if(i<SingleUserManager::user_agent.size()){
-            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),150,200),210);
+            ofSetColor(ofColor::fromHsb(255*pow(ofSignedNoise(i,ofGetFrameNum()/10000),2),170,240),210);
             FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_id(), vec.at(i).x*1.1,vec.at(i).y*1.1);
             FontManager::mfont.drawString(SingleUserManager::user_agent.at(i)->get_user_name(), vec.at(index3).x*1.3,vec.at(index3).y*1.3);
         }
@@ -150,7 +150,7 @@ void ShiseidoLifeClock::draw_bezier_map(int num){//[1]一番それっぽいや�
     ofTranslate(3*ofGetWidth()/5, ofGetHeight()/2);
     int index1,index2,index3;
     for(int i = 0;i<vec.size();i++){
-        ofSetColor(ofColor::fromHsb((ofMap(i, 0, vec.size(), 0, 255)), 200, 200),150);
+        ofSetColor(ofColor::fromHsb((ofMap(i, 0, vec.size(), 0, 255)), 200, 240),210);
         index1 = pow(ofSignedNoise(i,ofGetFrameNum()/1000),2)*vec.size();
         index3 = pow(ofSignedNoise(i,ofGetElapsedTimef()/100),2)*vec.size();
         ofBezier(vec.at(index1).x,vec.at(index1).y,
@@ -189,7 +189,7 @@ void ShiseidoLifeClock::draw_default_circle(int num){//[3]波みたいなやつ�
                             sin(angle/180.0*PI));
         basis_vec *= 300;
         hue = ofMap(i, 0, 90, 0, 255);
-        ofSetColor(ofColor::fromHsb(hue, 170, 200),170);
+        ofSetColor(ofColor::fromHsb(hue, 170, 200),210);
         ofNoFill();
         
         ofBezier(0, 0,
