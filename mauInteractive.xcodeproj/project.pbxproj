@@ -50,6 +50,8 @@
 		FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9521BB53C3000DF0A41 /* Loading.cpp */; };
 		FA0BA97C1BB54C1700DF0A41 /* ofxSuperLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9741BB54B0B00DF0A41 /* ofxSuperLog.cpp */; };
 		FA0BA97D1BB54C1D00DF0A41 /* ofxSuperLogDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0BA9761BB54B0B00DF0A41 /* ofxSuperLogDisplay.cpp */; };
+		FA13FB181BDA802C0066CB7A /* EndingVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA13FB161BDA802C0066CB7A /* EndingVideo.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA13FB241BDA9DFA0066CB7A /* StartVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA13FB221BDA9DFA0066CB7A /* StartVideo.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA1E65701BD4092A00B826BD /* GlidShoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1E656E1BD4092A00B826BD /* GlidShoot.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA1E657C1BD409EA00B826BD /* WaveFractal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1E657A1BD409EA00B826BD /* WaveFractal.cpp */; settings = {ASSET_TAGS = (); }; };
 		FA26BD531BC294C8007C3B47 /* JsonReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26BD511BC294C8007C3B47 /* JsonReceiver.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -438,6 +440,10 @@
 		FA0BA9751BB54B0B00DF0A41 /* ofxSuperLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSuperLog.h; sourceTree = "<group>"; };
 		FA0BA9761BB54B0B00DF0A41 /* ofxSuperLogDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSuperLogDisplay.cpp; sourceTree = "<group>"; };
 		FA0BA9771BB54B0B00DF0A41 /* ofxSuperLogDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSuperLogDisplay.h; sourceTree = "<group>"; };
+		FA13FB161BDA802C0066CB7A /* EndingVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EndingVideo.cpp; sourceTree = "<group>"; };
+		FA13FB171BDA802C0066CB7A /* EndingVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndingVideo.h; sourceTree = "<group>"; };
+		FA13FB221BDA9DFA0066CB7A /* StartVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartVideo.cpp; sourceTree = "<group>"; };
+		FA13FB231BDA9DFA0066CB7A /* StartVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartVideo.h; sourceTree = "<group>"; };
 		FA1E656E1BD4092A00B826BD /* GlidShoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlidShoot.cpp; sourceTree = "<group>"; };
 		FA1E656F1BD4092A00B826BD /* GlidShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlidShoot.h; sourceTree = "<group>"; };
 		FA1E657A1BD409EA00B826BD /* WaveFractal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveFractal.cpp; sourceTree = "<group>"; };
@@ -1864,6 +1870,10 @@
 				FAA0AD771BDA2A7B00A8369A /* EffectScene.cpp */,
 				FAA0AD781BDA2A7B00A8369A /* SampleElement.cpp */,
 				FAA0AD791BDA2A7B00A8369A /* SampleElement.h */,
+				FA13FB161BDA802C0066CB7A /* EndingVideo.cpp */,
+				FA13FB171BDA802C0066CB7A /* EndingVideo.h */,
+				FA13FB221BDA9DFA0066CB7A /* StartVideo.cpp */,
+				FA13FB231BDA9DFA0066CB7A /* StartVideo.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";
@@ -3189,6 +3199,7 @@
 				FA74CD0F1BCA0AA5003C32F1 /* IconStream.cpp in Sources */,
 				FA5BFDE61BBAD6620085652C /* ofxAssimpTexture.cpp in Sources */,
 				FAAD71551BCCEDC400D721EC /* StringNetwork.cpp in Sources */,
+				FA13FB181BDA802C0066CB7A /* EndingVideo.cpp in Sources */,
 				FAD915D71BCE2EEB00716998 /* CircuitDrawer.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				FA5BFDE41BBAD6620085652C /* ofxAssimpMeshHelper.cpp in Sources */,
@@ -3197,6 +3208,7 @@
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
 				FAF11CC11BBEECDC008B96E0 /* FindTarget.cpp in Sources */,
 				FA587D9A1BC55C36003FCCCA /* Makefile in Sources */,
+				FA13FB241BDA9DFA0066CB7A /* StartVideo.cpp in Sources */,
 				FAAE950B1BA58E9200C71B41 /* UserAgentManager.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				FA0BA9541BB53C3000DF0A41 /* Loading.cpp in Sources */,

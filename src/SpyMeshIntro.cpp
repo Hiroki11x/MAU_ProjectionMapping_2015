@@ -96,7 +96,7 @@ void SpyMeshIntro::draw(){
     }
     if(drawNetworkLineMode){
         ofSetColor(networkLineColor);
-        ofSetLineWidth(3);
+        ofSetLineWidth(5);
         glEnable(GL_LINE_STIPPLE);
         glLineStipple(2, netLinePattern++);
         if(netLinePattern == 0xFFFF){

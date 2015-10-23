@@ -99,9 +99,12 @@ public:
     ofVboMesh insideCircleMesh;
     ofVboMesh middleCircleMesh;
     ofVboMesh outsideCircleMesh;
-    ofColor foundInsideColor = ofColor(70, 170, 255,50); //(70, 255, 70,50);
-    ofColor foundMiddleColor = ofColor(200, 245, 240,50); //60, 245, 60,50);
-    ofColor foundOutsideColor = ofColor(100, 200, 200,50); //ofSetColor(100, 255, 100,50);
+    //ofColor foundInsideColor = ofColor(70, 170, 255,50); //(70, 255, 70,50);
+    ofColor foundInsideColor = ofColor(70, 170, 255,255);
+    //ofColor foundMiddleColor = ofColor(200, 245, 240,50); //60, 245, 60,50);
+    ofColor foundMiddleColor = ofColor(200, 245, 240,255);
+    //ofColor foundOutsideColor = ofColor(100, 200, 200,50); //ofSetColor(100, 255, 100,50);
+    ofColor foundOutsideColor = ofColor(100, 200, 200,255);
 
 private:
     void drawBackLine();

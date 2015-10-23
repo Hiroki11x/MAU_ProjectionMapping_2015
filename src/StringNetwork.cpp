@@ -72,14 +72,16 @@ void StringNetwork::draw(){
     ofEnableDepthTest();
     ofEnableAlphaBlending();
     ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
-    ofSetLineWidth(3);
+    ofSetLineWidth(5);
     for(int i = 0; i < agentNum; i++){
         int lineNum = 0;
         for(int j = i; j < agentNum && lineNum < agentNum/10.0; j++){
             if(networkAgents.at(i).NorP.at(j) < 0) {
-                ofSetColor(50, 255, 50, 150);
+                //ofSetColor(50, 255, 50, 150);
+                ofSetColor(50, 255, 50, 255);
             }else{
-                ofSetColor(100, 255, 255, 150);
+                //ofSetColor(100, 255, 255, 150);
+                ofSetColor(100, 255, 255, 255);
             }
             ofSetLineWidth(0.3);
             ofLine(networkAgents.at(i).position, networkAgents.at(j).position);

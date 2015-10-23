@@ -9,6 +9,7 @@
 
 void SpyMeshSceneManager::setup(){
     SoundManager::init();
+    elements.push_back(new StartVideo());
     elements.push_back(new ArtSpyDeforming());
     elements.push_back(new TwitterRain());
     elements.push_back(new SpyMeshIntro());
@@ -19,6 +20,7 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new WaveFractal());
     elements.push_back(new GlassBreak());
     elements.push_back(new LineFractal());
+    elements.push_back(new EndingVideo());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -98,6 +100,14 @@ void SpyMeshSceneManager::keyPressed(int key){
             elementIndex = 9;
             return;
         case '-':
+            elements[elementIndex]->stop();
+            elementIndex = 10;
+            return;
+        case '^':
+            elements[elementIndex]->stop();
+            elementIndex = 11;
+            return;
+        case '!':
             elements[elementIndex]->stop();
             splitView = !splitView;
             return;

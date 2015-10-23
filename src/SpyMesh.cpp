@@ -39,7 +39,7 @@ void SpyMesh::update(){
     if(useRollCam){
         rollCam.update();
         if(spentFrames % 40 == 0){
-            rollCam.setRandomScale(1.0, 2.0);
+            rollCam.setRandomScale(2.0, 3.0);
             rollCam.setRandomPos(360);
         }
     }else{

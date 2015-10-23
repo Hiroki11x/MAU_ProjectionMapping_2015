@@ -44,8 +44,10 @@ public:
     vector<NetworkAgent> networkAgents;
     void updateAgents();
     
-    ofColor nameColor = ofColor(50, 255, 255 ,210);
-    ofColor circleColor = ofColor(100,200,200,50);
+    //ofColor nameColor = ofColor(50, 255, 255 ,210);
+    ofColor nameColor = ofColor(50, 255, 255 ,255);
+    //ofColor circleColor = ofColor(100,200,200,50);
+    ofColor circleColor = ofColor(100,200,200,255);
 };
 #endif
 
