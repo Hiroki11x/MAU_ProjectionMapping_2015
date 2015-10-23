@@ -12,7 +12,7 @@
 
 
 void AgentAnalyze::reset(){
-//    user_agent.clear();ここは画像取得もなく重くないのでクリアしない
+    SingleUserManager::user_agent.clear();
 }
 
 void AgentAnalyze::init(){
@@ -99,6 +99,8 @@ void AgentAnalyze::keyPressed(int key){//Enterで2D,3Dを切り替え
     graphlog.keyPressed(key);
     if(key==OF_KEY_RETURN){
         mode = !mode;
+    }else if(key == OF_KEY_TAB){
+        reset();
     }
 }
 

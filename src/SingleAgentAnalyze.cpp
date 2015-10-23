@@ -9,6 +9,7 @@
 
 void SingleAgentAnalyze::reset(){
     shiseido.reset();
+    SingleUserManager::user_agent.clear();
 }
 
 void SingleAgentAnalyze::init(){
@@ -62,6 +63,8 @@ void SingleAgentAnalyze::keyPressed(int key){
             mode = false;
         }
         ofxSuperLogUtil::set_log("switch mode","visualization changed");
+    }else if(key == OF_KEY_TAB){
+        reset();
     }
 }
 
