@@ -27,8 +27,6 @@ private:
     void addAgent(int add_num);
     void draw_2D();
     void draw_3D();
-    
-    int json_num;
 
     int max_row;
     int max_column;

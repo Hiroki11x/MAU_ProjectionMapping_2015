@@ -9,7 +9,8 @@
 #include "testScene.h"
 
 void testScene::setup(){
-    FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
+    FontManager::mbigfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",15);
+    FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",10);
     FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",5);
     
     ofBackground(0);

@@ -17,6 +17,7 @@ public:
     
     FontManager(){};
     
+    static ofxTrueTypeFontUL2 mbigfont;
     static ofxTrueTypeFontUL2 mfont;
     static ofxTrueTypeFontUL2 msmallfont;
     
@@ -25,6 +26,9 @@ public:
     
     void loadSmallFont(string arg, int size);
     void drawSmallString(string arg ,float x, float y);
+    
+    void loadBigFont(string arg, int size);
+    void drawBigString(string arg ,float x, float y);
 };
 
 #endif /* defined(__mauInteractive__FontManager__) */

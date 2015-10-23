@@ -10,7 +10,7 @@
 
 
 vector<SingleAgent *> SingleUserManager::user_agent;
-
+int SingleUserManager::json_num;
 //SingleUserManager &SingleUserManager::getInstance() {
 //    static SingleUserManager instance;
 //    return instance;

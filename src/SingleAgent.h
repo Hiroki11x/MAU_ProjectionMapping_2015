@@ -33,6 +33,7 @@ private:
     ofColor color;
     
     ofPath path,path2;
+    char *random_char = "ABCDEFG";
 public:
     string get_user_name();
     string get_user_id();

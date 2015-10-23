@@ -16,6 +16,7 @@ class SingleUserManager{
 private:
 public:
     static vector<SingleAgent *> user_agent;
+    static int json_num;
 //    static SingleUserManager &getInstance();
 };
 

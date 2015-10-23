@@ -21,13 +21,13 @@ void UserAgents::reset(){
 void UserAgents::init(){
     ofxSuperLogUtil::init();//Logのセットアップ
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
-    json_num = 0;
+    SingleUserManager::json_num = 0;
     ofxSuperLogUtil::set_log("init", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
     
     back_animation.set_fade_duration(2000);
     
     strechyRectSwiper.init();
-    strechyRectSwiper.set_color(ofColor::fromHsb(100, 200, 200));
+    strechyRectSwiper.set_color(ofColor::fromHsb(100, 200, 240));
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
@@ -41,7 +41,6 @@ void UserAgents::init(){
 }
 
 void UserAgents::update(){
-//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
     
 //    for(int i = 0; i < userAgentArray.size(); i++){
@@ -51,7 +50,7 @@ void UserAgents::update(){
     if (userAgentArray.size()>0) {
 
         if(isMoveCam){
-            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef()/100,json_num),userAgentArray.back()->position.y+500*ofSignedNoise(json_num,ofGetElapsedTimef()/100),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
+            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef()/100,SingleUserManager::json_num),userAgentArray.back()->position.y+500*ofSignedNoise(SingleUserManager::json_num,ofGetElapsedTimef()/100),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
         }else{
             cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,500*(1+sin(ofGetElapsedTimef()/20)));
         }
@@ -139,8 +138,8 @@ void UserAgents::end(){}
 
 void UserAgents::check_is_json_new(){
     int add_num;
-    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
-        add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
+    if(SingleUserManager::json_num<JsonReceiver::getInstance().getUsersInfo().size()){
+        add_num = JsonReceiver::getInstance().getUsersInfo().size() - SingleUserManager::json_num;
         check_agent_size(add_num);
         addAgent(add_num);
         ofxSuperLogUtil::set_log("check_is_json_new", ofToString(add_num));
@@ -186,21 +185,20 @@ void UserAgents::addAgent(int add_num){
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
         userAgentArray.back()->get_info_from_twitter(
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).text,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
-//                                                     JsonImageRecieveThread::get_icons().at(json_num)
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).userName,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).twitterId,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).text,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).friends_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).statuses_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).followers_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).iconURL
                                                      );
 //        createExplodeAnimation(pos3f);
-        json_num++;//json_numはここで
-        ofxSuperLogUtil::set_log("addAgent", "No: "+ofToString(json_num));
+        SingleUserManager::json_num++;//json_numはここで
+        ofxSuperLogUtil::set_log("addAgent", "No: "+ofToString(SingleUserManager::json_num));
     }
     userAgentsSize = userAgentArray.size();
-    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(100,200));
 }
 
 void UserAgents::createExplodeAnimation(ofVec3f pos){

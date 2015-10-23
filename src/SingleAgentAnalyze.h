@@ -15,6 +15,7 @@
 #include "ShiseidoLifeClock.h"
 #include "SingleUserManager.h"
 #include "ofxSuperLogUtil.h"
+#include "LineBelt.h"
 
 class SingleAgentAnalyze : public SceneElement {
     
@@ -26,10 +27,10 @@ private:
     
     void check_is_json_new();
     void addAgent(int add_num);
-    
-    int json_num;
+
     ShiseidoLifeClock shiseido;
     
+    LineBelt belt;
 public:
 
     virtual void reset() override;

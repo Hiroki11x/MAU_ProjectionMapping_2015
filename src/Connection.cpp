@@ -20,8 +20,8 @@ void Connection::drawConnection(){
             ofCircle(startPoint + connectionVector, 40 * position);
         }
     }
-    ofSetColor(color,170);
-    ofSetLineWidth(LINE_WIDTH);
+    ofSetColor(color,250);
+    ofSetLineWidth(3);
     ofLine( startPoint, startPoint + position * (connectionVector));
     cout<<"listener started"<<endl;
 }
