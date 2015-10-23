@@ -127,6 +127,8 @@ void UserAgents::keyPressed(int key){
     }else if(key==OF_KEY_SHIFT){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
         tag = "SwipeMode::SemiCircle";
+    }else if(key == OF_KEY_TAB){
+        reset();
     }
     strechyRectSwiper.init();
     ofxSuperLogUtil::set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し

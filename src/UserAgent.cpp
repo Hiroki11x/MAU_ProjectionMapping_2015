@@ -15,7 +15,7 @@ void UserAgent::init(){
     set_size(DEFAULT_USER_CIRCLE_SIZE);
 //    get_info_from_twitter();//twitterから情報取ってくる関数を呼ぶ
     calc_line_length();
-    icon.allocate(30, 30,OF_IMAGE_COLOR);
+    icon.allocate(40, 40,OF_IMAGE_COLOR);
     
 }
 
@@ -63,7 +63,7 @@ void UserAgent::draw(){
 //    ofSetColor(color);
 //    ofCircle(position, size * multiple_of_size/2);
     ofSetColor(255);
-    icon.draw(position.x-15,position.y-15,position.z, 30,30);
+    icon.draw(position.x-20,position.y-20,position.z, 40,40);
     ofNoFill();
     
 //    ofBeginShape();//回転する内部の円
@@ -94,11 +94,11 @@ void UserAgent::draw(){
     glPushMatrix();
     glTranslated(0, 0, position.z);
     glRotatef(180, 1,0,0);
-    FontManager::mfont.drawString(username, position.x+size*2.5,-(position.y+8));
-    FontManager::mfont.drawString(id, position.x+size*2.5,-(position.y-2));
-    FontManager::msmallfont.drawString("Follower: "+ofToString(followers_count), position.x+size*2.5,-(position.y-10));
-    FontManager::msmallfont.drawString("Friends: "+ofToString(friends_count), position.x+size*2.5,-(position.y-16));
-    FontManager::msmallfont.drawString("Statue: "+ofToString(statuses_count), position.x+size*2.5+50,-(position.y-10));
+    FontManager::mbigfont.drawString(username, position.x+size*2.5,-(position.y+12));
+    FontManager::mfont.drawString(id, position.x+size*2.5,-(position.y));
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), position.x+size*2.5,-(position.y-12));
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), position.x+size*2.5,-(position.y-22));
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), position.x+size*2.5+50,-(position.y-12));
     glPopMatrix();
 
 }
