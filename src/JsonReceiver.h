@@ -40,9 +40,20 @@ public:
     static wstring convToWString(string src);
     template <class T>
     static wstring convToUCS4(basic_string<T> src);
-    
 
     static JsonReceiver &getInstance();
+    
+    
+    //-----------------------------------
+    //No tweet用
+    //-----------------------------------
+    vector<wstring> dammyNameData;
+    vector<wstring> getDammyTextData();
+    vector<wstring> dammyTextData;
+    vector<wstring> getDammyUserNameData();
+    vector<ofImage> dammyImageData;
+    vector<ofImage> getDammyImageData();
+    void initDammyData();
 private:
     JsonReceiver(){}
     JsonReceiver(const JsonReceiver &other){}

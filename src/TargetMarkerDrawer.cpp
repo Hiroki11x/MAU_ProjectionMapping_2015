@@ -75,12 +75,12 @@ void TargetMarkerDrawer::restart(){
     }
 }
 
-void TargetMarkerDrawer::drawTargetMarker(){
+void TargetMarkerDrawer::drawTargetMarker(ofColor tColor){
     if(mode == END) return;
     ofPushMatrix();
     ofPushStyle();
     ofTranslate(position);
-    ofSetColor(0, 255, 255, 100);
+    ofSetColor(tColor, 100);
     ofSetLineWidth(8);
     ofRotateZ(insideDeg);
     insideDrawer.draw();
@@ -89,7 +89,7 @@ void TargetMarkerDrawer::drawTargetMarker(){
     ofTranslate(position);
     ofRotateZ(outsideDeg);
     ofSetLineWidth(16);
-    ofSetColor(0, 255, 255,150);
+    ofSetColor(tColor,150);
     outsideDrawer.draw();
     ofPopMatrix();
     ofSetLineWidth(2);

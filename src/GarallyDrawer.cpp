@@ -29,7 +29,6 @@ void GarallyDrawer::drawGarally(){
     }
     glEnable(GL_LINE_STIPPLE);
     glLineStipple(1 , patterns[patternIndex]);
-    ofSetColor(255);
     model.drawWireframe();
     glDisable(GL_LINE_STIPPLE);
     ofPopStyle();

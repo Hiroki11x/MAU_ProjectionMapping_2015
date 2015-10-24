@@ -49,21 +49,23 @@ void ArtSpyDeforming::draw(){
         ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_ADD);
 
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, 180, -200);
+        //ofTranslate(ofGetWidth()/2, 180, -200);
+        ofTranslate(ofGetWidth()/2, 280, -200);
         ofRotateZ(180);
         backShader.load("","foundation.frag");
         backShader.begin();
         backShader.setUniform1f("u_time", ofGetElapsedTimef());
         backShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
         backShader.setUniform1f("height", 1000);
-        ofDrawCone(1500, 1000);
+        if(apperLogo)ofDrawCone(1500, 1000);
         backShader.end();
         ofPopMatrix();
         
-        ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
+        //ofEnableBlendMode(ofBlendMode::OF_BLENDMODE_MULTIPLY);
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, ofGetHeight() - 100,-200);
+        ofTranslate(ofGetWidth()/2, ofGetHeight() - 200,-200);
         ofRotateX(120);
+        ofSetColor(40, 255, 100, 255);
         foundationDrawer.drawFoundation();
         ofPopMatrix();
         
@@ -71,7 +73,7 @@ void ArtSpyDeforming::draw(){
         ofDisableAlphaBlending();
         light.disable();
         glDisable(GL_LIGHTING);
-        drawSpyLogo();
+        if(apperLogo) drawSpyLogo();
     }
     
     ofEnableAlphaBlending();
@@ -87,7 +89,8 @@ void ArtSpyDeforming::drawSpyLogo(){
     light.enable();
     glEnable(GL_LIGHTING);
     ofSetColor(40, 255, 100, 150);
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -200);
+   // ofSetColor(40, 255, 100, 255);
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, -100);
     ofTranslate(0,200,0);
     ofRotateX(90);
     ofRotateZ(rotation);
@@ -141,6 +144,8 @@ void ArtSpyDeforming::keyPressed(int key){
             circuitDrawer.endBoxCircuit();
             drawCircuitMode = true;
             break;
+        case 'l':
+            apperLogo = !apperLogo;
         default:
             break;
     }

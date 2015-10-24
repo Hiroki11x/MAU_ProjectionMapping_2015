@@ -17,7 +17,12 @@
 #include "ArtSpyDeforming.h"
 #include "IconStream.h"
 #include "StringNetwork.h"
-
+#include "GlidShoot.h"
+#include "WaveFractal.h"
+#include "GlassBreak.h"
+#include "LineFractal.h"
+#include "EndingVideo.h"
+#include "StartVideo.h"
 
 class SpyMeshSceneManager:public SceneManager {
 public:

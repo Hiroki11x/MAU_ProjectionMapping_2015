@@ -11,9 +11,10 @@
 
 #include "ofMain.h"
 
-#define CIRCUIT_POINT_INTERVAL 45
-#define CIRCUIT_WIDTH_NUM 24
-#define CIRCUIT_HEIGHT_NUM 24
+//#define CIRCUIT_POINT_INTERVAL 45
+#define CIRCUIT_POINT_INTERVAL 100
+#define CIRCUIT_WIDTH_NUM 18
+#define CIRCUIT_HEIGHT_NUM 18
 
 class CircuitDrawer {
 public:
@@ -52,6 +53,7 @@ public:
     ofVec3f targetPoint[10];
     ofVec3f lineStartPoint[10];
     ofVec3f points[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
+    ofColor lineColors[10];
     Mode mode = NORMAL;
     
     int nextIndex[10];
@@ -59,6 +61,7 @@ public:
     int waitFrames;
     bool usedPoint[CIRCUIT_WIDTH_NUM * CIRCUIT_HEIGHT_NUM];
     bool arrivedNextPoint[10];
+    bool randomColor = true;
     float positionCounter[10]; //0~1
     bool boxMode = false;
 };

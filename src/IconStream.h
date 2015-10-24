@@ -25,7 +25,9 @@ public:
         Convergence,
         RemakeCircle,
         Down,
-        RemakeIcon
+        RemakeIcon,
+        Collapse,
+        MoveCam
     };
     
     virtual void draw() override;
@@ -38,22 +40,47 @@ public:
     ofImage newIcon;
     ofxAssimpModelLoader doorModel;
     ofLight light;
-    ofCamera camera;
+    ofEasyCam camera;
+    ofVec3f cameraPosition;
+    ofVec3f befCameraPosition;
+    ofVec3f nextCameraPosition;
+    ofVec3f cameraLookPoint;
+    ofVec3f befCameraLookPoint;
+    ofVec3f nextCameraLookPoint;
     Mode mode;
     ofVec3f lastPosition;
     ofVec3f lastParticlePosition;
     ofVec3f targetPosition[MAX_ICON * ICON_SIZE * ICON_SIZE];
-    ofVec3f cameraPosition;
+    //ofVec3f cameraPosition;
     ofColor remakeIconsColor[MAX_ICON * ICON_SIZE * ICON_SIZE];
+
     ofShader backShader;
+    ofVboMesh backGroundCrosses;
+    ofColor crossColor = ofColor(250,250,250,30);
+    ofVboMesh iconLine;
+    ofVec3f iconFirstPosition[MAX_ICON];
+    ofVec3f iconFirstRotation[MAX_ICON];
+    float Offset[MAX_ICON * ICON_SIZE * ICON_SIZE];
+    ofVec3f boxRotation;
+    void collapse(int w, int h, int x, int y);
+    float collapseSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
+    bool getNewIcon;
+    ofVec3f collVecs[MAX_ICON * ICON_SIZE * ICON_SIZE];
     
     int iconNum;
     int spentFrames;
+    int cameraRotateFrames;
+    int rotateFrame;
+    int cameraWaitFrame;
     bool remakeFlag;
+    bool putDammyData;
+    bool putRandomData;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
     float noiseElement;
+    void loadRandumIcon();
     
     void updatePoint();
+    void updateCamera();
     void drawDoor(float deg);
     void loadIcon();
     void makeCircle(int w, int h, int x, int y);
@@ -63,5 +90,6 @@ public:
     void remake(int w, int h, int x, int y);
     void nextPhase();
     void loadSpyIcon();
+    void loadDammyIcon();
 };
 #endif

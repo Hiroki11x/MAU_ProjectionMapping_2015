@@ -30,7 +30,8 @@ public:
     int rotateFrame;
     int waitFrame;
     int garallyStripMode = 0;
-    bool drawFPSAndSPFMode = true;
+    bool drawFPSAndSPFMode = false;
+    bool drawNetworkLineMode = false;
     float lineEmitPointDistance;
     
     TrailRenderer trails;
@@ -51,9 +52,15 @@ public:
     ofLight light;
     ofShader backShader;
     GarallySceneGuiDrawer gui;
+    ofColor fpsColor = ofColor(100,255,255);
+    ofColor garallyColor = ofColor(255, 255, 255 , 150);
+    ofColor lineColor = ofColor(0, 255, 255, 150);
+    ofColor networkLineColor = ofColor(255,0,255);
+    ofVboMesh networkLine;
 
     void initLineEmitPoints();
     void initModelDrawer();
+    void updateNetworkLine();
     void reset();
     
     GLushort pattern[8] = {
@@ -66,5 +73,7 @@ public:
         0x3000,
         0xF000
     };
+    
+    GLushort netLinePattern = 0x0000;
 };
 #endif

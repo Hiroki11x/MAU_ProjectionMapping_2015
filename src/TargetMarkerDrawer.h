@@ -37,7 +37,7 @@ public:
         
     void init(float radius);
     void update();
-    void drawTargetMarker();
+    void drawTargetMarker(ofColor tColor);
     void restart();
 };
 #endif

@@ -41,6 +41,10 @@ public:
     ofVec3f vertices[MAX_VERTICES];
     ofVec3f coloredMeshesVec[MAX_INDICES / COLORED_MESH_PER_HANDRED_TRIANGLE];
     ofVec3f randomExpandMeshesVec[EXPAND_MESH_NUM * 3];
+    ofColor parsentFrameColor = ofColor(51,153,204,255);
+    //ofColor parsentFrameColor = ofColor(51,153,204,100); //ofSetColor(80,120,80,100);
+    ofColor parsentColor = ofColor(204,255,255,255);
+    //ofColor parsentColor = ofColor(204,255,255,200); //ofSetColor(50,255,50,200);
     
     ofVec3f addVertex();
     void changeColoredPartMesh();

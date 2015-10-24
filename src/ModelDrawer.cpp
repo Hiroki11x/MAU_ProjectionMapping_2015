@@ -100,7 +100,7 @@ void ModelDrawer::drawColoredMesh(){
 void ModelDrawer::drawModel(float scale, bool fill){
     ofPushStyle();
     ofSetLineWidth(1.0);
-    glPointSize(1);
+    glPointSize(4);
     mesh.setMode(primitiveMode);
     if(fill){
         mesh.draw(ofPolyRenderMode::OF_MESH_FILL);
@@ -111,11 +111,14 @@ void ModelDrawer::drawModel(float scale, bool fill){
 };
 
 void ModelDrawer::drawPercentage(){
+    ofNoFill();
+    ofSetColor(parsentFrameColor);
+   // ofRect(40, 40, ofGetWidth() - 80, 40);
+    ofRect(40, 20, ofGetWidth() - 80, 60);
     ofFill();
-    ofSetColor(80,120,80,100);
-    ofRect(40, 40, 944, 40);
-    ofSetColor(50,255,50,200);
-    ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
+    ofSetColor(parsentColor);
+   // ofRect(50, 50, 930 * (float(addedIndicesSize) / float(indicesSize)), 20);
+    ofRect(50, 30, (ofGetWidth() - 90) * (float(addedIndicesSize) / float(indicesSize)), 40);
 }
 
 void ModelDrawer::setPrimitiveMode(ofPrimitiveMode primitiveMode){
@@ -148,7 +151,7 @@ void ModelDrawer::updateColoredMesh(float size){
                 coloredPartMesh.setVertex(3 * i    , coloredMeshesVec[3 * i] * size);
                 coloredPartMesh.setVertex(3 * i + 1, coloredMeshesVec[3 * i + 1] * size);
                 coloredPartMesh.setVertex(3 * i + 2, coloredMeshesVec[3 * i + 2] * size);
-                coloredPartMesh.addColor(ofColor(ofRandom(255),255,ofRandom(255),ofRandom(255)));
+                coloredPartMesh.addColor(ofColor(ofRandom(255),ofRandom(255),255,ofRandom(255)));
             }
             break;
             

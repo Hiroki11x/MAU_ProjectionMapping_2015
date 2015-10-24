@@ -72,6 +72,7 @@ void JsonReceiver::init(){
         cout << "Failed to parse JSON" << endl;
     }
     updateNum = 0;
+    initDammyData();
 }
 
 JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
@@ -79,6 +80,41 @@ JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
     return getUsersInfo().at(ofRandom(0, updateNum - 0.1));
 }
 
+void JsonReceiver::initDammyData(){
+    dammyNameData.push_back(convToWString("Hiroki Naganuma"));
+    dammyNameData.push_back(convToWString("YoshimasaSakuragi"));
+    dammyNameData.push_back(convToWString("Yuto Sakurai"));
+    dammyNameData.push_back(convToWString("Ryo Ichikawa"));
+    dammyNameData.push_back(convToWString("Mizuno Yusuke"));
+    dammyNameData.push_back(convToWString("Matsui Shinpei"));
+    dammyNameData.push_back(convToWString("Sei"));
+    dammyNameData.push_back(convToWString("Taisuke Masuhara"));
+    
+    dammyTextData.push_back(convToWString("#maufes Intaractive Art!"));
+    dammyTextData.push_back(convToWString("#maufes ArtSpy"));
+    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピング"));
+    dammyTextData.push_back(convToWString("#maufes 武蔵野美術大学"));
+    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピングかっこいい！！"));
+    dammyTextData.push_back(convToWString("#maufes 美術館前なう！！"));
+    dammyTextData.push_back(convToWString("#maufes 芸祭楽しい！！"));
+    dammyTextData.push_back(convToWString("#maufes Life is Tech!"));
+    
+    for(int i = 0; i < 5; i++){
+        ofImage dimg;
+        dimg.loadImage("dammy" + ofToString(i) + ".png");
+        dammyImageData.push_back(dimg);
+    }
+}
+
+vector<wstring> JsonReceiver::getDammyUserNameData(){
+    return dammyNameData;
+}
+vector<ofImage> JsonReceiver::getDammyImageData(){
+    return dammyImageData;
+}
+vector<wstring> JsonReceiver::getDammyTextData(){
+    return dammyTextData;
+}
 
 wstring JsonReceiver::convToWString(string src) {
     

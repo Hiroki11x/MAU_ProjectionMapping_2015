@@ -23,10 +23,17 @@ public:
     virtual void onMouseDown(int x,int y) override;
     virtual void keyPressed(int key) override;
     
+    int cameraRotateFrames;
+    int rotateFrame;
+    int waitFrame;
+    int agentNum;
+    int fontSize;
+    int spentFrames;
+    bool putDammyData;
+    float expandingArea;
+    float cameraZ;
     ofxTrueTypeFontUL2 font;
     ofEasyCam camera;
-    ofLight light;
-    vector<NetworkAgent> networkAgents;
     ofShader backShader;
     ofVec3f cameraPosition;
     ofVec3f befCameraPosition;
@@ -34,16 +41,13 @@ public:
     ofVec3f cameraLookPoint;
     ofVec3f befCameraLookPoint;
     ofVec3f nextCameraLookPoint;
-    int cameraRotateFrames;
-    int rotateFrame;
-    int waitFrame;
-    int agentNum;
-    int fontSize;
-    int spentFrames;
-    float expandingArea;
-    float cameraZ;
-   
+    vector<NetworkAgent> networkAgents;
     void updateAgents();
+    
+    //ofColor nameColor = ofColor(50, 255, 255 ,210);
+    ofColor nameColor = ofColor(50, 255, 255 ,255);
+    //ofColor circleColor = ofColor(100,200,200,50);
+    ofColor circleColor = ofColor(100,200,200,255);
 };
 #endif
 

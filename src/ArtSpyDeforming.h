@@ -23,6 +23,7 @@ public:
     virtual void stop() override;
 
     bool drawCircuitMode = false;
+    bool apperLogo = false;
     float rotation;
     
     vector<float> rotates;

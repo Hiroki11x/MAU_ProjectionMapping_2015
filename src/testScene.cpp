@@ -30,13 +30,15 @@ void testScene::setup(){
 }
 
 void testScene::exit(){
-    //JsonReceiver::stopRecieveThread();
     thread.stopThread();
 }
 
 //--------------------------------------------------------------
 void testScene::update(){
     manager->update();
+    
+   /* cout << ofGetWidth() << "width" << endl;
+    cout << ofGetHeight() << "h" << endl;*/
 }
 
 //--------------------------------------------------------------
