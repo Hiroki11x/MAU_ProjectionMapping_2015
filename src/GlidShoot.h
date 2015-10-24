@@ -36,6 +36,10 @@ public:
     } Glid;
     
     vector<Glid> glids;
+    
+    int spentFrames;
+    
+   // int keys[14] = {'q','w','e','r','t','y','u','i','o','p','@','[','a','s'};
 
 };
 #endif

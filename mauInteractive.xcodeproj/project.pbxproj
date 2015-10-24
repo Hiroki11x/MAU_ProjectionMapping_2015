@@ -1846,6 +1846,8 @@
 			isa = PBXGroup;
 			children = (
 				FA4F4F431BD360FE001D4E4A /* guiDrawer */,
+				FA13FB221BDA9DFA0066CB7A /* StartVideo.cpp */,
+				FA13FB231BDA9DFA0066CB7A /* StartVideo.h */,
 				FA587E121BC80251003FCCCA /* ArtSpyDeforming.cpp */,
 				FA587E131BC80251003FCCCA /* ArtSpyDeforming.h */,
 				FA587DCF1BC61C4E003FCCCA /* TwitterRain.cpp */,
@@ -1854,8 +1856,6 @@
 				FAF11CB61BBE6460008B96E0 /* SpyMeshIntro.h */,
 				FA5BFD211BBA69410085652C /* SpyMesh.cpp */,
 				FA5BFD221BBA69410085652C /* SpyMesh.h */,
-				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
-				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 				FA74CD0D1BCA0AA5003C32F1 /* IconStream.cpp */,
 				FA74CD0E1BCA0AA5003C32F1 /* IconStream.h */,
 				FA1E656E1BD4092A00B826BD /* GlidShoot.cpp */,
@@ -1866,14 +1866,14 @@
 				FA68C5301BD7450300D409CE /* GlassBreak.h */,
 				FA68C53B1BD7660E00D409CE /* LineFractal.cpp */,
 				FA68C53C1BD7660E00D409CE /* LineFractal.h */,
+				FA13FB161BDA802C0066CB7A /* EndingVideo.cpp */,
+				FA13FB171BDA802C0066CB7A /* EndingVideo.h */,
 				FAA0AD761BDA2A7B00A8369A /* EffectScene.h */,
 				FAA0AD771BDA2A7B00A8369A /* EffectScene.cpp */,
 				FAA0AD781BDA2A7B00A8369A /* SampleElement.cpp */,
 				FAA0AD791BDA2A7B00A8369A /* SampleElement.h */,
-				FA13FB161BDA802C0066CB7A /* EndingVideo.cpp */,
-				FA13FB171BDA802C0066CB7A /* EndingVideo.h */,
-				FA13FB221BDA9DFA0066CB7A /* StartVideo.cpp */,
-				FA13FB231BDA9DFA0066CB7A /* StartVideo.h */,
+				FAAD71531BCCEDC400D721EC /* StringNetwork.cpp */,
+				FAAD71541BCCEDC400D721EC /* StringNetwork.h */,
 			);
 			name = SceneElement;
 			sourceTree = "<group>";

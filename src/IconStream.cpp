@@ -47,6 +47,7 @@ void IconStream::init(){
     noiseElement = 0.0;
     iconNum = 0;
     spentFrames = 0;
+    iconNum = 0;
     for(int x = -1000; x < 1000; x += 100){
         for(int y = -1000; y < 1000; y += 100){
             for(int z = -1000; z < 1000; z+=100){
@@ -397,8 +398,9 @@ void IconStream::collapse(int w, int h, int x, int y){
 }
 
 void IconStream::loadIcon(){
+    if(putDammyData)loadDammyIcon();
+    if(putRandomData) loadRandumIcon();
     if(!(iconNum < MAX_ICON)) return;
-    if(putDammyData) loadDammyIcon();
     if(!JsonReceiver::getInstance().checkIsNewData()) return;
     if(!newIcon.loadImage(JsonReceiver::getInstance().getUsersInfo().at(JsonReceiver::getInstance().updateNum - 1).iconURL)) return;
     
@@ -425,6 +427,36 @@ void IconStream::loadIcon(){
     //mode = MakeCircle;
     
     spentFrames = 0;
+}
+
+void IconStream::loadRandumIcon(){
+    
+    if(!(iconNum < MAX_ICON)) return;
+    if(JsonReceiver::getInstance().updateNum == 0) return;
+    newIcon.loadImage(JsonReceiver::getInstance().getUsersInfo().at(ofRandom(JsonReceiver::getInstance().updateNum)).iconURL);
+    newIcon.resize(ICON_SIZE, ICON_SIZE);
+    for(int x = 0; x < newIcon.width; x++){
+        for(int y = 0; y < newIcon.height; y++){
+            //iconPoints.at(iconNum).addVertex(ofPoint(5 * x , 5 * y + 160 * (iconNum / 5), 0));
+            //iconPoints.at(iconNum).addVertex(ofPoint(5 * x , 5 * y , 0));
+            iconPoints.at(iconNum).addColor(newIcon.getColor(x, y));
+        }
+    }
+    cameraRotateFrames = 0;
+    befCameraPosition = cameraPosition;
+    nextCameraPosition = iconPoints.at(iconNum).vertices.at(ICON_SIZE * ICON_SIZE /2) * 1.5;
+    befCameraLookPoint = cameraLookPoint;
+    nextCameraLookPoint = iconPoints.at(iconNum).vertices.at(ICON_SIZE * ICON_SIZE /2);
+    cameraWaitFrame = ofRandom(50,100);
+    rotateFrame = ofRandom(10,50);
+    
+    iconNum++;
+    putRandomData = false;
+    if(!(iconNum >= MAX_ICON)) return;
+    //mode = MakeCircle;
+    
+    spentFrames = 0;
+
 }
 
 void IconStream::loadDammyIcon(){
@@ -520,6 +552,9 @@ void IconStream::keyPressed(int key){
     switch (key) {
         case 'P':
             putDammyData = true;
+            break;
+        case 'O':
+            putRandomData = true;
             break;
         case 'R':
             init();

@@ -21,5 +21,6 @@ public:
     virtual void stop() override;
     
     ofVideoPlayer vPlayer;
+    bool isPlaying;
 };
 #endif

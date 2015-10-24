@@ -55,12 +55,15 @@ public:
     ofShader backShader;
     vector<AgentAnalysis> agents;
     SpyMeshSceneGui gui;
-    ofColor spyModelColor = ofColor(50, 255, 200 , 150); //50, 255, 50 , 150
+  // ofColor spyModelColor = ofColor(50, 255, 200 , 150); //50, 255, 50 , 150
+    ofColor spyModelColor = ofColor(50, 255, 200 , 255); //50, 255, 50 , 150
     ofColor emitterColor = ofColor(50, 255, 200,150);
-    ofColor spiralModelColor = ofColor(0,153,204,150); //50, 255, 200 , 150
+    //ofColor spiralModelColor = ofColor(0,153,204,150); //50, 255, 200 , 150
+    ofColor spiralModelColor = ofColor(0,153,204,255); //50, 255, 200 , 150
     ofColor garallyModelColor = ofColor(204, 255, 255, 150);
-    ofColor randomExpandMeshColor = ofColor(50, 255, 200 , 150);
-
+    ofColor randomExpandMeshColor = ofColor(50, 255, 200 , 200);
+    ofVideoPlayer vPlayer;
+    
     int mouseX,mouseY;
     int spentFrames;
     int wainingFrames;
@@ -76,6 +79,8 @@ public:
     bool randomExpandMeshDrawMode = false;
     bool agentDebug = false;
     bool trailMode = false;
+    bool putRandumData = false;
+    bool endAnalyze = false;
     
     void initLineEmitPoints();
     void initModelDrawer();

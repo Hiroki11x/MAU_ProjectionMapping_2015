@@ -100,7 +100,7 @@ void ModelDrawer::drawColoredMesh(){
 void ModelDrawer::drawModel(float scale, bool fill){
     ofPushStyle();
     ofSetLineWidth(1.0);
-    glPointSize(1);
+    glPointSize(4);
     mesh.setMode(primitiveMode);
     if(fill){
         mesh.draw(ofPolyRenderMode::OF_MESH_FILL);

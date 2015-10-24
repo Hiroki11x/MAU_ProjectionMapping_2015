@@ -74,8 +74,10 @@ public:
     int cameraWaitFrame;
     bool remakeFlag;
     bool putDammyData;
+    bool putRandomData;
     float downSpeed[MAX_ICON * ICON_SIZE * ICON_SIZE];
     float noiseElement;
+    void loadRandumIcon();
     
     void updatePoint();
     void updateCamera();

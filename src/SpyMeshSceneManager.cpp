@@ -15,12 +15,12 @@ void SpyMeshSceneManager::setup(){
     elements.push_back(new SpyMeshIntro());
     elements.push_back(new SpyMesh());
     elements.push_back(new IconStream());
-    elements.push_back(new StringNetwork());
     elements.push_back(new GlidShoot());
     elements.push_back(new WaveFractal());
     elements.push_back(new GlassBreak());
     elements.push_back(new LineFractal());
     elements.push_back(new EndingVideo());
+    //elements.push_back(new StringNetwork());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -103,11 +103,11 @@ void SpyMeshSceneManager::keyPressed(int key){
             elements[elementIndex]->stop();
             elementIndex = 10;
             return;
-        case '^':
+       /* case '^':
             elements[elementIndex]->stop();
             elementIndex = 11;
-            return;
-        case '!':
+            return;*/
+        case '#':
             elements[elementIndex]->stop();
             splitView = !splitView;
             return;

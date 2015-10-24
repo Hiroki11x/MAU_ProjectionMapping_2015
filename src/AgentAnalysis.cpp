@@ -25,16 +25,17 @@ void AgentAnalysis::drawAgent(){
     ofPushMatrix();
     ofPushStyle();
     if(mesh.vertices.size() == 0) return;
+    ofSetLineWidth(3);
     ofLine(targetPodsition,(position + mesh.vertices.back()).rotated(ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed,
                                                                      ofGetElapsedTimeMillis()/100.0 * rotateSpeed));
-    //ofSetColor(100, 255, 100,150);
+    /*ofSetColor(100, 255, 100,150);
     glPushMatrix();
     glTranslatef(position.x,
                  position.y,
                  position.z);
-   // font->drawString(userName,0,0);
-    glPopMatrix();
+    font->drawString(userName,0,0);
+    glPopMatrix();*/
     ofRotateX(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofRotateY(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);
     ofRotateZ(ofGetElapsedTimeMillis()/100.0 * rotateSpeed);

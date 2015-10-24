@@ -81,16 +81,23 @@ JsonReceiver::UserInfo JsonReceiver::getRandomTweetInfo(){
 }
 
 void JsonReceiver::initDammyData(){
-    dammyNameData.push_back(convToWString("長沼ヒロキ"));
-    dammyNameData.push_back(convToWString("サクラぎ"));
-    dammyNameData.push_back(convToWString("ダミーデータ"));
-    dammyNameData.push_back(convToWString("サクライ"));
+    dammyNameData.push_back(convToWString("Hiroki Naganuma"));
+    dammyNameData.push_back(convToWString("YoshimasaSakuragi"));
+    dammyNameData.push_back(convToWString("Yuto Sakurai"));
+    dammyNameData.push_back(convToWString("Ryo Ichikawa"));
+    dammyNameData.push_back(convToWString("Mizuno Yusuke"));
+    dammyNameData.push_back(convToWString("Matsui Shinpei"));
+    dammyNameData.push_back(convToWString("Sei"));
+    dammyNameData.push_back(convToWString("Taisuke Masuhara"));
     
-    dammyTextData.push_back(convToWString("dammy text"));
-    dammyTextData.push_back(convToWString("dammy text"));
-    dammyTextData.push_back(convToWString("dammy text"));
-    dammyTextData.push_back(convToWString("dammy text"));
-    
+    dammyTextData.push_back(convToWString("#maufes Intaractive Art!"));
+    dammyTextData.push_back(convToWString("#maufes ArtSpy"));
+    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピング"));
+    dammyTextData.push_back(convToWString("#maufes 武蔵野美術大学"));
+    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピングかっこいい！！"));
+    dammyTextData.push_back(convToWString("#maufes 美術館前なう！！"));
+    dammyTextData.push_back(convToWString("#maufes 芸祭楽しい！！"));
+    dammyTextData.push_back(convToWString("#maufes Life is Tech!"));
     
     for(int i = 0; i < 5; i++){
         ofImage dimg;

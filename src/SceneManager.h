@@ -35,7 +35,7 @@ public:
     };
     
     virtual bool nextElement(){
-        SoundManager::stop();
+        //SoundManager::stop();
         elements[elementIndex]->end();
         elementIndex++;
         if(elementIndex >= elements.size()){

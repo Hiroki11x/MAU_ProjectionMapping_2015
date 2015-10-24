@@ -22,6 +22,7 @@ void StartVideo::update(){
 
 void StartVideo::draw(){
 
+    ofSetColor(255);
     if(vPlayer.isPlaying()){
         ofDisableBlendMode();
         ofDisableDepthTest();
@@ -54,4 +55,5 @@ void StartVideo::keyPressed(int key){
 
 void StartVideo::stop(){
     vPlayer.stop();
+    //ofBackground(0);
 }

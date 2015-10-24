@@ -34,6 +34,13 @@ void GlidShoot::draw(){
 }
 
 void GlidShoot::update(){
+    
+   /* spentFrames++;
+    if(spentFrames % 2){
+        keyPressed(keys[(int)ofRandom(14)]);
+    }*/
+    
+    
     for(int i = 0; i < H_GRID * V_GRID; i++){
         if(glids.at(i).drawGlid){
             glids.at(i).restDrawFrames--;

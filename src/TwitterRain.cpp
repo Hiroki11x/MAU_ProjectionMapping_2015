@@ -24,7 +24,8 @@ void TwitterRain::init(){
     glEnable(GL_DEPTH_TEST);
     bRotation=false;
 
-    font.loadFont("Fonts/Gidole-Regular.ttf",35,true,true,0.3f,0,true);
+//    font.loadFont("Fonts/Gidole-Regular.ttf",35,true,true,0.3f,0,true);
+    font.loadFont("Fonts/Gidole-Regular.ttf",45,true,true,0.3f,0,true);
     font.loadSubFont("Fonts/KozGoPro-Light.otf");
     font.loadSubFont("Fonts/Futura.ttc");
     font.loadSubFont("Fonts/FiraCode-Regular.otf");
@@ -52,8 +53,8 @@ void TwitterRain::draw(){
     w=mouseX-x;
     h=mouseY-y;
     glPushMatrix();{
-        light.enable();
-        light.setPosition(ofGetWidth()*.5,ofGetHeight()*.5,ofGetWidth());
+       // light.enable();
+      //  light.setPosition(ofGetWidth()*.5,ofGetHeight()*.5,ofGetWidth());
         for(int i = 0; i < DISPLAY_TWEET_NUM; i++){
             if(!tweets.at(i).visible) continue;
             glPushMatrix();
@@ -110,7 +111,7 @@ void TwitterRain::putDammyData(){
             break;
         }
     }
-    tweets.at(index).tweetInfo = JsonReceiver::getInstance().getDammyTextData().at(ofRandom(4));
+    tweets.at(index).tweetInfo = JsonReceiver::getInstance().getDammyTextData().at(ofRandom(8));
     tweets.at(index).position = ofVec3f(ofRandom(-200,1424),-100,ofRandom(-200, 200));
     tweets.at(index).visible = true;
     tweetNum++;

@@ -8,6 +8,7 @@
 #include "SpyMesh.h"
 
 void SpyMesh::update(){
+    if(endAnalyze) vPlayer.update();
     gui.updateGui();
     float * val = ofSoundGetSpectrum(1);
     modelSize = val[0] * 1;
@@ -19,9 +20,20 @@ void SpyMesh::update(){
     //Dammy
     if(agentDebug){
         agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))],
-                                            JsonReceiver::getInstance().getDammyUserNameData().at(ofRandom(4))));
+                                            JsonReceiver::getInstance().getDammyUserNameData().at(ofRandom(8))));
         agentDebug = false;
+        agentNum++;
     }
+    
+    if(putRandumData){
+        if(JsonReceiver::getInstance().updateNum != 0){
+            agents.push_back(*new AgentAnalysis(lineEmitPoints[int(ofRandom(6))],
+                                            JsonReceiver::getInstance().getUserNames().at(ofRandom(JsonReceiver::getInstance().updateNum))));
+        }
+        putRandumData = false;
+        agentNum++;
+    }
+    
     //-----------------------------------------------------------------------
     updateVertices();
     
@@ -43,7 +55,8 @@ void SpyMesh::update(){
             rollCam.setRandomPos(360);
         }
     }else{
-        camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
+      /*  camera.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));*/
+        camera.setPosition(ofPoint(ofGetWidth()/2 + 200 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 200 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 150 * cos(float(ofGetElapsedTimef() / 10.0))));
         camera.lookAt(ofPoint(ofGetWidth()/2, ofGetHeight()/2,0));
 
         light.setPosition(ofPoint(ofGetWidth()/2 + 300 * sin(float(ofGetElapsedTimef())/3.0) , ofGetHeight()/2 + 300 * cos(float(ofGetElapsedTimef())/3.0) , 150 + 250 * cos(float(ofGetElapsedTimef() / 10.0))));
@@ -52,7 +65,8 @@ void SpyMesh::update(){
 }
 
 void SpyMesh::updateVertices(){
-    if(spentFrames % 3 != 0) return;
+    if(spentFrames % 6 != 0) return;
+    //if(spentFrames % 3 != 0) return;
     for(int n = 0; n < agents.size(); n++){
         for(float f = 0; f < 1; f+= agents.at(n).eraseSpeed){
             agents.at(n).removeVertices();
@@ -82,7 +96,7 @@ void SpyMesh::draw(){
         backShader.end();
     }
     
-    gui.drawGui(agents);
+    if(!endAnalyze) gui.drawGui(agents);
 
     ofPushMatrix();
     ofPushStyle();
@@ -93,7 +107,8 @@ void SpyMesh::draw(){
         ofDisableDepthTest();
         ofEnableBlendMode(OF_BLENDMODE_ADD);
         ofEnableAlphaBlending();
-        ofSetColor(0, 0, 0, 10);
+        //ofSetColor(0, 0, 0, 10);
+        ofSetColor(0, 0, 0, 5);
         ofFill();
         ofRect(0,0, ofGetWidth(), ofGetHeight());
     }else{
@@ -113,7 +128,7 @@ void SpyMesh::draw(){
         ofSetColor(spyModelColor);
         modelDrawer.drawModel(modelSize);
         ofSetColor(emitterColor);
-        drawEmitter();
+        if(!endAnalyze) drawEmitter();
     }
     if(coloerMeshDrawMode) modelDrawer.drawColoredMesh();  //SetColorInClass
     if(randomTrianlgeDrawMode) {
@@ -141,6 +156,10 @@ void SpyMesh::draw(){
     ofPushStyle();
     ofDisableDepthTest();
     modelDrawer.drawPercentage(); //SetColorInClass
+    ofSetColor(255);
+    if(endAnalyze){
+        vPlayer.draw(ofGetWidth()/2 - vPlayer.width/2, ofGetHeight()/2 - vPlayer.height/2, vPlayer.width, vPlayer.height);
+    }
     ofPopStyle();
 }
 
@@ -175,6 +194,7 @@ void SpyMesh::init(){
     garallyDrawer.init();
     gui = *new SpyMeshSceneGui();
     gui.init();
+    vPlayer.loadMovie("complete.mp4");
 }
 
 void SpyMesh::initLineEmitPoints(){
@@ -204,7 +224,8 @@ void SpyMesh::changeColorSet(){
     colorSetIndex = (colorSetIndex + 1) % 3;
     switch (colorSetIndex) {
         case 0: //BlueBase
-            spyModelColor = ofColor(50, 255, 200 , 150);
+            //spyModelColor = ofColor(50, 255, 200 , 150);
+            spyModelColor = ofColor(50, 255, 200 , 255);
             emitterColor = ofColor(50, 255, 200,150);
             spiralModelColor = ofColor(0,153,204,150);
             garallyModelColor = ofColor(204, 255, 255, 150);
@@ -234,7 +255,8 @@ void SpyMesh::changeColorSet(){
             rtDrawer.rtTransColor = ofColor(153,204,255, 50);
             break;
         case 1: //GreenBase
-            spyModelColor = ofColor(50, 255, 50, 150);
+            //spyModelColor = ofColor(50, 255, 50, 150);
+            spyModelColor = ofColor(50, 255, 50, 255);
             emitterColor = ofColor(50, 255, 50,150);
             spiralModelColor = ofColor(50, 255, 50,150);
             garallyModelColor = ofColor(204, 255, 255, 150);
@@ -264,7 +286,8 @@ void SpyMesh::changeColorSet(){
             rtDrawer.rtTransColor = ofColor(50, 255, 50, 50);
             break;
         case 2: //RedBase
-            spyModelColor = ofColor(255, 50, 255, 150);
+            //spyModelColor = ofColor(255, 50, 255, 150);
+            spyModelColor = ofColor(255, 50, 255, 255);
             emitterColor = ofColor(255, 50, 100,150);
             spiralModelColor = ofColor(255, 100, 255,150);
             garallyModelColor = ofColor(204, 255, 255, 150);
@@ -387,7 +410,7 @@ void SpyMesh::keyPressed(int key){
         case 'Y':
             useRollCam = !useRollCam;
             break;
-        case 'U':
+       /* case 'U':
             rollCam.setRandomScale(1.0, 2.0);
             rollCam.setRandomPos(360);
             break;
@@ -402,14 +425,24 @@ void SpyMesh::keyPressed(int key){
             break;
         case 'H':
             rollCam.setScale(1.2);
-            break;
+            break;*/
         case 'P':
             agentDebug = true;
             break;
+        case 'O':
+            putRandumData = true;
+            break;
         case 'R':
             reset();
+            break;
         case 'C':
             changeColorSet();
+            break;
+        case 'E':
+            endAnalyze = !endAnalyze;
+            vPlayer.play();
+            useRollCam = false;
+            break;
         default:
             break;
     }

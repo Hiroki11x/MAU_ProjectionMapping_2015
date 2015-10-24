@@ -10,32 +10,45 @@
 
 void EndingVideo::init(){
     vPlayer.loadMovie("ending.mp4");
+    vPlayer.setLoopState(OF_LOOP_NONE);
 }
 
 void EndingVideo::update(){
 
-    if(!vPlayer.isPlaying()){
-        vPlayer.play();
+   if(vPlayer.isPlaying()){
+    
+       vPlayer.update();
     }
-    
-    vPlayer.update();
-    
 }
 
 void EndingVideo::draw(){
+    
+    ofSetColor(255);
     ofDisableBlendMode();
     ofDisableDepthTest();
     ofDisableAlphaBlending();
-    vPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
+    if(vPlayer.isPlaying()){
+        vPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
+    }else{
+        ofBackground(0);
+    }
 }
 
 void EndingVideo::onMouseDown(int x, int y){}
 
 void EndingVideo::keyPressed(int key){
-    
+    if(key == OF_KEY_RETURN){
+        isPlaying = !isPlaying;
+        if(!isPlaying){
+            vPlayer.stop();
+        }else{
+            vPlayer.play();
+        }
+    }
 }
 
 void EndingVideo::stop(){
+    ofBackground(0);
     vPlayer.stop();
 }
 
