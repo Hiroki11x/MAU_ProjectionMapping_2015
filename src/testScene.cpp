@@ -30,6 +30,8 @@ void testScene::setup(){
 
     JsonReceiver::getInstance().init();
     thread.startThread();
+    
+    isBackAuto = false;
 }
 
 void testScene::exit(){
@@ -46,8 +48,7 @@ void testScene::draw(){
     manager->draw();
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
-    
-    ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), 30,30);
+    ofSetWindowTitle("FPS: "+ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -75,6 +76,9 @@ void testScene::keyPressed(int key){
             manager->setup();
             
         }
+    }else if(key ==OF_KEY_RIGHT_ALT){
+        isBackAuto = !isBackAuto;
+        ofSetBackgroundAuto(isBackAuto);
     }
 }
 

@@ -43,7 +43,7 @@ void SingleAgentAnalyze::draw(){
             SingleUserManager::user_agent.at(agent_size-1-i)->draw(offset,y+150);
         }
     }
-    shiseido.draw(SingleUserManager::json_num);
+    shiseido.draw();
 }
 
 
@@ -77,6 +77,7 @@ void SingleAgentAnalyze::check_is_json_new(){
         add_num = JsonReceiver::getInstance().getUsersInfo().size() - SingleUserManager::json_num;
         addAgent(add_num);
         ofxSuperLogUtil::set_log("add agent","add "+ofToString(add_num)+" agents");
+        shiseido.add_line_num(add_num);
     }
 }
 

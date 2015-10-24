@@ -35,7 +35,6 @@ void UserAgents::init(){
     
     isMoveCam = false;
     isBackGround = false;
-    isBackAuto = false;
     
     ofxSuperLogUtil::set_log("init","call useragnts init()");
     
@@ -130,11 +129,6 @@ void UserAgents::keyPressed(int key){
     strechyRectSwiper.init();
     ofxSuperLogUtil::set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
     check_agent_size(10);//10個agent消す
-    
-    if(key ==OF_KEY_RIGHT_ALT){
-        isBackAuto = !isBackAuto;
-        ofSetBackgroundAuto(isBackAuto);
-    }
 }
 
 void UserAgents::end(){}

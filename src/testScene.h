@@ -47,7 +47,8 @@ public:
     ofxSyphonClient mClient;
     
     JsonRecieveThread thread;
-
+    
+    bool isBackAuto;
 };
 
 
