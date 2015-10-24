@@ -19,11 +19,16 @@ void FinalVideo::update(){
 
 void FinalVideo::draw(){
     ofSetColor(255);
-    if(video.isPlaying())video.draw(0, 0, ofGetWidth(), ofGetHeight());
+    if(video.isPlaying()){
+       video.draw(0, 0, ofGetWidth(), ofGetHeight());
+    }else{
+        ofBackground(0);
+    }
 }
 
 void FinalVideo::init(){
-    video.loadMovie("Loading.mp4");
+    video.loadMovie("end.mp4");
+    video.setLoopState(OF_LOOP_NONE);
 }
 
 void FinalVideo::end(){
@@ -39,6 +44,5 @@ void FinalVideo::keyPressed(int key){
         video.play();
     }else if(key == OF_KEY_TAB){
         video.stop();
-        video.firstFrame();
     }
 }

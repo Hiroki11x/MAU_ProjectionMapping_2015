@@ -11,12 +11,19 @@
 
 #include "SceneElement.h"
 #include "ofMain.h"
+#include "ofxSuperLogUtil.h"
+#include "JsonReceiver.h"
+#include "SingleUserManager.h"
 
 class InitialVideo : public SceneElement {
     
 private:
     ofVideoPlayer video;
     ofImage img;
+    
+    bool isMovieOpen = false; 
+    void check_is_json_new();
+    void addAgent(int add_num);
 public:
     virtual void reset() override;
     virtual void update() override;

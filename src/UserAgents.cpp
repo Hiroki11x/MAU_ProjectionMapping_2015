@@ -38,15 +38,13 @@ void UserAgents::init(){
     
     ofxSuperLogUtil::set_log("init","call useragnts init()");
     
+    endingVideo.loadMovie("cap.mp4");
+    endingVideo.setLoopState(OF_LOOP_NORMAL);
 }
 
 void UserAgents::update(){
     check_is_json_new();
-    
-//    for(int i = 0; i < userAgentArray.size(); i++){
-//        userAgentArray.at(i)->update();//回転アニメーションとか
-//    }
-
+ 
     if (userAgentArray.size()>0) {
 
         if(isMoveCam){
@@ -57,6 +55,8 @@ void UserAgents::update(){
         
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
     }
+    
+    if(endingVideo.isPlaying())endingVideo.update();
 }
 
 void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvectorから消していく
@@ -89,6 +89,7 @@ void UserAgents::draw(){
     }
 
     cam.end();
+    if(endingVideo.isPlaying())endingVideo.draw(ofGetWidth()/2-endingVideo.width/2,ofGetHeight()/2-endingVideo.height/2,endingVideo.width,endingVideo.height);
     ofDrawBitmapString("userAgentArray.size: "+ofToString(userAgentArray.size()), 30,40);
 }
 
@@ -125,6 +126,12 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::SemiCircle";
     }else if(key == OF_KEY_TAB){
         reset();
+    }else if(key == 'C'){
+        if(!endingVideo.isPlaying()){
+            endingVideo.play();
+        }else{
+            endingVideo.stop();
+        }
     }
     strechyRectSwiper.init();
     ofxSuperLogUtil::set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
@@ -143,11 +150,8 @@ void UserAgents::check_is_json_new(){
     }
 }
 
-
 ofVec4f UserAgents::select_position(){
-    
     ofVec4f position;
-    
     int size = matrix_generator.get_position_num();//生成した座標の数
     int index = ofRandom(size-1);//その座標でどこを使うか選ぶ
     if(size>0){
@@ -161,7 +165,6 @@ ofVec4f UserAgents::select_position(){
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
     position.w = index;
     return position;
-
 }
 
 void UserAgents::addAgent(int add_num){

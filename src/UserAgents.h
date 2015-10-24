@@ -62,12 +62,13 @@ private:
     void addAgent(int add_num);
     ofVec4f select_position();
     
-    
     void check_agent_size(int delete_adder);
     
     ofCamera cam;
     
     bool isMoveCam;
     bool isBackGround;
+    
+    ofVideoPlayer endingVideo;
 };
 #endif

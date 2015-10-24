@@ -32,19 +32,7 @@ void LoadingVideo::check_is_json_new(){
 }
 
 void LoadingVideo::addAgent(int add_num){
-    ofVec2f pos;
     for(int i=0;i<add_num;i++){
-//        SingleUserManager::user_agent.push_back(new SingleAgent());
-//        SingleUserManager::user_agent.back()->init();
-//        SingleUserManager::user_agent.back()->get_info_from_twitter(
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).userName,
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).twitterId,
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).text,
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).friends_count,
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).statuses_count,
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).followers_count,
-//                                                                    JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).iconURL);
-//        ofxSuperLogUtil::set_log("Agent added",ofToString(JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).twitterId)+" join");
         SingleUserManager::json_num++;//json_numはここで
     }
 }
@@ -65,6 +53,7 @@ void LoadingVideo::init(){
     video.setLoopState(OF_LOOP_NORMAL);
     video2.loadMovie("plz_tweet.mp4");
     video2.setLoopState(OF_LOOP_NORMAL);
+    video.play();
 }
 
 void LoadingVideo::end(){

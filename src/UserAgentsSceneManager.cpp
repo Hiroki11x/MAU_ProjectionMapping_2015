@@ -16,6 +16,7 @@ void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番�
     elements.push_back(new SingleAgentAnalyze());
     elements.push_back(new LoadingVideo());
     elements.push_back(new InitialVideo());
+    elements.push_back(new FinalVideo());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -51,6 +52,10 @@ void UserAgentsSceneManager::keyPressed(int key){
             return;
         case '5':
             elementIndex = 4;//SingleAnalyze
+            //elements.at(elementIndex)->reset();
+            return;
+        case '6':
+            elementIndex = 5;//SingleAnalyze
             //elements.at(elementIndex)->reset();
             return;
     }

@@ -92,6 +92,7 @@ void LineBelt::draw_belt(){
             FontManager::mbigfont.drawString("statuses: "+ofToString(SingleUserManager::user_agent.at(i%index)->get_user_statuses()),position.at(i)-10,pos_center_y-line_length-100+54);
             FontManager::mbigfont.drawString(SingleUserManager::user_agent.at(i%index)->get_user_text(),position.at(i)-10,pos_center_y-line_length+72-100);
             ofRect(position.at(i)-5, pos_center_y-line_length, 10, line_length*2);
+            break;
         }else{
             ofLine(position.at(i), pos_center_y-line_length/2, position.at(i), pos_center_y+line_length/2);
         }

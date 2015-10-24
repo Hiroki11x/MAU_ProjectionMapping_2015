@@ -32,12 +32,11 @@ private:
 
     int max_row;
     int max_column;
-    
     GraphLog graphlog;
     int mode = 0;
     LineBelt linebelt;
-    
     ofCamera cam;
+    
 public:
     virtual void reset() override;
     virtual void update() override;
