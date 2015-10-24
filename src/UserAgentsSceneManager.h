@@ -15,7 +15,9 @@
 #include "UserAgents.h"
 #include "AgentAnalyze.h"
 #include "SingleAgentAnalyze.h"
-
+#include "InitialVideo.h"
+#include "LoadingVideo.h"
+#include "FinalVideo.h"
 
 
 class UserAgentsSceneManager : public SceneManager {

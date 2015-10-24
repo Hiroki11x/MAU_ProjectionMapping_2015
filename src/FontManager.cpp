@@ -10,6 +10,7 @@
 
 ofxTrueTypeFontUL2 FontManager::mfont;
 ofxTrueTypeFontUL2 FontManager::msmallfont;
+ofxTrueTypeFontUL2 FontManager::mbigfont;
 
 void FontManager::loadFont(string arg, int size){
     mfont.loadFont(arg, size);
@@ -25,4 +26,12 @@ void FontManager::loadSmallFont(string arg, int size){
 
 void FontManager::drawSmallString(string arg ,float x, float y){
     msmallfont.drawString(arg, x, y);
+}
+
+void FontManager::loadBigFont(string arg, int size){
+    mbigfont.loadFont(arg, size);
+}
+
+void FontManager::drawBigString(string arg ,float x, float y){
+    mbigfont.drawString(arg, x, y);
 }

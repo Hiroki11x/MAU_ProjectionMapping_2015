@@ -14,6 +14,9 @@ void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番�
     elements.push_back(new UserAgents());
     elements.push_back(new AgentAnalyze());
     elements.push_back(new SingleAgentAnalyze());
+    elements.push_back(new LoadingVideo());
+    elements.push_back(new InitialVideo());
+    elements.push_back(new FinalVideo());
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }
@@ -25,7 +28,7 @@ bool UserAgentsSceneManager::nextElement(){//スペースでの繊維用
     if(elementIndex >= elements.size()){
         elementIndex = 0;
     }
-    elements.at(elementIndex)->reset();
+    //elements.at(elementIndex)->reset();
     return true;
 }
 
@@ -33,15 +36,27 @@ void UserAgentsSceneManager::keyPressed(int key){
     switch (key) {
         case '1':
             elementIndex = 0;//UserAgent
-            elements.at(elementIndex)->reset();
+            //elements.at(elementIndex)->reset();
             return;
         case '2':
             elementIndex = 1;//AgentAnalyza
-            elements.at(elementIndex)->reset();
+            //elements.at(elementIndex)->reset();
             return;
         case '3':
             elementIndex = 2;//SingleAnalyze
-            elements.at(elementIndex)->reset();
+            //elements.at(elementIndex)->reset();
+            return;
+        case '4':
+            elementIndex = 3;//SingleAnalyze
+            //elements.at(elementIndex)->reset();
+            return;
+        case '5':
+            elementIndex = 4;//SingleAnalyze
+            //elements.at(elementIndex)->reset();
+            return;
+        case '6':
+            elementIndex = 5;//SingleAnalyze
+            //elements.at(elementIndex)->reset();
             return;
     }
     elements.at(elementIndex)->keyPressed(key);

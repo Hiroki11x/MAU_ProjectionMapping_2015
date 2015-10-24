@@ -74,6 +74,13 @@
 		4EB7A3D71BCE978A00A86BF2 /* JsonImageReceiveThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A3D51BCE978A00A86BF2 /* JsonImageReceiveThread.cpp */; };
 		4EB7A40E1BD2045400A86BF2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A4081BD2045400A86BF2 /* README.md */; };
 		4EB7A40F1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7A40A1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp */; };
+		4EBA929D1BDA435000F1A428 /* LineBelt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA929B1BDA435000F1A428 /* LineBelt.cpp */; };
+		4EBA92A11BDA976600F1A428 /* InitialVideoSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA929F1BDA976600F1A428 /* InitialVideoSceneManager.cpp */; };
+		4EBA92A51BDA980600F1A428 /* InitialVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA92A31BDA980600F1A428 /* InitialVideo.cpp */; };
+		4EBA92AD1BDA9D2500F1A428 /* LoadingVideoSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA92AB1BDA9D2500F1A428 /* LoadingVideoSceneManager.cpp */; };
+		4EBA92B01BDA9E3400F1A428 /* LoadingVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA92AE1BDA9E3400F1A428 /* LoadingVideo.cpp */; };
+		4EBA92B41BDAA15400F1A428 /* FinalVideoSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA92B21BDAA15400F1A428 /* FinalVideoSceneManager.cpp */; };
+		4EBA92B81BDAA21800F1A428 /* FinalVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA92B61BDAA21800F1A428 /* FinalVideo.cpp */; };
 		4EC0478E1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */; };
 		4EC047921BCB6FD100D069EB /* SingleAgentAnalyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */; };
 		4EC047961BCB716900D069EB /* SingleAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC047941BCB716900D069EB /* SingleAgent.cpp */; };
@@ -374,6 +381,20 @@
 		4EB7A4081BD2045400A86BF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4EB7A40A1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
 		4EB7A40B1BD2045400A86BF2 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
+		4EBA929B1BDA435000F1A428 /* LineBelt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineBelt.cpp; sourceTree = "<group>"; };
+		4EBA929C1BDA435000F1A428 /* LineBelt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineBelt.h; sourceTree = "<group>"; };
+		4EBA929F1BDA976600F1A428 /* InitialVideoSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InitialVideoSceneManager.cpp; sourceTree = "<group>"; };
+		4EBA92A01BDA976600F1A428 /* InitialVideoSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialVideoSceneManager.h; sourceTree = "<group>"; };
+		4EBA92A31BDA980600F1A428 /* InitialVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InitialVideo.cpp; sourceTree = "<group>"; };
+		4EBA92A41BDA980600F1A428 /* InitialVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialVideo.h; sourceTree = "<group>"; };
+		4EBA92AB1BDA9D2500F1A428 /* LoadingVideoSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingVideoSceneManager.cpp; sourceTree = "<group>"; };
+		4EBA92AC1BDA9D2500F1A428 /* LoadingVideoSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingVideoSceneManager.h; sourceTree = "<group>"; };
+		4EBA92AE1BDA9E3400F1A428 /* LoadingVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingVideo.cpp; sourceTree = "<group>"; };
+		4EBA92AF1BDA9E3400F1A428 /* LoadingVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingVideo.h; sourceTree = "<group>"; };
+		4EBA92B21BDAA15400F1A428 /* FinalVideoSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FinalVideoSceneManager.cpp; sourceTree = "<group>"; };
+		4EBA92B31BDAA15400F1A428 /* FinalVideoSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalVideoSceneManager.h; sourceTree = "<group>"; };
+		4EBA92B61BDAA21800F1A428 /* FinalVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FinalVideo.cpp; sourceTree = "<group>"; };
+		4EBA92B71BDAA21800F1A428 /* FinalVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalVideo.h; sourceTree = "<group>"; };
 		4EC0478C1BCB6EAF00D069EB /* SingleAgentSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentSceneManager.cpp; sourceTree = "<group>"; };
 		4EC0478D1BCB6EAF00D069EB /* SingleAgentSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleAgentSceneManager.h; sourceTree = "<group>"; };
 		4EC047901BCB6FD100D069EB /* SingleAgentAnalyze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleAgentAnalyze.cpp; sourceTree = "<group>"; };
@@ -1117,6 +1138,9 @@
 		4E88A2541BBE11CD001E8306 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA92B11BDAA04900F1A428 /* FinalVideoScene */,
+				4EBA92A61BDA9B0E00F1A428 /* LoadingVideoScene */,
+				4EBA929E1BDA974700F1A428 /* InitialVideoScene */,
 				4EC0478B1BCB6E7E00D069EB /* SingleAgentAnalyze */,
 				4EE77D4D1BC783950070C805 /* UserAgentAnalyze */,
 				4E88A2581BBE1266001E8306 /* Base */,
@@ -1138,6 +1162,7 @@
 		4E88A2561BBE1223001E8306 /* AnimationUtils */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA929A1BDA433E00F1A428 /* LineBelt */,
 				4EE77D161BC62AD50070C805 /* ExplodeAnimation */,
 				4E7633121BC256DB002F2530 /* PostGlitch */,
 				4E12E4801BBEF40A001D9BA2 /* Delaunay */,
@@ -1321,6 +1346,72 @@
 				4EB7A40B1BD2045400A86BF2 /* ofxTrueTypeFontUC.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		4EBA929A1BDA433E00F1A428 /* LineBelt */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA929B1BDA435000F1A428 /* LineBelt.cpp */,
+				4EBA929C1BDA435000F1A428 /* LineBelt.h */,
+			);
+			name = LineBelt;
+			sourceTree = "<group>";
+		};
+		4EBA929E1BDA974700F1A428 /* InitialVideoScene */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA92A21BDA97EB00F1A428 /* Element */,
+				4EBA929F1BDA976600F1A428 /* InitialVideoSceneManager.cpp */,
+				4EBA92A01BDA976600F1A428 /* InitialVideoSceneManager.h */,
+			);
+			name = InitialVideoScene;
+			sourceTree = "<group>";
+		};
+		4EBA92A21BDA97EB00F1A428 /* Element */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA92A31BDA980600F1A428 /* InitialVideo.cpp */,
+				4EBA92A41BDA980600F1A428 /* InitialVideo.h */,
+			);
+			name = Element;
+			sourceTree = "<group>";
+		};
+		4EBA92A61BDA9B0E00F1A428 /* LoadingVideoScene */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA92A71BDA9B2700F1A428 /* Element */,
+				4EBA92AB1BDA9D2500F1A428 /* LoadingVideoSceneManager.cpp */,
+				4EBA92AC1BDA9D2500F1A428 /* LoadingVideoSceneManager.h */,
+			);
+			name = LoadingVideoScene;
+			sourceTree = "<group>";
+		};
+		4EBA92A71BDA9B2700F1A428 /* Element */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA92AE1BDA9E3400F1A428 /* LoadingVideo.cpp */,
+				4EBA92AF1BDA9E3400F1A428 /* LoadingVideo.h */,
+			);
+			name = Element;
+			sourceTree = "<group>";
+		};
+		4EBA92B11BDAA04900F1A428 /* FinalVideoScene */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA92B51BDAA17A00F1A428 /* Element */,
+				4EBA92B21BDAA15400F1A428 /* FinalVideoSceneManager.cpp */,
+				4EBA92B31BDAA15400F1A428 /* FinalVideoSceneManager.h */,
+			);
+			name = FinalVideoScene;
+			sourceTree = "<group>";
+		};
+		4EBA92B51BDAA17A00F1A428 /* Element */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA92B61BDAA21800F1A428 /* FinalVideo.cpp */,
+				4EBA92B71BDAA21800F1A428 /* FinalVideo.h */,
+			);
+			name = Element;
 			sourceTree = "<group>";
 		};
 		4EC0478B1BCB6E7E00D069EB /* SingleAgentAnalyze */ = {
@@ -2186,6 +2277,7 @@
 				C2B7714E50909A7BCAE5A51C /* texture3DS.cpp in Sources */,
 				4EB7A3CF1BCE8E1400A86BF2 /* BaseImage.cpp in Sources */,
 				59DB8A662B2617751F4A9412 /* ofx3dModelLoader.cpp in Sources */,
+				4EBA92A11BDA976600F1A428 /* InitialVideoSceneManager.cpp in Sources */,
 				4E5ED6C31BC12958004F1AF6 /* ofxEasing.cpp in Sources */,
 				4E88A2521BBE11AF001E8306 /* UserAgents.cpp in Sources */,
 				4EE77D1A1BC62B000070C805 /* ParticleElement.cpp in Sources */,
@@ -2193,6 +2285,7 @@
 				3B8120368B4FCCD80883BAF3 /* ofxAssimpAnimation.cpp in Sources */,
 				4E5ED6D81BC12980004F1AF6 /* ofxTweenUtil.cpp in Sources */,
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
+				4EBA92A51BDA980600F1A428 /* InitialVideo.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
 				4E88A2471BBE11AF001E8306 /* ofApp.cpp in Sources */,
 				4EB7A3D71BCE978A00A86BF2 /* JsonImageReceiveThread.cpp in Sources */,
@@ -2204,10 +2297,12 @@
 				B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
+				4EBA92B81BDAA21800F1A428 /* FinalVideo.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,
 				4E735F081BCE36BF00DA9F85 /* JsonRecieveThread.cpp in Sources */,
 				E212C821D1064B92DD953A42 /* ofxCvHaarFinder.cpp in Sources */,
+				4EBA929D1BDA435000F1A428 /* LineBelt.cpp in Sources */,
 				4E5ED6C91BC12958004F1AF6 /* ofxEasingExpo.cpp in Sources */,
 				63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */,
 				D3301F6A0B43BB293ED97C1D /* ofxCvShortImage.cpp in Sources */,
@@ -2256,6 +2351,7 @@
 				4E5ED6C71BC12958004F1AF6 /* ofxEasingCubic.cpp in Sources */,
 				4ECB408B1BC511A2004EB9AF /* JsonReceiver.cpp in Sources */,
 				4E94F13E1BBE102200E0343E /* ofxSyphonServerDirectory.mm in Sources */,
+				4EBA92B41BDAA15400F1A428 /* FinalVideoSceneManager.cpp in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				45CC483A999BF1065A6B926C /* Distance.cpp in Sources */,
@@ -2266,6 +2362,8 @@
 				4EB7A40F1BD2045400A86BF2 /* ofxTrueTypeFontUC.cpp in Sources */,
 				4E62473A1BD3815400D45AC0 /* SingleUserManager.cpp in Sources */,
 				4E76329B1BC2147B002F2530 /* ofxSuperLogUtil.cpp in Sources */,
+				4EBA92AD1BDA9D2500F1A428 /* LoadingVideoSceneManager.cpp in Sources */,
+				4EBA92B01BDA9E3400F1A428 /* LoadingVideo.cpp in Sources */,
 				4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */,
 				4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */,
 				2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */,

@@ -20,12 +20,14 @@ public:
     
     void reset();
     void init();
-    void draw(int num);
-    void update(int num);
+    void draw();
+    void update();
     int switch_mode();
     ofEasyCam cam;
+    void set_line_num(int num);
+    void add_line_num(int add);
 private:
-
+    int line_num;
     static int json_num;
     int mode = 1;
     ofPath path;
@@ -33,11 +35,11 @@ private:
     vector<ofVec2f> vec;
     vector<string> userNames;
     ofMesh mesh;
-    void draw_bezier_map(int num);
-    void draw_bezier_web(int num);
-    void draw_mesh(int num);
-    void draw_default_circle(int num);
-    void draw_bezier_circle(int num);
+    void draw_bezier_map();
+    void draw_bezier_web();
+    void draw_mesh();
+    void draw_default_circle();
+    void draw_bezier_circle();
 };
 
 #endif /* defined(__mauInteractive__ShiseidoLifeClock__) */

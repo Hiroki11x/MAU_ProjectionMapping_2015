@@ -32,10 +32,15 @@ private:
     float registertime;
     ofColor color;
     
+    ofPath path,path2;
+    char *random_char = "ABCDEFG";
 public:
     string get_user_name();
     string get_user_id();
     wstring get_user_text();
+    int get_user_follower();
+    int get_user_statuses();
+    int get_user_friends();
     
     ofVec2f position;
     SingleAgent(){};

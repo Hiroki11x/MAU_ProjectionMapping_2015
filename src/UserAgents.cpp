@@ -21,13 +21,13 @@ void UserAgents::reset(){
 void UserAgents::init(){
     ofxSuperLogUtil::init();//Logのセットアップ
     matrix_generator.generate_position(GENE_X_NUM, GENE_Y_NUM);//6*12個の座標を生成
-    json_num = 0;
+    SingleUserManager::json_num = 0;
     ofxSuperLogUtil::set_log("init", ofToString(JsonReceiver::getInstance().getUsersInfo().size()));
     
     back_animation.set_fade_duration(2000);
     
     strechyRectSwiper.init();
-    strechyRectSwiper.set_color(ofColor::fromHsb(100, 200, 200));
+    strechyRectSwiper.set_color(ofColor::fromHsb(100, 200, 240));
     strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
     
     alphaSwiper.init();
@@ -38,26 +38,25 @@ void UserAgents::init(){
     
     ofxSuperLogUtil::set_log("init","call useragnts init()");
     
+    endingVideo.loadMovie("cap.mp4");
+    endingVideo.setLoopState(OF_LOOP_NORMAL);
 }
 
 void UserAgents::update(){
-//    JsonReceiver::getInstance().recieve();
     check_is_json_new();
-    
-//    for(int i = 0; i < userAgentArray.size(); i++){
-//        userAgentArray.at(i)->update();//回転アニメーションとか
-//    }
-
+ 
     if (userAgentArray.size()>0) {
 
         if(isMoveCam){
-            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef()/100,json_num),userAgentArray.back()->position.y+500*ofSignedNoise(json_num,ofGetElapsedTimef()/100),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
+            cam.setPosition(userAgentArray.back()->position.x+500*ofSignedNoise(ofGetElapsedTimef()/100,SingleUserManager::json_num),userAgentArray.back()->position.y+500*ofSignedNoise(SingleUserManager::json_num,ofGetElapsedTimef()/100),500+500*ofSignedNoise(ofGetElapsedTimef()/10));
         }else{
             cam.setPosition(userAgentArray.back()->position.x,userAgentArray.back()->position.y,500*(1+sin(ofGetElapsedTimef()/20)));
         }
         
         cam.lookAt(ofVec3f(userAgentArray.back()->position.x,userAgentArray.back()->position.y,0));
     }
+    
+    if(endingVideo.isPlaying())endingVideo.update();
 }
 
 void UserAgents::check_agent_size(int delete_adder){//多すぎてたらvectorから消していく
@@ -76,7 +75,7 @@ void UserAgents::draw(){
 
     alphaSwiper.draw();
     strechyRectSwiper.draw();//swiperを描画
-    if(isBackGround)back_animation.fade_cross_background(0, 0, 100);
+    if(isBackGround)back_animation.fade_cross_background(0, 0, 150);
     
     for(int i = 0; i < connections.size(); i++){
         connections.at(i)->drawConnection();
@@ -90,13 +89,11 @@ void UserAgents::draw(){
     }
 
     cam.end();
-    ofDrawBitmapString("userAgentArray.size()"+ofToString(userAgentArray.size()), 30,40);
+    if(endingVideo.isPlaying())endingVideo.draw(ofGetWidth()/2-endingVideo.width/2,ofGetHeight()/2-endingVideo.height/2,endingVideo.width,endingVideo.height);
+    ofDrawBitmapString("userAgentArray.size: "+ofToString(userAgentArray.size()), 30,40);
 }
 
 void UserAgents::onMouseDown(int x, int y){
-//    userAgentsSize = userAgentArray.size();
-//    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
-//    strechyRectSwiper.init();
 }
 
 void UserAgents::keyPressed(int key){
@@ -117,7 +114,6 @@ void UserAgents::keyPressed(int key){
         tag = "SwipeMode::Down";
     }else if(key==OF_KEY_RETURN){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
-//        reset();
         tag = "SwipeMode::SemiCircle Clear Agent";
     }else if(key==OF_KEY_RIGHT){
         strechyRectSwiper.set_mode(SwipeMode::Right);
@@ -128,10 +124,17 @@ void UserAgents::keyPressed(int key){
     }else if(key==OF_KEY_SHIFT){
         strechyRectSwiper.set_mode(SwipeMode::SemiCircle);
         tag = "SwipeMode::SemiCircle";
+    }else if(key == OF_KEY_TAB){
+        reset();
+    }else if(key == 'C'){
+        if(!endingVideo.isPlaying()){
+            endingVideo.play();
+        }else{
+            endingVideo.stop();
+        }
     }
     strechyRectSwiper.init();
     ofxSuperLogUtil::set_log(tag, ofToString(ofGetElapsedTimef()));//Log出し
-    
     check_agent_size(10);//10個agent消す
 }
 
@@ -139,19 +142,16 @@ void UserAgents::end(){}
 
 void UserAgents::check_is_json_new(){
     int add_num;
-    if(json_num<JsonReceiver::getInstance().getUsersInfo().size()){
-        add_num = JsonReceiver::getInstance().getUsersInfo().size() - json_num;
+    if(SingleUserManager::json_num<JsonReceiver::getInstance().getUsersInfo().size()){
+        add_num = JsonReceiver::getInstance().getUsersInfo().size() - SingleUserManager::json_num;
         check_agent_size(add_num);
         addAgent(add_num);
         ofxSuperLogUtil::set_log("check_is_json_new", ofToString(add_num));
     }
 }
 
-
 ofVec4f UserAgents::select_position(){
-    
     ofVec4f position;
-    
     int size = matrix_generator.get_position_num();//生成した座標の数
     int index = ofRandom(size-1);//その座標でどこを使うか選ぶ
     if(size>0){
@@ -165,7 +165,6 @@ ofVec4f UserAgents::select_position(){
     position = *matrix_generator.get_position().at(index);//そのindexのpositionを取得
     position.w = index;
     return position;
-
 }
 
 void UserAgents::addAgent(int add_num){
@@ -182,25 +181,24 @@ void UserAgents::addAgent(int add_num){
         pos3f.y = pos4f.y;
         pos3f.z = pos4f.z;
         userAgentArray.back()->set_position(pos3f);
-        userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), ofRandom(COLOR_MAX/4,COLOR_MAX), ofRandom(COLOR_MAX/4,COLOR_MAX)));
+        userAgentArray.back()->set_color(ofColor::fromHsb(ofRandom(COLOR_MAX/4,COLOR_MAX/3), 255, 255));
         userAgentArray.back()->init();
         userAgentArray.back()->set_size(USER_CIRCLE_SIZE);
         userAgentArray.back()->get_info_from_twitter(
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).userName,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).twitterId,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).text,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).friends_count,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).statuses_count,
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).followers_count,
-//                                                     JsonImageRecieveThread::get_icons().at(json_num)
-                                                     JsonReceiver::getInstance().getUsersInfo().at(json_num).iconURL
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).userName,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).twitterId,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).text,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).friends_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).statuses_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).followers_count,
+                                                     JsonReceiver::getInstance().getUsersInfo().at(SingleUserManager::json_num).iconURL
                                                      );
 //        createExplodeAnimation(pos3f);
-        json_num++;//json_numはここで
-        ofxSuperLogUtil::set_log("addAgent", "No: "+ofToString(json_num));
+        SingleUserManager::json_num++;//json_numはここで
+        ofxSuperLogUtil::set_log("addAgent", "No: "+ofToString(SingleUserManager::json_num));
     }
     userAgentsSize = userAgentArray.size();
-    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(200));
+    addConnection(ofRandom(userAgentsSize), ofRandom(userAgentsSize), ofRandom(100,200));
 }
 
 void UserAgents::createExplodeAnimation(ofVec3f pos){

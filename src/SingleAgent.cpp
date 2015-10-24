@@ -9,7 +9,15 @@
 #include "SingleAgent.h"
 
 void SingleAgent::init(){
+    path.setCircleResolution(50);
+    path.setFilled(true);
+    path.setColor(ofColor(0,250,0,255));
+    path2.setCircleResolution(50);
+    path2.setFilled(false);
+    path2.setStrokeWidth(1);
+    path2.setColor(ofColor(0,250,0,255));
     ofSetCircleResolution(32);
+    path.setMode(ofPath::POLYLINES);
     registertime = ofGetSystemTime();
     icon.allocate(300, 300,OF_IMAGE_COLOR);
     set_position(ofVec2f(ofGetWidth()/2,ofGetHeight()/2));    
@@ -25,6 +33,18 @@ string SingleAgent::get_user_id(){
 
 wstring SingleAgent::get_user_text(){
     return this->text;
+}
+
+int SingleAgent::get_user_follower(){
+    return this->followers_count;
+}
+
+int SingleAgent::get_user_statuses(){
+    return this->statuses_count;
+}
+
+int SingleAgent::get_user_friends(){
+    return this->friends_count;
 }
 
 void SingleAgent::get_info_from_twitter(string name,string id, wstring text,int friends_count,int statuses_count,int followers_count, ofImage image){
@@ -60,11 +80,11 @@ void SingleAgent::draw(float x, float y){//画像の色解析４枚のやつ
     ofSetColor(255);
     ofFill();
     icon.draw(-50, -50, 100,100);
-    FontManager::mfont.drawString(username, 70,0);
-    FontManager::mfont.drawString(id, 70,10);
-    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 70,20);
-    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 70,30);
-    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 70,40);
+    FontManager::mfont.drawString(username, 70,-2);
+    FontManager::mfont.drawString(id, 70,12);
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 70,26);
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 70,40);
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 70,52);
     
     unsigned char * pixels =icon.getPixels();
     int w = icon.width;
@@ -75,15 +95,44 @@ void SingleAgent::draw(float x, float y){//画像の色解析４枚のやつ
             int valueR = pixels[j*3 * w + i*3];
             int valueG = pixels[j*3 * w + i*3+1];
             int valueB = pixels[j*3 * w + i*3+2];
-            ofSetColor(255, 0, 0, 83);
+            ofSetColor(255, 0, 0, 103);
             ofCircle(200+i, j-50, 6*valueR/255.0);
-            ofSetColor(0, 255, 0, 83);
+            ofSetColor(0, 255, 0, 103);
             ofCircle(200+i, j, 6*valueG/255.0);
-            ofSetColor(0, 0, 255, 83);
+            ofSetColor(0, 0, 255, 103);
             ofCircle(250+i, j-50, 6*valueB/255.0);
         }
     }
-    
+    float x_start;
+    float args;
+    for(int i =0;i<3;i++){
+        x_start = i*42+80;
+        if(i==0){
+            args = followers_count/20.0f;
+        }else if(i == 1){
+            args = friends_count/20.0;
+        }else{
+            args = statuses_count/100.0f;
+        }
+        path.clear();
+        path2.clear();
+        path.moveTo(x_start,-37);
+        path.circle(x_start, -37, 5);
+        path.arc(x_start, -37, 15, 15, 0, args);
+        path.lineTo(x_start,-37);
+        path2.circle(x_start, -37, 15);
+        path2.moveTo(x_start,-37);
+        path2.arc(x_start, -37, 15, 15,args , 360);
+        path2.lineTo(x_start,-37);
+        path.draw();
+        path2.draw();
+        ofSetColor(0,255,0,255);
+        ofCircle(x_start, -37, 9);
+        ofSetColor(0);
+        ofCircle(x_start, -37, 8);
+        ofSetColor(0,255,0,255);
+        ofDrawBitmapString(ofToString(random_char[(int)args%7]), x_start-4,-33);
+    }
     ofPopMatrix();
 }
 
@@ -92,17 +141,17 @@ void SingleAgent::draw_line(float x, float y){//2D文字だけ
     ofTranslate(x, y);
     ofFill();
     if(id.length()<8){
-        ofSetColor(255,0,0,ofRandom(0,170));
+        ofSetColor(255,0,0,ofRandom(100,255));
     }else{
-        ofSetColor(0,255,0,ofRandom(0,170));
+        ofSetColor(0,255,0,ofRandom(100,255));
     }
-    ofRect(0,-10,150,10);
+    ofRect(0,-16,180,16);
     ofSetColor(255);
-    FontManager::mfont.drawString(username, 0,0);
-    FontManager::mfont.drawString(id, 0,10);
-    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 0,20);
-    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 0,30);
-    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 0,40);
+    FontManager::mbigfont.drawString(username, 0,0);
+    FontManager::mfont.drawString(id, 0,14);
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 0,26);
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 0,38);
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 0,50);
     ofPopMatrix();
 }
 
@@ -111,22 +160,22 @@ void SingleAgent::draw_line(float x, float y,float z){//3D文字だけ
     ofTranslate(x, y, z);
     ofFill();
     if(id.length()<8){
-        ofSetColor(255,0,0,ofRandom(0,170));
+        ofSetColor(255,0,0,ofRandom(30,170));
     }else{
-        ofSetColor(0,255,0,ofRandom(0,170));
+        ofSetColor(0,255,0,ofRandom(30,170));
     }
     
-    ofRect(0,0,150,10);
+    ofRect(0,0,150,16);
     ofSetColor(255);
     
     glPushMatrix();
     glRotatef(180, 1,0,0);
 //    glTranslated(x, y, z);
-    FontManager::mfont.drawString(username, 0,0);
-    FontManager::mfont.drawString(id, 0,10);
-    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 0,20);
-    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 0,30);
-    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 0,40);
+    FontManager::mbigfont.drawString(username, 0,0);
+    FontManager::mfont.drawString(id, 0,14);
+    FontManager::mfont.drawString("Follower: "+ofToString(followers_count), 0,26);
+    FontManager::mfont.drawString("Friends: "+ofToString(friends_count), 0,38);
+    FontManager::mfont.drawString("Statue: "+ofToString(statuses_count), 0,50);
     glPushMatrix();
     ofPopMatrix();
 }

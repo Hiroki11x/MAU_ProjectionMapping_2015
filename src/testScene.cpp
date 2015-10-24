@@ -9,9 +9,11 @@
 #include "testScene.h"
 
 void testScene::setup(){
-    FontManager::mfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",8);
-    FontManager::msmallfont.loadFont("A-OTF-GothicMB101Pro-Light.otf",5);
+    FontManager::mbigfont.loadFont("03スマートフォントUI.otf",15);
+    FontManager::mfont.loadFont("03スマートフォントUI.otf",10);
+    FontManager::msmallfont.loadFont("03スマートフォントUI.otf",5);
     
+    ofSetVerticalSync(true);
     ofBackground(0);
     ofSetFrameRate(60);
     ofEnableSmoothing();
@@ -28,11 +30,11 @@ void testScene::setup(){
 
     JsonReceiver::getInstance().init();
     thread.startThread();
-//    image_thread.startThread(false, false);
+    
+    isBackAuto = false;
 }
 
 void testScene::exit(){
-    //JsonReceiver::stopRecieveThread();
     thread.stopThread();
 }
 
@@ -44,11 +46,9 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
-//    ofDrawBitmapString("Mode:"+ofToString(manager->elementIndex), 20,20);
     mClient.draw(50, 50);
     mainOutputSyphonServer.publishScreen();
-    
-    ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), 30,30);
+    ofSetWindowTitle("FPS: "+ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -76,6 +76,9 @@ void testScene::keyPressed(int key){
             manager->setup();
             
         }
+    }else if(key ==OF_KEY_RIGHT_ALT){
+        isBackAuto = !isBackAuto;
+        ofSetBackgroundAuto(isBackAuto);
     }
 }
 

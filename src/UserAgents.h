@@ -26,6 +26,7 @@
 #include "ExplodeAnimation.h"
 #include "JsonReceiver.h"
 #include "JsonImageReceiveThread.h"
+#include "SingleUserManager.h"
 
 class UserAgents : public SceneElement {
 public:
@@ -61,13 +62,13 @@ private:
     void addAgent(int add_num);
     ofVec4f select_position();
     
-    int json_num;
-    
     void check_agent_size(int delete_adder);
     
     ofCamera cam;
     
     bool isMoveCam;
     bool isBackGround;
+    
+    ofVideoPlayer endingVideo;
 };
 #endif
