@@ -59,7 +59,7 @@ void SpyMeshSceneManager::draw(){
 void SpyMeshSceneManager::keyPressed(int key){
     
     switch (key) {
-        case '1':
+         case '1':
             elements[elementIndex]->stop();
             elementIndex = 0;
             return;

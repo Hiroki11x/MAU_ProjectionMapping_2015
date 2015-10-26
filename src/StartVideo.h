@@ -23,5 +23,6 @@ public:
     ofVideoPlayer vPlayer;
     bool isPlaying;
     ofImage waitImage;
+    bool isStarted;
 };
 #endif

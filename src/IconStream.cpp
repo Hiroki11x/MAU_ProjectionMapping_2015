@@ -560,9 +560,11 @@ void IconStream::keyPressed(int key){
             init();
             break;
         case 'c':
+            if(iconNum < MAX_ICON) break;
             mode = Collapse;
             break;
         case 'i':
+            if(iconNum < MAX_ICON) break;
             mode = RemakeIcon;
             remakeFlag = true;
             break;
