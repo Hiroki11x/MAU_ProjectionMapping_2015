@@ -91,17 +91,17 @@ void JsonReceiver::initDammyData(){
     dammyNameData.push_back(convToWString("Taisuke Masuhara"));
     
     dammyTextData.push_back(convToWString("#maufes Intaractive Art!"));
-    dammyTextData.push_back(convToWString("#maufes ArtSpy"));
-    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピング"));
-    dammyTextData.push_back(convToWString("#maufes 武蔵野美術大学"));
-    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピングかっこいい！！"));
-    dammyTextData.push_back(convToWString("#maufes 美術館前なう！！"));
+    dammyTextData.push_back(convToWString("ArtSpy #maufes "));
+    dammyTextData.push_back(convToWString("#maufes プロジェクションマッピング!!"));
+    dammyTextData.push_back(convToWString("I am at 武蔵野美術大学 #maufes"));
+    dammyTextData.push_back(convToWString("#maufes Spyを探すプロジェクションマッピング"));
+    dammyTextData.push_back(convToWString("美術館前なう！！ #maufes "));
     dammyTextData.push_back(convToWString("#maufes 芸祭楽しい！！"));
-    dammyTextData.push_back(convToWString("#maufes Life is Tech!"));
+    dammyTextData.push_back(convToWString("#maufes Spyを探すプロジェクションマッピング"));
     
     for(int i = 0; i < 5; i++){
         ofImage dimg;
-        dimg.loadImage("dammy" + ofToString(i) + ".png");
+        dimg.loadImage("dammy" + ofToString(i) + ".jpg");
         dammyImageData.push_back(dimg);
     }
 }

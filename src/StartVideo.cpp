@@ -11,6 +11,7 @@
 void StartVideo::init(){
     vPlayer.loadMovie("start.mp4");
     waitImage.loadImage("wait.png");
+    vPlayer.setLoopState(OF_LOOP_NONE);
 }
 
 void StartVideo::update(){
@@ -28,7 +29,8 @@ void StartVideo::draw(){
         ofDisableDepthTest();
         ofDisableAlphaBlending();
         vPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
-    }else{
+    }
+    if(!isStarted){
         ofDisableBlendMode();
         ofDisableDepthTest();
         ofDisableAlphaBlending();
@@ -41,6 +43,7 @@ void StartVideo::onMouseDown(int x, int y){}
 void StartVideo::keyPressed(int key){
     switch (key) {
         case OF_KEY_RETURN:
+            isStarted = true;
             isPlaying = !isPlaying;
             if(!isPlaying){
                 vPlayer.stop();
