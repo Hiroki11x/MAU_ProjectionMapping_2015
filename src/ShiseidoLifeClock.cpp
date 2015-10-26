@@ -35,7 +35,7 @@ void ShiseidoLifeClock::set_line_num(int num){
 }
 
 int ShiseidoLifeClock::switch_mode(){//使わない
-    mode = (mode+1)%3+1;
+    mode = (mode+1)%2+1;
     userNames.clear();
     return mode;
 }
@@ -79,9 +79,9 @@ void ShiseidoLifeClock::draw(){
         case 3:
             draw_default_circle();//波みたいなやつの半円
             break;
-        break;case 4:
-            draw_bezier_circle();
-            break;
+//        case 4:
+//            draw_bezier_circle();
+//            break;
         default:
             break;
     }

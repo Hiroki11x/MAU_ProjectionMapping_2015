@@ -23,6 +23,7 @@
 		4E24C8641BBE0B2C00772CAF /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E24C8671BBE0F2700772CAF /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58DCB2C0AEFDE6171E29540 /* Syphon.framework */; };
 		4E322024174AFB49A3BEA152 /* model3DS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D59890E3C752D42722D2AFA /* model3DS.cpp */; };
+		4E564F1A1BDB5A7500FEDD83 /* UtVj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E564F181BDB5A7500FEDD83 /* UtVj.cpp */; };
 		4E5ED6C31BC12958004F1AF6 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6A31BC12958004F1AF6 /* ofxEasing.cpp */; };
 		4E5ED6C41BC12958004F1AF6 /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6A51BC12958004F1AF6 /* ofxEasingBack.cpp */; };
 		4E5ED6C51BC12958004F1AF6 /* ofxEasingBounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED6A71BC12958004F1AF6 /* ofxEasingBounce.cpp */; };
@@ -237,6 +238,8 @@
 		49EFFCF36CF194CCE0E1FAAB /* kdtree_index.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = kdtree_index.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/kdtree_index.h; sourceTree = SOURCE_ROOT; };
 		4E12E4821BBEF443001D9BA2 /* FadeBackgroundUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FadeBackgroundUtil.cpp; sourceTree = "<group>"; };
 		4E12E4831BBEF443001D9BA2 /* FadeBackgroundUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeBackgroundUtil.h; sourceTree = "<group>"; };
+		4E564F181BDB5A7500FEDD83 /* UtVj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtVj.cpp; sourceTree = "<group>"; };
+		4E564F191BDB5A7500FEDD83 /* UtVj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtVj.h; sourceTree = "<group>"; };
 		4E5ED67B1BC12958004F1AF6 /* .cproject */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .cproject; sourceTree = "<group>"; };
 		4E5ED67C1BC12958004F1AF6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4E5ED67D1BC12958004F1AF6 /* .project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .project; sourceTree = "<group>"; };
@@ -895,6 +898,15 @@
 			name = CrossBack;
 			sourceTree = "<group>";
 		};
+		4E564F171BDB5A6700FEDD83 /* UtVj */ = {
+			isa = PBXGroup;
+			children = (
+				4E564F181BDB5A7500FEDD83 /* UtVj.cpp */,
+				4E564F191BDB5A7500FEDD83 /* UtVj.h */,
+			);
+			name = UtVj;
+			sourceTree = "<group>";
+		};
 		4E5ED6761BC122AD004F1AF6 /* ScreenSwiper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1162,6 +1174,7 @@
 		4E88A2561BBE1223001E8306 /* AnimationUtils */ = {
 			isa = PBXGroup;
 			children = (
+				4E564F171BDB5A6700FEDD83 /* UtVj */,
 				4EBA929A1BDA433E00F1A428 /* LineBelt */,
 				4EE77D161BC62AD50070C805 /* ExplodeAnimation */,
 				4E7633121BC256DB002F2530 /* PostGlitch */,
@@ -2365,6 +2378,7 @@
 				4EBA92AD1BDA9D2500F1A428 /* LoadingVideoSceneManager.cpp in Sources */,
 				4EBA92B01BDA9E3400F1A428 /* LoadingVideo.cpp in Sources */,
 				4E5ED6DF1BC12A76004F1AF6 /* StrechyRectSwiper.cpp in Sources */,
+				4E564F1A1BDB5A7500FEDD83 /* UtVj.cpp in Sources */,
 				4E88A23D1BBE11AF001E8306 /* Connection.cpp in Sources */,
 				2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */,
 				4E5ED6E31BC12AD0004F1AF6 /* SemiCirclePath.cpp in Sources */,
