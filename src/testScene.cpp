@@ -56,27 +56,27 @@ void testScene::keyPressed(int key){
     manager->keyPressed(key);
     if(key == 'f'){
         ofToggleFullscreen();
-    }else if (key == ' '){
-        if(!manager->nextElement()){
-            delete manager;
-            //switchで次のmanagerのインスタンス作成
-            switch (mode) {
-                case SceneMode::UserAgent:
-                    manager = new UserAgentsSceneManager();
-                    mode = SceneMode::AgentAnalyze;
-                    break;
-                case SceneMode::AgentAnalyze:
-                    manager = new AgentAnalyzeSceneManager();
-                    mode = SceneMode::Introduction;
-                    break;
-                default:
-                    break;
-            }
-            manager->reset();
-            manager->setup();
-            
-        }
-    }else if(key ==OF_KEY_RIGHT_ALT){
+//    }else if (key == ' '){
+//        if(!manager->nextElement()){
+//            delete manager;
+//            //switchで次のmanagerのインスタンス作成
+//            switch (mode) {
+//                case SceneMode::UserAgent:
+//                    manager = new UserAgentsSceneManager();
+//                    mode = SceneMode::AgentAnalyze;
+//                    break;
+//                case SceneMode::AgentAnalyze:
+//                    manager = new AgentAnalyzeSceneManager();
+//                    mode = SceneMode::Introduction;
+//                    break;
+//                default:
+//                    break;
+//            }
+//            manager->reset();
+//            manager->setup();
+//            
+//        }
+    }else if(key ==' '){
         isBackAuto = !isBackAuto;
         ofSetBackgroundAuto(isBackAuto);
     }

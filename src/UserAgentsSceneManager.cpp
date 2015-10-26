@@ -11,12 +11,12 @@
 #include "UserAgentsSceneManager.h"
 
 void UserAgentsSceneManager::setup(){//ここでelementsにpushbackする順番がのちのキーに対応
-    elements.push_back(new UserAgents());
-    elements.push_back(new AgentAnalyze());
-    elements.push_back(new SingleAgentAnalyze());
-    elements.push_back(new LoadingVideo());
-    elements.push_back(new InitialVideo());
-    elements.push_back(new FinalVideo());
+    elements.push_back(new InitialVideo());//1
+    elements.push_back(new UserAgents());//2
+    elements.push_back(new AgentAnalyze());//3
+    elements.push_back(new SingleAgentAnalyze());//4
+    elements.push_back(new LoadingVideo());//5
+    elements.push_back(new FinalVideo());//6
     for(int i = 0; i < elements.size(); i++){
         elements.at(i)->init();
     }

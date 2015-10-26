@@ -89,7 +89,10 @@ void UserAgents::draw(){
     }
 
     cam.end();
-    if(endingVideo.isPlaying())endingVideo.draw(ofGetWidth()/2-endingVideo.width/2,ofGetHeight()/2-endingVideo.height/2,endingVideo.width,endingVideo.height);
+    if(endingVideo.isPlaying()){
+        ofSetColor(255);
+        endingVideo.draw(ofGetWidth()/2-endingVideo.width/2,ofGetHeight()/2-endingVideo.height/2,endingVideo.width,endingVideo.height);
+    }
     ofDrawBitmapString("userAgentArray.size: "+ofToString(userAgentArray.size()), 30,40);
 }
 

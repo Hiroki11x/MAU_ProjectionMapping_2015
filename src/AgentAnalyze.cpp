@@ -29,6 +29,8 @@ void AgentAnalyze::init(){
     graphlog.set_height_limit(ofGetWidth()/4);
     
     linebelt.setup_belt(10);
+    
+    utvj.setup();
 }
 
 void AgentAnalyze::draw(){
@@ -38,9 +40,16 @@ void AgentAnalyze::draw(){
         draw_3D();
     }else if(mode ==2){
         draw_belt();
+    }else if(mode ==3){
+        draw_vj();
     }
     ofDrawBitmapString("Agents Max Size: "+ofToString(MAX_AGENT), 30,40);
     ofDrawBitmapString("Agents Size: "+ofToString(SingleUserManager::json_num), 30,50);
+}
+
+void AgentAnalyze::draw_vj(){
+    utvj.update();
+    utvj.draw();
 }
 
 void AgentAnalyze::draw_belt(){
@@ -113,8 +122,9 @@ void AgentAnalyze::onMouseDown(int x, int y){
 
 void AgentAnalyze::keyPressed(int key){//Enterで2D,3Dを切り替え
     graphlog.keyPressed(key);
+    utvj.keyPressed(key);
     if(key==OF_KEY_RETURN){
-        mode = (mode+1)%3;
+        mode = (mode+1)%4;
     }else if(key == OF_KEY_TAB){
         reset();
         linebelt.reset_belt();
