@@ -20,6 +20,9 @@ public:
     virtual void setup(){
         //InitElements
     };
+    virtual void reset(){
+        elements.at(elementIndex)->reset();
+    };
     virtual void update(){
         elements.at(elementIndex)->update();
     };
@@ -29,11 +32,12 @@ public:
     virtual void onMouseDown(int x,int y){};
     virtual void keyPressed(int key){};
     
-    bool nextElement(){
+    virtual bool nextElement(){
         elements[elementIndex]->end();
         elementIndex++;
         if(elementIndex >= elements.size()){
-            return false;
+            elementIndex = 0;
+            return true;
         }else{
             elements[elementIndex]->init();
             return true;

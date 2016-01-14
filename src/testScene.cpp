@@ -9,20 +9,33 @@
 #include "testScene.h"
 
 void testScene::setup(){
+    FontManager::mbigfont.loadFont("03スマートフォントUI.otf",15);
+    FontManager::mfont.loadFont("03スマートフォントUI.otf",10);
+    FontManager::msmallfont.loadFont("03スマートフォントUI.otf",5);
+    
+    ofSetVerticalSync(true);
     ofBackground(0);
     ofSetFrameRate(60);
     ofEnableSmoothing();
-    
     ofDisableArbTex();
     
-//    manager = new SpyMeshSceneManager();
-//    manager->setup();
-//    mode = SceneMode::Introduction;
+    mainOutputSyphonServer.setName("Screen Outputh");//SyphonServer使う上でのセットアップ
+    mClient.setup();
+    mClient.setApplicationName("Simple Serverh");
+    mClient.setServerName("");
     
     manager = new UserAgentsSceneManager();
     manager->setup();
     mode=SceneMode::UserAgent;
+
+    JsonReceiver::getInstance().init();
+    thread.startThread();
     
+    isBackAuto = false;
+}
+
+void testScene::exit(){
+    thread.stopThread();
 }
 
 //--------------------------------------------------------------
@@ -33,6 +46,9 @@ void testScene::update(){
 //--------------------------------------------------------------
 void testScene::draw(){
     manager->draw();
+    mClient.draw(50, 50);
+    mainOutputSyphonServer.publishScreen();
+    ofSetWindowTitle("FPS: "+ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -40,29 +56,29 @@ void testScene::keyPressed(int key){
     manager->keyPressed(key);
     if(key == 'f'){
         ofToggleFullscreen();
-    }else if (key == ' '){
-        if(!manager->nextElement()){
-            delete manager;
-            //switchで次のmanagerのインスタンス作成
-            switch (mode) {
-                case SceneMode::UserAgent:
-                    manager = new UserAgentsSceneManager();
-                    mode = SceneMode::UserAgent;
-                    break;
-                case SceneMode::Introduction:
-                    manager = new SpyMeshSceneManager();
-                    mode = SceneMode::SpyMesh;
-                    break;
-                case SceneMode::SpyMesh:
-                    manager = new IntroductionManager();
-                    mode = SceneMode::Introduction;
-                    break;
-                default:
-                    break;
-            }
-            
-            manager->setup();
-        }
+//    }else if (key == ' '){
+//        if(!manager->nextElement()){
+//            delete manager;
+//            //switchで次のmanagerのインスタンス作成
+//            switch (mode) {
+//                case SceneMode::UserAgent:
+//                    manager = new UserAgentsSceneManager();
+//                    mode = SceneMode::AgentAnalyze;
+//                    break;
+//                case SceneMode::AgentAnalyze:
+//                    manager = new AgentAnalyzeSceneManager();
+//                    mode = SceneMode::Introduction;
+//                    break;
+//                default:
+//                    break;
+//            }
+//            manager->reset();
+//            manager->setup();
+//            
+//        }
+    }else if(key ==' '){
+        isBackAuto = !isBackAuto;
+        ofSetBackgroundAuto(isBackAuto);
     }
 }
 

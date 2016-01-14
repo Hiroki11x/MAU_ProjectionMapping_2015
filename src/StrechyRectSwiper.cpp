@@ -49,9 +49,9 @@ void StrechyRectSwiper::draw(){
             ofRect(0,ofGetHeight() - start_y +50, ofGetWidth(),20);
             return ;
         case SwipeMode::SemiCircle: //SemiCirculePathを用いる
-            semipath[0].draw(start_y*1.4);
-            semipath[1].draw(start_y*1.2);
-            semipath[2].draw(start_y);
+            semipath[0].draw(start_y*1.6);
+            semipath[1].draw(start_y*1.4);
+            semipath[2].draw(start_y*1.2f);
             break;
         case SwipeMode::Right:
             ofRect(start_y*1.2-70, 0, 20, ofGetHeight());

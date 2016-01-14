@@ -14,6 +14,10 @@
 class SceneElement {
     
 public:
+    
+    static int MAX_AGENT;
+    
+    virtual void reset(){};
     virtual void update(){};
     virtual void draw(){};
     virtual void init(){};

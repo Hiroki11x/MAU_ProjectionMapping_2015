@@ -7,3 +7,5 @@
 //
 
 #include "SceneElement.h"
+
+int SceneElement::MAX_AGENT;

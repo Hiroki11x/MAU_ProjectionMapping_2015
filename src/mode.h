@@ -11,6 +11,7 @@
 namespace SceneMode{
     enum Mode{
         UserAgent,
+        AgentAnalyze,
         Introduction,
         SpyMesh
     };
